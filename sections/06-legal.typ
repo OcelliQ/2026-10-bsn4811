@@ -24,7 +24,13 @@
   // PLACEHOLDER N15: news article on Moffatt v. Air Canada (Feb 2024), the
   // tribunal ruling that Air Canada is responsible for its chatbot's
   // bereavement-fare answer. The Guardian, CBC or BBC.
-  shot("N15", [Air Canada liable for its chatbot, Feb 2024], width: 11.5cm),
+  shot(
+    "N15",
+    [Air Canada liable for its chatbot, Feb 2024],
+    path: "/figures/news/N15-air-canada-chatbot.png",
+    url: "https://www.theguardian.com/world/2024/feb/16/air-canada-chatbot-lawsuit",
+    width: 11.5cm,
+  ),
   // PLACEHOLDER N16: news article on the Chevrolet of Watsonville chatbot
   // agreeing to sell a Tahoe for $1 (Dec 2023). Business Insider or similar.
   shot("N16", [Chevy dealer chatbot sells a Tahoe for \$1], width: 11.5cm),

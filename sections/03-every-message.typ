@@ -125,7 +125,13 @@
   // PLACEHOLDER N03: news article on Character.AI's Chapter 11 filing in
   // Delaware (Oct 2026), ideally one mentioning Disney's stalking-horse bid.
   // Headline and date visible.
-  shot("N03", [Character.AI files for Chapter 11, Oct 2026], width: 12cm),
+  shot(
+    "N03",
+    [Character.AI files for Chapter 11, Oct 2026],
+    path: "/figures/news/N03-character-ai-chapter-11.png",
+    url: "https://variety.com/2026/biz/news/disney-bids-on-character-ai-assets-chapter-11-bankruptcy-1236909984/",
+    width: 12cm,
+  ),
   [
     - *Oct 2026*: Chapter 11, Delaware
     - Stalking-horse bid: *Disney, \$20M* for a non-exclusive licence to the IP

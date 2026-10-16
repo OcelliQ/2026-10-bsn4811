@@ -1,0 +1,42 @@
+[
+  {
+    "id": "N03",
+    "file": "figures/news/N03-character-ai-chapter-11.png",
+    "url": "https://variety.com/2026/biz/news/disney-bids-on-character-ai-assets-chapter-11-bankruptcy-1236909984/",
+    "outlet": "Variety",
+    "headline": "Disney Bids on Character.AI Assets as Chatbot Provider Files for Chapter 11 Bankruptcy",
+    "date": "2026-10-13",
+    "quote": "Character.AI, the controversial chatbot company known for letting its users generate and engage with a suite of original and user-generated characters, filed for Chapter 11 bankruptcy Monday to begin a “value-maximizing sale” of potentially all of its assets. As part of the filing, Disney Worldwide Services, a House of Mouse subsidiary, has agreed to pay $20 million to become the stalking-horse bidder for a “non-exclusive perpetual license of certain Company intellectual property and certain Company claims.”",
+    "notes": "Reuters (which names the Wilmington, Delaware court) returned a Datadome block. Variety states the Chapter 11 filing on Monday and Disney’s $20 million stalking-horse bid; the piece does not name Delaware."
+  },
+  {
+    "id": "N07",
+    "file": "figures/news/N07-windsurf-claude-access.png",
+    "url": "https://techcrunch.com/2025/06/03/windsurf-says-anthropic-is-limiting-its-direct-access-to-claude-ai-models/",
+    "outlet": "TechCrunch",
+    "headline": "Windsurf says Anthropic is limiting its direct access to Claude AI models",
+    "date": "2025-06-03",
+    "quote": "“We have been very clear to Anthropic that this is not our desire — we wanted to pay them for the full capacity,” said Mohan on X. “We are disappointed by this decision and short notice.”",
+    "notes": ""
+  },
+  {
+    "id": "N15",
+    "file": "figures/news/N15-air-canada-chatbot.png",
+    "url": "https://www.theguardian.com/world/2024/feb/16/air-canada-chatbot-lawsuit",
+    "outlet": "The Guardian",
+    "headline": "Air Canada ordered to pay customer who was misled by airline’s chatbot",
+    "date": "2024-02-16",
+    "quote": "Canada’s largest airline has been ordered to pay compensation after its chatbot gave a customer inaccurate information, misleading him into buying a full-price ticket. Air Canada came under further criticism for later attempting to distance itself from the error by claiming that the bot was “responsible for its own actions”.",
+    "notes": "CBC’s story failed to load (HTTP/2 protocol error). Removed the thin Print subscriptions / Search jobs strip so the headline fits in the top third under the Guardian masthead."
+  },
+  {
+    "id": "N20",
+    "file": "figures/news/N20-deepseek-nvidia.png",
+    "url": "https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html",
+    "outlet": "CNBC",
+    "headline": "Nvidia sheds almost $600 billion in market cap, biggest one-day loss in U.S. history",
+    "date": "2025-01-27",
+    "quote": "Nvidia shares plunged 17% on Monday, resulting in a market cap loss of close to $600 billion, the biggest drop ever for a U.S. company. The sell-off, which hit much of the U.S. tech sector, was sparked by concerns about increased competition from Chinese AI lab DeepSeek.",
+    "notes": "Reuters returned HTTP 401 and Bloomberg HTTP 403. CNBC’s figure is “almost $600 billion” / “close to $600 billion”, not the $589 billion Bloomberg print."
+  }
+]

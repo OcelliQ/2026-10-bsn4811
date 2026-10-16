@@ -39,7 +39,13 @@
   // PLACEHOLDER N07: news article on Anthropic cutting Windsurf's direct
   // access to Claude models (Jun 2025), with Varun Mohan's comment.
   // TechCrunch broke it. Headline and date visible.
-  shot("N07", [Anthropic cuts Windsurf's Claude access, Jun 2025], width: 12cm),
+  shot(
+    "N07",
+    [Anthropic cuts Windsurf's Claude access, Jun 2025],
+    path: "/figures/news/N07-windsurf-claude-access.png",
+    url: "https://techcrunch.com/2025/06/03/windsurf-says-anthropic-is-limiting-its-direct-access-to-claude-ai-models/",
+    width: 12cm,
+  ),
   [
     - *Spring 2025*: OpenAI in talks to buy Windsurf for \~\$3B
     - *Jun 2025*: Anthropic cuts Windsurf's Claude access with *< 5 days' notice*

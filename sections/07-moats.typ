@@ -25,6 +25,8 @@
     #shot(
       "N20",
       [DeepSeek day: Nvidia #sym.minus;17%, 27 Jan 2025],
+      path: "/figures/news/N20-deepseek-nvidia.png",
+      url: "https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html",
       width: 12cm,
     )
   ],
