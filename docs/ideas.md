@@ -23,7 +23,7 @@ The complete table of all 13 candidate lessons is in §6. **Dropped:** L10 (seat
 
 ### Crash course (5–20)
 
-A\* slides 11–13 (fancy autocomplete, tokens, stochastic), 14–17 (cost scatter: 3 orders of magnitude, frontier→budget in 4 months) and 19 (agent = LLM + harness). Add **one** slide from BSE3713 38–39 (training cost table, plus the point that a model is a depreciating asset). Close on A\* 23 (five failure modes) as the bridge to liability.
+A\* slides 11–13 (fancy autocomplete, tokens, stochastic), 14–17 (cost scatter: 3 orders of magnitude, frontier→budget in 4 months; swap the A\* scatter for the latest ai-models-chart chart, see §4) and 19 (agent = LLM + harness). Add **one** slide from BSE3713 38–39 (training cost table, plus the point that a model is a depreciating asset). Close on A\* 23 (five failure modes) as the bridge to liability.
 
 A\* slides 8 (gold rush) and 9 (who controls what) are dropped because the hook and the value chain now cover them.
 
@@ -102,9 +102,36 @@ Pays off the two legal side items on the value-chain slide.
 - **Moats that hold:** own the customer, the workflow, the data or the brand, and keep your models swappable. Headline case: Midjourney (no VC, subscription-only, tiny team, profitable; it licenses to Meta rather than being eaten by it). Also Cursor's own models and the legal and health verticals. Compliance as a moat follows from lesson 4.
 - **Discussion:** what happens to your product when the model it runs on is 10× cheaper?
 
-### Close: who makes the money? (78–88)
+### Close, part 1: follow the heavy user's \$10 (78–82)
+
+Bring back the homework bot from the live exercise and trace its **heavy user** through the stack as a Sankey diagram. This is the chosen visual, so build it properly.
+
+- **Inflows:** \$10/month from the user, plus **investor money** entering at the app layer and at the model layer.
+- **The app layer:** it receives \$10 but pays the lab ~\$90 for that user's tokens, so roughly \$80 of VC money has to come in to cover the gap.
+- **The model layer:** it passes inference compute down to the cloud. Training and R&D, which are not covered by the user's tokens, are funded by investor money too.
+- **Further down:** the cloud pays Nvidia, and the flow comes out wider than what the user paid in.
+- **The punchline:** more money reaches Nvidia than the user ever paid. The difference is investor money, so the stack runs on a subsidy.
+- The split between layers is illustrative. Derive it from the exercise numbers plus a stated lab gross margin and cloud margin (⚠, label them as assumptions), and label the slide "illustrative".
+- Optional: put the light user's Sankey beside it ($10 in, ~$3 out, no investor inflow needed) so the contrast is visible at a glance.
+
+### Close, part 2: who makes the money? (82–88)
 
 Answers the hook's question by going layer by layer (L8: value flows to the scarce layer).
+
+**Metric: use operating margin ("profit per \$1 of revenue"), not gross margin.** On gross margin the labs are positive (~40–60% on inference ⚠). They lose money on training, research staff and free users, which shows up only in operating margin.
+
+**Visualization (TODO when building the deck):** mock up all three options below as slides and pick one.
+
+1. **Profit pool map** (Bain; Gadiesh & Gilbert, HBR 1998). One bar per layer: width = share of revenue, height = operating margin. Loss-making layers sit below zero, and each bar is split into companies with logos. The app layer is thin, so give it a call-out or a minimum width.
+2. **Logo strips.** Four stacked number lines, one per layer, on a shared operating-margin axis (~−150% to +80%) with a heavy zero line. Put logos on each line, optionally scaled by revenue. Best for showing the spread within the app layer.
+3. **ETF-style treemap.** Area = revenue, colour = margin on a diverging scale. Familiar, but colour reads imprecisely and the apps shrink to slivers.
+
+Data caveats for all three:
+
+- Labs inside a profitable parent (DeepMind, Meta) have no reported margin. Show them hatched, not estimated.
+- Private-company figures are ⚠, so cite them on the slide.
+- Use trailing twelve months throughout, since Nvidia reports quarterly and others report run-rates.
+- Revenue double-counts down the stack. That's normal for a profit pool, but note it.
 
 | Layer | Who makes the money | Cases |
 | --- | --- | --- |
@@ -127,7 +154,7 @@ End on the L13 checklist, applied to the app layer: Do you own the customer? Can
 | 5–20 | **Crash course** | A\* 11–17, 19, 23; BSE3713 38–39. |
 | 20–35 | **Business-model primer** | Value chain with inputs and legal side items, pricing menu, SaaS vs AI unit economics, live exercise. |
 | 35–78 | **Five lessons** | L3+L4, L1+L2, L5+L5b, L6+L12, L7+L13. |
-| 78–88 | **Close** | Who makes the money, layer by layer (L8). The L13 checklist. |
+| 78–88 | **Close** | Sankey of the homework bot's heavy user, with investor money. Then who makes the money, layer by layer (L8), and the L13 checklist. |
 | 88–90 | **Buffer / Q&A** | |
 
 ---
@@ -255,7 +282,16 @@ End on the L13 checklist, applied to the app layer: Do you own the customer? Can
   - Training cost vs inference cost. BSE3713 slide 38's table fills this. Update its GPT-4o figures or label them "2024, leaked".
   - The context window, and why cost grows during a conversation. This is needed for the exercise.
   - Batch and cached pricing discounts, as one bullet only.
-- **Model names and prices.** The research agent's aggregator prices (Opus 4.8, GPT-5.5) are older than the models on A\* slide 14. Use the A\* chart (Artificial Analysis, current) as the single price source and don't quote the aggregator tables.
+- **Model names and prices.** The research agent's aggregator prices (Opus 4.8, GPT-5.5) are out of date. Don't quote the aggregator tables.
+- **Model price charts come from [OcelliQ/ai-models-chart](https://github.com/OcelliQ/ai-models-chart)** (note the plural "models"). They replace the A\* slide 14 cost scatter and serve as the single price source.
+  - The charts plot API price per task against the Artificial Analysis Intelligence Index, without annotations, sized for the content box under a 16:9 slide title. Annotate them in this deck.
+  - There are five colourings: `cost-vs-aaii` (open vs closed), `-by-lab`, `-by-lab-open`, `-by-age` and `-by-hardware`.
+  - That repo's CI renders `dist/` from its committed tables on every push and uploads it as the `charts` artifact.
+  - **Decision: fetch with a script, not a submodule.** Write `scripts/fetch-model-charts.sh` to run `gh run download -R OcelliQ/ai-models-chart -n charts` against the latest successful run on the default branch, unpacking into a gitignored `figures/ai-models-chart/`.
+    - Why: a submodule would only bring in the source tables, so we'd also need its Python environment to render. The artifact is already built.
+    - Caveat: CI artifacts expire, 90 days by default, so fetch close to the lecture. If the artifact has expired, clone and run `uv run make_chart.py`.
+  - Use `dist/svg-paths/`. The plain SVGs rely on DejaVu Sans, which isn't embedded.
+  - Keep A\* slide 16 for the "frontier reaches budget tier in ~4 months" claim unless the `-by-age` chart shows it better.
 - **BSE3713 deck, slides to lift:**
   - 37–39: inference and training cost, model as a depreciating asset.
   - 45–52: the *aaS stack and open-source business models.
