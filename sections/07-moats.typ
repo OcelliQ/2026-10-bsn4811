@@ -72,7 +72,13 @@
   align: top,
   // PLACEHOLDER N21: news article on Meta licensing Midjourney's technology
   // (Aug 2025, Alexandr Wang's announcement). TechCrunch or The Verge.
-  shot("N21", [Meta licenses Midjourney's tech, Aug 2025], width: 12cm),
+  shot(
+    "N21",
+    [Meta licenses Midjourney's tech, Aug 2025],
+    path: "/figures/news/N21-meta-midjourney-license.png",
+    url: "https://techcrunch.com/2025/08/22/meta-partners-with-midjourney-on-ai-image-and-video-models/",
+    width: 12cm,
+  ),
   [
     - *No VC.* Subscription-only. Started on Discord.
     - \~\$200M revenue (2023) with *\~11 staff*

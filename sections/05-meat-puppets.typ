@@ -45,7 +45,13 @@
   align: top,
   // PLACEHOLDER N12: Bloomberg (or FT) article on Builder.ai's collapse and
   // revenue restatement (May--Jul 2025). Headline and date visible.
-  shot("N12", [Builder.ai collapses, May 2025], width: 12cm),
+  shot(
+    "N12",
+    [Builder.ai collapses, May 2025],
+    path: "/figures/news/N12-builder-ai-collapse.png",
+    url: "https://techcrunch.com/2025/05/20/once-worth-over-1b-microsoft-backed-builder-ai-is-running-out-of-money/",
+    width: 12cm,
+  ),
   [
     - Marketed *"Natasha the AI"*, which builds apps for you
     - Microsoft-backed, valued at \~\$1.5B
@@ -91,7 +97,13 @@
 // PLACEHOLDER N13: news article on the DOJ (SDNY) charging Nate founder
 // Albert Saniger with fraud (Apr 2025), mentioning the Philippines call
 // centre. TechCrunch or the DOJ press release.
-#align(center, shot("N13", [Nate founder charged, Apr 2025], width: 10cm))
+#align(center, shot(
+  "N13",
+  [Nate founder charged, Apr 2025],
+  path: "/figures/news/N13-nate-founder-charged.png",
+  url: "https://techcrunch.com/2025/04/10/fintech-founder-charged-with-fraud-after-ai-shopping-app-found-to-be-powered-by-humans-in-the-philippines/",
+  width: 10cm,
+))
 
 // VERIFY: Nate (SDNY charges, Apr 2025); Presto (SEC order, Jan 2025, and the
 // 95% / ~70% figures); Amazon JWO ~700/1,000 (The Information, 2024) and
@@ -106,7 +118,13 @@
   // PLACEHOLDER N14: news article on Klarna rehiring human customer-service
   // agents after its AI push (2025), quoting Siemiatkowski on "lower
   // quality". Bloomberg or Fortune. Headline and date visible.
-  shot("N14", [Klarna rehires humans, 2025], width: 12cm),
+  shot(
+    "N14",
+    [Klarna rehires humans, 2025],
+    path: "/figures/news/N14-klarna-rehires-humans.png",
+    url: "https://fortune.com/2025/05/09/klarna-ai-humans-return-on-investment/",
+    width: 12cm,
+  ),
   [
     - *Feb 2024*: AI does the work of *700 agents*, worth \$40M profit
     - *Aug 2024*: "shutting down Salesforce and Workday" (in practice, swapped for other SaaS)
