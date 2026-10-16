@@ -66,7 +66,13 @@
     // PLACEHOLDER N01: product photo of a single NVIDIA B200 GPU (or the
     // HGX B200 board), from NVIDIA's own product page or newsroom press kit.
     // Plain background, no marketing copy. Credit NVIDIA.
-    shot("N01", [NVIDIA B200 product photo], width: 11cm),
+    shot(
+      "N01",
+      [NVIDIA B200 product photo],
+      path: "/figures/news/N01-nvidia-b200.png",
+      url: "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing",
+      width: 11cm,
+    ),
     [
       // Each blank shows "???" until its own subslide.
       #let blank(n, answer) = [#only("-" + str(n - 1))[*???*]#only(

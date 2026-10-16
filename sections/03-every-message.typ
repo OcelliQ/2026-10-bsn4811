@@ -154,13 +154,25 @@
   align: top,
   // PLACEHOLDER N04: Sam Altman saying OpenAI is losing money on ChatGPT Pro
   // at $200/month (Jan 2025). His X post, or an article quoting it.
-  shot("N04", [Altman: losing money on ChatGPT Pro], width: 7.8cm),
+  shot(
+    "N04",
+    [Altman: losing money on ChatGPT Pro],
+    path: "/figures/news/N04-chatgpt-pro-losing-money.png",
+    url: "https://techcrunch.com/2025/01/05/openai-is-losing-money-on-its-pricey-chatgpt-pro-plan-ceo-sam-altman-says/",
+    width: 7.8cm,
+  ),
   // PLACEHOLDER N05: WSJ (Oct 2023) report that GitHub Copilot lost ~$20 per
   // user per month on a $10 plan, or a syndicated article citing it.
   shot("N05", [Copilot loses \~\$20/user/month (WSJ)], width: 7.8cm),
   // PLACEHOLDER N06: Anthropic adding weekly rate limits to Claude Code
   // (announced Jul 2025, from 28 Aug 2025). TechCrunch or The Verge.
-  shot("N06", [Claude Code weekly limits], width: 7.8cm),
+  shot(
+    "N06",
+    [Claude Code weekly limits],
+    path: "/figures/news/N06-claude-code-weekly-limits.png",
+    url: "https://techcrunch.com/2025/07/28/anthropic-unveils-new-rate-limits-to-curb-claude-code-power-users/",
+    width: 7.8cm,
+  ),
   [*ChatGPT Pro*: "losing money" at \$200/month],
   [*GitHub Copilot*: \~\$20/user/month lost on a \$10 plan (2023)],
 

@@ -104,7 +104,13 @@
   align: top,
   // PLACEHOLDER N09: article on ChatGPT adding PDF/file upload (Oct/Nov 2023)
   // and what it meant for "chat with your PDF" startups.
-  shot("N09", [ChatGPT file upload kills chat-with-PDF apps], width: 7.8cm),
+  shot(
+    "N09",
+    [ChatGPT file upload kills chat-with-PDF apps],
+    path: "/figures/news/N09-chatgpt-pdf-upload.png",
+    url: "https://techcrunch.com/2023/11/06/get-the-pdf-outta-here/",
+    width: 7.8cm,
+  ),
   // PLACEHOLDER N10: Jasper cutting its valuation / revenue forecast or its
   // founders stepping down after ChatGPT (2023). The Information or Forbes.
   shot("N10", [Jasper after ChatGPT], width: 7.8cm),
@@ -114,6 +120,8 @@
   shot(
     "N11",
     [SaaSpocalypse: Thomson Reuters #sym.minus;18%, Feb 2026],
+    path: "/figures/news/N11-thomson-reuters-saaspocalypse.png",
+    url: "https://www.theguardian.com/technology/2026/feb/03/anthropic-ai-legal-tool-shares-data-services-pearson",
     width: 7.8cm,
   ),
   [*Chat-with-PDF apps*: one ChatGPT update (late 2023)],
