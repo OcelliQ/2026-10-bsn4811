@@ -63,9 +63,6 @@
     columns: (11cm, 1fr),
     column-gutter: 1.2em,
     align: horizon,
-    // PLACEHOLDER N01: product photo of a single NVIDIA B200 GPU (or the
-    // HGX B200 board), from NVIDIA's own product page or newsroom press kit.
-    // Plain background, no marketing copy. Credit NVIDIA.
     shot(
       "N01",
       [NVIDIA B200 product photo],

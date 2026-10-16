@@ -47,10 +47,13 @@
     - Millions of devoted users chatting with characters for hours a day
     - *Aug 2024*: Google pays \~\$2.7B to license the tech and rehire the founders. The company stays "independent".
   ],
-  // PLACEHOLDER N02: news article on Google's ~$2.7B Character.AI licensing
-  // deal and rehiring Shazeer and de Freitas (Aug 2024). Prefer WSJ,
-  // Reuters, The Information or The Verge. Headline and date visible.
-  shot("N02", [Google's \$2.7B Character.AI deal, Aug 2024], width: 12cm),
+  shot(
+    "N02",
+    [Google's \$2.7B Character.AI deal, Aug 2024],
+    path: "/figures/news/N02-character-ai-google-deal.png",
+    url: "https://nypost.com/2024/09/25/business/google-paid-2-7b-to-rehire-ai-genius-who-left-for-startup/",
+    width: 12cm,
+  ),
 )
 
 // VERIFY: founding year 2021; >$1B valuation Mar 2023 (a16z-led round);
@@ -122,9 +125,6 @@
   columns: (12cm, 1fr),
   column-gutter: 1.2em,
   align: top,
-  // PLACEHOLDER N03: news article on Character.AI's Chapter 11 filing in
-  // Delaware (Oct 2026), ideally one mentioning Disney's stalking-horse bid.
-  // Headline and date visible.
   shot(
     "N03",
     [Character.AI files for Chapter 11, Oct 2026],
@@ -141,7 +141,8 @@
 )
 
 // VERIFY: filing date (12 or 13 Oct 2026), court (D. Del.), Disney's $20M
-// stalking-horse bid and its terms. Get the docket.
+// stalking-horse bid and its terms. Get the docket. (The Variety piece shown
+// confirms the filing and Disney's $20M bid but doesn't name Delaware.)
 // VERIFY: CEO name. Reports name Karandeep Anand (reportedly left for Disney);
 // another source says "Colin Adams". Don't name the CEO until resolved.
 
@@ -152,8 +153,6 @@
   column-gutter: 0.8em,
   row-gutter: 0.6em,
   align: top,
-  // PLACEHOLDER N04: Sam Altman saying OpenAI is losing money on ChatGPT Pro
-  // at $200/month (Jan 2025). His X post, or an article quoting it.
   shot(
     "N04",
     [Altman: losing money on ChatGPT Pro],
@@ -161,11 +160,13 @@
     url: "https://techcrunch.com/2025/01/05/openai-is-losing-money-on-its-pricey-chatgpt-pro-plan-ceo-sam-altman-says/",
     width: 7.8cm,
   ),
-  // PLACEHOLDER N05: WSJ (Oct 2023) report that GitHub Copilot lost ~$20 per
-  // user per month on a $10 plan, or a syndicated article citing it.
-  shot("N05", [Copilot loses \~\$20/user/month (WSJ)], width: 7.8cm),
-  // PLACEHOLDER N06: Anthropic adding weekly rate limits to Claude Code
-  // (announced Jul 2025, from 28 Aug 2025). TechCrunch or The Verge.
+  shot(
+    "N05",
+    [Copilot loses \~\$20/user/month (WSJ)],
+    path: "/figures/news/N05-copilot-20-per-user.png",
+    url: "https://www.theregister.com/2023/10/11/github_ai_copilot_microsoft/",
+    width: 7.8cm,
+  ),
   shot(
     "N06",
     [Claude Code weekly limits],
@@ -173,6 +174,7 @@
     url: "https://techcrunch.com/2025/07/28/anthropic-unveils-new-rate-limits-to-curb-claude-code-power-users/",
     width: 7.8cm,
   ),
+
   [*ChatGPT Pro*: "losing money" at \$200/month],
   [*GitHub Copilot*: \~\$20/user/month lost on a \$10 plan (2023)],
 

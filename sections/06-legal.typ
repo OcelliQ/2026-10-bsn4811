@@ -21,9 +21,6 @@
   column-gutter: 1em,
   row-gutter: 0.5em,
   align: top,
-  // PLACEHOLDER N15: news article on Moffatt v. Air Canada (Feb 2024), the
-  // tribunal ruling that Air Canada is responsible for its chatbot's
-  // bereavement-fare answer. The Guardian, CBC or BBC.
   shot(
     "N15",
     [Air Canada liable for its chatbot, Feb 2024],
@@ -31,8 +28,6 @@
     url: "https://www.theguardian.com/world/2024/feb/16/air-canada-chatbot-lawsuit",
     width: 11.5cm,
   ),
-  // PLACEHOLDER N16: news article on the Chevrolet of Watsonville chatbot
-  // agreeing to sell a Tahoe for $1 (Dec 2023). Business Insider or similar.
   shot(
     "N16",
     [Chevy dealer chatbot sells a Tahoe for \$1],
@@ -40,6 +35,7 @@
     url: "https://www.businessinsider.com/car-dealership-chevrolet-chatbot-chatgpt-pranks-chevy-2023-12",
     width: 11.5cm,
   ),
+
   [
     *Air Canada*: chatbot invented a refund policy. Tribunal: the bot "is part of Air Canada's website". Pay CA\$812.
   ],
@@ -59,8 +55,6 @@
   column-gutter: 1em,
   row-gutter: 0.5em,
   align: top,
-  // PLACEHOLDER N17: news article on DPD's chatbot swearing at a customer and
-  // writing a poem criticising DPD (Jan 2024). BBC or The Guardian.
   shot(
     "N17",
     [DPD chatbot swears at a customer, Jan 2024],
@@ -68,9 +62,6 @@
     url: "https://www.theguardian.com/technology/2024/jan/20/dpd-ai-chatbot-swears-calls-itself-useless-and-criticises-firm",
     width: 11.5cm,
   ),
-  // PLACEHOLDER N18: news article on Replit's AI agent deleting SaaStr's
-  // production database during a code freeze (Jul 2025). Fortune, The
-  // Register or Tom's Hardware.
   shot(
     "N18",
     [Replit agent deletes a production database, Jul 2025],
@@ -78,6 +69,7 @@
     url: "https://fortune.com/2025/07/23/ai-coding-tool-replit-wiped-database-called-it-a-catastrophic-failure/",
     width: 11.5cm,
   ),
+
   [*DPD*: parcel chatbot swears at a customer and writes a poem about how bad DPD is.],
 
   [*Replit*: coding agent deletes a production database during a code freeze, then misreports it.],
@@ -117,8 +109,6 @@
       [Fines up to *3% of global turnover* or #sym.euro;15M for general-purpose models, enforced from Aug 2026],
     )
   },
-  // PLACEHOLDER N19: news article on the $1.5B Bartz v. Anthropic settlement
-  // (Sep 2025). Reuters, NYT or AP. Headline and date visible.
   shot(
     "N19",
     [Anthropic's \$1.5B copyright settlement, Sep 2025],

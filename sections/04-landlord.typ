@@ -36,9 +36,6 @@
   columns: (12cm, 1fr),
   column-gutter: 1.2em,
   align: top,
-  // PLACEHOLDER N07: news article on Anthropic cutting Windsurf's direct
-  // access to Claude models (Jun 2025), with Varun Mohan's comment.
-  // TechCrunch broke it. Headline and date visible.
   shot(
     "N07",
     [Anthropic cuts Windsurf's Claude access, Jun 2025],
@@ -70,10 +67,13 @@
   columns: (12cm, 1fr),
   column-gutter: 1.2em,
   align: top,
-  // PLACEHOLDER N08: Newcomer (or other) report that Cursor was paying
-  // Anthropic more than it earned (~$650M/year to Anthropic against ~$500M
-  // revenue). Headline and date visible.
-  shot("N08", [Cursor pays Anthropic more than it earns], width: 12cm),
+  shot(
+    "N08",
+    [Cursor pays Anthropic more than it earns],
+    path: "/figures/news/N08-cursor-anthropic-bills.png",
+    url: "https://www.newcomer.co/p/cursors-popularity-has-come-at-a",
+    width: 12cm,
+  ),
   [
     - Fastest company ever to \$100M ARR
     - Reportedly paid Anthropic *more than it earned*
@@ -86,7 +86,8 @@
 )
 
 // VERIFY: "fastest to $100M ARR"; Newcomer's ~$650M to Anthropic vs ~$500M
-// revenue (single source); Composer (Nov 2025); Composer 2 at $0.50/$1.50
+// revenue (single source; the Newcomer piece shown, 10 Aug 2025, has ~$500M
+// ARR, negative gross margins and "huge Anthropic bills" but not $650M); Composer (Nov 2025); Composer 2 at $0.50/$1.50
 // built on Kimi K2.5; margins turning positive. All are single-source so far.
 // VERIFY: whether to mention the SpaceX $60B all-stock deal (announced 16 Jun
 // 2026); confirm whether it has closed before mentioning it in the talk.
@@ -102,8 +103,6 @@
   column-gutter: 0.8em,
   row-gutter: 0.6em,
   align: top,
-  // PLACEHOLDER N09: article on ChatGPT adding PDF/file upload (Oct/Nov 2023)
-  // and what it meant for "chat with your PDF" startups.
   shot(
     "N09",
     [ChatGPT file upload kills chat-with-PDF apps],
@@ -111,12 +110,13 @@
     url: "https://techcrunch.com/2023/11/06/get-the-pdf-outta-here/",
     width: 7.8cm,
   ),
-  // PLACEHOLDER N10: Jasper cutting its valuation / revenue forecast or its
-  // founders stepping down after ChatGPT (2023). The Information or Forbes.
-  shot("N10", [Jasper after ChatGPT], width: 7.8cm),
-  // PLACEHOLDER N11: the Feb 2026 "SaaSpocalypse": Thomson Reuters falling
-  // ~18% in a day after Anthropic's Claude Cowork legal plugin. Reuters,
-  // Bloomberg or FT. Headline and date visible.
+  shot(
+    "N10",
+    [Jasper after ChatGPT],
+    path: "/figures/news/N10-jasper-valuation.png",
+    url: "https://www.maginative.com/article/jasper-cuts-internal-valuation-as-ai-growth-slows/",
+    width: 7.8cm,
+  ),
   shot(
     "N11",
     [SaaSpocalypse: Thomson Reuters #sym.minus;18%, Feb 2026],
@@ -124,6 +124,7 @@
     url: "https://www.theguardian.com/technology/2026/feb/03/anthropic-ai-legal-tool-shares-data-services-pearson",
     width: 7.8cm,
   ),
+
   [*Chat-with-PDF apps*: one ChatGPT update (late 2023)],
   [*Jasper*: \$1.5B valuation a month before ChatGPT launched],
 

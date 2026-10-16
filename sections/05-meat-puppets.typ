@@ -43,8 +43,6 @@
   columns: (12cm, 1fr),
   column-gutter: 1.2em,
   align: top,
-  // PLACEHOLDER N12: Bloomberg (or FT) article on Builder.ai's collapse and
-  // revenue restatement (May--Jul 2025). Headline and date visible.
   shot(
     "N12",
     [Builder.ai collapses, May 2025],
@@ -94,9 +92,6 @@
 )
 
 #v(0.6em)
-// PLACEHOLDER N13: news article on the DOJ (SDNY) charging Nate founder
-// Albert Saniger with fraud (Apr 2025), mentioning the Philippines call
-// centre. TechCrunch or the DOJ press release.
 #align(center, shot(
   "N13",
   [Nate founder charged, Apr 2025],
@@ -115,9 +110,6 @@
   columns: (12cm, 1fr),
   column-gutter: 1.2em,
   align: top,
-  // PLACEHOLDER N14: news article on Klarna rehiring human customer-service
-  // agents after its AI push (2025), quoting Siemiatkowski on "lower
-  // quality". Bloomberg or Fortune. Headline and date visible.
   shot(
     "N14",
     [Klarna rehires humans, 2025],

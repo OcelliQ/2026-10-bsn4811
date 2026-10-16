@@ -19,9 +19,6 @@
   ],
   [
     #pause
-    // PLACEHOLDER N20: news article on "DeepSeek day", 27 Jan 2025, when
-    // Nvidia fell ~17% and lost ~$589B of market value in a day. Reuters,
-    // Bloomberg or CNBC. Headline and date visible.
     #shot(
       "N20",
       [DeepSeek day: Nvidia #sym.minus;17%, 27 Jan 2025],
@@ -34,7 +31,8 @@
 
 // VERIFY: a16z "LLMflation" (Nov 2024): ~10x/year and $60 -> $0.06. Frontier
 // to budget ~4 months (A* slide 16 / by-age chart). Menlo Ventures enterprise
-// GenAI spend $11.5B -> $37B. Nvidia -17% / -$589B on 27 Jan 2025.
+// GenAI spend $11.5B -> $37B. Nvidia -17% / -$589B on 27 Jan 2025
+// (the CNBC piece shown says "almost $600 billion").
 
 #speaker-note[
   A\* slide 70's line: "expensive value-added services may be much cheaper or obsolete in months". If your premium is "we have access to a better model", it expires.
@@ -70,8 +68,6 @@
   columns: (12cm, 1fr),
   column-gutter: 1.2em,
   align: top,
-  // PLACEHOLDER N21: news article on Meta licensing Midjourney's technology
-  // (Aug 2025, Alexandr Wang's announcement). TechCrunch or The Verge.
   shot(
     "N21",
     [Meta licenses Midjourney's tech, Aug 2025],

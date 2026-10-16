@@ -1,5 +1,25 @@
 [
   {
+    "id": "N01",
+    "file": "figures/news/N01-nvidia-b200.png",
+    "url": "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing",
+    "outlet": "NVIDIA",
+    "headline": "NVIDIA Blackwell Platform Arrives to Power a New Era of Computing",
+    "date": "2024-03-18",
+    "quote": "Packed with 208 billion transistors, Blackwell-architecture GPUs are manufactured using a custom-built 4NP TSMC process with two-reticle limit GPU dies connected by 10 TB/second chip-to-chip link into a single, unified GPU.",
+    "notes": "Product photo, not an article. Official single Blackwell GPU render (the B200 package: two reticle-limit dies in one GPU) from the March 18, 2024 newsroom press kit, placed uncropped and centred on the photo's own black background. No marketing copy added. HGX B200 board, GB200 superchip and NVL72 rack photos were not used."
+  },
+  {
+    "id": "N02",
+    "file": "figures/news/N02-character-ai-google-deal.png",
+    "url": "https://nypost.com/2024/09/25/business/google-paid-2-7b-to-rehire-ai-genius-who-left-for-startup/",
+    "outlet": "New York Post",
+    "headline": "Google paid $2.7B to rehire AI genius who left after company refused to release his bot: report",
+    "date": "2024-09-25",
+    "quote": "Google paid $2.7 billion to rehire an artificial intelligence genius who left the tech giant in a huff three years ago to found his own startup, according to a report.",
+    "notes": "Same-day coverage of the WSJ report that put the figure at $2.7 billion. The August 2, 2024 announcement stories (CNBC, The Verge) do not state $2.7B; The Verge cites a $2.5 billion valuation. Business Insider's Sept. 27, 2024 story has $2.7 billion in the headline and the logo, but the dateline sits under a tall hero and is clipped once the masthead and headline are both in a 1000px frame. The WSJ original is paywalled in headless Chromium. The Post standfirst is the sentence quoted above; the shipped frame shows the $2.7B headline, the New York Post masthead, and Published Sep. 25, 2024, 2:29 p.m. ET. The empty right-rail ad was removed so the article column uses the full content width."
+  },
+  {
     "id": "N03",
     "file": "figures/news/N03-character-ai-chapter-11.png",
     "url": "https://variety.com/2026/biz/news/disney-bids-on-character-ai-assets-chapter-11-bankruptcy-1236909984/",
@@ -8,6 +28,36 @@
     "date": "2026-10-13",
     "quote": "Character.AI, the controversial chatbot company known for letting its users generate and engage with a suite of original and user-generated characters, filed for Chapter 11 bankruptcy Monday to begin a “value-maximizing sale” of potentially all of its assets. As part of the filing, Disney Worldwide Services, a House of Mouse subsidiary, has agreed to pay $20 million to become the stalking-horse bidder for a “non-exclusive perpetual license of certain Company intellectual property and certain Company claims.”",
     "notes": "Reuters (which names the Wilmington, Delaware court) returned a Datadome block. Variety states the Chapter 11 filing on Monday and Disney’s $20 million stalking-horse bid; the piece does not name Delaware."
+  },
+  {
+    "id": "N04",
+    "file": "figures/news/N04-chatgpt-pro-losing-money.png",
+    "url": "https://techcrunch.com/2025/01/05/openai-is-losing-money-on-its-pricey-chatgpt-pro-plan-ceo-sam-altman-says/",
+    "outlet": "TechCrunch",
+    "headline": "OpenAI is losing money on its pricey ChatGPT Pro plan, CEO Sam Altman says",
+    "date": "2025-01-05",
+    "quote": "OpenAI CEO Sam Altman on Sunday said that the company is currently losing money on its $200-per-month ChatGPT Pro plan because people are using it more than the company expected.",
+    "notes": "Altman's X post was not screenshotted. TechCrunch quotes it, including 'I personally chose the price and thought we would make some money.'"
+  },
+  {
+    "id": "N05",
+    "file": "figures/news/N05-copilot-20-per-user.png",
+    "url": "https://www.theregister.com/2023/10/11/github_ai_copilot_microsoft/",
+    "outlet": "The Register",
+    "headline": "Microsoft reportedly runs GitHub's AI Copilot at a loss",
+    "date": "2023-10-11",
+    "quote": "According to a Wall Street Journal report citing a \"person familiar with the figures,\" while Microsoft charges $10 a month for the service, the software giant is losing $20 a month per user on average and heavier users are costing the company as much as $80 every 30 days.",
+    "notes": "Tobias Mann, published Wed 11 Oct 2023 // 00:34 UTC. The $20-per-user sentence is in the visible lead, under the dek \"Redmond willing to do its accounts in red ink to get you hooked.\" The comments module rewrites the address bar to https://www.theregister.com/on-prem/2023/10/11/microsoft-reportedly-runs-githubs-ai-copilot-at-a-loss/361250 ; the stable article URL is the one above. Tom's Hardware (Oct. 10, 2023, headline \"Microsoft Lost $20 for Every $10 Copilot AI Subscription: Report\") also states the figure, with a narrower column and a newsletter chip."
+  },
+  {
+    "id": "N06",
+    "file": "figures/news/N06-claude-code-weekly-limits.png",
+    "url": "https://techcrunch.com/2025/07/28/anthropic-unveils-new-rate-limits-to-curb-claude-code-power-users/",
+    "outlet": "TechCrunch",
+    "headline": "Anthropic unveils new rate limits to curb Claude Code power users",
+    "date": "2025-07-28",
+    "quote": "Anthropic says its rolling out new weekly rate limits for Claude to curb usage among subscribers who are running its AI coding tool, Claude Code, \"continuously in the background, 24/7.\" The new rate limits will go into effect August 28 for subscribers to Anthropic's $20-per-month Pro plan, as well as its $100- and $200-per-month Max plans.",
+    "notes": "Announced July 28, 2025. Weekly limits take effect August 28, 2025."
   },
   {
     "id": "N07",
@@ -20,6 +70,76 @@
     "notes": ""
   },
   {
+    "id": "N08",
+    "file": "figures/news/N08-cursor-anthropic-bills.png",
+    "url": "https://www.newcomer.co/p/cursors-popularity-has-come-at-a",
+    "outlet": "Newcomer",
+    "headline": "Cursor's Popularity Has Come at a Cost. GPT-5 May Have Arrived at the Right Time.",
+    "date": "2025-08-10",
+    "quote": "The breakout AI coding star is racking up huge Anthropic bills and hustling to plug its pricing leaks.",
+    "notes": "Existing capture kept. The on-screen dek is the quote above (Tom Dotan, Aug 10, 2025). Above the paywall, the body says: \"Two months ago it was doing $500 million in annualized revenue and it's grown well above that now\"; \"taken together Cursor has negative gross margins\"; \"The biggest sinkhole comes from a subset of individual developers who gorge on its subscription offerings, racking up huge costs for the company that it pays out in compute bills to Anthropic.\" Those paragraphs sit below the 1000px crop. The ~$650 million a year Anthropic bill versus ~$500 million revenue pair is an investment-firm Foundamental calculation repeated by secondary blogs (including Market Clarity). It does not appear as a stated fact in WSJ, Bloomberg, TechCrunch, The Information, Fortune, or The Verge. PitchBook's Aug. 21, 2025 cash-burn piece was Cloudflare-blocked. No cleaner reputable capture, so the Newcomer PNG was not overwritten."
+  },
+  {
+    "id": "N09",
+    "file": "figures/news/N09-chatgpt-pdf-upload.png",
+    "url": "https://techcrunch.com/2023/11/06/get-the-pdf-outta-here/",
+    "outlet": "TechCrunch",
+    "headline": "Startups learn the hard way that relying on OpenAI's tech can burn them",
+    "date": "2023-11-06",
+    "quote": "A recent update to OpenAI's ChatGPT that allows users to upload PDFs and ask questions about them has sent ripples through the startup ecosystem. This development poses a significant, if painfully predictable, threat for many companies, particularly for \"wrapper startups\" that have built their businesses around a feature gap in ChatGPT.",
+    "notes": "Dek on the page: 'ChatGPT takes out a bunch of startups in one fell swoop.'"
+  },
+  {
+    "id": "N10",
+    "file": "figures/news/N10-jasper-valuation.png",
+    "url": "https://www.maginative.com/article/jasper-cuts-internal-valuation-as-ai-growth-slows/",
+    "outlet": "Maginative",
+    "headline": "Jasper Appoints New CEO and Cuts Internal Valuation as AI Growth Slows",
+    "date": "2023-09-29",
+    "quote": "Jasper AI, an early pioneer in generative AI SaaS applications, has cut its internal valuation by 20% amid slowing growth, according to former employees notified of the change.",
+    "notes": "Chris McKay, September 29, 2023. The visible body also says OpenAI's launch of ChatGPT created a formidable low-cost competitor practically overnight, and that Jasper cut its 2023 ARR forecast by at least 30% and held layoffs in July. This is a rewrite of The Information's Sept. 28, 2023 valuation story. The Information pages (valuation cut, July layoffs briefing, and the Dec. 2022 unicorn feature) render as a headline plus an email subscribe form and a footer. Bloomberg's Sept. 28, 2023 CEO-replacement story blocks headless Chromium. No TechCrunch, Fortune, Forbes, Business Insider, or Axios article with this headline was available to capture. Austin Business Journal's layoff story is a JavaScript wall."
+  },
+  {
+    "id": "N11",
+    "file": "figures/news/N11-thomson-reuters-saaspocalypse.png",
+    "url": "https://www.theguardian.com/technology/2026/feb/03/anthropic-ai-legal-tool-shares-data-services-pearson",
+    "outlet": "The Guardian",
+    "headline": "Anthropic's launch of AI legal tool hits shares in European data companies",
+    "date": "2026-02-03",
+    "quote": "Nasdaq-listed Thomson Reuters' shares plummeted 18%. \"Anthropic launched new capabilities for its Cowork to the legal space, heightening competition within the space,\" Morgan Stanley analysts said in a note on Thomson Reuters.",
+    "notes": "Exact date is Tuesday 3 February 2026. Reuters' same-day story ('slumped by nearly 18%') is blocked in headless Chromium. The 18% sentence and the Claude Cowork sentence are in the Guardian body below the lead image, so they are not in the frame; the masthead, headline and date are. A Most viewed rail remains and does not push the headline down."
+  },
+  {
+    "id": "N12",
+    "file": "figures/news/N12-builder-ai-collapse.png",
+    "url": "https://techcrunch.com/2025/05/20/once-worth-over-1b-microsoft-backed-builder-ai-is-running-out-of-money/",
+    "outlet": "TechCrunch",
+    "headline": "Once worth over $1B, Microsoft-backed Builder.ai is running out of money",
+    "date": "2025-05-20",
+    "quote": "AI software company Builder.ai is entering insolvency proceedings, a company spokesperson confirmed to TechCrunch. According to Bloomberg, former employees alleged that the company had inflated sales figures by more than 20% on multiple occasions.",
+    "notes": "Bloomberg returned 403. The FT piece (22 May 2025, “Microsoft-backed Builder.ai collapsed after finding potentially bogus sales”, https://www.ft.com/content/926f4969-fda7-4e78-b106-4888c8704bda) was a subscribe wall with the headline and masthead but no date. TechCrunch confirms the insolvency and, citing Bloomberg, sales inflated by more than 20%. It does not report the later restatement that cut prior revenue estimates to about a quarter. NYT’s August collapse story returned 403."
+  },
+  {
+    "id": "N13",
+    "file": "figures/news/N13-nate-founder-charged.png",
+    "url": "https://techcrunch.com/2025/04/10/fintech-founder-charged-with-fraud-after-ai-shopping-app-found-to-be-powered-by-humans-in-the-philippines/",
+    "outlet": "TechCrunch",
+    "headline": "Fintech founder charged with fraud after ‘AI’ shopping app found to be powered by humans in the Philippines",
+    "date": "2025-04-10",
+    "quote": "Nate relied heavily on hundreds of human contractors in a call center in the Philippines to manually complete those purchases, the DOJ’s Southern District of New York alleges. Its app’s actual automation rate was effectively 0%, the DOJ claims.",
+    "notes": "Albert Saniger, founder and former CEO of Nate, is named in the lede. DOJ press release (9 Apr 2025): https://www.justice.gov/usao-sdny/pr/tech-ceo-charged-artificial-intelligence-investment-fraud-scheme"
+  },
+  {
+    "id": "N14",
+    "file": "figures/news/N14-klarna-rehires-humans.png",
+    "url": "https://fortune.com/2025/05/09/klarna-ai-humans-return-on-investment/",
+    "outlet": "Fortune",
+    "headline": "As Klarna flips from AI-first to hiring people again, a new landmark survey reveals most AI projects fail to deliver",
+    "date": "2025-05-09",
+    "quote": "After years of depicting Klarna as an AI-first company, the fintech’s CEO reversed himself, telling Bloomberg the company was once again recruiting humans after the AI approach led to “lower quality.”",
+    "notes": "Bloomberg returned 403. Fortune’s on-screen summary quotes the CEO, via Bloomberg, on “lower quality,” and the body says Klarna is hiring people again after cutting more than a thousand jobs with AI."
+  },
+  {
     "id": "N15",
     "file": "figures/news/N15-air-canada-chatbot.png",
     "url": "https://www.theguardian.com/world/2024/feb/16/air-canada-chatbot-lawsuit",
@@ -30,6 +150,46 @@
     "notes": "CBC’s story failed to load (HTTP/2 protocol error). Removed the thin Print subscriptions / Search jobs strip so the headline fits in the top third under the Guardian masthead."
   },
   {
+    "id": "N16",
+    "file": "figures/news/N16-chevy-chatbot-tahoe.png",
+    "url": "https://www.businessinsider.com/car-dealership-chevrolet-chatbot-chatgpt-pranks-chevy-2023-12",
+    "outlet": "Business Insider",
+    "headline": "A car dealership added an AI chatbot to its site. Then all hell broke loose.",
+    "date": "2023-12-18",
+    "quote": "One user got the bot to agree to sell a car for $1 (this was not, I should note, legally binding).",
+    "notes": "The embedded post in the story says “I just bought a 2024 Chevy Tahoe for $1.” The dealer is Chevrolet of Watsonville. Gizmodo’s account returned 403. Removed the masthead ad, the in-article ad unit (its “AD” label was a CSS ::before on .ad-callout-wrapper), and the subscribe sheet that covered the date."
+  },
+  {
+    "id": "N17",
+    "file": "figures/news/N17-dpd-chatbot-swears.png",
+    "url": "https://www.theguardian.com/technology/2024/jan/20/dpd-ai-chatbot-swears-calls-itself-useless-and-criticises-firm",
+    "outlet": "The Guardian",
+    "headline": "DPD AI chatbot swears, calls itself ‘useless’ and criticises delivery firm",
+    "date": "2024-01-20",
+    "quote": "He soon progressed to getting the chatbot to write a poem criticising the company. With a few more prompts the chatbot also swore.",
+    "notes": "BBC.com did not resolve (ERR_NAME_NOT_RESOLVED). The Guardian story is dated Sat 20 Jan 2024 and quotes the customer: the bot “happily produced a poem about how terrible they are as a company. It also swore at me.”"
+  },
+  {
+    "id": "N18",
+    "file": "figures/news/N18-replit-deletes-database.png",
+    "url": "https://fortune.com/2025/07/23/ai-coding-tool-replit-wiped-database-called-it-a-catastrophic-failure/",
+    "outlet": "Fortune",
+    "headline": "An AI-powered coding tool wiped out a software company’s database, then apologized for a ‘catastrophic failure on my part’",
+    "date": "2025-07-23",
+    "quote": "Jason Lemkin, a tech entrepreneur and founder of the SaaS community SaaStr, documented his experiment with the tool through a series of social media posts. He had been testing Replit’s AI agent and development platform when the tool made unauthorized changes to live infrastructure, wiping out data for more than 1,200 executives and over 1,190 companies. According to Lemkin’s social media posts, the incident occurred despite the system being in a designated “code and action freeze,” a protective measure intended to prevent any changes to production systems.",
+    "notes": "The Register’s write-up had an overlapping pull-quote, so Fortune is used. The page also quotes Replit CEO Amjad Masad: the agent “deleted data from the production database” during the code freeze. Removed the “Recommended Video” module, which injects after scroll."
+  },
+  {
+    "id": "N19",
+    "file": "figures/news/N19-anthropic-copyright-settlement.png",
+    "url": "https://www.theguardian.com/technology/2025/sep/05/anthropic-settlement-ai-book-lawsuit",
+    "outlet": "The Guardian",
+    "headline": "AI startup Anthropic agrees to pay $1.5bn to settle book piracy lawsuit",
+    "date": "2025-09-05",
+    "quote": "The artificial intelligence company Anthropic has agreed to pay $1.5bn to settle a class-action lawsuit by book authors who say the company took pirated copies of their works to train its chatbot.",
+    "notes": "Reuters was blocked. AP’s own page (https://apnews.com/article/anthropic-copyright-authors-settlement-training-f294266bc79a16ec90d2ddccdf435164, published 5 Sep 2025, byline updated 6 Sep 2025) rendered the headline, but the date sat below the lead image and could not share the frame with the headline in the top third. The Guardian runs that Associated Press copy with Fri 5 Sep 2025 beside the headline. Lead plaintiff Andrea Bartz is named in the story."
+  },
+  {
     "id": "N20",
     "file": "figures/news/N20-deepseek-nvidia.png",
     "url": "https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html",
@@ -38,5 +198,15 @@
     "date": "2025-01-27",
     "quote": "Nvidia shares plunged 17% on Monday, resulting in a market cap loss of close to $600 billion, the biggest drop ever for a U.S. company. The sell-off, which hit much of the U.S. tech sector, was sparked by concerns about increased competition from Chinese AI lab DeepSeek.",
     "notes": "Reuters returned HTTP 401 and Bloomberg HTTP 403. CNBC’s figure is “almost $600 billion” / “close to $600 billion”, not the $589 billion Bloomberg print."
+  },
+  {
+    "id": "N21",
+    "file": "figures/news/N21-meta-midjourney-license.png",
+    "url": "https://techcrunch.com/2025/08/22/meta-partners-with-midjourney-on-ai-image-and-video-models/",
+    "outlet": "TechCrunch",
+    "headline": "Meta partners with Midjourney on AI image and video models",
+    "date": "2025-08-22",
+    "quote": "Meta is partnering with Midjourney to license the startup’s AI image and video generation technology, Meta Chief AI Officer Alexandr Wang announced Friday in a post on Threads.",
+    "notes": ""
   }
 ]
