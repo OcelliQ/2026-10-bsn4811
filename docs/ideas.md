@@ -6,52 +6,52 @@ Working notes, 2026-10-16. Sources: the A\* "Introduction to Agentic AI" deck (t
 
 ---
 
-## 1. Meta-lessons (the spine of the lecture)
+## 1. The lecture in sequence
 
-Each lesson has a name, a one-line thesis and its anchor cases.
+The lecture moves down the stack and back up. The hook covers the scale of infrastructure spending. The value chain shows students where they will sit, which is the app layer. Five lessons cover the app-layer business. The close answers the question the hook raised: who makes the money?
 
-| # | Meta-lesson | Thesis | Anchor cases |
-| --- | --- | --- | --- |
-| **L1** | **Your supplier is your competitor** (ecosystem cannibalization / "Sherlocking") | Whatever sits one layer below you in the stack can absorb your product as a feature, and it sees your usage data first. | ChatGPT PDF upload killing chat-with-PDF apps (Nov 2023). Jasper vs ChatGPT. Claude Code vs Cursor. Claude Cowork plugins triggering the Feb 2026 "SaaSpocalypse" (Thomson Reuters −18% in a day). Labs launching vertical products (Claude for Healthcare, ChatGPT Health). |
-| **L2** | **Landlord risk**: you're renting your core competency | If your product is someone else's model, they can raise the rent, change the terms or evict you. | Anthropic cut Windsurf's Claude access with <5 days' notice (Jun 2025). Anthropic cut OpenAI's access (Aug 2025). Cursor reportedly paid more to Anthropic than it earned ⚠. Cursor then built Composer on open-weight Kimi. |
-| **L3** | **Your best customers are your worst customers** (inverted unit economics) | SaaS has ~0 marginal cost, so heavy users are pure profit. AI has a per-token cost, so on a flat plan heavy users are pure loss. It's like a gym subscription: the flat fee only works because most members rarely show up. | Altman: "losing money" on ChatGPT Pro at $200. Copilot lost ~$20/user/month on a $10 plan (2023). Claude Code weekly limits (Aug 2025). Cursor's credit switch and apology. Replit effort-based pricing backlash. AI gross margins ~50–60% vs SaaS 80–90%. |
-| **L4** | **Engagement is a cost, not an asset** (the companion trap) | When every message costs compute, a beloved free product can bleed to death. Highly engaged users also bring safety and legal exposure. | **Character.AI** (Chapter 11, Oct 2026 ⚠ details). Replika (Garante ban, €5M fine, ERP backlash). OpenAI shut down its Sora app in Mar 2026, citing operating cost and retention. |
-| **L5** | **The meat puppet**: humans behind the "AI" | "AI" on the label is often people in a call centre. It is fine as a disclosed Wizard-of-Oz MVP and fraud if you sell it as automation. The meat puppet also hides the true unit economics. | **Builder.ai** (from a $1.5B valuation to insolvency, revenue ~4× inflated ⚠). **Nate** (founder charged, ~0% automation). **Presto** (SEC order: claimed 95% automated, ~70% needed humans). **Amazon Just Walk Out** (~700 of every 1,000 sales human-reviewed; Amazon disputes this). 1X NEO teleoperation. Historical: Facebook M, x.ai, Expensify. |
-| **L5b** | **The moral crumple zone** (the inverse of the meat puppet) | Here the AI does the work but a human absorbs the blame, so the "human in the loop" exists mainly as a liability sponge. Elish (2019) coined the term. | Klarna: 700 agents replaced, then humans rehired because "lower quality". The A\* IMDA "humans remain accountable" slide. Optional: the review-fatigue point on A\* slide 65. |
-| **L6** | **You own the output** (liability does not pass to the vendor) | Courts treat the bot as you. Every model failure mode is a business risk you carry. | Air Canada / Moffatt (the chatbot "is part of Air Canada's website"). Chevy $1 Tahoe. DPD chatbot swearing. Replit agent deleting a production database. Project Vend. The South African AI policy with fake citations. |
-| **L7** | **Moats evaporate: LLMflation** | The price of a given capability falls ~10×/year (a16z), and the frontier reaches budget tier in ~4 months (A\* slide 16). Anything you charge a premium for today is a commodity next year. Total spend still *rises*, because tokens per task explode (Jevons). | A16z: GPT-3-level capability went from $60 to $0.06 per million tokens in 3 years. Reasoning and agent loops use ~50× the tokens of a single pass ⚠. Enterprise GenAI spend went from $11.5B to $37B (2024→25, Menlo). DeepSeek day: Nvidia −17%, −$589B. A\* slide 70: "expensive value-added services may be much cheaper or obsolete in months." |
-| **L8** | **Who captures the value?** (the stack, and commoditizing your complement) | Value flows to the scarce layer. Right now that is chips: Nvidia has 75% gross margin, while OpenAI reportedly loses about $1.22 per $1 of revenue ⚠. Every layer tries to commoditize the layer next to it. Open weights are Meta's and China's version of the Vercel/Next.js play from BSE3713. | Nvidia FY27Q2 ($96B revenue, 75% GM). OpenAI losses. Open-weight share on OpenRouter rose to ~⅓ or more. Cursor on Kimi. BSE3713 slides 45–52 (IaaS commoditized, open source as a "costly signal"). |
-| **L9** | **The talent is the asset; the company is the shell** (reverse acqui-hire) | Big Tech buys the people plus a licence, not the company. The founders get rich and the remaining employees and the cap table get the husk. | Inflection→Microsoft (~$650M licence). Character.AI→Google ($2.7B). Adept and Covariant→Amazon. Windsurf→Google ($2.4B), then Cognition bought the rest. Scale AI→Meta ($14.3B for 49%), after which Google and OpenAI left as customers. |
-| **L10** | **Pricing follows the work, not the seat** (seat compression) | If AI does the work of 10 users, per-seat pricing shrinks your revenue. Vendors move to outcome or usage pricing, and *flail* along the way. | Intercom Fin at $0.99 per resolution (~$100M ARR ⚠). Zendesk at $1.50–2.00 per resolution. Salesforce Agentforce went from $2/conversation to Flex Credits to a seat-style AELA, running 3 models at once. Workday hiring freezes. Klarna "shutting down Salesforce/Workday" (in reality, swapped for other SaaS). |
-| **L11** | **The answer engine eats the click** (disintermediation) | If AI answers in place, whoever monetized the click (publishers, Q&A sites, homework help) loses its traffic and its data moat in one go. | Chegg: −99%, then a 45% layoff and a suit against Google AI Overviews. Stack Overflow: questions down >99% from peak ⚠, now living on data licensing. Pew: clicks 8% with an AI summary vs 15% without. NYT and News Corp vs Perplexity. |
-| **L12** | **Regulation and copyright are a line item** | Legal exposure is now a COGS-scale cost. Compliance tends to favour incumbents who can afford it. | Bartz v. Anthropic ($1.5B, ~$3k/book). Disney, Universal and WBD vs Midjourney. NYT v. OpenAI. Getty losing to Stability in the UK. EU AI Act GPAI duties (fines up to 3% of turnover), with high-risk duties delayed to Dec 2027 via the Omnibus. California SB 243 (companion chatbots, $1k per violation). Singapore's voluntary IMDA agentic framework (Jan 2026). |
-| **L13** | **The survivor's playbook** (what actually defends) | Own the customer, the workflow, the data or the brand, and keep your models swappable. | **Midjourney**: no VC, subscription-only, tiny team, profitable; it *licenses to* Meta rather than being eaten by it, and is diversifying (video, Co-Star, medical ⚠). Cursor's own models. Legal and health verticals (Legora) claiming the labs are no threat. A\* slide 70: "keep data exportable, workflows portable." |
+The complete table of all 13 candidate lessons is in §6. **Dropped:** L10 (seat compression) and L11 (answer engines eat the click), which are unlikely to interest this audience. L9 (reverse acqui-hire) survives as an aside in the Character.AI story, and L8 moves to the close.
 
-**Recommendation.** Thirteen lessons is too many for 90 minutes. Teach **6 headline lessons** and fold the rest in:
+### Hook: the gold rush (0–5)
 
-1. **L3 + L4**: "Every message costs money" (unit economics; Character.AI)
-2. **L1 + L2**: "Your supplier is your competitor and your landlord" (Cursor/Windsurf; SaaSpocalypse)
-3. **L5 + L5b**: "Meat puppets and crumple zones" (Builder.ai; Klarna)
-4. **L7 + L8**: "Moats evaporate; value flows to the scarce layer" (LLMflation; Nvidia vs OpenAI; DeepSeek)
-5. **L10 + L11**: "Pricing follows the work; answers eat clicks" (Intercom Fin; Chegg)
-6. **L6 + L12**: "You own the output and the lawsuit" (Air Canada; Bartz; Midjourney/Disney)
+- Reuse the ai-for-clm "Gold Rush of our age" slide: US\$1.48T of AI infrastructure spending forecast for 2026 (≈5× Apollo), and 175 TWh of AI-server electricity (≈3× Singapore's consumption). Its sources are in ai-for-clm `01-intro/media/industry-landscape/GOLD-RUSH-SOURCES.md`.
+- Mention energy and chips only briefly: "Here's an NVIDIA B200. To keep up with it you'd need ??? arithmetic geniuses. A datacentre typically has ? of them, and a frontier model trains on ??? for ? months continuously." Fill-in guesses to verify (§5):
+  - One B200 does ~10^15–10^16 low-precision operations a second. At one sum per second per person, that is about a million Earths of people.
+  - A large datacentre: Colossus 1 has more than 220,000 GPUs and 300 MW.
+  - A frontier run: tens of thousands to ~100,000 GPUs for a few months. Labs don't publish this, so cite an estimate (Epoch AI).
+- Leave the question open: who earns back US\$1.48T a year? The close answers it.
 
-Finish on **L13**, the survivor's playbook with Midjourney, as the positive counter-case. L9 (reverse acqui-hire) makes a good aside inside the Character.AI story.
+### Crash course (5–20)
 
----
+A\* slides 11–13 (fancy autocomplete, tokens, stochastic), 14–17 (cost scatter: 3 orders of magnitude, frontier→budget in 4 months) and 19 (agent = LLM + harness). Add **one** slide from BSE3713 38–39 (training cost table, plus the point that a model is a depreciating asset). Close on A\* 23 (five failure modes) as the bridge to liability.
 
-## 2. Proposed 90-minute run sheet
+A\* slides 8 (gold rush) and 9 (who controls what) are dropped because the hook and the value chain now cover them.
 
-| Time | Block | Content | Source |
-| --- | --- | --- | --- |
-| 0–5 | **Hook** | "This week, a company Google paid $2.7B to license (and hire its founders from) filed for bankruptcy. Disney opened bidding at $20M." Then ask: how does an app with millions of devoted users go broke? | Character.AI ⚠ |
-| 5–25 | **Crash course** | A\* slides 8 (gold rush scale), 9 (who controls what), 11–13 (fancy autocomplete, tokens, stochastic), 14–17 (cost scatter: 3 orders of magnitude, frontier→budget in 4 months), 19 (agent = LLM + harness). Add **one** slide from BSE3713 38–39 (training cost table, plus the point that a model is a depreciating asset). Close on A\* 23 (five failure modes) as the bridge to liability. | A\* 8–19, 23; BSE 38–39 |
-| 25–40 | **Business-model primer** | (a) The stack, using BSE3713's *aaS ladder updated with chips → cloud → labs → apps. (b) The pricing menu: per-token API / flat subscription / freemium + ads / per-seat / usage credits / outcome-based. (c) **SaaS vs AI unit economics**: 80–90% vs 50–60% gross margin, and why. (d) **Live exercise** (below). | BSE 45–56; research |
-| 40–80 | **Six lessons × ~6.5 min** | Each lesson gets one headline case told as a story, 1–2 rapid-fire supporting cases and one discussion question. | §1 |
-| 80–88 | **Survivor's playbook** | Midjourney as the counter-case. A checklist for spotting a defensible AI business: Do you own the customer? Can you swap models? Does a heavy user make or lose you money? Who is liable? What happens when the model is 10× cheaper? | L13 |
-| 88–90 | **Close** | Return to the hook: which of the six lessons killed Character.AI? (Answer: nearly all of them.) | |
+### Business-model primer (20–35)
 
-### Live exercise: "price my homework bot" (5 min, back-of-envelope)
+1. **The value chain** (slide notes below): four layers, the inputs feeding each one, and the two legal side items.
+2. **The pricing menu**: per-token API / flat subscription / freemium + ads / per-seat / usage credits / outcome-based.
+3. **SaaS vs AI unit economics**: 80–90% vs 50–60% gross margin, and why.
+4. **Live exercise** (below).
+
+#### Value-chain slide: inputs feeding each layer
+
+Four layers: chips → infra → models → apps. Students will mostly build apps and consume apps and models, so the rest of the lecture lives at the top of the stack. On the slide, show outside inputs merging into the chain:
+
+- **Chips** ← TSMC and wafer fabs, ASML lithography, rare earths and critical minerals, HBM memory.
+- **Infra** ← energy (grid capacity, power stations, Singapore's datacentre roadmap), land, cooling and water.
+- **Models** ← data (and its copyright), research talent (link to L9).
+- **Apps** ← distribution and the customer relationship.
+
+Two separate legal side items come in from the top. Both set up lesson 4.
+
+- **Liability → apps.** Liability for what the model says or does stays with whoever faces the customer. This value isn't extracted from the chain; the risk simply lands on the app.
+- **Extraction ← models.** Copyright settlements, licensing deals and regulatory fines draw value out of the chain, mostly at the model layer. This is the other side of the "data (and its copyright)" input, and it is a significant line item.
+  - **TODO:** find more EU examples, especially around Mistral. Leads to verify: Mistral's lobbying on the AI Act's GPAI rules, its signing of the Code of Practice, the EU and French regulators' look at its Microsoft investment, and its news licensing deals (AFP?).
+
+Reuse the ai-for-clm "Who Controls What in AI" slide (`01-intro/chapter/01-industry-landscape.typ`), which already splits the bottom layer into model dev, chips, power, data centres and network.
+
+#### Live exercise: "price my homework bot" (5 min, back-of-envelope)
 
 The setup is a $10/month AI tutor running on a mid-tier model at $3 per million tokens in and $15 per million out.
 
@@ -61,6 +61,74 @@ The setup is a $10/month AI tutor running on a mid-tier model at $3 per million 
 - Turn it into an agent with ~50 model calls per task and even the light user costs about $150.
 
 Ask the class to pick a pricing model that fixes this, then reveal what Cursor, Anthropic and Replit actually did, and the backlash that followed. The point is that context accumulates and agent loops multiply cost, so L3 and L7 come together on a single slide.
+
+### Five lessons (35–78, ~8.5 min each)
+
+Each lesson gets one headline case told as a story, 1–2 rapid-fire supporting cases and one discussion question. Case facts are in §3.
+
+#### Lesson 1. Every message costs money (L3 + L4)
+
+- **Thesis:** SaaS has ~0 marginal cost, so heavy users are pure profit. AI has a per-token cost, so on a flat plan heavy users are pure loss. It's like a gym subscription: the flat fee only works because most members rarely show up. Engagement, the metric consumer apps chase, becomes a cost, and highly engaged users also bring safety and legal exposure.
+- **Headline case:** Character.AI. A beloved product with millions of devoted users, compute costs far above revenue, the Google reverse acqui-hire (L9 aside), and then Chapter 11 ⚠.
+- **Rapid-fire:** ChatGPT Pro losing money at $200. Copilot losing ~$20/user/month on a $10 plan. Claude Code weekly limits. Cursor's credit switch and apology. Replika.
+- **Discussion:** the live exercise already raised it. Which pricing model would you pick for the homework bot, and what does it do to your heaviest users?
+
+#### Lesson 2. Your supplier is your competitor and your landlord (L1 + L2)
+
+- **Thesis:** whatever sits one layer below you can absorb your product as a feature, and it sees your usage data first. If your product is someone else's model, they can also raise the rent, change the terms or evict you.
+- **Headline case:** Cursor and Windsurf. Anthropic cut Windsurf's access with <5 days' notice, then Google took its people. Cursor reportedly paid Anthropic more than it earned ⚠ while competing with Claude Code, and then built its own model on open-weight Kimi.
+- **Rapid-fire:** chat-with-PDF apps killed by ChatGPT file upload. Jasper. The Feb 2026 SaaSpocalypse (Thomson Reuters −18% in a day).
+- **Discussion:** you're building on a frontier model's API. What would make you hard to replace the day the lab ships your feature?
+
+#### Lesson 3. Meat puppets and crumple zones (L5 + L5b)
+
+- **Thesis:** "AI" on the label is often people in a call centre. That is fine as a disclosed Wizard-of-Oz MVP and fraud if you sell it as automation, and it hides the true unit economics. The inverse is the moral crumple zone: the AI does the work, and a human exists mainly to absorb the blame.
+- **Headline case:** Builder.ai (from a $1.5B valuation to insolvency). Present the "humans posing as AI" framing carefully, since it is partly disputed.
+- **Rapid-fire:** Nate, Presto, Amazon Just Walk Out. On the crumple-zone side, Klarna replacing 700 agents and then rehiring humans.
+- **Discussion:** when is a human behind the curtain a legitimate MVP, and when does it become fraud?
+
+#### Lesson 4. Liability and extraction: the legal line item (L6 + L12)
+
+Pays off the two legal side items on the value-chain slide.
+
+- **Liability (apps layer):** courts treat the bot as you, so every model failure mode is a business risk you carry. Your students build apps, so this lands on them. Cases: Air Canada / Moffatt, the Chevy $1 Tahoe, DPD, Replit's agent deleting a production database.
+- **Extraction (models layer):** copyright, licensing and regulation take value out of the chain at a scale comparable to COGS. Cases: Bartz v. Anthropic ($1.5B), NYT v. OpenAI, Disney/Universal/WBD v. Midjourney, Getty v. Stability, Garante's fines, EU AI Act fines up to 3% of turnover. Add EU and Mistral examples (TODO above).
+- **Bridge to lesson 5:** compliance favours incumbents who can afford it, so regulation is also a moat.
+- **Discussion:** is this extraction, or the cost of doing business? (Moffatt got their refund rightly.)
+
+#### Lesson 5. Moats: which evaporate, which hold (L7 + L13)
+
+- **Failed moats:** the price of a given capability falls ~10×/year and the frontier reaches budget tier in ~4 months, so anything you charge a premium for today is a commodity next year. Total spend still rises, because tokens per task explode (Jevons). Cases: a16z LLMflation, DeepSeek day (Nvidia −17%), A\* slide 70.
+- **Moats that hold:** own the customer, the workflow, the data or the brand, and keep your models swappable. Headline case: Midjourney (no VC, subscription-only, tiny team, profitable; it licenses to Meta rather than being eaten by it). Also Cursor's own models and the legal and health verticals. Compliance as a moat follows from lesson 4.
+- **Discussion:** what happens to your product when the model it runs on is 10× cheaper?
+
+### Close: who makes the money? (78–88)
+
+Answers the hook's question by going layer by layer (L8: value flows to the scarce layer).
+
+| Layer | Who makes the money | Cases |
+| --- | --- | --- |
+| Chips | Clearly winning | Nvidia FY27 Q2: $96.2B revenue, 75% gross margin. |
+| Infra | Unclear | Record capex on GPUs that lose value within a few years; neoclouds such as CoreWeave borrowing heavily. Figures to source (§5). |
+| Models | Standalone labs lose money | OpenAI reportedly loses ~$1.22 per $1 of revenue ⚠, and Anthropic's figures are run-rate revenue, not profit. Labs inside profitable parents (Google DeepMind, Meta) can afford to commoditize models, and open weights are how they do it. |
+| Apps | Varies wildly | Midjourney profitable, Cursor around break-even, Character.AI bankrupt. These are the cases already told, so this row is the recap. |
+
+End on the L13 checklist, applied to the app layer: Do you own the customer? Can you swap models? Does a heavy user make or lose you money? Who is liable? What happens when the model is 10× cheaper?
+
+### Buffer / Q&A (88–90)
+
+---
+
+## 2. Run sheet (summary)
+
+| Time | Block | Content |
+| --- | --- | --- |
+| 0–5 | **Hook** | Gold rush: US\$1.48T, 175 TWh, the B200 fill-in questions. |
+| 5–20 | **Crash course** | A\* 11–17, 19, 23; BSE3713 38–39. |
+| 20–35 | **Business-model primer** | Value chain with inputs and legal side items, pricing menu, SaaS vs AI unit economics, live exercise. |
+| 35–78 | **Five lessons** | L3+L4, L1+L2, L5+L5b, L6+L12, L7+L13. |
+| 78–88 | **Close** | Who makes the money, layer by layer (L8). The L13 checklist. |
+| 88–90 | **Buffer / Q&A** | |
 
 ---
 
@@ -202,3 +270,27 @@ Ask the class to pick a pricing model that fixes this, then reveal what Cursor, 
 4. The size of the SaaSpocalypse loss: pick one sourced figure.
 5. Builder.ai's revenue numbers (Bloomberg, 30 Jul 2025).
 6. Stack Overflow's question count (from the Stack Exchange Data Explorer).
+7. The B200 fill-in numbers for the hook, and the infra-layer figures for the close (hyperscaler capex and depreciation, CoreWeave debt).
+
+---
+
+## 6. Complete lesson table
+
+All 13 candidate lessons. §1 uses L1–L8 and L12–L13, L9 as an aside, and drops L10 and L11.
+
+| # | Meta-lesson | Thesis | Anchor cases |
+| --- | --- | --- | --- |
+| **L1** | **Your supplier is your competitor** (ecosystem cannibalization / "Sherlocking") | Whatever sits one layer below you in the stack can absorb your product as a feature, and it sees your usage data first. | ChatGPT PDF upload killing chat-with-PDF apps (Nov 2023). Jasper vs ChatGPT. Claude Code vs Cursor. Claude Cowork plugins triggering the Feb 2026 "SaaSpocalypse" (Thomson Reuters −18% in a day). Labs launching vertical products (Claude for Healthcare, ChatGPT Health). |
+| **L2** | **Landlord risk**: you're renting your core competency | If your product is someone else's model, they can raise the rent, change the terms or evict you. | Anthropic cut Windsurf's Claude access with <5 days' notice (Jun 2025). Anthropic cut OpenAI's access (Aug 2025). Cursor reportedly paid more to Anthropic than it earned ⚠. Cursor then built Composer on open-weight Kimi. |
+| **L3** | **Your best customers are your worst customers** (inverted unit economics) | SaaS has ~0 marginal cost, so heavy users are pure profit. AI has a per-token cost, so on a flat plan heavy users are pure loss. It's like a gym subscription: the flat fee only works because most members rarely show up. | Altman: "losing money" on ChatGPT Pro at $200. Copilot lost ~$20/user/month on a $10 plan (2023). Claude Code weekly limits (Aug 2025). Cursor's credit switch and apology. Replit effort-based pricing backlash. AI gross margins ~50–60% vs SaaS 80–90%. |
+| **L4** | **Engagement is a cost, not an asset** (the companion trap) | When every message costs compute, a beloved free product can bleed to death. Highly engaged users also bring safety and legal exposure. | **Character.AI** (Chapter 11, Oct 2026 ⚠ details). Replika (Garante ban, €5M fine, ERP backlash). OpenAI shut down its Sora app in Mar 2026, citing operating cost and retention. |
+| **L5** | **The meat puppet**: humans behind the "AI" | "AI" on the label is often people in a call centre. It is fine as a disclosed Wizard-of-Oz MVP and fraud if you sell it as automation. The meat puppet also hides the true unit economics. | **Builder.ai** (from a $1.5B valuation to insolvency, revenue ~4× inflated ⚠). **Nate** (founder charged, ~0% automation). **Presto** (SEC order: claimed 95% automated, ~70% needed humans). **Amazon Just Walk Out** (~700 of every 1,000 sales human-reviewed; Amazon disputes this). 1X NEO teleoperation. Historical: Facebook M, x.ai, Expensify. |
+| **L5b** | **The moral crumple zone** (the inverse of the meat puppet) | Here the AI does the work but a human absorbs the blame, so the "human in the loop" exists mainly as a liability sponge. Elish (2019) coined the term. | Klarna: 700 agents replaced, then humans rehired because "lower quality". The A\* IMDA "humans remain accountable" slide. Optional: the review-fatigue point on A\* slide 65. |
+| **L6** | **You own the output** (liability does not pass to the vendor) | Courts treat the bot as you. Every model failure mode is a business risk you carry. | Air Canada / Moffatt (the chatbot "is part of Air Canada's website"). Chevy $1 Tahoe. DPD chatbot swearing. Replit agent deleting a production database. Project Vend. The South African AI policy with fake citations. |
+| **L7** | **Moats evaporate: LLMflation** | The price of a given capability falls ~10×/year (a16z), and the frontier reaches budget tier in ~4 months (A\* slide 16). Anything you charge a premium for today is a commodity next year. Total spend still *rises*, because tokens per task explode (Jevons). | A16z: GPT-3-level capability went from $60 to $0.06 per million tokens in 3 years. Reasoning and agent loops use ~50× the tokens of a single pass ⚠. Enterprise GenAI spend went from $11.5B to $37B (2024→25, Menlo). DeepSeek day: Nvidia −17%, −$589B. A\* slide 70: "expensive value-added services may be much cheaper or obsolete in months." |
+| **L8** | **Who captures the value?** (the stack, and commoditizing your complement) | Value flows to the scarce layer. Right now that is chips: Nvidia has 75% gross margin, while OpenAI reportedly loses about $1.22 per $1 of revenue ⚠. Every layer tries to commoditize the layer next to it. Open weights are Meta's and China's version of the Vercel/Next.js play from BSE3713. | Nvidia FY27Q2 ($96B revenue, 75% GM). OpenAI losses. Open-weight share on OpenRouter rose to ~⅓ or more. Cursor on Kimi. BSE3713 slides 45–52 (IaaS commoditized, open source as a "costly signal"). |
+| **L9** | **The talent is the asset; the company is the shell** (reverse acqui-hire) | Big Tech buys the people plus a licence, not the company. The founders get rich and the remaining employees and the cap table get the husk. | Inflection→Microsoft (~$650M licence). Character.AI→Google ($2.7B). Adept and Covariant→Amazon. Windsurf→Google ($2.4B), then Cognition bought the rest. Scale AI→Meta ($14.3B for 49%), after which Google and OpenAI left as customers. |
+| **L10** | **Pricing follows the work, not the seat** (seat compression) | If AI does the work of 10 users, per-seat pricing shrinks your revenue. Vendors move to outcome or usage pricing, and *flail* along the way. | Intercom Fin at $0.99 per resolution (~$100M ARR ⚠). Zendesk at $1.50–2.00 per resolution. Salesforce Agentforce went from $2/conversation to Flex Credits to a seat-style AELA, running 3 models at once. Workday hiring freezes. Klarna "shutting down Salesforce/Workday" (in reality, swapped for other SaaS). |
+| **L11** | **The answer engine eats the click** (disintermediation) | If AI answers in place, whoever monetized the click (publishers, Q&A sites, homework help) loses its traffic and its data moat in one go. | Chegg: −99%, then a 45% layoff and a suit against Google AI Overviews. Stack Overflow: questions down >99% from peak ⚠, now living on data licensing. Pew: clicks 8% with an AI summary vs 15% without. NYT and News Corp vs Perplexity. |
+| **L12** | **Regulation and copyright are a line item** | Legal exposure is now a COGS-scale cost. Compliance tends to favour incumbents who can afford it. | Bartz v. Anthropic ($1.5B, ~$3k/book). Disney, Universal and WBD vs Midjourney. NYT v. OpenAI. Getty losing to Stability in the UK. EU AI Act GPAI duties (fines up to 3% of turnover), with high-risk duties delayed to Dec 2027 via the Omnibus. California SB 243 (companion chatbots, $1k per violation). Singapore's voluntary IMDA agentic framework (Jan 2026). |
+| **L13** | **The survivor's playbook** (what actually defends) | Own the customer, the workflow, the data or the brand, and keep your models swappable. | **Midjourney**: no VC, subscription-only, tiny team, profitable; it *licenses to* Meta rather than being eaten by it, and is diversifying (video, Co-Star, medical ⚠). Cursor's own models. Legal and health verticals (Legora) claiming the labs are no threat. A\* slide 70: "keep data exportable, workflows portable." |
