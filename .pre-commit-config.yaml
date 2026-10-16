@@ -18,3 +18,4 @@ repos:
         entry: python3 scripts/ascii-only.py
         language: system
         files: \.(typ|md)$
+        exclude: ^docs/
