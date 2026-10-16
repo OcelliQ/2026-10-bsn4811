@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: typst-community/setup-typst@v5
+      - name: Install typstyle
+        run: |
+          curl -sSLo /usr/local/bin/typstyle \
+            https://github.com/Enter-tainer/typstyle/releases/download/v0.15.1/typstyle-x86_64-unknown-linux-musl
+          chmod +x /usr/local/bin/typstyle
+      # Runs markdownlint and typstyle from .pre-commit-config.yaml, so versions
+      # live in one place.
+      - uses: pre-commit/action@v3.0.1
+      # The deck itself is the check: Typst has no linter, but it warns.
+      - run: typst compile slides.typ

@@ -1,0 +1,20 @@
+repos:
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.23.2
+    hooks:
+      - id: markdownlint-cli2
+        args: [--fix]
+  - repo: local
+    hooks:
+      # typstyle has no hook repo, and there is no Typst linter worth wiring:
+      # `typst compile` is the linter, and it runs in CI.
+      - id: typstyle
+        name: typstyle
+        entry: typstyle -i
+        language: system
+        files: \.typ$
+      - id: ascii-only
+        name: ascii only
+        entry: python3 scripts/ascii-only.py
+        language: system
+        files: \.(typ|md)$

@@ -1,0 +1,8 @@
+*.pdf
+**/figures/*.png
+.DS_Store
+_preview/
+.cases-preview/
+_t*.typ
+*.pptx
+.tmp/
