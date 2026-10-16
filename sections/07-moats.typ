@@ -1,0 +1,98 @@
+#import "/common.typ": *
+#import "/citations.typ": cite-source
+
+= Moats: which evaporate, which hold
+
+== LLMflation: today's premium is next year's commodity
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1.5em,
+  align: top,
+  [
+    - The price of a given capability falls *\~10× a year*
+    - GPT-3-level: *\$60 → \$0.06* per million tokens in three years
+    - Frontier reaches budget tier in *\~4 months*
+    #pause
+    - Yet total spend *rises*: tasks use far more tokens (Jevons)
+    - Enterprise GenAI spend: \$11.5B → \$37B (2024 → 2025)
+  ],
+  [
+    #pause
+    // PLACEHOLDER N20: news article on "DeepSeek day", 27 Jan 2025, when
+    // Nvidia fell ~17% and lost ~$589B of market value in a day. Reuters,
+    // Bloomberg or CNBC. Headline and date visible.
+    #shot(
+      "N20",
+      [DeepSeek day: Nvidia #sym.minus;17%, 27 Jan 2025],
+      width: 12cm,
+    )
+  ],
+)
+
+// VERIFY: a16z "LLMflation" (Nov 2024): ~10x/year and $60 -> $0.06. Frontier
+// to budget ~4 months (A* slide 16 / by-age chart). Menlo Ventures enterprise
+// GenAI spend $11.5B -> $37B. Nvidia -17% / -$589B on 27 Jan 2025.
+
+#speaker-note[
+  A\* slide 70's line: "expensive value-added services may be much cheaper or obsolete in months". If your premium is "we have access to a better model", it expires.
+]
+
+== Moats that hold
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1.5em,
+  align: top,
+  [
+    Own something the lab can't ship:
+    - the *customer*
+    - the *workflow*
+    - the *data*
+    - the *brand*
+
+    #pause
+    ...and keep your models *swappable*.
+  ],
+  [
+    #pause
+    - *Cursor*: its own models, on open weights
+    - *Legal and health verticals*: the workflow and the trust
+    - *Compliance* (lesson 4): expensive to copy
+  ],
+)
+
+== Midjourney: the profitable one
+
+#grid(
+  columns: (12cm, 1fr),
+  column-gutter: 1.2em,
+  align: top,
+  // PLACEHOLDER N21: news article on Meta licensing Midjourney's technology
+  // (Aug 2025, Alexandr Wang's announcement). TechCrunch or The Verge.
+  shot("N21", [Meta licenses Midjourney's tech, Aug 2025], width: 12cm),
+  [
+    - *No VC.* Subscription-only. Started on Discord.
+    - \~\$200M revenue (2023) with *\~11 staff*
+    - *Aug 2025*: licenses its tech *to Meta*, rather than being eaten by it
+    #pause
+    - Diversifying: video (Jun 2025), more since
+    - Still sued by Disney, Universal and WBD
+  ],
+)
+
+// VERIFY: ~$200M 2023 revenue and ~11 staff (single source); Meta licensing
+// (Aug 2025, terms undisclosed); video model V1 (Jun 2025). Co-Star
+// acquisition (Jul 2026) and the Harvard medical division (Jun 2026) are
+// single-source; add them to "more since" only once verified.
+
+#speaker-note[
+  Midjourney owns the brand and the community, keeps costs tiny, and charges a subscription people actually pay. It sells to the giant instead of competing with it. The open legal risk is the asterisk.
+]
+
+== Discuss
+
+#discuss[
+  What happens to your product \
+  when the model it runs on is *10× cheaper*?
+]

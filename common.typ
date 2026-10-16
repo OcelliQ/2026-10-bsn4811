@@ -360,3 +360,70 @@
   #set list(spacing: 0.4em)
   #for o in outcomes [- #o]
 ]
+
+// Light grey source line under a screenshot or figure.
+#let attribution-style(body) = text(size: 0.5em, fill: luma(150), body)
+
+// Grey stand-in for a diagram that has not been drawn yet. The comment above
+// each call says what the finished diagram must show; `id` names it in briefs.
+#let diagram-placeholder(id, caption, width: 100%, height: 100%) = block(
+  width: width,
+  height: height,
+  fill: luma(215),
+  radius: 0.3em,
+  inset: 0.8em,
+  spacing: 0pt,
+)[
+  #align(center + horizon)[
+    #text(
+      size: 0.6em,
+      weight: "bold",
+      fill: luma(90),
+      tracking: 0.08em,
+    )[DIAGRAM #id]
+    #v(0.2em)
+    #text(size: 0.55em, fill: luma(90))[#caption]
+  ]
+]
+
+// News screenshot at the capture standard (1600 x 1000 px, so 16:10), with
+// its URL in light grey underneath. Without `path` it draws a grey
+// placeholder; the comment above each call says what the capture must show.
+#let shot(id, caption, path: none, url: none, width: 12cm) = {
+  let height = width * 10 / 16
+  if path == none {
+    block(
+      width: width,
+      height: height,
+      fill: luma(215),
+      radius: 0.3em,
+      inset: 0.6em,
+      spacing: 0pt,
+    )[
+      #align(center + horizon)[
+        #text(
+          size: 0.55em,
+          weight: "bold",
+          fill: luma(90),
+          tracking: 0.08em,
+        )[NEWS #id]
+        #v(0.15em)
+        #text(size: 0.5em, fill: luma(90))[#caption]
+      ]
+    ]
+  } else {
+    block(spacing: 0pt, width: width, stroke: 0.5pt + luma(210))[
+      #image(path, width: width, height: height, fit: "cover")
+    ]
+  }
+  if url != none {
+    block(width: width, above: 0.2em, attribution-style(link(url, url)))
+  }
+}
+
+// Discussion prompt that closes each lesson.
+#let discuss(question) = align(center + horizon)[
+  #text(size: 0.8em, weight: "bold", fill: accent, tracking: 0.1em)[DISCUSS]
+  #v(0.3em)
+  #block(width: 85%)[#text(size: 1.3em)[#question]]
+]
