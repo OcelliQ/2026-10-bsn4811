@@ -8,7 +8,7 @@
 #show: metropolis-theme.with(
   aspect-ratio: "16-9",
   footer: self => self.info.institution,
-  header-right: image("gm-logo-white.svg", height: 1.4cm),
+  header-right: image("images/gm-logo-white.svg", height: 1.4cm),
   config-common(
     new-section-slide-fn: big-section-slide,
     receive-body-for-new-section-slide-fn: true,
@@ -19,7 +19,7 @@
     author: [Dr. Gaurav Manek],
     date: datetime.today(),
     institution: [NUS BSN4811 -- Fall 2026],
-    logo: image("gm-logo.svg", height: 1.6cm),
+    logo: image("images/gm-logo.svg", height: 1.6cm),
   ),
 )
 

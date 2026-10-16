@@ -1,4 +1,5 @@
 *.pdf
+slides.pdf
 **/figures/*.png
 .DS_Store
 _preview/
@@ -6,3 +7,5 @@ _preview/
 _t*.typ
 *.pptx
 .tmp/
+figures/news/_work/
+.claude/scheduled_tasks.lock
