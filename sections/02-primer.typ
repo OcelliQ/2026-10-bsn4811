@@ -20,10 +20,194 @@
   Then the two legal arrows. Liability lands on the app, because the app faces the customer. Extraction leaves from the models layer, because that's where the training data went in. Both come back in lesson 4.
 ]
 
+// Lifted from the ai-for-clm "Who Controls What in AI" slide
+// (01-intro/chapter/01-industry-landscape.typ), redrawn on the value-chain
+// layers over two slides: legal pressure and physical inputs on the left, then
+// the companies in each layer on the right.
+#let stack-ink = rgb("#23373b")
+#let side-ink = rgb("#5a5a5a")
+#let legal-red = rgb("#c62828")
+#let legal(label, rest) = [#text(fill: legal-red, weight: "bold")[#label] #text(fill: legal-red)[#rest]]
+#let brace = block(width: 100%, height: 100%, spacing: 0pt)[
+  #layout(size => annotation-brace(size.height, "#5a5a5a"))
+]
+// (title, fill, ink, left-hand pressures, right-hand companies)
+#let stack-layers = (
+  (
+    [Apps],
+    rgb("#236c57"),
+    white,
+    [#legal[Liability][lands here] \ distribution · the customer],
+    ("Cursor", "Character.AI", "Midjourney", "Perplexity"),
+  ),
+  (
+    [Models],
+    rgb("#c5dace"),
+    stack-ink,
+    [#legal[Extraction][leaves here] \ model dev · data and its copyright · research talent],
+    ("OpenAI", "Anthropic", "Mistral", "DeepSeek"),
+  ),
+  (
+    [Infra],
+    rgb("#dce8e2"),
+    stack-ink,
+    [data centres · cooling],
+    ("AWS", "Azure", "CoreWeave"),
+  ),
+  (
+    [Chips],
+    rgb("#e7edef"),
+    stack-ink,
+    [fabs · lithography · HBM memory],
+    ("Nvidia", "AMD", "TSMC"),
+  ),
+)
+// Physical inputs under the whole stack, drawn as a row of tiles.
+#let bedrock = ([energy], [land], [water], [network], [minerals])
+// Vertically integrated companies, one brace per span of layers (row 0 is
+// Apps, row 3 is Chips): (top row, bottom row, companies).
+// VERIFY: each company's span before the lecture; this moves fast.
+#let integrated = (
+  // Chips to Apps: own accelerators, cloud, models and consumer apps.
+  (0, 3, (
+    "Google DeepMind",
+    "Amazon",
+    "Microsoft",
+    "Meta",
+    "Apple",
+    "Alibaba",
+    "Huawei",
+    "Baidu",
+  )),
+  // Infra to Apps: own data centres; OpenAI's Broadcom chip isn't out yet.
+  (0, 2, ("OpenAI", "xAI")),
+  // Chips to Models: DGX Cloud and Nemotron.
+  (1, 3, ("Nvidia",)),
+)
+
+// The layer stack with bedrock underneath, annotated on one side:
+// "left" for pressures and inputs, "right" for companies.
+#let layer-stack(side) = {
+  let n = stack-layers.len()
+  let stack = grid.cell(x: 1, y: 0, rowspan: n)[
+    #block(
+      width: 100%,
+      height: 100%,
+      spacing: 0pt,
+      fill: luma(160),
+      radius: 5pt,
+      clip: true,
+    )[
+      #grid(
+        columns: (1fr,),
+        rows: (1fr,) * n,
+        row-gutter: 4pt,
+        ..stack-layers.map(((title, fill, ink, ..)) => grid.cell(
+          fill: fill,
+          inset: (x: 12pt, y: 9pt),
+          align: left + horizon,
+        )[
+          #text(size: 24pt, weight: "bold", fill: ink)[#title]
+        ]),
+      )
+    ]
+  ]
+  let bedrock-row = grid.cell(x: 1, y: n)[
+    #block(
+      width: 100%,
+      height: 100%,
+      spacing: 0pt,
+      fill: luma(160),
+      radius: 5pt,
+      clip: true,
+    )[
+      #grid(
+        columns: (1fr,) * bedrock.len(),
+        rows: (1fr,),
+        column-gutter: 4pt,
+        ..bedrock.map(label => block(
+          width: 100%,
+          height: 100%,
+          fill: luma(240),
+          inset: 4pt,
+        )[
+          #set par(leading: 3pt, spacing: 0pt)
+          #align(center + horizon, text(
+            size: 16pt,
+            weight: "bold",
+            fill: stack-ink,
+          )[#label])
+        ]),
+      )
+    ]
+  ]
+  let (columns, notes) = if side == "left" {
+    (
+      (1.3fr, 1fr, 0.6fr),
+      (
+        ..stack-layers
+          .enumerate()
+          .map(((i, (.., inputs, _))) => grid.cell(
+            x: 0,
+            y: i,
+            align: right + horizon,
+          )[
+            #set par(leading: 4pt, spacing: 0pt)
+            #text(size: 16pt, fill: side-ink)[#inputs]
+          ]),
+        grid.cell(x: 0, y: n, align: right + horizon)[
+          #text(size: 16pt, weight: "bold", fill: side-ink)[Bedrock]
+        ],
+      ),
+    )
+  } else {
+    (
+      (0.3fr, 1fr, 1fr) + (16pt, auto) * integrated.len(),
+      (
+        ..stack-layers
+          .enumerate()
+          .map(((i, (.., marks))) => grid.cell(
+            x: 2,
+            y: i,
+            align: left + horizon,
+          )[
+            #set par(leading: 4pt, spacing: 0pt)
+            #text(size: 16pt, weight: "bold", fill: side-ink)[#marks.map(box).join(" · ")]
+          ]),
+        ..integrated
+          .enumerate()
+          .map(((k, (top, bottom, names))) => (
+            grid.cell(x: 3 + 2 * k, y: top, rowspan: bottom - top + 1, brace),
+            grid.cell(
+              x: 4 + 2 * k,
+              y: top,
+              rowspan: bottom - top + 1,
+              align: left + horizon,
+            )[
+              #set par(leading: 4pt, spacing: 0pt)
+              #text(size: 14pt, weight: "bold", fill: side-ink)[#names.map(box).join(linebreak())]
+            ],
+          ))
+          .flatten(),
+      ),
+    )
+  }
+  set text(size: 18pt)
+  v(10pt)
+  grid(
+    columns: columns,
+    rows: (1fr,) * n + (0.8fr,),
+    column-gutter: 12pt,
+    row-gutter: 4pt,
+    align: top,
+    stack,
+    bedrock-row,
+    ..notes,
+  )
+}
+
 == Where you'll sit
 
-// Lifted from the ai-for-clm "Who Controls What in AI" slide
-// (01-intro/chapter/01-industry-landscape.typ), relabelled for this audience.
 #slide(align: top, config: config-common(breakable: false))[
   #cite-source(
     "https://a16z.com/emerging-architectures-for-llm-applications/",
@@ -34,122 +218,17 @@
     display: false,
   )[NVIDIA. _AI's five-layer cake_.]
 
-  #set text(size: 18pt)
-  #v(10pt)
-  #let control-label(label) = grid.cell(align: right + horizon)[
-    #text(size: 18pt, weight: "bold", fill: rgb("#5a5a5a"))[#label]
-  ]
-  #let control-brace = block(width: 100%, height: 100%, spacing: 0pt)[
-    #layout(size => annotation-brace(size.height, "#5a5a5a", direction: "left"))
-  ]
-  #grid(
-    columns: (1fr, 16pt, 2.2fr, 16pt, 1fr),
-    rows: (1fr,) * 6,
-    column-gutter: 12pt,
-    row-gutter: 4pt,
-    align: top,
-    grid.cell(x: 0, y: 0, rowspan: 2, control-label([Your direct control])),
-    grid.cell(x: 1, y: 0, rowspan: 2, control-brace),
-    grid.cell(x: 0, y: 2, rowspan: 2, control-label(
-      [Your technical team owns],
-    )),
-    grid.cell(x: 1, y: 2, rowspan: 2, control-brace),
-    grid.cell(x: 0, y: 4, rowspan: 2, control-label([External providers])),
-    grid.cell(x: 1, y: 4, rowspan: 2, control-brace),
-    grid.cell(x: 2, y: 0, rowspan: 6)[
-      #let value-layer(
-        title,
-        detail,
-        fill: luma(240),
-        ink: rgb("#23373b"),
-      ) = grid.cell(
-        fill: fill,
-        inset: (x: 12pt, y: 9pt),
-      )[
-        #set par(leading: 3pt, spacing: 0pt)
-        #stack(
-          dir: ttb,
-          spacing: 10pt,
-          text(size: 24pt, weight: "bold", fill: ink)[#title],
-          text(size: 18pt, fill: ink)[#detail],
-        )
-      ]
-      #block(
-        width: 100%,
-        height: 100%,
-        spacing: 0pt,
-        fill: luma(160),
-        radius: 5pt,
-        clip: true,
-      )[
-        #grid(
-          columns: (1fr,),
-          rows: (1fr,) * 6,
-          row-gutter: 4pt,
-          value-layer(
-            [1. Business need],
-            [Customers · pricing · success metrics],
-            fill: rgb("#236c57"),
-            ink: white,
-          ),
-          value-layer(
-            [2. Policy],
-            [Rules · accountability · human oversight],
-            fill: rgb("#c5dace"),
-          ),
-          value-layer(
-            [3. Orchestration],
-            [Workflows · integrations · approvals],
-            fill: rgb("#dce8e2"),
-          ),
-          value-layer(
-            [4. Engineering],
-            [Tools · prompts · evaluation · deployment],
-            fill: rgb("#e7edef"),
-          ),
-          value-layer(
-            [5. Infrastructure],
-            [Inference · latency · capacity · cost],
-            fill: luma(240),
-          ),
-          grid.cell(fill: luma(160), inset: 0pt)[
-            #grid(
-              columns: (1fr,) * 5,
-              rows: (1fr,),
-              column-gutter: 4pt,
-              ..([model dev], [chips], [power], [data centres], [network]).map(
-                label => block(
-                  width: 100%,
-                  height: 100%,
-                  fill: luma(240),
-                  inset: 4pt,
-                )[
-                  #set par(leading: 3pt, spacing: 0pt)
-                  #align(center + horizon, text(
-                    size: 16pt,
-                    weight: "bold",
-                    fill: rgb("#23373b"),
-                  )[#label])
-                ],
-              ),
-            )
-          ],
-        )
-      ]
-    ],
-    grid.cell(x: 3, y: 0, rowspan: 2)[#pause
-      #block(width: 100%, height: 100%, spacing: 0pt)[
-        #layout(size => annotation-brace(size.height, "#e87900"))
-      ]
-    ],
-    grid.cell(x: 4, y: 0, rowspan: 2, align: left + horizon)[
-      #text(size: 18pt, weight: "bold", fill: rgb("#e87900"))[This lecture.]
-    ],
-  )
+  #layer-stack("left")
 ]
 
 #speaker-note[
   Same stack, seen from the app builder's chair. You control the top. Everything at the bottom is someone else's business, and their business model becomes your cost structure.
+]
+
+== Who plays where
+
+#slide(align: top, config: config-common(breakable: false))[
+  #layer-stack("right")
 ]
 
 == The pricing menu

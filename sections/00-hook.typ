@@ -5,55 +5,88 @@
 
 == Gold Rush of our age
 
-// Lifted from ai-for-clm 01-intro/chapter/01-industry-landscape.typ. Sources
-// are in ai-for-clm 01-intro/media/industry-landscape/GOLD-RUSH-SOURCES.md.
+// Headline lifted from ai-for-clm 01-intro/chapter/01-industry-landscape.typ.
+// Each comparison is its cost (2025 US$) over 2026 AI infrastructure spending
+// of US$1.48T a year, about US$4.05B a day.
+// Only Apollo's source states 2025 dollars. The US figures are inflated with
+// CPI-U at a mid-programme year: Hoover Dam $108.8M dam + powerplant (x21.2,
+// 1931); Manhattan $1.89B (x18.3, 1944); Interstate $128.9B total (x5.98,
+// 1975). Singapore figures use S$1.30/US$: Changi T5 S$12.96B (trade-press
+// estimate, incl. Changi East works), TEL "over S$25B" (2020 estimate), GDP S$789.5B (2025, nominal).
+// CPI-U annual averages (1931 15.2, 1944 17.6, 1975 53.8, 2025 321.9) are
+// from the Minneapolis Fed's CPI 1913- table; BLS has no October 2025 value
+// (government shutdown), so the 2025 average covers 11 months.
 #slide(align: top, config: config-common(breakable: false))[
+  #let row(time, project, cost) = (
+    text(size: 20pt, weight: "bold")[#blank(2, time)],
+    text(size: 20pt)[#project],
+    text(size: 16pt, fill: luma(110))[US\$#cost],
+  )
+  #v(1fr)
   #grid(
-    columns: (auto, auto, 1fr),
-    column-gutter: 8pt,
-    row-gutter: 1em,
-    align: (left, right, left),
-    grid.cell(colspan: 3, align: left)[
+    columns: (0.8fr, 1.2fr),
+    column-gutter: 1.5em,
+    align: (left + horizon, left + horizon),
+    [
       *Global AI infrastructure spending forecast for 2026*#cite-source("https://www.gartner.com/en/newsroom/press-releases/2026-09-16-gartner-forecasts-worldwide-ai-spending-to-grow-49-point-5-percent-in-2026")[Gartner. _Worldwide AI Spending Forecast_. 16 September 2026. AI infrastructure: US\$1.484 trillion forecast for 2026.]
-    ],
 
-    grid.cell(rowspan: 2)[
       #text(size: 48pt, weight: "bold")[US\$1.48T]
-    ],
-    text(size: 24pt)[≈5×],
-    [
-      #text(size: 24pt)[Apollo missions]#cite-source("https://www.planetary.org/space-policy/cost-of-apollo")[The Planetary Society. _How much did the Apollo program cost?_ Apollo, 1960--1973: US\$309 billion in 2025 dollars.] (US\$309 billion)
-    ],
-    text(size: 24pt)[≈1×],
-    [
-      #text(
-        size: 24pt,
-      )[All the datacentres built until the mid-2000s, inflation-adjusted]
-    ],
 
-    grid.cell(colspan: 3, align: left)[
-      *Global AI-server electricity consumption forecast for 2026*#cite-source("https://www.gartner.com/en/newsroom/press-releases/2026-06-10-gartner-says-data-center-electricity-demand-to-grow-26-percent-in-2026")[Gartner. _Data Center Electricity Consumption Forecast_. 10 June 2026. AI-optimized servers: 175 TWh forecast for 2026.]
+      #text(size: 24pt)[≈ US\$4 billion a day]
     ],
-
-    grid.cell(rowspan: 2)[
-      #text(size: 48pt, weight: "bold")[175 TWh]
-    ],
-    text(size: 24pt)[≈3×],
     [
-      #text(size: 24pt)[Singapore's electricity consumption in 2024]#cite-source("https://www.ema.gov.sg/resources/singapore-energy-statistics/chapter3")[Energy Market Authority, Singapore. _Singapore Energy Statistics: Energy Consumption_. 2024 electricity consumption: 58 TWh.] (58 TWh)
-    ],
-    text(size: 24pt)[≈2×],
-    [
-      #text(size: 24pt)[Three Gorges Dam's designed annual output]#cite-source("https://www.ctg.com.cn/ctgenglish/news_media/news37/2024080621160453600/index.html")[China Three Gorges Corporation. _Three Gorges annual power generation_. Designed annual generation: 88.2 TWh.] (88.2 TWh)
+      AI spends the cost of …
+      #v(0.3em)
+      #grid(
+        columns: (auto, auto, auto),
+        column-gutter: 0.8em,
+        row-gutter: 0.5em,
+        align: (right + horizon, left + horizon, right + horizon),
+        ..row(
+          [14 hours],
+          [Hoover Dam#cite-source("https://www.usbr.gov/lc/hooverdam/faqs/damfaqs.html")[US Bureau of Reclamation. _Hoover Dam FAQs_. Boulder Canyon Project authorised at up to US\$165 million, of which dam and reservoir US\$70.6 million and power US\$38.2 million.]],
+          [2.3B],
+        ),
+        ..row(
+          [2½ days],
+          [Changi Terminal 5#cite-source("https://www.airport-technology.com/projects/terminal-5-changi-international-airport/")[Airport Technology. _Terminal 5, Changi International Airport, Singapore_. About S\$12.96 billion (US\$10 billion), including Changi East works; trade-press estimate.]],
+          [10B],
+        ),
+        ..row(
+          [5 days],
+          [Thomson--East Coast Line#cite-source("https://www.mot.gov.sg/news-resources/newsroom/speech-by-minister-khaw-boon-wan-at-the-thomson-east-coast-line-stage-1-open-house/")[Ministry of Transport, Singapore. _Speech by Minister Khaw Boon Wan at the Thomson-East Coast Line Stage 1 Open House_. 11 January 2020. "Over \$25 billion to construct."]],
+          [19B],
+        ),
+        ..row(
+          [9 days],
+          [Manhattan Project#cite-source("https://www.brookings.edu/the-costs-of-the-manhattan-project/")[Brookings Institution. _The Costs of the Manhattan Project_. US\$1.89 billion through 1945.]],
+          [35B],
+        ),
+        ..row(
+          [2½ months],
+          [Apollo missions#cite-source("https://www.planetary.org/space-policy/cost-of-apollo")[The Planetary Society. _The Cost of Apollo_. US\$25.8 billion, 1960--1973; about US\$309 billion in 2025 dollars.]],
+          [309B],
+        ),
+        ..row(
+          [5 months],
+          [Singapore's GDP#cite-source("https://isomer-user-content.by.gov.sg/166/b0da590f-0637-47b2-85a7-583a6135c72c/FullReport_AES2025.pdf")[Ministry of Trade and Industry, Singapore. _Economic Survey of Singapore 2025_. GDP at current market prices: S\$789.5 billion in 2025.]],
+          [607B],
+        ),
+        ..row(
+          [6 months],
+          [US Interstate highways#cite-source("https://www.fhwa.dot.gov/infrastructure/50estimate.cfm")[Federal Highway Administration. _Interstate System Final Cost Estimate_. 1991: US\$128.9 billion total, US\$114.3 billion federal share.]],
+          [770B],
+        ),
+      )
     ],
   )
 
   #v(1fr)
-  #align(right)[\*All rough estimates]
+  #align(right)[\*All rough estimates, in 2025 US dollars]
 ]
 
 #speaker-note[
-  Gartner's figure is all AI infrastructure (servers, devices, datacentres), not datacentre construction alone. Apollo is a programme total in 2025 dollars; the AI figure is one year. Scale, not precision.
+  Gartner's figure is all AI infrastructure (servers, devices, datacentres), not datacentre construction alone. Each comparison is a whole-programme total; the AI figure is one year. Scale, not precision.
 ]
 
 == Here's an NVIDIA B200
@@ -61,6 +94,7 @@
 #slide(config: config-common(breakable: false))[
   #grid(
     columns: (11cm, 1fr),
+    rows: (1fr,),
     column-gutter: 1.2em,
     align: horizon,
     shot(
@@ -69,17 +103,14 @@
       path: "/figures/news/N01-nvidia-b200.png",
       url: "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing",
       width: 11cm,
+      height: 100%,
     ),
     [
-      // Each blank shows "???" until its own subslide.
-      #let blank(n, answer) = [#only("-" + str(n - 1))[*???*]#only(
-          str(n) + "-",
-        )[#answer]]
       To keep up with *one* B200, you'd need #blank(2)[*about a million Earths*] of people, each doing one sum per second.
 
-      A large datacentre has #blank(3)[*220,000+* (Colossus 1, 300 MW)] of them.
+      A large datacentre has #blank(2)[*220,000+* (Colossus 1, 300 MW)] of them.
 
-      A frontier model trains on #blank(4)[*tens of thousands to \~100,000*] of them for #blank(4)[*a few months*], continuously.
+      A frontier model trains on #blank(2)[*\~100,000*] of them for #blank(2)[*a few months*], continuously.
     ],
   )
 ]

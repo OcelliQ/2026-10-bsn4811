@@ -89,23 +89,52 @@
 })
 
 // Grey filled block --- used for callouts / definition boxes.
-#let gblock(body, inset: 0.4em, outset: 0.4em, width: 100%) = block(
+#let gblock-center = center
+#let gblock(body, inset: (x: 0em, y: 0.4em), outset: (x: 0.4em, y: 0.4em), width: 100%, center: false) = block(
   fill: luma(235),
   inset: inset,
   outset: outset,
   radius: 0.4em,
   width: width,
-)[#body]
+)[
+  #{
+    if center {
+      set align(gblock-center)
+      body
+    } else {
+      body
+    }
+  }
+]
 
 // White bordered block --- lighter-weight callout.
-#let lblock(body, inset: 0.4em, outset: 0.4em, width: 100%) = block(
+#let lblock-center = center
+#let lblock(
+  body,
+  inset: (x: 0em, y: 0.4em),
+  outset: (x: 0.4em, y: 0.4em),
+  width: 100%,
+  height: auto,
   fill: white,
+  center: false,
+) = block(
+  fill: fill,
   stroke: 0.5pt + luma(220),
   inset: inset,
   outset: outset,
   radius: 0.4em,
   width: width,
-)[#body]
+  height: height,
+)[
+  #{
+    if center {
+      set align(lblock-center)
+      body
+    } else {
+      body
+    }
+  }
+]
 
 // Metropolis default primary --- use for bars, accents, comparison "good" sides.
 #let accent = rgb("#EB811B")
@@ -389,12 +418,14 @@
 // News screenshot at the capture standard (1600 x 1000 px, so 16:10), with
 // its URL in light grey underneath. Without `path` it draws a grey
 // placeholder; the comment above each call says what the capture must show.
-#let shot(id, caption, path: none, url: none, width: 12cm) = {
-  let height = width * 10 / 16
-  if path == none {
+#let shot(id, caption, path: none, url: none, width: 12cm, height: auto) = {
+  // With an explicit height (e.g. 100%), the image fills it and the source
+  // link sits inside; otherwise the image is 16:10 at the given width.
+  let img-height = if height == auto { width * 10 / 16 } else { 100% }
+  let img = if path == none {
     block(
       width: width,
-      height: height,
+      height: img-height,
       fill: luma(215),
       radius: 0.3em,
       inset: 0.6em,
@@ -412,12 +443,21 @@
       ]
     ]
   } else {
-    block(spacing: 0pt, width: width, stroke: 0.5pt + luma(210))[
-      #image(path, width: width, height: height, fit: "cover")
+    block(spacing: 0pt, width: width, height: img-height, stroke: 0.5pt + luma(210))[
+      #image(path, width: width, height: 100%, fit: "cover")
     ]
   }
-  if url != none {
+  let source = if url != none {
     block(width: width, above: 0.2em, attribution-style(link(url, url)))
+  }
+  if height == auto {
+    img
+    source
+  } else {
+    block(width: width, height: height, spacing: 0pt, grid(
+      rows: (1fr, auto),
+      img, source,
+    ))
   }
 }
 
@@ -427,3 +467,6 @@
   #v(0.3em)
   #block(width: 85%)[#text(size: 1.3em)[#question]]
 ]
+
+// Fill-in-the-blank: shows "???" before subslide n, then the answer from n on.
+#let blank(n, answer) = [#only("-" + str(n - 1))[*???*]#only(str(n) + "-")[#answer]]
