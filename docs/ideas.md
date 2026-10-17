@@ -287,9 +287,9 @@ End on the L13 checklist, applied to the app layer: Do you own the customer? Can
   - The charts plot API price per task against the Artificial Analysis Intelligence Index, without annotations, sized for the content box under a 16:9 slide title. Annotate them in this deck.
   - There are five colourings: `cost-vs-aaii` (open vs closed), `-by-lab`, `-by-lab-open`, `-by-age` and `-by-hardware`.
   - That repo's CI renders `dist/` from its committed tables on every push and uploads it as the `charts` artifact.
-  - **Decision: fetch with a script, not a submodule.** Write `scripts/fetch-model-charts.sh` to run `gh run download -R OcelliQ/ai-models-chart -n charts` against the latest successful run on the default branch, unpacking into a gitignored `figures/ai-models-chart/`.
-    - Why: a submodule would only bring in the source tables, so we'd also need its Python environment to render. The artifact is already built.
-    - Caveat: CI artifacts expire, 90 days by default, so fetch close to the lecture. If the artifact has expired, clone and run `uv run make_chart.py`.
+  - **Decision: fetch with a script, not a submodule.** `scripts/fetch-model-charts.sh` downloads `charts.zip` from that repo's public rolling [`charts` release](https://github.com/OcelliQ/ai-models-chart/releases/tag/charts) (no login) and unpacks it into the gitignored `figures/ai-models-chart/`. CI runs it before compiling.
+    - Why: a submodule would only bring in the source tables, so we'd also need its Python environment to render. The release is already built.
+    - Every push to that repo's `master` refreshes the release, so re-run the script close to the lecture.
   - Use `dist/svg-paths/`. The plain SVGs rely on DejaVu Sans, which isn't embedded.
   - Keep A\* slide 16 for the "frontier reaches budget tier in ~4 months" claim unless the `-by-age` chart shows it better.
 - **BSE3713 deck, slides to lift:**

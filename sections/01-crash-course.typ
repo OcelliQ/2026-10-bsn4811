@@ -145,15 +145,15 @@
 
 == Cost of AI
 
-// PLACEHOLDER D01: `cost-vs-aaii` chart (open vs closed) from
+// D01: `cost-vs-aaii` chart (open vs closed) from
 // OcelliQ/ai-models-chart, dist/svg-paths/. API price per task (log scale)
 // against the Artificial Analysis Intelligence Index. Replaces A* slide 14.
 // Annotate in-deck with a callout: "Prices span three orders of magnitude."
 #slide(config: config-page(margin: (x: 0em)))[
-  #diagram-placeholder(
-    "D01",
-    [cost-vs-aaii chart (OcelliQ/ai-models-chart): price per task vs intelligence, open vs closed],
-  )
+  #align(center, image(
+    "/figures/ai-models-chart/svg-paths/cost-vs-aaii.svg",
+    height: 100%,
+  ))
 
   #place(top + left, dx: 48pt, dy: 8pt, lblock(width: 420pt)[
     Tremendous variety available! \
@@ -163,13 +163,13 @@
 
 == Cost of AI by lab
 
-// PLACEHOLDER D02: `cost-vs-aaii-by-lab` chart from OcelliQ/ai-models-chart.
+// D02: `cost-vs-aaii-by-lab` chart from OcelliQ/ai-models-chart.
 // Callout: "OpenAI and Anthropic compete at the frontier." (Replaces A* 15.)
 #slide(config: config-page(margin: (x: 0em)))[
-  #diagram-placeholder(
-    "D02",
-    [cost-vs-aaii-by-lab chart (OcelliQ/ai-models-chart)],
-  )
+  #align(center, image(
+    "/figures/ai-models-chart/svg-paths/cost-vs-aaii-by-lab.svg",
+    height: 100%,
+  ))
 
   #place(top + left, dx: 48pt, dy: 8pt, lblock(width: 420pt)[
     OpenAI and Anthropic compete at the frontier.
@@ -178,14 +178,14 @@
 
 == Cost of AI by launch date
 
-// PLACEHOLDER D03: `cost-vs-aaii-by-age` chart from OcelliQ/ai-models-chart.
+// D03: `cost-vs-aaii-by-age` chart from OcelliQ/ai-models-chart.
 // Callout: "Frontier to budget in ~4 months." Keep A* slide 16 instead if this
 // chart doesn't show the 4-month claim clearly.
 #slide(config: config-page(margin: (x: 0em)))[
-  #diagram-placeholder(
-    "D03",
-    [cost-vs-aaii-by-age chart (OcelliQ/ai-models-chart)],
-  )
+  #align(center, image(
+    "/figures/ai-models-chart/svg-paths/cost-vs-aaii-by-age.svg",
+    height: 100%,
+  ))
 
   #place(top + left, dx: 48pt, dy: 8pt, lblock(width: 420pt)[
     The AI revolution is ongoing, not complete. \
@@ -198,14 +198,14 @@
 
 == What it costs to run your own
 
-// PLACEHOLDER D04: `cost-vs-aaii-by-hardware` chart from
+// D04: `cost-vs-aaii-by-hardware` chart from
 // OcelliQ/ai-models-chart: models coloured by the minimum hardware budget
 // needed to self-host them. (Replaces A* slide 17.)
 #slide(config: config-page(margin: (x: 0em)))[
-  #diagram-placeholder(
-    "D04",
-    [cost-vs-aaii-by-hardware chart (OcelliQ/ai-models-chart)],
-  )
+  #align(center, image(
+    "/figures/ai-models-chart/svg-paths/cost-vs-aaii-by-hardware.svg",
+    height: 100%,
+  ))
 ]
 
 #speaker-note[

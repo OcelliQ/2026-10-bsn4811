@@ -16,6 +16,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: typst-community/setup-typst@v5
+      - run: scripts/fetch-model-charts.sh
       - run: typst compile slides.typ bsn4811.pdf
       - name: Determine release tag
         id: tag

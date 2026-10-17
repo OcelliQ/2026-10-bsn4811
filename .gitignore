@@ -9,3 +9,4 @@ _t*.typ
 .tmp/
 figures/news/_work/
 .claude/scheduled_tasks.lock
+figures/ai-models-chart/

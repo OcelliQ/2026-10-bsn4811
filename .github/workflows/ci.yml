@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: typst-community/setup-typst@v5
+      - run: scripts/fetch-model-charts.sh
       - name: Install typstyle
         run: |
           curl -sSLo /usr/local/bin/typstyle \
