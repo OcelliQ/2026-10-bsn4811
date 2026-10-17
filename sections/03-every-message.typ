@@ -5,6 +5,43 @@
 
 #section-quote[It's like a gym subscription: the flat fee only works because most members rarely show up.][the business model of every flat-rate AI plan]
 
+== What makes AI agentic?
+
+// Lifted from A* slide 19 (ai-for-clm 01-intro/chapter/03-agentic-ai.typ).
+#grid(
+  columns: (40%, 1fr),
+  column-gutter: 2em,
+  row-gutter: 0.8em,
+  align: top,
+  [*Agentic AI*],
+  grid.cell(x: 1, y: 0, rowspan: 3)[
+    An *agent* is an LLM with a harness, which gives it *tools* to act on the world.
+
+    Every loop is another paid call, sending the whole conversation as input.
+
+    #v(0.4em)
+    #table(
+      columns: (auto, auto, auto, auto),
+      align: (left, right, right, right),
+      stroke: none,
+      inset: (x: 0.6em, y: 0.35em),
+      // Tokens in = previous tokens (last turn's input and reply) + new tokens.
+      table.header([Turn], [Previous tokens], [New tokens], [Tokens out]),
+      table.hline(stroke: 0.5pt + luma(180)),
+      [1], [0], [1,000], [500],
+      [2], [1,500], [1,000], [500],
+      [3], [3,000], [1,000], [500],
+      [4], [4,500], [1,000], [500],
+      [5], [6,000], [1,000], [500],
+      [6], [7,500], [1,000], [500],
+      table.hline(stroke: 0.5pt + luma(180)),
+      [Total], [*22,500*], [6,000], [3,000],
+    )
+  ],
+  include "/figures/agentic-loop.typ",
+  lblock[#align(center)[_"Given this goal, what do I do next?"_]],
+)
+
 == Your best customers are your worst customers
 
 #grid(

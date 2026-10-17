@@ -14,7 +14,7 @@
     receive-body-for-new-section-slide-fn: true,
   ),
   config-info(
-    title: [Who Makes the Money in AI?],
+    title: [How to make money with AI],
     subtitle: [AI and business models],
     author: [Dr. Gaurav Manek],
     date: datetime.today(),

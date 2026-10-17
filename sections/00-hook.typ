@@ -93,6 +93,21 @@
   Gartner's figure is all AI infrastructure (servers, devices, datacentres), not datacentre construction alone. Each comparison is a whole-programme total; the AI figure is one year. Scale, not precision.
 ]
 
+
+== The question for today
+
+#focus-slide[
+  #text(size: 72pt, weight: "bold")[
+    Who earns that \
+    *US\$1.48 trillion*?
+  ]
+]
+
+#speaker-note[
+  Leave this open. We answer it at the end, layer by layer.
+]
+
+
 // Lifted from the ai-for-clm "Who Controls What in AI" slide
 // (01-intro/chapter/01-industry-landscape.typ), redrawn on the value-chain
 // layers over two slides: legal pressure and physical inputs on the left, then
@@ -146,11 +161,11 @@
     rgb("#e7edef"),
     stack-ink,
     [fabs · lithography · HBM],
-    ("Nvidia", "AMD", "TSMC", "Samsung", "SK Hynix"),
+    ("Nvidia", "AMD", "TSMC", "Samsung", "SK Hynix", "Micron"),
   ),
 )
 // Physical inputs under the whole stack, drawn as a row of tiles.
-#let bedrock = ([energy], [land], [water], [fab])
+#let bedrock = ([energy], [water], [fab])
 // Vertically integrated companies, one brace per span of layers (row 0 is
 // Apps, row 3 is Chips): (top row, bottom row, companies).
 // VERIFY: each company's span before the lecture; this moves fast.
@@ -160,7 +175,7 @@
     0,
     3,
     (
-      "Google DeepMind",
+      "Google",
       "Amazon",
       "Microsoft",
       "Meta",
@@ -288,7 +303,7 @@
   )
 }
 
-== Where you'll sit
+== The AI Value Chain
 
 #slide(align: top, config: config-common(breakable: false))[
   #cite-source(
@@ -303,7 +318,7 @@
   #layer-grid(
     (1fr,),
     grid.cell(x: 1, y: 0, align: left + horizon)[
-      #uncover("2-")[#text(size: 24pt)[*#sym.arrow.l You are here*]]
+      #text(size: 24pt)[*#sym.arrow.l You are here*]
     ],
   )
 ]
@@ -312,154 +327,11 @@
   Same stack, seen from the app builder's chair. You control the top. Everything at the bottom is someone else's business, and their business model becomes your cost structure.
 ]
 
-== Who plays where
+== The AI Value Chain
 
 #slide(align: top, config: config-common(breakable: false))[
   #layer-grid(
-    (1fr,) + (16pt, auto) * integrated.len(),
+    (33%,) + (16pt, auto) * integrated.len(),
     ..company-cells,
   )
-]
-
-== The pricing menu
-
-#{
-  set text(size: 0.85em)
-  table(
-    columns: (auto, 1fr, auto),
-    align: (left, left, left),
-    stroke: none,
-    inset: (x: 0.6em, y: 0.45em),
-    table.header([*Model*], [*How it works*], [*Example*]),
-    table.hline(stroke: 0.5pt + luma(180)),
-    [Per-token API], [Pay for exactly what you use], [OpenAI / Anthropic APIs],
-    [Flat subscription],
-    [Fixed monthly fee, "unlimited" use],
-    [ChatGPT Plus, \$20],
-    [Freemium + ads], [Free tier paid for by advertising], [ChatGPT free tier],
-    [Per-seat], [Fee per user per month], [GitHub Copilot Business],
-    [Usage credits],
-    [Subscription buys a budget of usage],
-    [Cursor, \$20 of credits],
-    [Outcome-based], [Pay per job done], [Intercom Fin, \$0.99 per resolution],
-  )
-}
-
-// VERIFY: ChatGPT Plus still $20/month; ads in the ChatGPT free tier (2026);
-// Copilot Business per-seat price; Cursor Pro = $20 of credits (Jun 2025
-// switch); Intercom Fin $0.99 per resolution.
-
-#speaker-note[
-  Keep this menu in mind for the exercise in two slides. The question is always: who carries the cost when a user uses a lot?
-]
-
-
-== Here's an NVIDIA B200
-
-#slide(config: config-common(breakable: false))[
-  #grid(
-    columns: (11cm, 1fr),
-    rows: (1fr,),
-    column-gutter: 1.2em,
-    align: horizon,
-    shot(
-      "N01",
-      [NVIDIA B200 product photo],
-      path: "/figures/news/N01-nvidia-b200.png",
-      url: "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing",
-      width: 11cm,
-      height: 100%,
-    ),
-    [
-      To keep up with *one* B200, you'd need #blank(2)[*about a million Earths*] of people, each doing one sum per second.
-
-      A large datacentre has #blank(2)[*220,000+* (Colossus 1, 300 MW)] of them.
-
-      A frontier model trains on #blank(2)[*\~100,000*] of them for #blank(2)[*a few months*], continuously.
-    ],
-  )
-]
-
-// VERIFY: B200 throughput. The "million Earths" line assumes ~10^16 low-
-// precision (FP4, dense) operations a second and 8.2 billion people. Check
-// NVIDIA's B200 datasheet; FP8 dense is about half that (~500k Earths).
-// VERIFY: Colossus 1 at >220,000 GPUs and >300 MW, per Anthropic's SpaceX
-// compute announcement (anthropic.com/news/higher-limits-spacex, May 2026).
-// Note that Colossus 1 is not all B200s.
-// VERIFY: frontier training-run size and duration. Labs do not publish this;
-// cite an Epoch AI estimate for a recent frontier run.
-#speaker-note[
-  Ask the room to guess each blank before revealing it.
-  - 10^16 operations a second / 8.2 billion people at one sum a second each ≈ 1.2 million Earths.
-  - Colossus 1: the Memphis site Anthropic now rents from SpaceX.
-  - Training runs: estimates only, from Epoch AI.
-]
-
-== A rack of 72 costs \~\$3M
-
-// VERIFY: rack price. NVIDIA publishes no list price; these are analyst
-// estimates. Wing VC's piece now leads with GB300 NVL72 (just under $5.0M,
-// ~$3.4M of it the 72 GPU modules), not GB200, so re-check which figure it
-// backs. DeployBase gives $60--70K per GB200 superchip.
-// VERIFY: photo source and whether it shows GB200 NVL72 racks.
-#slide(config: config-common(breakable: false))[
-  #let money(body) = text(weight: "bold")[#body]
-  #grid(
-    columns: (13cm, 1fr),
-    rows: (1fr,),
-    column-gutter: 1.2em,
-    align: horizon,
-    shot(
-      "P01",
-      [CoreWeave datacentre],
-      path: "/figures/photos/coreweave-datacentre.jpg",
-      width: 13cm,
-      height: 100%,
-    ),
-    [
-      *GB200 NVL72*: 72 Blackwell GPUs and 36 Grace CPUs in one liquid-cooled rack
-
-      #v(0.4em)
-      #set text(size: 18pt)
-      #table(
-        columns: (1fr, auto),
-        stroke: none,
-        inset: (x: 0pt, y: 0.35em),
-        align: (left, right),
-        table.hline(stroke: 0.6pt + luma(160)),
-        [36 × GB200 superchips#cite-source("https://deploybase.ai/articles/nvidia-gb200-nvl72")[DeployBase. _NVIDIA GB200 NVL72_. About US\$60--70K per GB200 superchip.]],
-        [\~\$2.2--2.5M],
-        [NVLink switches, backplane, cooling, power, networking#cite-source("https://newsletter.semianalysis.com/p/gb200-hardware-architecture-and-component")[SemiAnalysis. _GB200 Hardware Architecture and Component Supply Chain & BOM_. July 2024.]],
-        [\~\$0.4--0.8M],
-        table.hline(stroke: 0.6pt + luma(160)),
-        money[Rack total#cite-source("https://www.wing.vc/content/how-much-does-an-nvidia-nvl72-cost")[Wing VC. _How Much Does an NVIDIA NVL72 Cost?_]],
-        money[\~\$3.0--3.5M],
-        text(fill: luma(110))[Smaller buyers], text(fill: luma(110))[up to \~\$3.9M],
-        text(fill: luma(110))[Deployed, with datacentre], text(fill: luma(110))[\$4M+],
-      )
-    ],
-  )
-]
-
-#speaker-note[
-  NVIDIA doesn't publish list prices; these are analyst estimates.
-  - Compute is the bulk: each GB200 superchip (two Blackwell GPUs, one Grace CPU) is about \$60--70K.
-  - Hyperscalers and neoclouds (CoreWeave, Microsoft, Meta) buy thousands of racks and pay near the low end.
-  - The rack draws 120--132 kW, so it needs a liquid-cooled hall, InfiniBand or Ethernet to other racks, and storage. Deployed, it's often well above \$4M.
-  - Renting: GMI Cloud lists GB200 from \$8 per GPU-hour, about \$420K a month for a full rack running continuously.
-  #cite-source(
-    "https://www.gmicloud.ai/en/blog/gb200-nvl72-rental-price-reserve-vs-on-demand",
-    display: false,
-  )[GMI Cloud. _GB200 NVL72 Rental Price: Reserve vs On-Demand_. From US\$8.00 per GPU-hour.]
-]
-
-== The question for today
-
-#focus-slide[
-  Who earns back \
-  *US\$1.48 trillion* a year?
-]
-
-#speaker-note[
-  Leave this open. We answer it at the end, layer by layer.
 ]

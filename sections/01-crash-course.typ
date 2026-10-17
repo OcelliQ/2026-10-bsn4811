@@ -14,12 +14,265 @@
   radius: 0.1em,
 )[#content]
 
-= What is an LLM?
+
+= Chips
+
+#section-subtitle[AI Value Chain]
+
+== Here's an NVIDIA B200
+
+#slide(config: config-common(breakable: false))[
+  #grid(
+    columns: (11cm, 1fr),
+    rows: (1fr,),
+    column-gutter: 1.2em,
+    align: horizon,
+    shot(
+      "N01",
+      [NVIDIA B200 product photo],
+      path: "/figures/news/N01-nvidia-b200.png",
+      url: "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing",
+      width: 11cm,
+      height: 100%,
+    ),
+    [
+      To keep up with *one* B200, you'd need #blank(2)[*about a million Earths'*] people, each doing one sum per second.
+
+      A large datacentre has #blank(2)[*220,000+* (Colossus 1, 300 MW)] of them.
+
+      A frontier model trains on #blank(2)[*\~100,000*] of them for #blank(2)[*a few months*], continuously.
+    ],
+  )
+]
+
+// VERIFY: B200 throughput. The "million Earths" line assumes ~10^16 low-
+// precision (FP4, dense) operations a second and 8.2 billion people. Check
+// NVIDIA's B200 datasheet; FP8 dense is about half that (~500k Earths).
+// VERIFY: Colossus 1 at >220,000 GPUs and >300 MW, per Anthropic's SpaceX
+// compute announcement (anthropic.com/news/higher-limits-spacex, May 2026).
+// Note that Colossus 1 is not all B200s.
+// VERIFY: frontier training-run size and duration. Labs do not publish this;
+// cite an Epoch AI estimate for a recent frontier run.
+#speaker-note[
+  Ask the room to guess each blank before revealing it.
+  - 10^16 operations a second / 8.2 billion people at one sum a second each ≈ 1.2 million Earths.
+  - Colossus 1: the Memphis site Anthropic now rents from SpaceX.
+  - Training runs: estimates only, from Epoch AI.
+]
+
+== A rack of 72 costs \~\$3.5M
+
+// VERIFY: rack price. NVIDIA publishes no list price; these are analyst
+// estimates. Wing VC's piece now leads with GB300 NVL72 (just under $5.0M,
+// ~$3.4M of it the 72 GPU modules), not GB200, so re-check which figure it
+// backs. DeployBase gives $60--70K per GB200 superchip.
+// VERIFY: photo source and whether it shows GB200 NVL72 racks.
+#slide(config: config-common(breakable: false))[
+  #let money(body) = text(weight: "bold")[#body]
+  #grid(
+    columns: (16cm, 1fr),
+    rows: (1fr,),
+    column-gutter: 1.2em,
+    align: horizon,
+    shot(
+      "P01",
+      [CoreWeave datacentre],
+      path: "/figures/photos/coreweave-datacentre.jpg",
+      width: 16cm,
+      height: 100%,
+    ),
+    [
+      *GB200 NVL72*: 72 Blackwell GPUs and 36 Grace CPUs in one liquid-cooled rack
+
+      #v(0.4em)
+      #table(
+        columns: (1fr, auto),
+        stroke: none,
+        inset: (x: 0pt, y: 0.35em),
+        align: (left, right),
+        table.hline(stroke: 0.6pt + luma(160)),
+        [36 × GB200 superchips#cite-source("https://deploybase.ai/articles/nvidia-gb200-nvl72")[DeployBase. _NVIDIA GB200 NVL72_. About US\$60--70K per GB200 superchip.]],
+        [\~\$2.2--2.5M],
+        [backplane, cooling, power, networking#cite-source("https://newsletter.semianalysis.com/p/gb200-hardware-architecture-and-component")[SemiAnalysis. _GB200 Hardware Architecture and Component Supply Chain & BOM_. July 2024.]],
+        [\~\$0.4--0.8M],
+        table.hline(stroke: 0.6pt + luma(160)),
+        money[Rack total#cite-source("https://www.wing.vc/content/how-much-does-an-nvidia-nvl72-cost")[Wing VC. _How Much Does an NVIDIA NVL72 Cost?_]],
+        money[\~\$3.0--3.5M],
+      )
+    ],
+  )
+]
+
+#speaker-note[
+  NVIDIA doesn't publish list prices; these are analyst estimates.
+  - Compute is the bulk: each GB200 superchip (two Blackwell GPUs, one Grace CPU) is about \$60--70K.
+  - Hyperscalers and neoclouds (CoreWeave, Microsoft, Meta) buy thousands of racks and pay near the low end.
+  - The rack draws 120--132 kW, so it needs a liquid-cooled hall, InfiniBand or Ethernet to other racks, and storage. Deployed, it's often well above \$4M.
+  - Renting: GMI Cloud lists GB200 from \$8 per GPU-hour, about \$420K a month for a full rack running continuously.
+  #cite-source(
+    "https://www.gmicloud.ai/en/blog/gb200-nvl72-rental-price-reserve-vs-on-demand",
+    display: false,
+  )[GMI Cloud. _GB200 NVL72 Rental Price: Reserve vs On-Demand_. From US\$8.00 per GPU-hour.]
+]
+
+== NVIDIA beats everyone else combined
+
+// Latest quarter, as reported. Not like-for-like: NVIDIA's data centre and
+// Broadcom's AI figures include networking; AMD's data centre segment includes
+// EPYC CPUs; Marvell's data centre includes networking. Quarters end Jul 2026
+// (NVIDIA), Aug 2026 (Broadcom, Marvell), Jun 2026 (AMD, Cerebras).
+// VERIFY: Huawei is an estimate, a quarter of the FT's reported US$12B 2026
+// figure (2 May 2026, unnamed sources). Cited via IndexBox; swap in the FT
+// article link if you can get it.
+#slide(config: config-common(breakable: false))[
+  // Stacked bar, top to bottom. Labels sit beside their segment and get
+  // pushed down (with a leader line) when a segment is too thin to hold one.
+  #let companies = (
+    (
+      name: "Others",
+      rev: "2.4",
+      fill: luma(225),
+      note: [Marvell \$2.2B (custom chips, networking); Cerebras \$0.2B.],
+      src: [#cite-source(
+          "https://investor.marvell.com/news-events/press-releases/detail/1031/marvell-technology-inc-reports-second-quarter-of-fiscal-year-2027-financial-results",
+        )[Marvell. _Marvell Technology, Inc. Reports Second Quarter of Fiscal Year 2027 Financial Results_. Data Center revenue of US\$2,171.5 million, quarter ended 1 August 2026.]#super[,]#cite-source(
+          "https://www.sec.gov/Archives/edgar/data/0002021728/000162828026056186/cbrsannouncesfinancialresu.htm",
+        )[Cerebras. _Cerebras Announces Financial Results for Second Quarter 2026_. GAAP total revenue of US\$180.1 million, quarter ended 30 June 2026.]],
+    ),
+    (
+      name: "Huawei",
+      rev: "3.0",
+      fill: luma(210),
+      note: [Estimate: a quarter of the \$12B it expects for 2026.],
+      src: cite-source(
+        "https://www.indexbox.io/blog/huawei-expects-ai-chip-revenue-to-hit-12-billion-in-2026/",
+      )[IndexBox, citing the Financial Times. Huawei expects about US\$12 billion of AI chip revenue in 2026, up from US\$7.5 billion in 2025. 2 May 2026.],
+    ),
+    (
+      name: "AMD",
+      rev: "6.7",
+      fill: luma(195),
+      note: [Whole data centre segment, including EPYC server CPUs.],
+      src: cite-source(
+        "https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results",
+      )[AMD. _AMD Reports Second Quarter 2026 Financial Results_. Data Center segment revenue of US\$6.7 billion.],
+    ),
+    (
+      name: "Broadcom",
+      rev: "16.7",
+      fill: luma(150),
+      note: [Custom chips for Google (TPU), Meta, OpenAI; plus networking.],
+      src: cite-source(
+        "https://www.sec.gov/Archives/edgar/data/0001730168/000173016826000076/avgo-08022026x8kxex99.htm",
+      )[Broadcom. _Broadcom Inc. Announces Third Quarter Fiscal Year 2026 Financial Results_. AI semiconductor revenue of US\$16.7 billion, quarter ended 2 August 2026.],
+    ),
+    (
+      name: "NVIDIA",
+      rev: "89.0",
+      fill: accent,
+      share-inside: true,
+      note: [Data centre: GPUs and networking. Up 117% on a year ago.],
+      src: cite-source(
+        "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm",
+      )[NVIDIA. _NVIDIA Announces Financial Results for Second Quarter Fiscal 2027_. Data Center revenue of US\$89.0 billion, quarter ended 26 July 2026.],
+    ),
+  )
+  #let bar-width = 2.2cm
+  #let label-x = bar-width + 0.9cm
+  #let total = companies.map(c => float(c.rev)).sum()
+  // Fills whatever height the grid cell gives it.
+  #let chart = layout(size => {
+    let chart-height = size.height
+    // Packed tight so the thin segments stack near the top and NVIDIA's
+    // label can sit level with its segment.
+    let label-height = 1.3cm
+    let top = 0cm
+    let label-top = 0cm
+    for c in companies {
+      let seg = chart-height * float(c.rev) / total
+      let share = [#calc.round(float(c.rev) / total * 100)%]
+      let mid = top + seg / 2
+      let y = calc.max(mid - label-height / 2, label-top)
+      place(dy: top, box(
+        width: bar-width,
+        height: seg,
+        fill: c.fill,
+        stroke: 1pt + white,
+      ))
+      place(line(
+        start: (bar-width + 0.1cm, mid),
+        end: (label-x - 0.15cm, y + label-height / 2),
+        stroke: 0.6pt + luma(160),
+      ))
+      place(dx: label-x, dy: y, block(
+        width: 100% - label-x,
+        height: label-height,
+        // Tight stack, centred in the label slot, so the slack falls
+        // between labels rather than between a title and its note.
+        align(horizon, stack(
+          spacing: 0.25em,
+          [
+            *#c.name*#c.src #h(0.3em) *\$#(c.rev)B*
+            #if not c.at("share-inside", default: false) [
+              #h(0.2em)#text(fill: luma(110))[(#share)]
+            ]
+          ],
+          text(size: 0.6em, fill: luma(110))[#c.note],
+        )),
+      ))
+      if c.at("share-inside", default: false) {
+        place(dy: mid - 0.5em, box(
+          width: bar-width,
+          align(center, text(fill: white, weight: "bold")[#share]),
+        ))
+      }
+      top += seg
+      label-top = y + label-height
+    }
+  })
+  #grid(
+    columns: (1.25fr, 1fr),
+    rows: (1fr,),
+    column-gutter: 1.4em,
+    align: horizon,
+    block(width: 100%, height: 100%, inset: (y: 0.4em), align(top + left, chart)),
+    [
+      *Big tech's own chips*
+      - Google TPU, AWS Trainium, Microsoft Maia, Meta MTIA
+      - Mostly used in-house; their makers are still NVIDIA's biggest customers
+
+      *New Entrants*
+      - Cerebras, Taalas
+      - Huawei Ascend
+
+      NVIDIA's biggest competitors are their own customers making custom chips.
+
+    ],
+  )
+]
+
+// VERIFY: the 75--80% share is analyst estimates (Silicon Analysts, IDC), not
+// reported figures.
+#speaker-note[
+  Not like-for-like: NVIDIA and Broadcom include networking, AMD includes CPUs, and the quarters end in different months. The ratio survives every adjustment.
+  - Analysts put NVIDIA at about 75--80% of AI accelerator revenue in 2026.
+  - The threat isn't a rival GPU. It's NVIDIA's customers (Google, Amazon, Microsoft, Meta) designing their own chips, often with Broadcom.
+  - Hold that thought for section 4: your supplier is your competitor.
+  #cite-source(
+    "https://siliconanalysts.com/analysis/nvidia-ai-accelerator-market-share-2024-2026",
+    display: false,
+  )[Silicon Analysts. _NVIDIA AI Accelerator Market Share 2024--2026_. Estimates NVIDIA at 75--81% of AI accelerator revenue in 2026.]
+]
+
+= Large Language Models
+
+#section-subtitle[AI Value Chain]
+
 
 == An LLM is fancy autocomplete
 
 // Lifted from A* slide 11 (ai-for-clm 01-intro/chapter/02-ai-basics.typ).
-#slide(align: top, config: config-common(breakable: false))[
+#slide(align: horizon, config: config-common(breakable: false))[
   #let sentence-tokens = (
     [An],
     [ LLM],
@@ -76,72 +329,33 @@
 
 == Black boxes, and stochastic
 
-// Lifted from A* slide 13, with its typo fixed ("we have *no* ability").
 #grid(
-  columns: (1fr, 1fr),
+  columns: (40%, 1fr),
+  column-gutter: 2em,
+  row-gutter: 0.8em,
   align: top,
-  gutter: 1em,
-  [
+  [*Simple LLM*],
+  grid.cell(x: 1, y: 0, rowspan: 3)[
     - Blocks of linear algebra
       - trained on every scrap of human media
       - with unimaginable amounts of computation
       - learn statistical patterns, not rules about the world
 
     - Behaviour *surprisingly* emerges at scale
-      - strengths and weaknesses very different from humans
+    #uncover("2-")[
+      - Works differently from humans
+        - Overconfidence
+        - Hallucinations
+        - Credulity / sycophancy
+        - Theory-of-mind / world-model failure
+        - Specification gaming / reward hacking
+    ]
   ],
-  [
-    #pause
-    *LLMs are black boxes*: we have no ability to fully predict or explain their behaviour.
-
-    *LLMs are stochastic*: identical runs often produce different output.
-
-    - `Sunny skies, 30C.`
-    - `30C with plenty of sunshine.`
-    - `It's sunny and 30C today.`
-  ],
+  include "/figures/simple-llm.typ",
+  lblock[#align(center)[_"Given this question, what do I answer?"_]],
 )
 
-== Why a long conversation costs more
 
-// New slide (gap in the A* crash course): the context window, and why cost
-// grows during a conversation. Needed for the homework-bot exercise.
-#grid(
-  columns: (1.1fr, 1fr),
-  column-gutter: 1.5em,
-  align: horizon,
-  [
-    The model has no memory. *Every turn resends the whole conversation* as input.
-
-    #v(0.4em)
-    #table(
-      columns: (auto, auto, auto),
-      align: (left, right, right),
-      stroke: none,
-      inset: (x: 0.6em, y: 0.35em),
-      table.header([*Turn*], [*Tokens in*], [*Tokens out*]),
-      table.hline(stroke: 0.5pt + luma(180)),
-      [1], [1,000], [500],
-      [5], [7,000], [500],
-      [10], [14,500], [500],
-      table.hline(stroke: 0.5pt + luma(180)),
-      [*Total*], [*77,500*], [*5,000*],
-    )
-  ],
-  [
-    #pause
-    - Input grows every turn: the tenth turn sends \~15× the tokens of the first.
-    - Agents are worse: one task can loop through *dozens of calls*.
-    - Discounts exist: cached input and overnight batch jobs are cheaper.
-  ],
-)
-
-#speaker-note[
-  Illustrative numbers: a 1,000-token opening and 1,500 tokens added per turn (the user's message plus the previous reply). Total input over ten turns is the sum 1,000 + 2,500 + ... + 14,500 = 77,500. Cached-input and batch discounts are real (often 50--90% off input) but don't change the shape.
-]
-
-// VERIFY: typical cached-input and batch discounts (the speaker note says
-// 50--90% off input). Check current OpenAI and Anthropic pricing pages.
 
 == Cost of AI
 
@@ -259,78 +473,4 @@
 
 #speaker-note[
   This is the depreciating-asset point from BSE3713: the model you trained for \$100M is worth much less a year later when a rival releases a better one, or the open-weight version catches up.
-]
-
-== What makes AI agentic?
-
-// Lifted from A* slide 19 (ai-for-clm 01-intro/chapter/03-agentic-ai.typ).
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 2em,
-  row-gutter: 0.8em,
-  align: top,
-  [*Simple LLM*], [*Agentic AI*],
-  include "/figures/simple-llm.typ", include "/figures/agentic-loop.typ",
-  lblock[#align(center)[_"Given this question, what do I answer?"_]],
-  lblock[#align(center)[_"Given this goal, what do I do next?"_]],
-)
-An *agent* is an LLM with a harness, which gives it *tools* to act on the world. #pause *Every loop is another paid call.*
-
-== LLMs fail in common ways
-
-// Lifted from A* slide 23 (ai-for-clm 01-intro/chapter/04-llm-limitations.typ).
-// This is the bridge to liability in lesson 4.
-#lblock[
-  #align(
-    center,
-  )[LLMs fail in *common* ways that are a *foreseeable* source of business risk.]
-]
-
-#{
-  let limitation(title, description) = [
-    - #text(size: 1.1em)[*#title*] \
-      #description
-  ]
-  grid(
-    columns: (1fr, 70mm),
-    rows: (2.9em,) * 5,
-    column-gutter: 1em,
-    row-gutter: 0.25em,
-    align: top,
-    grid.cell(x: 0, y: 0, limitation(
-      [Overconfidence],
-      [expresses certainty independent of correctness.#cite-source("https://aclanthology.org/2024.trustnlp-1.13/")[Tobias Groot and Matias Valdenegro-Toro. _Overconfidence is Key: Verbalized Uncertainty Evaluation in Large Language and Vision-Language Models_. TrustNLP 2024, pp. 145--171.]],
-    )),
-    grid.cell(x: 0, y: 1, limitation(
-      [Hallucinations],
-      [invents facts, citations, or details that sound plausible.],
-    )),
-    grid.cell(x: 0, y: 2, limitation(
-      [Credulity / sycophancy],
-      [accepts falsehoods or agrees with you despite contradictions.#cite-source("https://www.anthropic.com/research/towards-understanding-sycophancy-in-language-models")[Sharma et al. _Towards Understanding Sycophancy in Language Models_. 2023.]],
-    )),
-    grid.cell(x: 0, y: 3, limitation(
-      [Theory-of-mind / world-model failure],
-      [misjudges what people know or how actions affect the world.#cite-source("https://arxiv.org/abs/2305.14763")[Shapira et al. _Clever Hans or Neural Theory of Mind? Stress Testing Social Reasoning in Large Language Models_. arXiv:2305.14763, 2023.]],
-    )),
-    grid.cell(x: 0, y: 4, limitation(
-      [Specification gaming / reward hacking],
-      [exploits a rule or reward while missing the intended goal.#cite-source("https://www.anthropic.com/research/reward-tampering")[Anthropic. _Sycophancy to Subterfuge: Investigating Reward Tampering in Language Models_. 17 June 2024.]],
-    )),
-    grid.cell(x: 1, y: 2, rowspan: 3)[
-      #block(width: 100%, height: 100%, spacing: 0pt)[
-        #layout(size => grid(
-          columns: (16pt, 1fr),
-          column-gutter: 0.5em,
-          align: horizon,
-          annotation-brace(size.height, "#5a5a5a"),
-          text(weight: "bold", fill: rgb("#5a5a5a"))[AI Alignment],
-        ))
-      ]
-    ],
-  )
-}
-
-#speaker-note[
-  Keep this list in mind. In lesson 4, each of these becomes a line on someone's legal bill, and the someone is whoever faces the customer.
 ]

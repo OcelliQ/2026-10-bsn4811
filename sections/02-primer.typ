@@ -3,6 +3,40 @@
 
 = How AI businesses make money
 
+
+== The pricing menu
+
+#{
+  set text(size: 0.85em)
+  table(
+    columns: (auto, 1fr, auto),
+    align: (left, left, left),
+    stroke: none,
+    inset: (x: 0.6em, y: 0.45em),
+    table.header([*Model*], [*How it works*], [*Example*]),
+    table.hline(stroke: 0.5pt + luma(180)),
+    [Per-token API], [Pay for exactly what you use], [OpenAI / Anthropic APIs],
+    [Flat subscription],
+    [Fixed monthly fee, "unlimited" use],
+    [ChatGPT Plus, \$20],
+    [Freemium + ads], [Free tier paid for by advertising], [ChatGPT free tier],
+    [Per-seat], [Fee per user per month], [GitHub Copilot Business],
+    [Usage credits],
+    [Subscription buys a budget of usage],
+    [Cursor, \$20 of credits],
+    [Outcome-based], [Pay per job done], [Intercom Fin, \$0.99 per resolution],
+  )
+}
+
+// VERIFY: ChatGPT Plus still $20/month; ads in the ChatGPT free tier (2026);
+// Copilot Business per-seat price; Cursor Pro = $20 of credits (Jun 2025
+// switch); Intercom Fin $0.99 per resolution.
+
+#speaker-note[
+  Keep this menu in mind for the exercise in two slides. The question is always: who carries the cost when a user uses a lot?
+]
+
+
 == SaaS vs AI unit economics
 
 #grid(

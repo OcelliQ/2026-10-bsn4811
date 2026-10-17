@@ -139,6 +139,13 @@
 // Metropolis default primary --- use for bars, accents, comparison "good" sides.
 #let accent = rgb("#EB811B")
 
+// Subtitle for a `=` section slide, set under the title bar. Like
+// `section-quote`, it goes in the section body. Put it before any quote.
+#let section-subtitle(body) = {
+  v(0.5em)
+  text(size: 1.1em, fill: luma(110))[#body]
+}
+
 // Epigraph for a `=` section slide. Lives in the section body so
 // `big-section-slide` can place it under the title instead of on the next slide.
 #let section-quote(quote, by) = {
