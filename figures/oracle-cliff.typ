@@ -133,18 +133,10 @@
     )[this year's chips, \$90--95B]
     let tail = years.filter(i => i >= 5).map(at).sum()
     let tail-promised = promised.slice(5).sum()
-    place(dx: cliff, dy: top - 0.45cm, box(
-      width: size.width - cliff - 0.2cm,
-      align(right, text(
-        size: 0.65em,
-        fill: risk,
-        weight: "bold",
-      )[The bet: who pays for 2032--45?]),
-    ))
     note(x(6) + 0.25cm, axis + 1.9cm, luma(40))[
       #box(width: 12cm)[
         Still owed after 2031: #text(weight: "bold")[\~\$#calc.round(tail)B] in rent, power and interest, plus \$130B of debt to repay or refinance. \
-        Promised by customers: \~\$#tail-promised;B, with no end date. \
+        Promised by customers: \~\$#tail-promised;B \
         And to earn anything then, Oracle must buy chips again.
       ]
     ]
