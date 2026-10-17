@@ -1,7 +1,7 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
 #import "/annotation-brace.typ": annotation-brace
-#import "/figures/oracle-sankey.typ": oracle-sankey
+#import "/figures/oracle-cliff.typ": oracle-cliff
 
 #let tok-colors = (
   rgb("#FFD966"),
@@ -442,25 +442,22 @@
 == Where the risk sits
 
 #slide(config: config-common(breakable: false))[
-  #oracle-sankey()
+  #oracle-cliff()
 ]
 
 #speaker-note[
-  Band thickness is dollars; how far a band runs out is how many years the money is promised or owed.
-  - Customers have promised Oracle \$664B, more than the \$288B of data-centre rent it has signed for. On totals, it looks fine.
-  - But 84% of the customer money arrives by 2031, and the leases start in 2027--29 and run 15--19 years. Past the red line, nobody has promised to pay yet.
-  - What the rent buys: mostly electrical gear and cooling; land is about 4%. About a third is the landlord's financing and profit.
-  - Electricity is a separate bill. Oracle has contracted \$13B so far; running the whole pipeline would cost about \$5B a year.
+  Up: what customers have promised to pay Oracle each year. Down: what Oracle has promised to pay. The two totals are about the same, \$664B in and \$658B out. The difference is when.
+  - 84% of the customer money arrives by 2031. The new leases start in 2027--29 and run 15--19 years. Past the line, the bills keep coming and nobody has promised to pay yet.
+  - The 2027--31 bars look comfortable, but that is revenue, not profit: it also has to pay for the chips, staff and power to deliver it.
+  - The chips are paid for now, \$90--95B this year, partly out of borrowing: Oracle owes \$125B and S\&P cut it to BBB-, one notch above junk. Oracle writes servers off over six years; sceptics say a new NVIDIA generation makes them obsolete in about three. So far old GPUs still re-rent: Oracle renewed mostly 4-year-old capacity at a 20% premium.
   - About half the backlog is one customer, OpenAI, which is still losing money. Oracle names Meta, NVIDIA, AMD, xAI and TikTok as the others but not how much each owes.
-  - The chips are paid for now, \$90--95B this year, partly out of borrowing: Oracle owes \$125B and S&P cut it to BBB-, one notch above junk. Oracle writes servers off over six years; sceptics say a new NVIDIA generation makes them obsolete in about three. So far old GPUs still re-rent: Oracle renewed mostly 4-year-old capacity at a 20% premium.
+  - Not just Oracle: Big Tech has about \$1.2 trillion of data centre leases signed but not yet started. Meta signed only a 4-year lease on its Louisiana campus; bondholders carry the other 19 years, protected by Meta's guarantee on what the campus will be worth.
+  - Seen it before: WeWork signed 15-year leases and rented desks by the month. It filed for bankruptcy in 2023.
+  - The bull case: demand still exceeds supply, and H100 rental prices rose about 40% this year. The risk is about timing and debt, not demand. You can be right about AI and still go bust if prices dip the year your loan is due.
   #cite-source(
     "https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm",
     display: false,
-  )[Oracle. _Form 10-Q, quarter ended 31 August 2026_. RPO US\$664B (13% in 12 months, 37% in months 13--36, 34% in months 37--60); US\$288B of lease commitments not yet commenced, terms 15--19 years; borrowings US\$125.3B; servers depreciated over six years.]
-  #cite-source(
-    "https://www.sec.gov/Archives/edgar/data/0001341439/000119312526277521/orcl-20260531.htm",
-    display: false,
-  )[Oracle. _Form 10-K, fiscal 2026_. Unconditional purchase obligations, primarily data-centre power, US\$13.3B at 31 May 2026.]
+  )[Oracle. _Form 10-Q, quarter ended 31 August 2026_. RPO US\$664B (13% in 12 months, 37% in months 13--36, 34% in months 37--60); US\$288B of lease commitments not yet commenced, terms 15--19 years; lease and purchase-obligation maturity tables; borrowings US\$125.3B; interest expense US\$1.4B in the quarter; servers depreciated over six years.]
   #cite-source(
     "https://www.spglobal.com/ratings/en/regulatory/article/-/view/sourceId/101695609",
     display: false,
@@ -473,105 +470,6 @@
     "https://www.fool.com/earnings/call-transcripts/2026/09/11/oracle-orcl-q1-2027-earnings-call-transcript/",
     display: false,
   )[Oracle. _Q1 FY2027 earnings call_. 10 September 2026. FY27 capex US\$90--95B, net cash capex not more than US\$70B; GPUs up for renewal re-rented at a 20% premium.]
-  #cite-source(
-    "https://www.turnerandtownsend.com/en-us/news/ai-data-center-rush-raises-alarm-over-construction-supply-chain/",
-    display: false,
-  )[Turner & Townsend. _Data Centre Construction Cost Index 2025--2026_. Electrical about half of construction cost; mechanical 22% air-cooled, 33% liquid-cooled.]
-  #cite-source(
-    "https://stockanalysis.com/stocks/dlr/transcripts/653921-q2-2026/",
-    display: false,
-  )[Digital Realty. _Q2 2026 earnings call_. Development pipeline at an 11.5% expected stabilised yield.]
-]
-
-== Long leases, short contracts
-
-// The three clocks: what infra owes (red), what the chips are written off over
-// (grey), and how long the revenue is locked in (green). Years from today.
-// Hyperion: Beignet Investor LLC 6.581% notes due 30 May 2049 (SEC N-PORT);
-// Meta's own lease is 4 years with renewals and a 16-year residual value
-// guarantee (Meta 10-Q, Q3 2025). Oracle's 15--19-year leases signed but not
-// started, and 84% of its backlog within 5 years: Oracle 10-Q, 31 Aug 2026.
-// CoreWeave: 12-year weighted-average remaining lease term; 80% of backlog
-// recognised within 4 years (10-Q, Q2 2026). Microsoft: commercial backlog
-// weighted-average duration ~2.3 years (10-K FY2026).
-#slide(config: config-common(breakable: false))[
-  #let owe = rgb("#c62828")
-  #let earn = rgb("#2e7d32")
-  #let chip = luma(140)
-  #let max-years = 28
-  // Revealed in three groups (owed, chips, earned); touying can't step
-  // through content built in a closure, hence three grids and #pause.
-  #let owed = (
-    ([Meta's Louisiana campus: bonds due], 23, 23, owe, [2049]),
-    ([Oracle: data centre leases], 15, 19, owe, [15--19 yrs]),
-    ([CoreWeave: rent still owed], 12, 12, owe, [12 yrs]),
-  )
-  #let chips = (
-    ([GPUs written off over], 5, 6, chip, [5--6 yrs]),
-  )
-  #let earned = (
-    ([Oracle: 84% of revenue within], 5, 5, earn, [5 yrs]),
-    ([CoreWeave: 80% of revenue within], 4, 4, earn, [4 yrs]),
-    ([Microsoft: average contract], 2.3, 2.3, earn, [2.3 yrs]),
-    ([Anthropic can leave Colossus on], 0.25, 0.25, earn, [90 days' notice]),
-  )
-  #let bar(lo, hi, col, note) = layout(size => {
-    let w(y) = size.width * y / max-years
-    box(width: w(lo), height: 0.75em, fill: col, radius: 1pt)
-    if hi > lo {
-      box(
-        width: w(hi - lo),
-        height: 0.75em,
-        fill: col.lighten(60%),
-        radius: 1pt,
-      )
-    }
-    h(0.4em)
-    text(size: 0.75em, fill: col.darken(20%), weight: "bold", note)
-  })
-  #let clock-grid(rows) = grid(
-    columns: (9cm, 1fr),
-    column-gutter: 0.8em,
-    row-gutter: 0.55em,
-    align: (right + horizon, left + horizon),
-    ..rows
-      .map(((label, lo, hi, col, note)) => (
-        text(size: 0.8em, label),
-        bar(lo, hi, col, note),
-      ))
-      .flatten(),
-  )
-  #clock-grid(owed)
-  #v(0.2em)
-  #pause
-  #clock-grid(chips)
-  #v(0.2em)
-  #pause
-  #clock-grid(earned)
-  #v(0.6em)
-  #pause
-  #gblock[
-    Seen it before: *WeWork* signed 15-year leases and rented desks by the month. It filed for bankruptcy in 2023.
-  ]
-]
-
-#speaker-note[
-  Three clocks that don't match. The buildings and the debt behind them run for 15--25 years. The GPUs inside are written off over five or six, and NVIDIA ships a new generation every year. The customers commit for two to five years, or less.
-  - Big Tech has about \$1.2 trillion of data centre leases signed but not yet started.
-  - Meta signed only a 4-year lease on its Louisiana campus. The investors who bought the bonds carry the other 19 years, protected by Meta's guarantee on what the campus will be worth.
-  - The bull case: demand still exceeds supply, and H100 rental prices rose about 40% this year. The risk is about timing and debt, not demand. You can be right about AI and still go bust if prices dip the year your loan is due.
-  #cite-source(
-    "https://www.sec.gov/Archives/edgar/data/0001341439/000119312526389274/orcl-20260831.htm",
-    display: false,
-  )[Oracle. _Form 10-Q_, quarter ended 31 August 2026. US\$288 billion of data centre leases signed but not yet commenced, terms 15--19 years; 13% of remaining performance obligations recognised in the next 12 months.]
-  #cite-source(
-    "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000366/crwv-20260630.htm",
-    display: false,
-  )[CoreWeave. _Form 10-Q_, quarter ended 30 June 2026. Weighted-average remaining lease term 12 years; 41% of remaining performance obligations recognised within 24 months and 39% in months 25--48.]
-  #cite-source(
-    "https://www.sec.gov/Archives/edgar/data/0000789019/000119312526323660/msft-20260630.htm",
-    display: false,
-  )[Microsoft. _Form 10-K_, fiscal year 2026. Commercial remaining performance obligation US\$678 billion, weighted-average duration about 2.3 years; data centre leases not yet commenced US\$329.1 billion, terms 1--20 years.]
   #cite-source(
     "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm",
     display: false,
