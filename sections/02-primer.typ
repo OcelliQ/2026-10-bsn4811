@@ -1,34 +1,17 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
 #import "/annotation-brace.typ": annotation-brace
+#import "/figures/value-chain.typ": value-chain
 
 = How AI businesses make money
 
 == The AI value chain
 
-// PLACEHOLDER D05: the value chain. Four layers left to right, as chunky
-// arrow blocks: Chips -> Infra -> Models -> Apps. Highlight Apps (and, more
-// lightly, Models) in the accent colour with "you are here": students will
-// mostly build apps and consume apps and models.
-// Outside inputs merge into each layer from below, as thin feeder arrows:
-//   Chips  <- TSMC / wafer fabs, ASML lithography, rare earths and critical
-//             minerals, HBM memory
-//   Infra  <- energy (grid, power stations, Singapore's datacentre roadmap),
-//             land, cooling, water
-//   Models <- data (and its copyright), research talent
-//   Apps   <- distribution, the customer relationship
-// Two separate legal items come in from the top, styled differently from
-// the inputs (red, dashed), revealed on a second build:
-//   "Liability" arrow pointing DOWN INTO Apps: risk lands on whoever faces
-//             the customer; nothing is extracted, it just lands there.
-//   "Extraction" arrow pointing UP AND OUT of Models: copyright settlements,
-//             licensing deals and fines draw value out of the chain.
-// Example logos under each layer: Nvidia/AMD/TSMC; AWS/Azure/CoreWeave;
-// OpenAI/Anthropic/Google DeepMind/Mistral/DeepSeek; Cursor/Character.AI/
-// Midjourney/Perplexity.
-#diagram-placeholder(
-  "D05",
-  [Value chain: Chips -> Infra -> Models -> Apps, with inputs from below and Liability / Extraction from above],
+// D05: two builds, the legal arrows arriving on the second.
+// VERIFY: the example wordmarks under each layer are the ones to name.
+#alternatives(
+  align(center, value-chain(mode: "base")),
+  align(center, value-chain(mode: "full")),
 )
 
 #speaker-note[

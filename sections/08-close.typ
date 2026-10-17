@@ -1,25 +1,17 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
+#import "/figures/sankey.typ": sankey
+#import "/figures/margin-strips.typ": margin-strips
 
 = Who makes the money?
 
 == Follow the homework bot's money
 
-// PLACEHOLDER D07: Sankey diagram of ONE HEAVY USER of the homework bot for
-// one month, using the exercise's numbers. Flows left to right:
-//   User $10 + Investors (VC into the app) ~$80 -> Homework bot app $90
-//   App $90 -> Model lab $90
-//   Lab $90 + Investors (VC into the lab) -> Cloud / infra
-//   Infra -> Nvidia (chips) and energy
-// Point to make visually: more money reaches Nvidia than the user paid, and
-// most of it is investor money. Label the whole diagram "Illustrative" and
-// keep the investor bands a distinct colour (e.g. hatched or accent).
-// Optional: a smaller light-user Sankey beside it ($10 in, $3 to the lab,
-// $7 margin) for contrast.
-#diagram-placeholder(
-  "D07",
-  [Sankey: one heavy user, one month. User \$10 + VC \$80 -> app -> lab -> infra -> Nvidia. Illustrative.],
-)
+// VERIFY: the Sankey's split below the lab is illustrative: lab gross margin
+// ~50%, $60 of investor-funded training per heavy user per month, and the
+// cloud's $105 split $50 Nvidia / $30 energy and datacentres / $25 margin.
+// Downstream of the lab the user's slice is drawn pro rata, not traced.
+#sankey()
 
 #speaker-note[
   Use the numbers the class just worked out. The user pays \$10. The app pays the lab \$90. The \$80 gap is venture money. The lab is also burning investor money, so the infra layer and Nvidia receive more than the user ever paid. The flows are illustrative, not measured.
@@ -27,40 +19,13 @@
 
 == Profit per \$1 of revenue, layer by layer
 
-// PLACEHOLDER D08 (option 1, profit pool map; Bain / Gadiesh & Gilbert, HBR
-// 1998): one bar per layer, width = share of revenue, height = operating
-// margin. Loss-making layers sit below zero. Each bar is split into
-// companies with logos. Apps is thin, so give it a call-out or a minimum
-// width. Labs inside profitable parents (DeepMind, Meta) are hatched, not
-// estimated. Private figures carry a citation. TTM throughout. Footnote:
-// revenue double-counts down the stack.
-#diagram-placeholder(
-  "D08",
-  [Option 1: profit pool map. Width = revenue share, height = operating margin, per layer],
-)
-
-== Profit per \$1 of revenue, layer by layer
-
-// PLACEHOLDER D09 (option 2, logo strips): four stacked number lines, one
-// per layer (Chips, Infra, Models, Apps), on a shared operating-margin axis
-// from about -150% to +80% with a heavy zero line. Logos on each line,
-// optionally sized by revenue. Best for showing the spread in Apps (Midjourney
-// profitable, Cursor ~break-even, Character.AI deep negative). Same data
-// caveats as D08.
-#diagram-placeholder(
-  "D09",
-  [Option 2: logo strips on a shared operating-margin axis, one line per layer],
-)
-
-== Profit per \$1 of revenue, layer by layer
-
-// PLACEHOLDER D10 (option 3, ETF-style treemap): area = revenue, colour =
-// operating margin on a diverging red/green scale, grouped by layer. Same
-// data caveats as D08. Keep only one of D08 / D09 / D10 in the final deck.
-#diagram-placeholder(
-  "D10",
-  [Option 3: treemap. Area = revenue, colour = operating margin],
-)
+// D09 (logo strips) chosen over D08 (profit pool map, figures/profit-pool.typ)
+// and D10 (treemap, figures/margin-treemap.typ). Those two stay in figures/
+// unused, drawing on the same data.
+// VERIFY: every figure in figures/profit-pool-data.typ is a dummy placeholder.
+// Replace with cited TTM revenue and operating margin; the footnote on the
+// chart says "Illustrative placeholder figures" until then.
+#align(center, margin-strips())
 
 == Who makes the money
 

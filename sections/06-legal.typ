@@ -1,18 +1,12 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
+#import "/figures/value-chain.typ": value-chain
 
 = Liability and extraction: the legal line item
 
 == Back to the value chain
 
-// PLACEHOLDER D06: the value chain from D05 again, greyed out except the two
-// legal arrows, which are now bold: "Liability" landing on Apps, and
-// "Extraction" leaving Models. Small labels: "risk lands here" and "value
-// leaves here".
-#diagram-placeholder(
-  "D06",
-  [Value chain again, only the Liability (into Apps) and Extraction (out of Models) arrows highlighted],
-)
+#align(center, value-chain(mode: "legal"))
 
 == Liability: the bot is you
 

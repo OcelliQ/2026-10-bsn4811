@@ -69,14 +69,14 @@
   align: top,
   shot(
     "N08",
-    [Cursor pays Anthropic more than it earns],
+    [Cursor's "huge Anthropic bills", Aug 2025],
     path: "/figures/news/N08-cursor-anthropic-bills.png",
     url: "https://www.newcomer.co/p/cursors-popularity-has-come-at-a",
     width: 12cm,
   ),
   [
     - Fastest company ever to \$100M ARR
-    - Reportedly paid Anthropic *more than it earned*
+    - Negative gross margins, with *huge Anthropic bills*
     - ...while Anthropic sold *Claude Code*, a direct competitor
     #pause
     - *Nov 2025*: builds its own Composer model
