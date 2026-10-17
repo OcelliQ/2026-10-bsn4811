@@ -50,8 +50,21 @@
   ),
 )
 
+// Under the stack: fab equipment makers (the hook's bedrock row). Kept out of
+// `layers`, which the profit pool map indexes by position.
+#let bedrock-layer = (
+  name: "Bedrock",
+  companies: (
+    (name: "ASML", revenue: 33, margin: 34),
+    (name: "Applied Materials", revenue: 28, margin: 29),
+    (name: "Lam Research", revenue: 18, margin: 31),
+    (name: "Tokyo Electron", revenue: 16, margin: 26),
+  ),
+)
+
 // Shared styling so the three options look alike.
 #let layer-colors = (
+  Bedrock: rgb("#5a6b70"),
   Chips: rgb("#2e7d32"),
   Infra: rgb("#6b7f8e"),
   Models: rgb("#c62828"),

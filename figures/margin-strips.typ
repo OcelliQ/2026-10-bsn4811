@@ -1,59 +1,69 @@
 #import "/common.typ": accent
 #import "/figures/profit-pool-data.typ": (
-  data-note, gain, layer-colors, layers, loss,
+  bedrock-layer, gain, layer-colors, layers, loss,
 )
+#import "/figures/layer-stack.typ": make-bedrock-cell, make-stack-cell, n-layers
 
-// Logo strips: one operating-margin number line per layer, shared axis.
-#let margin-strips(width: 25cm, height: 11.5cm) = {
-  let lab-w = 2.1cm // layer-name column
-  let nr-w = 3.6cm // "no reported margin" box
-  let gap = 0.4cm
+// Logo strips: one operating-margin number line per layer, shared axis, beside
+// the hook's layer stack (Apps at the top, bedrock at the bottom). Companies
+// with no reported margin are left out.
+#let margin-strips(width: 25cm, height: 13cm) = {
+  let stack-w = 6.2cm
+  let lab-w = stack-w + 0.5cm // plot starts here
   let lo = -160
   let hi = 85
-  let plot-w = width - lab-w - nr-w - gap
+  let plot-w = width - lab-w - 0.2cm
   let sx(m) = lab-w + (m - lo) / (hi - lo) * plot-w
-  let strip-h = 2.4cm
-  let n = layers.len()
+  // Rows match the stack's grid: n-layers rows of 1fr, then bedrock at 0.5fr.
+  let rows = layers.rev() + (bedrock-layer,)
+  let gutter = 4pt
   let top-pad = 0.1cm
-  let axis-y = top-pad + n * strip-h
+  let grid-h = height - 1.4cm
+  let unit = (grid-h - n-layers * gutter) / (n-layers + 0.5)
+  let row-top(i) = top-pad + i * (unit + gutter)
+  let row-h(i) = if i < n-layers { unit } else { unit / 2 }
+  let axis-y = top-pad + grid-h
   // label overrides: (above?, shift) where shift -1 right-aligns, +1 left-aligns
   let place-ov = (
-    CoreWeave: (true, -1),
+    CoreWeave: (false, -1, -0.5),
     Oracle: (false, 0),
-    "Google Cloud": (false, 1, 0.7),
-    AWS: (true, -1),
-    Azure: (true, 1, 0.5),
+    "Google Cloud": (true, -1),
+    AWS: (true, 0),
+    Azure: (false, 0),
     AMD: (true, 0),
     Broadcom: (false, -1),
     TSMC: (true, 0),
     Nvidia: (false, 0),
+    "Character.AI": (true, 1),
   )
   let ticks = (-150, -100, -50, 0, 50, 80)
   let radius(rev) = calc.max(0.17cm, 0.036cm * calc.sqrt(rev)) // area ~ revenue
-  let hatch = tiling(size: (6pt, 6pt), line(
-    start: (0pt, 6pt),
-    end: (6pt, 0pt),
-    stroke: 0.6pt + luma(190),
-  ))
 
   box(width: width, height: height, {
+    place(top + left, dy: top-pad, block(width: stack-w, height: grid-h, grid(
+      columns: (1fr,),
+      rows: (1fr,) * n-layers + (0.5fr,),
+      row-gutter: gutter,
+      make-stack-cell(scale: 0.75),
+      make-bedrock-cell(scale: 0.75),
+    )))
     // tints
     place(top + left, dx: sx(lo), dy: top-pad, rect(
       width: sx(0) - sx(lo),
-      height: n * strip-h,
+      height: grid-h,
       fill: loss.transparentize(92%),
       stroke: none,
     ))
     place(top + left, dx: sx(0), dy: top-pad, rect(
       width: sx(hi) - sx(0),
-      height: n * strip-h,
+      height: grid-h,
       fill: gain.transparentize(92%),
       stroke: none,
     ))
     // tick gridlines + labels
     for t in ticks {
       place(top + left, dx: sx(t), dy: top-pad, line(
-        length: n * strip-h,
+        length: grid-h,
         angle: 90deg,
         stroke: 0.4pt + luma(210),
       ))
@@ -65,7 +75,7 @@
         )[#if t > 0 [+]#if t < 0 [#sym.minus]#calc.abs(t)%]),
       ))
     }
-    place(top + left, dx: sx(lo), dy: axis-y + 0.55cm, box(
+    place(top + left, dx: sx(lo), dy: axis-y + 0.6cm, box(
       width: sx(hi) - sx(lo),
       align(center, text(
         0.65em,
@@ -74,24 +84,20 @@
     ))
     // zero line
     place(top + left, dx: sx(0) - 1.2pt, dy: top-pad, line(
-      length: n * strip-h,
+      length: grid-h,
       angle: 90deg,
       stroke: 2.4pt + luma(40),
     ))
 
-    for (i, layer) in layers.enumerate() {
+    for (i, layer) in rows.enumerate() {
       let col = layer-colors.at(layer.name)
-      let mid = top-pad + i * strip-h + strip-h / 2
+      let mid = row-top(i) + row-h(i) / 2
       if i > 0 {
-        place(top + left, dy: top-pad + i * strip-h, line(
-          length: width,
+        place(top + left, dx: sx(lo), dy: row-top(i) - gutter / 2, line(
+          length: sx(hi) - sx(lo),
           stroke: 0.4pt + luma(200),
         ))
       }
-      place(top + left, dy: mid - 0.4cm, box(width: lab-w, height: 0.8cm, align(
-        left + horizon,
-        text(1em, weight: "bold", fill: col, layer.name),
-      )))
       place(top + left, dx: sx(lo) - 0.1cm, dy: mid - 0.5pt, line(
         length: sx(hi) - sx(lo) + 0.1cm,
         stroke: 1pt + col.lighten(40%),
@@ -101,6 +107,38 @@
         .companies
         .filter(c => c.margin != none)
         .sorted(key: c => c.margin)
+      if layer.name == "Bedrock" {
+        // Too close together to label one by one: one label beside the cluster.
+        for c in reported {
+          let r = radius(c.revenue)
+          place(top + left, dx: sx(c.margin) - r, dy: mid - r, circle(
+            radius: r,
+            fill: col,
+            stroke: 0.8pt + white,
+          ))
+        }
+        let left-edge = reported
+          .map(c => sx(c.margin) - radius(c.revenue))
+          .fold(width, calc.min)
+        place(
+          top + right,
+          dx: left-edge - 0.15cm - width,
+          dy: mid - 0.25cm,
+          box(
+            height: 0.5cm,
+            inset: (x: 3pt),
+            fill: white.transparentize(15%),
+            radius: 2pt,
+            align(horizon, text(
+              0.7em,
+              weight: "bold",
+              fill: luma(30),
+              reported.map(c => c.name).join(", "),
+            )),
+          ),
+        )
+        continue
+      }
       for (j, c) in reported.enumerate() {
         let r = radius(c.revenue)
         let ov = place-ov.at(c.name, default: (calc.even(j), 0))
@@ -138,37 +176,6 @@
           ),
         )
       }
-
-      let unrep = layer.companies.filter(c => c.margin == none)
-      if unrep.len() > 0 {
-        let bx = width - nr-w
-        let bh = strip-h - 0.5cm
-        place(top + left, dx: bx, dy: mid - bh / 2, rect(
-          width: nr-w,
-          height: bh,
-          fill: hatch,
-          stroke: 0.6pt + luma(150),
-          inset: 0pt,
-          {
-            align(center + horizon, box(
-              fill: white.transparentize(15%),
-              inset: 3pt,
-              radius: 2pt,
-              text(
-                0.65em,
-                weight: "bold",
-                fill: luma(40),
-                unrep.map(c => c.name).join(linebreak()),
-              ),
-            ))
-          },
-        ))
-      }
     }
-    place(top + left, dx: width - nr-w, dy: axis-y + 0.08cm, box(
-      width: nr-w,
-      align(center, text(0.65em, fill: luma(90))[no reported margin]),
-    ))
-    place(bottom + left, text(0.55em, fill: luma(120), data-note))
   })
 }

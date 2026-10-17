@@ -1,6 +1,7 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
 #import "/annotation-brace.typ": annotation-brace
+#import "/figures/layer-stack.typ": *
 
 = The Gold Rush
 
@@ -112,60 +113,10 @@
 // (01-intro/chapter/01-industry-landscape.typ), redrawn on the value-chain
 // layers over two slides: legal pressure and physical inputs on the left, then
 // the companies in each layer on the right.
-#let stack-ink = rgb("#23373b")
 #let legal-red = rgb("#c62828")
 #let brace = block(width: 100%, height: 100%, spacing: 0pt)[
   #layout(size => annotation-brace(size.height, "#5a5a5a"))
 ]
-// (title, fill, ink, pressures and inputs, companies)
-#let stack-layers = (
-  (
-    [Apps],
-    rgb("#236c57"),
-    white,
-    [distribution · the customer],
-    (
-      "Cursor",
-      "Windsurf",
-      "Replit",
-      "Jasper",
-      "Character.AI",
-      "Midjourney",
-      "Perplexity",
-    ),
-  ),
-  (
-    [Models],
-    rgb("#c5dace"),
-    stack-ink,
-    [model dev · data + copyright · research talent],
-    (
-      "OpenAI",
-      "Anthropic",
-      "DeepSeek",
-      "Moonshot",
-      "Z.ai",
-      "MiniMax",
-      "Xiaomi",
-    ),
-  ),
-  (
-    [Infra],
-    rgb("#dce8e2"),
-    stack-ink,
-    [data centres · cooling],
-    ("AWS", "Azure", "CoreWeave"),
-  ),
-  (
-    [Chips],
-    rgb("#e7edef"),
-    stack-ink,
-    [fabs · lithography · HBM],
-    ("Nvidia", "AMD", "TSMC", "Samsung", "SK Hynix", "Micron"),
-  ),
-)
-// Physical inputs under the whole stack, drawn as a row of tiles.
-#let bedrock = ([energy], [water], [fab])
 // Vertically integrated companies, one brace per span of layers (row 0 is
 // Apps, row 3 is Chips): (top row, bottom row, companies).
 // VERIFY: each company's span before the lecture; this moves fast.
@@ -189,67 +140,6 @@
   (0, 2, ("OpenAI", "xAI")),
 )
 
-// The pieces of the layer stack, laid out by layer-grid: the stack sits in
-// column 0, rows 0 to n - 1, with bedrock in row n; each layer shows its
-// pressures and inputs under its title. Each slide supplies its own columns
-// and annotation cells.
-#let n-layers = stack-layers.len()
-#let stack-cell = grid.cell(x: 0, y: 0, rowspan: n-layers)[
-  #block(
-    width: 100%,
-    height: 100%,
-    spacing: 0pt,
-    fill: luma(160),
-    radius: 5pt,
-    clip: true,
-  )[
-    #grid(
-      columns: (1fr,),
-      rows: (1fr,) * n-layers,
-      row-gutter: 4pt,
-      ..stack-layers.map(((title, fill, ink, inputs, _)) => grid.cell(
-        fill: fill,
-        inset: (x: 12pt, y: 9pt),
-        align: left + horizon,
-      )[
-        #set par(spacing: 0.6em)
-        #text(size: 24pt, weight: "bold", fill: ink)[#title]
-
-        #text(size: 14pt, fill: ink)[#inputs]
-      ]),
-    )
-  ]
-]
-#let bedrock-cell = grid.cell(x: 0, y: n-layers)[
-  #block(
-    width: 100%,
-    height: 100%,
-    spacing: 0pt,
-    fill: luma(160),
-    radius: 5pt,
-    clip: true,
-  )[
-    #grid(
-      columns: (1fr,) * bedrock.len(),
-      rows: (1fr,),
-      column-gutter: 4pt,
-      ..bedrock.map(label => block(
-        width: 100%,
-        height: 100%,
-        fill: luma(240),
-        inset: 4pt,
-      )[
-        #set par(leading: 3pt, spacing: 0pt)
-        #align(center + horizon, text(
-          size: 16pt,
-          weight: "bold",
-          fill: stack-ink,
-        )[#label])
-      ]),
-    )
-  ]
-]
-
 // Companies beside each layer in column 1, then one brace and name list per
 // integrated span in columns 2 onwards.
 #let company-cells = (
@@ -267,7 +157,9 @@
   // lithography scanners.
   grid.cell(x: 1, y: n-layers, align: left + horizon)[
     #text(size: 16pt, fill: black)[#(
-      ("ASML", "Applied Materials", "Tokyo Electron", "Lam Research").map(box).join(" · ")
+      ("ASML", "Applied Materials", "Tokyo Electron", "Lam Research")
+        .map(box)
+        .join(" · ")
     )]
   ],
   ..integrated

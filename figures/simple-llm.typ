@@ -35,7 +35,7 @@
     // -- nodes ---------------------------------------------------
     node(yp, [Your prompt])
     arr(yp, yi)
-    node(yi, [Inference], fill: g-fill)
+    node(yi, [LLM], fill: g-fill)
     arr(yi, yd)
     node(yd, [Done])
   })

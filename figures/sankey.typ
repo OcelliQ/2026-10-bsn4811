@@ -38,8 +38,7 @@
       place(top + left, dx: xm - 1cm, dy: ym - 0.3cm, box(
         width: 2cm,
         height: 0.6cm,
-        align(center + horizon, text(size: fsz, weight: "bold", fill: if f
-          == 1 { white } else { black })[\$#d]),
+        align(center + horizon, text(size: fsz, weight: "bold", fill: if f == 1 { white } else { black })[\$#d]),
       ))
     }
   }
@@ -111,22 +110,22 @@
       fill: accent,
       tc: black,
     )
-    node(1, y-app, 90, [Homework bot app *\$90*])
+    node(1, y-app, 90, [Homework bot app\ *\$90*])
     node(
       2,
       y-lab,
       150,
-      [Model lab *\$150* \ #text(size: 0.9em)[(\$90 from app + \$60 VC)]],
+      [Model lab *\$150*],
     )
     node(
       3,
       y-cloud,
       105,
-      [Cloud / infra *\$105* \ #text(size: 0.9em)[(inference \$45 + training \$60)]],
+      [Cloud / infra *\$105*],
     )
     node(3, y-staff, 45, [Staff and other *\$45*])
     node(4, y-nv, 50, [Nvidia (chips) *\$50*], fill: dark)
-    node(4, y-en, 30, [Energy and datacentres *\$30*])
+    node(4, y-en, 30, [Datacentre *\$30*])
     node(4, y-mg, 25, [Cloud margin *\$25*])
 
     // ---- user's slice marker on the right: dark outline on Nvidia ----
@@ -208,6 +207,6 @@
     place(bottom + right, text(
       size: 0.55em,
       fill: luma(90),
-    )[Assumes lab gross margin \~50% and that training is funded by investors.])
+    )[Assumes training is funded by investors.])
   })
 }
