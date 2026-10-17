@@ -30,15 +30,15 @@
     [
       *Global AI infrastructure spending forecast for 2026*#cite-source("https://www.gartner.com/en/newsroom/press-releases/2026-09-16-gartner-forecasts-worldwide-ai-spending-to-grow-49-point-5-percent-in-2026")[Gartner. _Worldwide AI Spending Forecast_. 16 September 2026. AI infrastructure: US\$1.484 trillion forecast for 2026.]
 
-      #text(size: 48pt, weight: "bold")[US\$1.48T]
+      #text(size: 72pt, weight: "bold")[US\$1.48T]
 
-      #text(size: 24pt)[≈ US\$4 billion a day]
+      #text(size: 36pt)[≈ US\$4 billion/day]
     ],
     [
       AI spends the cost of …
       #v(0.3em)
       #grid(
-        columns: (auto, auto, auto),
+        columns: (5em, auto, auto),
         column-gutter: 0.8em,
         row-gutter: 0.5em,
         align: (right + horizon, left + horizon, right + horizon),
@@ -128,6 +128,64 @@
   - 10^16 operations a second / 8.2 billion people at one sum a second each ≈ 1.2 million Earths.
   - Colossus 1: the Memphis site Anthropic now rents from SpaceX.
   - Training runs: estimates only, from Epoch AI.
+]
+
+== A rack of 72 costs \~\$3M
+
+// VERIFY: rack price. NVIDIA publishes no list price; these are analyst
+// estimates. Wing VC's piece now leads with GB300 NVL72 (just under $5.0M,
+// ~$3.4M of it the 72 GPU modules), not GB200, so re-check which figure it
+// backs. DeployBase gives $60--70K per GB200 superchip.
+// VERIFY: photo source and whether it shows GB200 NVL72 racks.
+#slide(config: config-common(breakable: false))[
+  #let money(body) = text(weight: "bold")[#body]
+  #grid(
+    columns: (13cm, 1fr),
+    rows: (1fr,),
+    column-gutter: 1.2em,
+    align: horizon,
+    shot(
+      "P01",
+      [CoreWeave datacentre],
+      path: "/figures/photos/coreweave-datacentre.jpg",
+      width: 13cm,
+      height: 100%,
+    ),
+    [
+      *GB200 NVL72*: 72 Blackwell GPUs and 36 Grace CPUs in one liquid-cooled rack
+
+      #v(0.4em)
+      #set text(size: 18pt)
+      #table(
+        columns: (1fr, auto),
+        stroke: none,
+        inset: (x: 0pt, y: 0.35em),
+        align: (left, right),
+        table.hline(stroke: 0.6pt + luma(160)),
+        [36 × GB200 superchips#cite-source("https://deploybase.ai/articles/nvidia-gb200-nvl72")[DeployBase. _NVIDIA GB200 NVL72_. About US\$60--70K per GB200 superchip.]],
+        [\~\$2.2--2.5M],
+        [NVLink switches, backplane, cooling, power, networking#cite-source("https://newsletter.semianalysis.com/p/gb200-hardware-architecture-and-component")[SemiAnalysis. _GB200 Hardware Architecture and Component Supply Chain & BOM_. July 2024.]],
+        [\~\$0.4--0.8M],
+        table.hline(stroke: 0.6pt + luma(160)),
+        money[Rack total#cite-source("https://www.wing.vc/content/how-much-does-an-nvidia-nvl72-cost")[Wing VC. _How Much Does an NVIDIA NVL72 Cost?_]],
+        money[\~\$3.0--3.5M],
+        text(fill: luma(110))[Smaller buyers], text(fill: luma(110))[up to \~\$3.9M],
+        text(fill: luma(110))[Deployed, with datacentre], text(fill: luma(110))[\$4M+],
+      )
+    ],
+  )
+]
+
+#speaker-note[
+  NVIDIA doesn't publish list prices; these are analyst estimates.
+  - Compute is the bulk: each GB200 superchip (two Blackwell GPUs, one Grace CPU) is about \$60--70K.
+  - Hyperscalers and neoclouds (CoreWeave, Microsoft, Meta) buy thousands of racks and pay near the low end.
+  - The rack draws 120--132 kW, so it needs a liquid-cooled hall, InfiniBand or Ethernet to other racks, and storage. Deployed, it's often well above \$4M.
+  - Renting: GMI Cloud lists GB200 from \$8 per GPU-hour, about \$420K a month for a full rack running continuously.
+  #cite-source(
+    "https://www.gmicloud.ai/en/blog/gb200-nvl72-rental-price-reserve-vs-on-demand",
+    display: false,
+  )[GMI Cloud. _GB200 NVL72 Rental Price: Reserve vs On-Demand_. From US\$8.00 per GPU-hour.]
 ]
 
 == The question for today

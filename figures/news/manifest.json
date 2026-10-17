@@ -12,12 +12,12 @@
   {
     "id": "N02",
     "file": "figures/news/N02-character-ai-google-deal.png",
-    "url": "https://nypost.com/2024/09/25/business/google-paid-2-7b-to-rehire-ai-genius-who-left-for-startup/",
-    "outlet": "New York Post",
-    "headline": "Google paid $2.7B to rehire AI genius who left after company refused to release his bot: report",
+    "url": "https://www.wsj.com/tech/ai/noam-shazeer-google-ai-deal-d3605697",
+    "outlet": "The Wall Street Journal",
+    "headline": "Google Paid $2.7 Billion to Bring Back an AI Genius Who Quit in Frustration",
     "date": "2024-09-25",
-    "quote": "Google paid $2.7 billion to rehire an artificial intelligence genius who left the tech giant in a huff three years ago to found his own startup, according to a report.",
-    "notes": "Same-day coverage of the WSJ report that put the figure at $2.7 billion. The August 2, 2024 announcement stories (CNBC, The Verge) do not state $2.7B; The Verge cites a $2.5 billion valuation. Business Insider's Sept. 27, 2024 story has $2.7 billion in the headline and the logo, but the dateline sits under a tall hero and is clipped once the masthead and headline are both in a 1000px frame. The WSJ original is paywalled in headless Chromium. The Post standfirst is the sentence quoted above; the shipped frame shows the $2.7B headline, the New York Post masthead, and Published Sep. 25, 2024, 2:29 p.m. ET. The empty right-rail ad was removed so the article column uses the full content width."
+    "quote": "Google wrote Character a check for around $2.7 billion, according to people with knowledge of the deal.",
+    "notes": "Manual capture of the WSJ original (Miles Kruppa and Lauren Thomas, Sept. 25, 2024 5:30 am ET). Headline, dek, byline and date are in frame; the quote is in the body below it. Replaces the New York Post rewrite."
   },
   {
     "id": "N03",
@@ -42,12 +42,12 @@
   {
     "id": "N05",
     "file": "figures/news/N05-copilot-20-per-user.png",
-    "url": "https://www.theregister.com/2023/10/11/github_ai_copilot_microsoft/",
-    "outlet": "The Register",
-    "headline": "Microsoft reportedly runs GitHub's AI Copilot at a loss",
-    "date": "2023-10-11",
-    "quote": "According to a Wall Street Journal report citing a \"person familiar with the figures,\" while Microsoft charges $10 a month for the service, the software giant is losing $20 a month per user on average and heavier users are costing the company as much as $80 every 30 days.",
-    "notes": "Tobias Mann, published Wed 11 Oct 2023 // 00:34 UTC. The $20-per-user sentence is in the visible lead, under the dek \"Redmond willing to do its accounts in red ink to get you hooked.\" The comments module rewrites the address bar to https://www.theregister.com/on-prem/2023/10/11/microsoft-reportedly-runs-githubs-ai-copilot-at-a-loss/361250 ; the stable article URL is the one above. Tom's Hardware (Oct. 10, 2023, headline \"Microsoft Lost $20 for Every $10 Copilot AI Subscription: Report\") also states the figure, with a narrower column and a newsletter chip."
+    "url": "https://www.wsj.com/tech/ai/ais-costly-buildup-could-make-early-products-a-hard-sell-bdd29b9f",
+    "outlet": "The Wall Street Journal",
+    "headline": "Big Tech Struggles to Turn AI Hype Into Profits",
+    "date": "2023-10-09",
+    "quote": "Microsoft has lost money on one of its first generative AI products.",
+    "notes": "Manual capture of the WSJ original (Tom Dotan and Deepa Seetharaman, Oct. 9, 2023 9:00 am ET), cropped to 16:10. The $20-per-user-per-month figure is in the body, below the frame. Replaces The Register's relay."
   },
   {
     "id": "N06",
@@ -92,32 +92,32 @@
   {
     "id": "N10",
     "file": "figures/news/N10-jasper-valuation.png",
-    "url": "https://www.maginative.com/article/jasper-cuts-internal-valuation-as-ai-growth-slows/",
-    "outlet": "Maginative",
-    "headline": "Jasper Appoints New CEO and Cuts Internal Valuation as AI Growth Slows",
-    "date": "2023-09-29",
-    "quote": "Jasper AI, an early pioneer in generative AI SaaS applications, has cut its internal valuation by 20% amid slowing growth, according to former employees notified of the change.",
-    "notes": "Chris McKay, September 29, 2023. The visible body also says OpenAI's launch of ChatGPT created a formidable low-cost competitor practically overnight, and that Jasper cut its 2023 ARR forecast by at least 30% and held layoffs in July. This is a rewrite of The Information's Sept. 28, 2023 valuation story. The Information pages (valuation cut, July layoffs briefing, and the Dec. 2022 unicorn feature) render as a headline plus an email subscribe form and a footer. Bloomberg's Sept. 28, 2023 CEO-replacement story blocks headless Chromium. No TechCrunch, Fortune, Forbes, Business Insider, or Axios article with this headline was available to capture. Austin Business Journal's layoff story is a JavaScript wall."
+    "url": "https://www.theinformation.com/articles/jasper-an-early-generative-ai-winner-cuts-internal-valuation-as-growth-slows",
+    "outlet": "The Information",
+    "headline": "Jasper, an Early Generative AI Winner, Cuts Internal Valuation as Growth Slows",
+    "date": "2023-09-28",
+    "quote": "Jasper AI, an early darling of the generative artificial intelligence boom, cut the internal value of its common shares 20%.",
+    "notes": "Manual capture of The Information original (Natasha Mascarenhas and Stephanie Palazzolo, Sep 28, 2023), cropped to 16:10. The page shows the headline, byline and date over a subscribe form. Replaces the Maginative rewrite."
   },
   {
     "id": "N11",
     "file": "figures/news/N11-thomson-reuters-saaspocalypse.png",
-    "url": "https://www.theguardian.com/technology/2026/feb/03/anthropic-ai-legal-tool-shares-data-services-pearson",
-    "outlet": "The Guardian",
-    "headline": "Anthropic's launch of AI legal tool hits shares in European data companies",
+    "url": "https://finance.yahoo.com/news/anthropics-ai-tools-deepen-selloff-054551832.html",
+    "outlet": "Reuters",
+    "headline": "Anthropic's new AI tools deepen selloff in data analytics and software stocks, investors say",
     "date": "2026-02-03",
-    "quote": "Nasdaq-listed Thomson Reuters' shares plummeted 18%. \"Anthropic launched new capabilities for its Cowork to the legal space, heightening competition within the space,\" Morgan Stanley analysts said in a note on Thomson Reuters.",
-    "notes": "Exact date is Tuesday 3 February 2026. Reuters' same-day story ('slumped by nearly 18%') is blocked in headless Chromium. The 18% sentence and the Claude Cowork sentence are in the Guardian body below the lead image, so they are not in the frame; the masthead, headline and date are. A Most viewed rail remains and does not push the headline down."
+    "quote": "Toronto-based Thomson Reuters (TRI.TO), which owns the Westlaw legal database, slumped by nearly 18%. It is on track for its biggest daily loss on record and lowest close since June 2021.",
+    "notes": "Manual capture of Reuters (Chibuike Oguh, Samuel Indyk and Danilo Masoni; February 3, 2026, updated February 4). Two frames stacked: headline and date above, the 18% paragraph below. The URL is Yahoo Finance's syndicated copy; the reuters.com URL couldn't be confirmed because Reuters blocks automated lookups. Replaces The Guardian."
   },
   {
     "id": "N12",
     "file": "figures/news/N12-builder-ai-collapse.png",
-    "url": "https://techcrunch.com/2025/05/20/once-worth-over-1b-microsoft-backed-builder-ai-is-running-out-of-money/",
-    "outlet": "TechCrunch",
-    "headline": "Once worth over $1B, Microsoft-backed Builder.ai is running out of money",
-    "date": "2025-05-20",
-    "quote": "AI software company Builder.ai is entering insolvency proceedings, a company spokesperson confirmed to TechCrunch. According to Bloomberg, former employees alleged that the company had inflated sales figures by more than 20% on multiple occasions.",
-    "notes": "Bloomberg returned 403. The FT piece (22 May 2025, “Microsoft-backed Builder.ai collapsed after finding potentially bogus sales”, https://www.ft.com/content/926f4969-fda7-4e78-b106-4888c8704bda) was a subscribe wall with the headline and masthead but no date. TechCrunch confirms the insolvency and, citing Bloomberg, sales inflated by more than 20%. It does not report the later restatement that cut prior revenue estimates to about a quarter. NYT’s August collapse story returned 403."
+    "url": "https://www.bloomberg.com/news/articles/2025-05-22/startup-builder-ai-overestimated-sales-by-300-to-key-creditors",
+    "outlet": "Bloomberg",
+    "headline": "Startup Builder.ai Overestimated Sales by 300% to Creditors",
+    "date": "2025-05-22",
+    "quote": "A group of creditors, led by Israeli firm Viola Credit, were originally told that Builder.ai projected sales of $220 million for 2024, but the actual revenue amount for the year turned out to be about $50 million.",
+    "notes": "Manual capture of the Bloomberg original, cropped to the headline and lead image above the subscribe overlay. No date in frame. Replaces the TechCrunch cash-crunch story."
   },
   {
     "id": "N13",
@@ -182,12 +182,12 @@
   {
     "id": "N19",
     "file": "figures/news/N19-anthropic-copyright-settlement.png",
-    "url": "https://www.theguardian.com/technology/2025/sep/05/anthropic-settlement-ai-book-lawsuit",
-    "outlet": "The Guardian",
-    "headline": "AI startup Anthropic agrees to pay $1.5bn to settle book piracy lawsuit",
+    "url": "https://apnews.com/article/anthropic-copyright-authors-settlement-training-f294266bc79a16ec90d2ddccdf435164",
+    "outlet": "Associated Press",
+    "headline": "Anthropic to pay authors $1.5 billion to settle lawsuit over pirated books used to train AI chatbots",
     "date": "2025-09-05",
-    "quote": "The artificial intelligence company Anthropic has agreed to pay $1.5bn to settle a class-action lawsuit by book authors who say the company took pirated copies of their works to train its chatbot.",
-    "notes": "Reuters was blocked. AP’s own page (https://apnews.com/article/anthropic-copyright-authors-settlement-training-f294266bc79a16ec90d2ddccdf435164, published 5 Sep 2025, byline updated 6 Sep 2025) rendered the headline, but the date sat below the lead image and could not share the frame with the headline in the top third. The Guardian runs that Associated Press copy with Fri 5 Sep 2025 beside the headline. Lead plaintiff Andrea Bartz is named in the story."
+    "quote": "The artificial intelligence company Anthropic has agreed to pay $1.5 billion to settle a class-action lawsuit by book authors who say the company took pirated copies of their works to train its chatbot.",
+    "notes": "Manual capture of AP's own page, cropped below the top ad banner. No date in frame. Replaces The Guardian's run of the AP copy."
   },
   {
     "id": "N20",

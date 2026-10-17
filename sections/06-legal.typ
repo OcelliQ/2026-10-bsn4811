@@ -107,7 +107,7 @@
     "N19",
     [Anthropic's \$1.5B copyright settlement, Sep 2025],
     path: "/figures/news/N19-anthropic-copyright-settlement.png",
-    url: "https://www.theguardian.com/technology/2025/sep/05/anthropic-settlement-ai-book-lawsuit",
+    url: "https://apnews.com/article/anthropic-copyright-authors-settlement-training-f294266bc79a16ec90d2ddccdf435164",
     width: 7cm,
   ),
 )

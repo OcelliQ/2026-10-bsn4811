@@ -45,24 +45,24 @@
   align: top,
   shot(
     "N12",
-    [Builder.ai collapses, May 2025],
+    [Builder.ai overstated sales to creditors, May 2025],
     path: "/figures/news/N12-builder-ai-collapse.png",
-    url: "https://techcrunch.com/2025/05/20/once-worth-over-1b-microsoft-backed-builder-ai-is-running-out-of-money/",
+    url: "https://www.bloomberg.com/news/articles/2025-05-22/startup-builder-ai-overestimated-sales-by-300-to-key-creditors",
     width: 12cm,
   ),
   [
     - Marketed *"Natasha the AI"*, which builds apps for you
     - Microsoft-backed, valued at \~\$1.5B
     #pause
-    - Told investors \$220M of 2024 revenue; audit found \~\$55M
+    - Told lenders it expected \$220M of 2024 sales; the actual was \~\$50M
     - Reports of round-tripping sales with VerSe
     - *May 2025*: a lender sweeps \$37M; insolvency
     - US prosecutors and the SEC investigate
   ],
 )
 
-// VERIFY: $1.5B valuation; $220M told vs ~$55M audited (single source,
-// Bloomberg 30 Jul 2025); VerSe round-tripping; Viola Credit's $37M sweep;
+// VERIFY: $1.5B valuation; $220M forecast vs ~$50M actual (Bloomberg, 22 May
+// 2025; the 30 Jul 2025 feature has ~$55M); VerSe round-tripping; Viola Credit's $37M sweep;
 // SDNY and SEC probes.
 
 #speaker-note[

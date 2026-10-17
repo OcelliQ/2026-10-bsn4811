@@ -51,7 +51,7 @@
     "N02",
     [Google's \$2.7B Character.AI deal, Aug 2024],
     path: "/figures/news/N02-character-ai-google-deal.png",
-    url: "https://nypost.com/2024/09/25/business/google-paid-2-7b-to-rehire-ai-genius-who-left-for-startup/",
+    url: "https://www.wsj.com/tech/ai/noam-shazeer-google-ai-deal-d3605697",
     width: 12cm,
   ),
 )
@@ -164,7 +164,7 @@
     "N05",
     [Copilot loses \~\$20/user/month (WSJ)],
     path: "/figures/news/N05-copilot-20-per-user.png",
-    url: "https://www.theregister.com/2023/10/11/github_ai_copilot_microsoft/",
+    url: "https://www.wsj.com/tech/ai/ais-costly-buildup-could-make-early-products-a-hard-sell-bdd29b9f",
     width: 7.8cm,
   ),
   shot(

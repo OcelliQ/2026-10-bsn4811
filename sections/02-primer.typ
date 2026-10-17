@@ -1,24 +1,8 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
 #import "/annotation-brace.typ": annotation-brace
-#import "/figures/value-chain.typ": value-chain
 
 = How AI businesses make money
-
-== The AI value chain
-
-// D05: two builds, the legal arrows arriving on the second.
-// VERIFY: the example wordmarks under each layer are the ones to name.
-#alternatives(
-  align(center, value-chain(mode: "base")),
-  align(center, value-chain(mode: "full")),
-)
-
-#speaker-note[
-  Walk left to right. Each layer buys from the one to its left and sells to the one to its right. The inputs from below are where the physical world bites: fabs, power, water, data.
-
-  Then the two legal arrows. Liability lands on the app, because the app faces the customer. Extraction leaves from the models layer, because that's where the training data went in. Both come back in lesson 4.
-]
 
 // Lifted from the ai-for-clm "Who Controls What in AI" slide
 // (01-intro/chapter/01-industry-landscape.typ), redrawn on the value-chain
@@ -69,16 +53,20 @@
 // VERIFY: each company's span before the lecture; this moves fast.
 #let integrated = (
   // Chips to Apps: own accelerators, cloud, models and consumer apps.
-  (0, 3, (
-    "Google DeepMind",
-    "Amazon",
-    "Microsoft",
-    "Meta",
-    "Apple",
-    "Alibaba",
-    "Huawei",
-    "Baidu",
-  )),
+  (
+    0,
+    3,
+    (
+      "Google DeepMind",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Alibaba",
+      "Huawei",
+      "Baidu",
+    ),
+  ),
   // Infra to Apps: own data centres; OpenAI's Broadcom chip isn't out yet.
   (0, 2, ("OpenAI", "xAI")),
   // Chips to Models: DGX Cloud and Nemotron.

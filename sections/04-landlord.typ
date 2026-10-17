@@ -114,14 +114,14 @@
     "N10",
     [Jasper after ChatGPT],
     path: "/figures/news/N10-jasper-valuation.png",
-    url: "https://www.maginative.com/article/jasper-cuts-internal-valuation-as-ai-growth-slows/",
+    url: "https://www.theinformation.com/articles/jasper-an-early-generative-ai-winner-cuts-internal-valuation-as-growth-slows",
     width: 7.8cm,
   ),
   shot(
     "N11",
     [SaaSpocalypse: Thomson Reuters #sym.minus;18%, Feb 2026],
     path: "/figures/news/N11-thomson-reuters-saaspocalypse.png",
-    url: "https://www.theguardian.com/technology/2026/feb/03/anthropic-ai-legal-tool-shares-data-services-pearson",
+    url: "https://finance.yahoo.com/news/anthropics-ai-tools-deepen-selloff-054551832.html",
     width: 7.8cm,
   ),
 
