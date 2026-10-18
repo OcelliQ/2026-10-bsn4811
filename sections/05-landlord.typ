@@ -1,7 +1,9 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
 
-= Your supplier is your competitor and your landlord
+= Your key supplier is your competitor and landlord
+
+#section-subtitle[Ecosystem Cannibalization]
 
 // GLM-5.3-REVIEW: the thesis is spatial - draw it: your app box resting on
 // the lab's model, the lab's own app (Claude Code) on the same layer, arrows
@@ -12,15 +14,16 @@
   columns: (1fr, 1fr),
   column-gutter: 1.5em,
   align: top,
-  gblock[
-    *Competitor* ("Sherlocking")
+  [#gblock[
+      *Competitor*
 
-    Whatever sits one layer below you can *absorb your product as a feature*.
+      Whatever sits one layer below you can *absorb your product as a feature*.
 
-    And it sees your usage data first.
+      And it sees your usage data first.
+    ]
+    _"Sherlocking"_, from when Apple copied a popular third-party app in 2002.
   ],
   [
-    #pause
     #gblock[
       *Landlord*
 
@@ -30,8 +33,6 @@
 )
 
 #speaker-note[
-  "Sherlocking" comes from Apple's Sherlock search tool, which absorbed a popular third-party app's features in 2002. Now it's labs absorbing the apps built on them.
-
   The landlord is the better business. 62% of McDonald's revenue is franchisees' rent and royalties, not burgers. Its own restaurants make about 15% at restaurant level; the company as a whole nets 32%. The labs are the landlord: every app built on them pays rent per token.
 ]
 
@@ -144,8 +145,7 @@
     width: 7.8cm,
   ),
 
-  [*Chat-with-PDF apps*: one ChatGPT update (late 2023)],
-  [*Jasper*: \$1.5B valuation a month before ChatGPT launched],
+  [*Chat-with-PDF apps*: one ChatGPT update (late 2023)], [*Jasper*: \$1.5B valuation a month before ChatGPT launched],
 
   [*Feb 2026*: Claude Cowork's legal plugin; Thomson Reuters #sym.minus;18% in a day],
 )
@@ -154,6 +154,9 @@
 // 2022) and the 2023 cuts; Thomson Reuters -18% on 3 Feb 2026 and RELX /
 // Wolters Kluwer >10%. Pick one sourced figure for the total SaaS loss if
 // you mention it (sources range $100B--$1T).
+
+TODO: Check Claude Design; did it put a dent in Figma?
+
 
 == Discuss
 

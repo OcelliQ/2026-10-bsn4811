@@ -3,6 +3,8 @@
 
 = Meat puppets and crumple zones
 
+Subtitle: TODO: Propose a better name for this.
+
 // GLM-5.3-REVIEW: two-panel concept diagram - meat puppet (human behind an
 // "AI" curtain) vs crumple zone (AI does the work, human absorbs the blame),
 // with the Elish cite.

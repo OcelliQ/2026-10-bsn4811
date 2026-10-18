@@ -55,13 +55,13 @@
 
   #pause
 
-  1 token ≈ ¾ of an English word, a punctuation mark, or a digit.#cite-source("https://platform.openai.com/tokenizer")[OpenAI. _Tokenizer_. Interactive examples of tokenization.]
+  1 token ≈ ¾ of an English word on average.#cite-source("https://developers.openai.com/api/docs/concepts")[OpenAI. _Key concepts: Tokens_. Rough English-text rule: one token is about four characters or 0.75 words; actual splitting depends on the tokenizer.]
 
   *You pay per token*, in and out. The _context window_ is sized in tokens.
 ]
 
 #speaker-note[
-  "everything" splits into "every" + "thing"; punctuation is its own token. Different models tokenize differently.
+  The sentence above is an illustrative split, not the output of a named tokenizer. Tokens may be words, word fragments, punctuation or number fragments; the boundaries differ by model. Input and output tokens can have different prices.
 ]
 
 == Black boxes, and stochastic
@@ -74,23 +74,32 @@
   [*Simple LLM*],
   grid.cell(x: 1, y: 0, rowspan: 3)[
     - Blocks of linear algebra
-      - trained on every scrap of human media
+      - trained on large collections of text and other media
       - with unimaginable amounts of computation
-      - learn statistical patterns, not rules about the world
+      - learn patterns that can support reasoning, but offer no guarantee of truth
 
     - Behaviour *surprisingly* emerges at scale
     #uncover("2-")[
-      - Works differently from humans
+      - Can fail in ways that surprise users
         - Overconfidence
         - Hallucinations
         - Credulity / sycophancy
-        - Theory-of-mind / world-model failure
+        - Reasoning / world-model errors
         - Specification gaming / reward hacking
     ]
   ],
   include "/figures/simple-llm.typ",
   lblock[#align(center)[_"Given this question, what do I answer?"_]],
 )
+
+#cite-source(
+  "https://arxiv.org/abs/2303.08774",
+  display: false,
+)[OpenAI. _GPT-4 Technical Report_. 2023. Describes next-token pretraining and limitations including hallucinations and reasoning errors. These are failure modes, not claims that learned models cannot represent rules or world knowledge.]
+#cite-source(
+  "https://www.anthropic.com/research/towards-understanding-sycophancy-in-language-models",
+  display: false,
+)[Anthropic. _Towards Understanding Sycophancy in Language Models_. 2023. Empirical study of models matching user beliefs over truthful responses.]
 
 
 
@@ -130,8 +139,8 @@
 == Cost of AI by launch date
 
 // D03: `cost-vs-aaii-by-age` chart from OcelliQ/ai-models-chart.
-// Callout: "Frontier to budget in ~4 months." Keep A* slide 16 instead if this
-// chart doesn't show the 4-month claim clearly.
+// The June 9 reference line is a historical benchmark, not an estimate of a
+// universal number of months needed for frontier capability to become cheap.
 #slide(config: config-page(margin: (x: 0em)))[
   #align(center, image(
     "/figures/ai-models-chart/svg-paths/cost-vs-aaii-by-age.svg",
@@ -140,12 +149,14 @@
 
   #place(top + left, dx: 48pt, dy: 8pt, lblock(width: 420pt)[
     The AI revolution is ongoing, not complete. \
-    Frontier to budget in *\~5 months*.
+    Newer models keep moving the *price--capability frontier*.
   ])
 ]
 
-// VERIFY: "frontier to budget in ~4 months" against the by-age chart from the
-// latest data, not the 30 September 2026 snapshot the A* deck used.
+#cite-source(
+  "https://github.com/OcelliQ/ai-models-chart",
+  display: false,
+)[OcelliQ. _AI model price charts_. Local charts generated 17 October 2026, comparing API cost for 100K input and 8K output tokens with the Artificial Analysis Intelligence Index. The launch-date chart marks the highest intelligence before 9 June 2026; it does not establish a universal frontier-to-budget interval. Hosting-hardware tiers are indicative capital budgets in SGD, not complete operating costs.]
 
 == What it costs to run your own
 
@@ -188,7 +199,7 @@
   grid.cell(x: 1, y: 0, rowspan: 3)[
     An *agent* is an LLM with a harness, which gives it *tools* to act on the world.
 
-    Every loop is another paid call, sending the whole conversation as input.
+    Each model call has a token cost. The conversation history accumulates.
 
     #table(
       columns: (auto, auto, auto, auto),
@@ -213,3 +224,7 @@
   include "/figures/agentic-loop.typ",
   lblock(center: true)[_"Given this goal, what do I do next?"_],
 )
+
+#speaker-note[
+  This arithmetic is an illustrative ten-call conversation: each turn adds 1,000 new input tokens and 1,000 output tokens. Inputs total 100,000; outputs add another 10,000. Of the inputs, 90,000 repeat prior context. Prompt caching can reduce the price of repeats; compaction and selective context can reduce their number. A tool invocation is not necessarily a separate model call, and local inference consumes hardware resources rather than an API fee.
+]

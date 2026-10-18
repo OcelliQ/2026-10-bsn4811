@@ -51,13 +51,13 @@
   },
   {
     "id": "N06",
-    "file": "figures/news/N06-claude-code-weekly-limits.png",
-    "url": "https://techcrunch.com/2025/07/28/anthropic-unveils-new-rate-limits-to-curb-claude-code-power-users/",
-    "outlet": "TechCrunch",
-    "headline": "Anthropic unveils new rate limits to curb Claude Code power users",
-    "date": "2025-07-28",
-    "quote": "Anthropic says its rolling out new weekly rate limits for Claude to curb usage among subscribers who are running its AI coding tool, Claude Code, \"continuously in the background, 24/7.\" The new rate limits will go into effect August 28 for subscribers to Anthropic's $20-per-month Pro plan, as well as its $100- and $200-per-month Max plans.",
-    "notes": "Announced July 28, 2025. Weekly limits take effect August 28, 2025."
+    "file": "figures/news/N06-harvey-ai-margins.png",
+    "url": "https://research2.contrary.com/report/the-path-forward-for-legal-ai",
+    "outlet": "Contrary Research",
+    "headline": "The Path Forward for Legal AI",
+    "date": "2026-10-05",
+    "quote": "This dynamic has caused Harvey's margins to decline from 50% to -50% as customer usage increased this year.",
+    "notes": "Captured 2026-10-18 at 1600 x 1000. Frame shows the Contrary Research masthead, economics section heading, and Harvey margin paragraph; cookie banner and newsletter popup dismissed. Bloomberg's original report blocks automated capture. The report's appendix dates the roughly -50% margin to June 2026 and includes Harvey's statement that margins were positive again in September; both qualifications are retained on the slide."
   },
   {
     "id": "N07",

@@ -1,5 +1,8 @@
-// The cliff: what customers have promised Oracle each year (up) against what
-// Oracle has promised to pay (down). One bar per fiscal year (to 31 May),
+// Illustrative mismatch: revenue backlog (up) against disclosed commitments
+// plus assumed future outflows (down). Annual buckets approximate fiscal years;
+// the RPO timing starts 31 Aug 2026, three months after the fiscal-year boundary.
+// These are not cash receipts versus a complete forecast of cash expenses.
+// One bar per fiscal year (to 31 May),
 // labelled by the year it ends; the first bar is the rest of FY27 (Sep 2026 -
 // May 2027). US$B. Oracle 10-Q for the quarter to 31 Aug 2026 unless noted.
 //
@@ -119,8 +122,8 @@
         lab,
       ))
     }
-    vline(3, luma(150))[2029: \ superseded]
-    vline(6, luma(60))[2032: \ written off]
+    vline(3, luma(150))[3-year \ scenario]
+    vline(6, luma(60))[6-year \ depreciation]
     let note(dx, dy, fill, body) = place(dx: dx, dy: dy, text(
       size: 0.65em,
       fill: fill,
@@ -130,14 +133,14 @@
       x(0) + bw + (col - bw) / 2 + 0.15cm,
       axis + 95 * k / 2,
       chip,
-    )[this year's chips, \$90--95B]
+    )[FY27 capex plan, \$90--95B]
     let tail = years.filter(i => i >= 5).map(at).sum()
     let tail-promised = promised.slice(5).sum()
     note(x(6) + 0.25cm, axis + 1.9cm, luma(40))[
       #box(width: 12cm)[
-        Still owed after 2031: #text(weight: "bold")[\~\$#calc.round(tail)B] in rent, power and interest, plus \$130B of debt to repay or refinance. \
-        Promised by customers: \~\$#tail-promised;B \
-        And to earn anything then, Oracle must buy chips again.
+        Modelled outflows after 2031: #text(weight: "bold")[\~\$#calc.round(tail)B], including assumed power and interest, plus \$125B debt to repay or refinance. \
+        Current revenue backlog allocated then: \~\$#tail-promised;B \
+        Future contracts and replacement capex are not modelled.
       ]
     ]
     // mirrored headers, each carrying its own legend
@@ -148,14 +151,14 @@
       ) #text(fill: luma(60), body)]
     let total-owed = years.map(at).sum()
     place(dx: 0cm, dy: 0cm, text(size: 0.65em)[
-      #text(fill: earn, weight: "bold")[Customers have promised Oracle \$664B]
+      #text(fill: earn, weight: "bold")[Oracle's current revenue backlog: \$664B]
       #key(earn)[contracted]
       #key(earn.transparentize(65%))[timing not given]
     ])
     place(dx: 0cm, dy: size.height - 0.5cm, text(size: 0.65em)[
       #text(
         weight: "bold",
-      )[Oracle has promised to pay \~\$#calc.round(total-owed)B]
+      )[Illustrative outflows: \~\$#calc.round(total-owed)B (includes estimates)]
       #key(owe)[new leases]
       #key(owe.darken(20%))[old leases]
       #key(owe.darken(45%))[supply + power]

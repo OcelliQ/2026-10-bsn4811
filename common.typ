@@ -52,6 +52,7 @@
     grid(
       columns: (1fr, 16cm, 1fr),
       column-gutter: .8em,
+      row-gutter: 0pt,
       align: (right + bottom, left + bottom),
       section-number,
       stack(
@@ -69,12 +70,9 @@
           ),
         ),
       ),
-    )
-    // Quote / notes sit under the title column. Absolute size so the
-    // 1.9em title setting does not inflate the epigraph.
-    grid(
-      columns: (1fr, 16cm, 1fr),
-      column-gutter: .8em,
+      [],
+      // Keep the section body in the next row of the same grid, directly
+      // below the bar, without paragraph spacing between separate grids.
       [],
       {
         set text(size: 20pt, fill: self.colors.neutral-dark)
@@ -145,11 +143,15 @@
 // Metropolis default primary --- use for bars, accents, comparison "good" sides.
 #let accent = rgb("#EB811B")
 
-// Subtitle for a `=` section slide, set under the title bar. Like
+// Subtitle for a `=` section slide, set 0.4em below the title bar. Like
 // `section-quote`, it goes in the section body. Put it before any quote.
 #let section-subtitle(body) = {
-  v(0.5em)
-  text(size: 1.1em, fill: luma(110))[#body]
+  v(0.4em)
+  block(
+    above: 0pt,
+    below: 0pt,
+    text(size: 1.1em, fill: luma(110), body),
+  )
 }
 
 // Epigraph for a `=` section slide. Lives in the section body so

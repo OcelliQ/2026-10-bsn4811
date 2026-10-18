@@ -24,37 +24,28 @@
       height: 100%,
     ),
     [
-      To keep up with *one* B200, you'd need #blank(2)[*about a million Earths'*] people, each doing one sum per second.
+      At peak low-precision throughput, *one* B200 matches #blank(2)[*about a million Earths'*] people doing one operation per second.#cite-source("https://www.nvidia.com/en-us/data-center/hgx/")[NVIDIA. _HGX B200 specifications_. Eight GPUs provide 72 PFLOPS dense FP4; 9 × 10^15 operations/s per GPU divided by 8.2B people is about 1.1M Earth populations. Theoretical arithmetic, not sustained application throughput.]
 
-      A large datacentre has #blank(2)[*220,000+* (Colossus 1, 300 MW)] of them.
+      Colossus 1 has #blank(2)[*220,000+ NVIDIA GPUs*] across GPU generations, and over *300 MW* of capacity.#cite-source("https://www.anthropic.com/news/higher-limits-spacex")[Anthropic. _Higher usage limits and a SpaceX compute deal_. May 2026. Colossus 1: more than 220,000 NVIDIA GPUs and 300 MW; not all B200s.]
 
-      A frontier model trains on #blank(2)[*\~100,000*] of them for #blank(2)[*a few months*], continuously.
+      Example: Grok 3's cluster had #blank(2)[*\~100,000 H100s*]; its training run took an estimated #blank(2)[*\~3 months*].#cite-source("https://epoch.ai/data-insights/longest-training-run")[Epoch AI. _Frontier LLM training runs can't get much longer_. 25 July 2025. Grok-3 training duration estimated at 2.96 months; cluster capacity is not continuous occupied capacity.]
     ],
   )
 ]
 
-// VERIFY: B200 throughput. The "million Earths" line assumes ~10^16 low-
-// precision (FP4, dense) operations a second and 8.2 billion people. Check
-// NVIDIA's B200 datasheet; FP8 dense is about half that (~500k Earths).
-// VERIFY: Colossus 1 at >220,000 GPUs and >300 MW, per Anthropic's SpaceX
-// compute announcement (anthropic.com/news/higher-limits-spacex, May 2026).
-// Note that Colossus 1 is not all B200s.
-// VERIFY: frontier training-run size and duration. Labs do not publish this;
-// cite an Epoch AI estimate for a recent frontier run.
 #speaker-note[
   Ask the room to guess each blank before revealing it.
-  - 10^16 operations a second / 8.2 billion people at one sum a second each ≈ 1.2 million Earths.
+  - The HGX B200 dense FP4 figure is 72 PFLOPS for eight GPUs: 9 PFLOPS per GPU, about 1.1 million Earth populations at one operation/s each. FP8 dense is half that. These are theoretical arithmetic rates at specific precision.
   - Colossus 1: the Memphis site Anthropic now rents from SpaceX.
-  - Training runs: estimates only, from Epoch AI.
+  - Grok 3 is a historical example, not a universal frontier training recipe.
+  #cite-source("https://epoch.ai/gradient-updates/compute-scaling-will-slow-down-due-to-increasing-lead-times", display: false)[Epoch AI. _Compute scaling will slow down due to increasing lead times_. Grok 3 required building Colossus with over 100,000 H100 GPUs.]
 ]
 
-== A rack of 72 costs \~\$3.5M
+== A rack of 72 costs \~\$3M (estimate)
 
-// VERIFY: rack price. NVIDIA publishes no list price; these are analyst
-// estimates. Wing VC's piece now leads with GB300 NVL72 (just under $5.0M,
-// ~$3.4M of it the 72 GPU modules), not GB200, so re-check which figure it
-// backs. DeployBase gives $60--70K per GB200 superchip.
-// VERIFY: photo source and whether it shows GB200 NVL72 racks.
+// Illustrative existing datacentre photo; rack models and operator are not
+// independently identified. GB200 prices are external estimates, not NVIDIA
+// list prices. Wing's newer ~US$5M GB300 estimate must not be applied to GB200.
 #slide(config: config-common(breakable: false))[
   #let money(body) = text(weight: "bold")[#body]
   #grid(
@@ -64,7 +55,7 @@
     align: horizon,
     shot(
       "P01",
-      [CoreWeave datacentre],
+      [Illustrative datacentre photo; rack models unidentified],
       path: "/figures/photos/coreweave-datacentre.jpg",
       width: 16cm,
       height: 100%,
@@ -79,13 +70,13 @@
         inset: (x: 0pt, y: 0.35em),
         align: (left, right),
         table.hline(stroke: 0.6pt + luma(160)),
-        [36 × GB200 superchips#cite-source("https://deploybase.ai/articles/nvidia-gb200-nvl72")[DeployBase. _NVIDIA GB200 NVL72_. About US\$60--70K per GB200 superchip.]],
-        [\~\$2.2--2.5M],
-        [backplane, cooling, power, networking#cite-source("https://newsletter.semianalysis.com/p/gb200-hardware-architecture-and-component")[SemiAnalysis. _GB200 Hardware Architecture and Component Supply Chain & BOM_. July 2024.]],
-        [\~\$0.4--0.8M],
+        [Compute#cite-source("https://www.nvidia.com/en-us/data-center/gb200-nvl72/")[NVIDIA. _GB200 NVL72_. 36 Grace CPUs and 72 Blackwell GPUs; 36 superchips with two GPUs and one CPU each.]],
+        [36 GB200 superchips],
+        [Cooling, power, interconnect],
+        [Integrated rack hardware],
         table.hline(stroke: 0.6pt + luma(160)),
         money[Rack total#cite-source("https://www.wing.vc/content/how-much-does-an-nvidia-nvl72-cost")[Wing VC. _How Much Does an NVIDIA NVL72 Cost?_]],
-        money[\~\$3.0--3.5M],
+        money[\~\$2.8--3.4M],
       )
     ],
   )
@@ -93,9 +84,8 @@
 
 #speaker-note[
   NVIDIA doesn't publish list prices; these are analyst estimates.
-  - Compute is the bulk: each GB200 superchip (two Blackwell GPUs, one Grace CPU) is about \$60--70K.
-  - Hyperscalers and neoclouds (CoreWeave, Microsoft, Meta) buy thousands of racks and pay near the low end.
-  - The rack draws 120--132 kW, so it needs a liquid-cooled hall, InfiniBand or Ethernet to other racks, and storage. Deployed, it's often well above \$4M.
+  - Each GB200 superchip contains two Blackwell GPUs and one Grace CPU. The slide uses an estimated whole-rack price, not an unverified component-price breakdown.
+  - Facility construction, external networking, storage, power and operating costs are additional. The photograph is illustrative; it does not establish a particular rack model or operator.
   - Renting: GMI Cloud lists GB200 from \$8 per GPU-hour, about \$420K a month for a full rack running continuously.
   #cite-source(
     "https://www.gmicloud.ai/en/blog/gb200-nvl72-rental-price-reserve-vs-on-demand",
@@ -103,15 +93,14 @@
   )[GMI Cloud. _GB200 NVL72 Rental Price: Reserve vs On-Demand_. From US\$8.00 per GPU-hour.]
 ]
 
-== NVIDIA beats everyone else combined
+== NVIDIA's data centre sales dwarf these rivals
 
 // Latest quarter, as reported. Not like-for-like: NVIDIA's data centre and
 // Broadcom's AI figures include networking; AMD's data centre segment includes
 // EPYC CPUs; Marvell's data centre includes networking. Quarters end Jul 2026
 // (NVIDIA), Aug 2026 (Broadcom, Marvell), Jun 2026 (AMD, Cerebras).
-// VERIFY: Huawei is an estimate, a quarter of the FT's reported US$12B 2026
-// figure (2 May 2026, unnamed sources). Cited via IndexBox; swap in the FT
-// article link if you can get it.
+// Huawei is a reported annual forecast divided by four, not quarterly sales.
+// This selection is not a complete or like-for-like accelerator market.
 #slide(config: config-common(breakable: false))[
   // Stacked bar, top to bottom. Labels sit beside their segment and get
   // pushed down (with a leader line) when a segment is too thin to hold one.
@@ -242,17 +231,11 @@
   )
 ]
 
-// VERIFY: the 75--80% share is analyst estimates (Silicon Analysts, IDC), not
-// reported figures.
 #speaker-note[
-  Not like-for-like: NVIDIA and Broadcom include networking, AMD includes CPUs, and the quarters end in different months. The ratio survives every adjustment.
-  - Analysts put NVIDIA at about 75--80% of AI accelerator revenue in 2026.
+  Not like-for-like: NVIDIA and Broadcom include networking, AMD includes CPUs, and the quarters end in different months.
+  - The figures are selected reported segments plus a Huawei forecast proxy, not measured market share. Do not infer a 75--80% accelerator share from this chart.
   - The threat isn't a rival GPU. It's NVIDIA's customers (Google, Amazon, Microsoft, Meta) designing their own chips, often with Broadcom.
   - Hold that thought for section 4: your supplier is your competitor.
-  #cite-source(
-    "https://siliconanalysts.com/analysis/nvidia-ai-accelerator-market-share-2024-2026",
-    display: false,
-  )[Silicon Analysts. _NVIDIA AI Accelerator Market Share 2024--2026_. Estimates NVIDIA at 75--81% of AI accelerator revenue in 2026.]
 ]
 
 = Value Chain: Infrastructure
@@ -262,10 +245,10 @@
 
 // Photos are company press images; see figures/photos/SOURCES.md. Power:
 // Abilene 1.2 GW (Epoch AI); Hyperion 2 GW by 2030, 5 GW later (Meta);
-// Rainier 2.25 GW at full build-out (Epoch AI). Fairwater's power is not
-// disclosed.
-// VERIFY: the Rainier photo is from Amazon's Project Rainier article but is
-// captioned only "The exterior of a data center".
+// Fairwater's power is not disclosed. Rainier's photograph does not establish
+// the capacity of a particular building or the whole project.
+// Amazon's Rainier article supplies the generically captioned exterior photo.
+// It is an illustration, not proof of a particular building's identity.
 #slide(config: config-common(breakable: false))[
   #let site(path, name, note) = block(
     width: 100%,
@@ -303,7 +286,7 @@
     site(
       "/figures/photos/amazon-project-rainier-new-carlisle.jpg",
       [Project Rainier, Indiana],
-      [Amazon for Anthropic; 2.25 GW#cite-source("https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster")[Amazon. _AWS Project Rainier_. Photo: Amazon. 2.25 GW at full build-out per Epoch AI's satellite explorer.]],
+      [Amazon for Anthropic; illustrative AWS exterior#cite-source("https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster")[Amazon. _AWS Project Rainier_. AWS datacentre exterior published with the Rainier article; caption alone does not identify a specific building.]],
     ),
     site(
       "/figures/photos/microsoft-fairwater-mount-pleasant-aerial.jpg",
@@ -315,8 +298,8 @@
 
 #speaker-note[
   A gigawatt is roughly the output of one large power station. Each of these campuses needs its own.
-  - Hyperion is being built with ten new gas plants from the local utility. Stargate Abilene has its own gas generation on site.
-  - Every one of these is owned or financed by someone different from the company that uses the chips: Oracle for OpenAI, Blue Owl's investors for Meta, Amazon for Anthropic.
+  - The projects require substantial power-generation and grid investment. The quoted capacities are plans or design capacities, not measurements of present electricity use.
+  - Several separate the model provider from the infrastructure owner or financing partner: Oracle capacity for OpenAI, Blue Owl's joint venture with Meta, and AWS capacity for Anthropic. Microsoft's own campus is a different case.
 ]
 
 
@@ -342,12 +325,12 @@
       height: 100%,
     ),
     [
-      Colossus 1 wentCabn from empty factory to running in *122 days*.
+      Colossus 1 went from empty factory to running in *122 days*, according to xAI.#cite-source("https://x.ai/colossus")[xAI. _Colossus_. Company account of the initial 122-day build and later expansion to 200,000 GPUs.]
 
-      Colossus 1 + 2 together draw *~1 GW*:\
+      Colossus 1 + 2 provide *\~1 GW of compute capacity*:\
       as much as all homes in Singapore#cite-source("https://www.ema.gov.sg/singapore-energy-statistics/Ch03/index3")[Energy Market Authority. _Singapore Energy Statistics_, chapter 3. Households used about 8 TWh in 2024, 14.6% of total electricity consumption; about 0.9 GW on average.].
 
-      Anthropic rents both for *\$1.25B a month* until 2029#cite-source("https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm")[SpaceX. _Form S-1/A_. Colossus and Colossus II together approximately 1.0 GW; Anthropic agreements for about 325,000 NVIDIA GPUs at US\$1.25 billion a month through May 2029, terminable by either party on 90 days' notice after the first three months.], but either side can walk away on *90 days' notice*.
+      Anthropic's capacity deal costs *\$1.25B a month*, scheduled through May 2029#cite-source("https://legrandcontinent.eu/fr/wp-content/uploads/sites/2/2026/06/Prospectus-SpaceX-compresse.pdf")[SpaceX. _Form S-1_, May 2026, prospectus copy. Colossus I and II provide about 1 GW compute capacity; Anthropic agreements charge US\$1.25B/month through May 2029, with reduced ramp-up fees.], but either side can terminate on *90 days' notice* after an initial three-month period.#cite-source("https://www.theinformation.com/briefings/spacex-discloses-updated-details-anthropic-deal-flags-data-center-water-risks")[Theo Wayt, The Information. _SpaceX Discloses Updated Details of Anthropic Deal, Flags Data Center Water Risks_. 1 June 2026. Amended filing's initial three-month period and subsequent mutual 90-day termination right.]
     ],
   )
 ]
@@ -360,7 +343,7 @@
 ]
 
 
-== Big Tech will spend \~\$730B on data centres this year
+== Four hyperscalers plan \~\$730B of capex in 2026
 
 // Capex guidance for calendar 2026 as of the June-quarter results (Sep-quarter
 // results are due late Oct 2026). Microsoft's ~$175B is after an accounting
@@ -368,7 +351,10 @@
 // Capex / operating cash flow is our arithmetic from each filing: latest
 // quarter, except Amazon (trailing twelve months). Oracle's capex is its
 // fiscal year to May 2027 (Reuters, not an Oracle document).
-// VERIFY: refresh after the Sep-quarter results.
+// Checked 18 Oct 2026, before September-quarter results. The headline sums
+// Amazon, Alphabet, Microsoft and Meta using range midpoints; Oracle is extra
+// and has a different fiscal-year horizon. Plans cover all company capex,
+// including non-AI spending, not just data-centre construction.
 #slide(config: config-common(breakable: false))[
   #let row(name, capex, ocf, src) = (
     [*#name*#src],
@@ -388,18 +374,18 @@
       align: (left, right, right),
       table.hline(stroke: 0.6pt + luma(160)),
       [],
-      text(size: 0.75em)[*2026 capex*],
+      text(size: 0.75em)[*capex plan*],
       text(size: 0.75em)[*capex ÷ cash \ from operations*],
       table.hline(stroke: 0.6pt + luma(160)),
       ..row("Amazon", [\~\$220B], 105, cite-source(
-        "https://www.sec.gov/Archives/edgar/data/0001018724/000101872426000024/amzn-20260630xex991.htm",
+        "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Second-Quarter-Results/default.aspx?mode=light",
       )[Amazon. _Second Quarter 2026 Results_ (8-K). Q2 purchases of property and equipment US\$54.2B; trailing-twelve-month operating cash flow US\$161.4B.]),
       ..row("Alphabet", [\$195--205B], 115, cite-source(
         "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000066/googexhibit991q22026.htm",
       )[Alphabet. _Second Quarter 2026 Results_ (8-K). Q2 capex US\$44.9B; operating cash flow US\$39.1B.]),
-      ..row("Microsoft", [\~\$175B], 65, cite-source(
-        "https://www.sec.gov/Archives/edgar/data/0000789019/000119312526323632/msft-ex99_1.htm",
-      )[Microsoft. _FY26 Q4 Results_ (8-K). Capex US\$35.8B cash plus US\$5.6B finance leases; operating cash flow US\$55.4B.]),
+      ..row("Microsoft", [\~\$175B], 75, cite-source(
+        "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
+      )[Microsoft. _FY26 Q4 earnings call_. 29 July 2026. US\$35.8B cash PP&E plus US\$5.6B finance leases versus US\$55.4B operating cash flow, about 75%. Calendar-2026 capex expectation US\$175B after lease classification changes.]),
       ..row("Meta", [\$130--145B], 98, cite-source(
         "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
       )[Meta. _Meta Reports Second Quarter 2026 Results_. Q2 capex US\$31.1B including finance leases; 2026 guidance US\$130--145B.]),
@@ -409,14 +395,19 @@
       table.hline(stroke: 0.6pt + luma(160)),
     ),
     [
-      Four of the five spent *all their operating cash flow or more* on capex last quarter.
+      Three of the five spent *more than their operating cash flow* on capex in the periods shown.
 
-      So they borrow and sell shares: Alphabet sold *\$80B of new stock*, the largest US share sale ever#cite-source("https://www.sec.gov/Archives/edgar/data/0001652044/000119312526257724/d83560dex991.htm")[Alphabet. _Form 8-K, Exhibit 99.1_. US\$80 billion equity offering, including a US\$10 billion private placement to Berkshire Hathaway, June 2026.].
+      They can borrow and sell shares: Alphabet raised *\$49.6B net* from equity in June, and established a further stock-sale programme.#cite-source("https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000066/googexhibit991q22026.htm")[Alphabet. _Second Quarter 2026 Results_. June equity issues raised US\$49.6B net; a separate at-the-market programme permits up to US\$40B of sales. The earlier US\$80B announcement was proposed financing, not a completed sale.]
     ],
   )
 ]
 
 #speaker-note[
+  The four calendar-2026 plans sum to US\$732.5B at midpoints: 220 + 200 + 175 + 137.5. Oracle's up-to-US\$95B plan is for FY2027 and is additional. Capex includes data centres and other investments; it is not all AI construction.
+
+  Ratios use the latest reported quarter except Amazon, which uses trailing twelve months: about US\$169B net PP&E purchases / US\$161.4B operating cash flow = 105%. Alphabet: 44.924 / 39.1 ≈ 115%; Microsoft including finance-lease additions: 41.4 / 55.4 ≈ 75%; Meta including finance-lease principal: 31.08 / 31.86 ≈ 98%; Oracle: 28.5 / 23.1 ≈ 123%. Definitions differ, so this is a financing-pressure comparison, not a standardized accounting ratio.
+  #cite-source("https://www.investing.com/news/stock-market-news/amazon-beats-estimates-for-quarterly-cloud-revenue-growth-4826048", display: false)[Reuters. _Amazon lifts investment plans after strong cloud sales; shares jump_. 30 July 2026. CEO raises calendar-2026 capital spending plan to US\$220B.]
+  #cite-source("https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/07/alphabet-postq-ai-growth-accelerates-as-spending-weighs-on-cash-flow", display: false)[S&P Global Market Intelligence. _Alphabet postQ: AI growth accelerates as spending weighs on cash flow_. July 2026. FY2026 capex guidance raised to US\$195--205B.]
   Oracle's figure is for its fiscal year to May 2027. Microsoft's is lower partly because of an accounting change, not less spending.
   - Every one of them says demand still exceeds capacity: Microsoft "customer demand continues to exceed available capacity"; Amazon says it will still be short in 2027.
   - Most of this money buys GPUs that are written off over five or six years.
@@ -429,14 +420,14 @@
 ]
 
 #speaker-note[
-  Up: what customers have promised to pay Oracle each year. Down: what Oracle has promised to pay. The two totals are about the same, \$664B in and \$658B out. The difference is when.
-  - 84% of the customer money arrives by 2031. The new leases start in 2027--29 and run 15--19 years. Past the line, the bills keep coming and nobody has promised to pay yet.
+  Up: Oracle's disclosed remaining performance obligations. Down: disclosed lease and purchase commitments plus scenario assumptions for power, future interest, and one year's planned capex. The \$658B total is a modelled outflow scenario, not a disclosed total of contractual obligations. It is not directly comparable with \$664B of future revenue.
+  - Oracle expects to recognize 84% of this backlog as revenue within five years of August 2026. The new leases start in FY2027--29 and run 15--19 years. Recognition is not cash collection, and future contracts can replenish the backlog. The chart approximates these periods with annual buckets; it is not a cash-flow forecast.
   - The 2027--31 bars look comfortable, but that is revenue, not profit: it also has to pay for the chips, staff and power to deliver it.
-  - The chips are paid for now, \$90--95B this year, partly out of borrowing: Oracle owes \$125B and S\&P cut it to BBB-, one notch above junk. Oracle writes servers off over six years; sceptics say a new NVIDIA generation makes them obsolete in about three. So far old GPUs still re-rent: Oracle renewed mostly 4-year-old capacity at a 20% premium.
+  - FY2027 capex guidance is \$90--95B, not exclusively chips or cash already spent. Oracle has \$125.3B of borrowings. Servers and networking equipment are depreciated over six years; the chart's three-year replacement marker is a scenario, not a verified obsolescence date. On its earnings call Oracle said renewed GPU capacity attracted a 20% premium; that does not establish every old GPU remains economically competitive.
   - About half the backlog is one customer, OpenAI, which is still losing money. Oracle names Meta, NVIDIA, AMD, xAI and TikTok as the others but not how much each owes.
-  - Not just Oracle: Big Tech has about \$1.2 trillion of data centre leases signed but not yet started. Meta signed only a 4-year lease on its Louisiana campus; bondholders carry the other 19 years, protected by Meta's guarantee on what the campus will be worth.
+  - Meta's Hyperion joint venture has an initial four-year lease and a residual-value guarantee covering the first sixteen years. A short lease does not mean Meta has no longer-term exposure.
   - Seen it before: WeWork signed 15-year leases and rented desks by the month. It filed for bankruptcy in 2023.
-  - The bull case: demand still exceeds supply, and H100 rental prices rose about 40% this year. The risk is about timing and debt, not demand. You can be right about AI and still go bust if prices dip the year your loan is due.
+  - The bull case is that demand and future contracts continue growing. The risk illustrated here is the mismatch in timing, refinancing and renewal assumptions, not a prediction that demand must disappear.
   #cite-source(
     "https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm",
     display: false,

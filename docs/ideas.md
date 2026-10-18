@@ -70,7 +70,7 @@ Each lesson gets one headline case told as a story, 1–2 rapid-fire supporting 
 
 - **Thesis:** SaaS has ~0 marginal cost, so heavy users are pure profit. AI has a per-token cost, so on a flat plan heavy users are pure loss. It's like a gym subscription: the flat fee only works because most members rarely show up. Engagement, the metric consumer apps chase, becomes a cost, and highly engaged users also bring safety and legal exposure.
 - **Headline case:** Character.AI. A beloved product with millions of devoted users, compute costs far above revenue, the Google reverse acqui-hire (L9 aside), and then Chapter 11 ⚠.
-- **Rapid-fire:** ChatGPT Pro losing money at $200. Copilot losing ~$20/user/month on a $10 plan. Claude Code weekly limits. Cursor's credit switch and apology. Replika.
+- **Rapid-fire:** ChatGPT Pro losing money at $200. Copilot losing ~$20/user/month on a $10 plan. Harvey gross margin reportedly around -50% in June 2026, with the company reporting positive margins again in September (Contrary Research, October 5, 2026). Also Claude Code weekly limits, Cursor's credit switch and apology, and Replika.
 - **Discussion:** the live exercise already raised it. Which pricing model would you pick for the homework bot, and what does it do to your heaviest users?
 
 #### Lesson 2. Your supplier is your competitor and your landlord (L1 + L2)

@@ -15,18 +15,16 @@
 // $128.9B total (x5.98, 1975). Singapore figures use S$1.30/US$: Changi T5
 // S$12.96B (trade-press estimate, incl. Changi East works), TEL "over S$25B"
 // (2020 estimate), GDP S$789.5B (2025, nominal).
-// China: Three Gorges CNY 184.9B official final cost (Xinhua, Sept 2009) at
-// the 2002 peg of 8.28/US$ = $22.3B, x1.79 (2002) = $39.9B; cross-check,
-// Xinhua's own $27.19B x1.50 (2009) = $40.8B. Critics put the true cost far
-// higher (Dai Qing: up to CNY 600B). Big Fund III CNY 344B ($47.5B) is
+// China: Reuters' September 2009 report gives Three Gorges including
+// resettlement at US$37.23B; x1.50 (2009 -> 2025 CPI-U) = about US$56B.
+// Big Fund III CNY 344B ($47.5B) is
 // registered capital, not money spent; x1.026 (2024) = $48.7B.
 // CPI-U annual averages (1944 17.6, 1975 53.8, 2002 179.9, 2009 214.5, 2024
 // 313.7, 2025 321.9) are from the Minneapolis Fed's CPI 1913- table; BLS has
 // no October 2025 value (government shutdown), so the 2025 average covers 11
 // months.
-// VERIFY: Three Gorges is cited via Probe International; the Xinhua/China
-// Daily original (chinadaily.com.cn .../2009-09/14/content_8687672.htm) 404s.
-// Big Fund III cites Reuters via Investing.com; reuters.com URL unknown.
+// Reuters syndications are identified as such. Big Fund III is registered
+// capital; GDP is an annual flow. Neither is a completed construction cost.
 #slide(align: top, config: config-common(breakable: false))[
   #let row(time, project, cost) = (
     text(size: 20pt, weight: "bold")[#blank(2, time)],
@@ -60,14 +58,14 @@
       [35B],
     ),
     ..row(
-      [10 days],
-      [Three Gorges Dam#cite-source("https://journal.probeinternational.org/2009/09/18/the-chinese-government-is-not-telling-the-whole-truth-about-the-cost-of-the-three-gorges-dam")[Probe International. _The Chinese government is not telling the whole truth about the cost of the Three Gorges dam_. 18 September 2009. Reports Xinhua's official figure: 184.9 billion yuan (US\$27.19 billion).]],
-      [40B],
-    ),
-    ..row(
       [12 days],
       [China's chip fund (Big Fund III)#cite-source("https://investing.com/news/stock-market-news/china-sets-up-475-billion-state-fund-to-boost-semiconductor-industry-3457524")[Reuters. _China sets up third fund with \$47.5 billion to boost semiconductor sector_. 26 May 2024. Registered capital of 344 billion yuan (US\$47.5 billion).]],
       [49B],
+    ),
+    ..row(
+      [14 days],
+      [Three Gorges Dam#cite-source("https://www.thestar.com.my/news/world/2009/09/14/china-says-three-gorges-dam-cost-37-billion")[Reuters, syndicated by The Star. _China says Three Gorges Dam cost \$37 billion_. 14 September 2009. US\$37.23B including resettlement, citing Xinhua; about US\$56B at 2025 US CPI-U.]],
+      [56B],
     ),
     ..row(
       [2½ months],
@@ -76,7 +74,7 @@
     ),
     ..row(
       [5 months],
-      [Singapore's GDP#cite-source("https://isomer-user-content.by.gov.sg/166/b0da590f-0637-47b2-85a7-583a6135c72c/FullReport_AES2025.pdf")[Ministry of Trade and Industry, Singapore. _Economic Survey of Singapore 2025_. GDP at current market prices: S\$789.5 billion in 2025.]],
+      [Singapore's GDP#cite-source("https://www.singstat.gov.sg/find-data/get-latest-data")[Singapore Department of Statistics. _Latest Data_. GDP at current market prices: S\$789,529.2 million in 2025, checked 18 October 2026; about US\$607B at the illustrative S\$1.30/US\$ exchange rate.]],
       [607B],
     ),
     ..row(
@@ -92,6 +90,9 @@
 
 #speaker-note[
   Gartner's figure is all AI infrastructure (servers, devices, datacentres), not datacentre construction alone. Each comparison is a whole-programme total; the AI figure is one year. Scale, not precision.
+
+  These are spending-equivalent comparisons, not like-for-like investments. The chip fund is subscribed capital, Singapore GDP is one year's output, and Changi T5 is a trade-press estimate that includes Changi East works. The interstate conversion uses a representative 1975 CPI year for multi-decade spending; it is a rough scale comparison rather than a year-by-year inflation reconstruction.
+  #cite-source("https://www.minneapolisfed.org/about-us/monetary-policy/inflation-calculator/consumer-price-index-1913-", display: false)[Federal Reserve Bank of Minneapolis. _Consumer Price Index, 1913--_. Annual US CPI-U values used for approximate 2025-dollar conversions.]
 ]
 
 
@@ -119,7 +120,8 @@
 ]
 // Vertically integrated companies, one brace per span of layers (row 0 is
 // Apps, row 3 is Chips): (top row, bottom row, companies).
-// VERIFY: each company's span before the lecture; this moves fast.
+// Participation includes in-house chip design and owned or contracted
+// compute capacity; it does not mean each company sells a public cloud.
 #let integrated = (
   // Chips to Apps: own accelerators, cloud, models and consumer apps.
   (
@@ -134,10 +136,11 @@
       "Alibaba",
       "Huawei",
       "Baidu",
+      "OpenAI",
     ),
   ),
-  // Infra to Apps: own data centres; OpenAI's Broadcom chip isn't out yet.
-  (0, 2, ("OpenAI", "xAI")),
+  // Infra to Apps: owns or contracts data-centre capacity.
+  (0, 2, ("xAI",)),
 )
 
 // Companies beside each layer in column 1, then one brace and name list per
@@ -226,4 +229,9 @@
     (33%,) + (16pt, auto) * integrated.len(),
     ..company-cells,
   )
+]
+
+#speaker-note[
+  The braces show participation across layers, including in-house hardware and leased capacity, not ownership of every input or a public cloud business. OpenAI's announced Broadcom programme includes accelerator design, with deployment targeted from the second half of 2026 through 2029; this is not proof its own chips are already operating at scale.
+  #cite-source("https://openai.com/index/openai-and-broadcom-announce-strategic-collaboration/", display: false)[OpenAI and Broadcom. _Strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators_. 13 October 2025. Announced programme; deployment targeted from H2 2026 through 2029.]
 ]

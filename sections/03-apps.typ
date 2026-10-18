@@ -23,7 +23,7 @@
   align: top,
   [
     *The product*: an AI homework tutor that answers questions and draws graphs and diagrams.
-    Competitors charge *\$10 / month*.
+    Assume competitors charge *\$10 / month*.
 
     #v(0.6em)
     #table(
@@ -54,10 +54,21 @@
   ],
 )
 
-// Prices: Anthropic, OpenAI and Google API pricing pages, 18 Oct 2026.
+#cite-source(
+  "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+  display: false,
+)[OpenAI. _GPT-6.1 Sol_. Standard text pricing checked 18 October 2026: US\$2/M input and US\$10/M output for prompts up to 272K input tokens.]
+#cite-source(
+  "https://claude.com/pricing",
+  display: false,
+)[Anthropic. _Pricing_. Sonnet 5.5 standard text rates, checked 18 October 2026: US\$2/M input and US\$10/M output. Team seats billed monthly: US\$25 standard and US\$125 premium; annual billing is cheaper.]
+#cite-source(
+  "https://ai.google.dev/gemini-api/docs/pricing",
+  display: false,
+)[Google. _Gemini Developer API pricing_. Gemini 4 Argon standard text rates: US\$2/M input and US\$10/M output through 30 November 2026; announced rates double from 1 December.]
 
 #speaker-note[
-  The three labs price their mid-tier models identically. Which one students pick doesn't change the answer.
+  At the standard short-context text rates checked on 18 October 2026, these three models cost the same. This exercise assumes no cache hits, batch discount, reasoning beyond the stated output, or separate image/tool charges. Graphs are generated as code, not through a separately priced image model. The competitor price and usage profiles are hypothetical.
 
   One question: 10,000 × \$2/M = \$0.02 in, 1,000 × \$10/M = \$0.01 out. \$0.03.
 
@@ -67,58 +78,65 @@
 
   Break-even: \$10 / \$0.03 ≈ 330 questions a month.
 
+  One heavy user's \$80 loss needs 12 light users at \$7 contribution each (80 / 7 ≈ 11.4), before overhead.
+
   Agent: 100 tasks × 50 calls × \$0.03 = \$150.
 ]
 
 
-// GLM-5.3-REVIEW: add a third column, "who eats the heavy user?", so the
-// speaker-note question is answered per row: per-token -> user, flat -> you,
-// credits -> capped you, outcome -> you unless scoped.
 == The pricing menu
 
-#let tied = uncover("2-", text(fill: accent)[●])
+#slide(align: top, config: config-common(breakable: false), repeat: 3, self => [
+  #let (uncover, only, alternatives) = utils.methods(self)
+  #let tied = uncover("2-", text(fill: accent)[●])
 
-#table(
-  columns: (auto, auto, 1fr, auto),
-  align: (center, left, left, left),
-  stroke: none,
-  fill: (_, y) => if y > 0 and calc.even(y) { luma(240) },
-  inset: (x: 0.5em, y: 0.4em),
-  table.header([], [*Model*], [*How it works*], [*Example*]),
-  table.hline(stroke: 0.5pt + luma(180)),
-  tied, [Per-token API], [Pay for exactly what you use], [OpenAI / Anthropic APIs],
-  [], [Flat / per-seat], [Fixed fee, "unlimited" use],
-  [Microsoft 365 Premium, \$20 \ Claude Team, \$25 / \$125 per seat],
-  [], [Freemium + ads], [Free tier paid for by advertising], [ChatGPT free tier],
-  tied, [Usage credits], [Fee buys a usage budget], [Cursor, \$20 of credits],
-  tied, [Outcome-based], [Pay per job done], [Zendesk, \$1.50 per resolution],
-)
+  #cite-source(
+    "https://www.microsoft.com/en-us/copilot/solutions/individuals",
+    display: false,
+  )[Microsoft. _Copilot for individuals_. Microsoft 365 Premium: US\$19.99/month, checked 18 October 2026; usage limits apply.]
+  #cite-source(
+    "https://www.zendesk.com/pricing/",
+    display: false,
+  )[Zendesk. _Pricing_. Automated resolutions: US\$1.50 committed and US\$2.00 pay-as-you-go, in addition to the relevant base plan; checked 18 October 2026.]
 
-#v(0.3em)
-#uncover("2-")[
-  #lblock[
-    #grid(
-      columns: (1em, 1fr),
-      row-gutter: 0.5em,
-      text(fill: accent)[●], [*Tie price to usage:* heavy users pay for what they use.],
-      [],
-      [*Flat rates are subsidies:* a \$125 Claude seat burns up to \~\$3,700 of API a month. That only works as a loss leader.],
 
-      [], [*Price to value:* outcome pricing charges for results, so the vendor pays for every failed attempt.],
-    )
+  #table(
+    columns: (auto, auto, 1fr, auto),
+    align: (center, left, left, left),
+    stroke: none,
+    fill: (_, y) => if y > 0 and calc.even(y) { luma(240) },
+    inset: (x: 0.5em, y: 0.4em),
+    table.header([], [*Model*], [*How it works*], [*Example*]),
+    table.hline(stroke: 0.5pt + luma(180)),
+    tied, [Per-token API], [Pay for exactly what you use], [OpenAI / Anthropic APIs],
+    [], [Flat / per-seat], [Fixed fee, subject to usage limits],
+    [Microsoft 365 Premium, \$20/month \ Claude Team, \$25 / \$125 per seat/month],
+    [], [Freemium + ads], [Ads help fund a free tier], [ChatGPT free tier],
+    tied, [Usage credits], [Fee buys a usage budget], [Cursor, \$20 of credits],
+    [], [Outcome-based], [Pay per job done], [Zendesk, \$1.50 per committed resolution],
+  )
+
+  #v(0.3em)
+  #alternatives(start: 2, position: top + left)[
+    #lblock[
+      #grid(
+        columns: (1em, 1fr),
+        row-gutter: 0.5em,
+        text(fill: accent)[●], [*Tie price to usage:* heavy users pay for what they use.],
+        [], [*Pooled usage:* heavy users cost more than their fee. Lighter users make the plan viable.],
+        [], [*Price to value:* outcome pricing charges for results, so the vendor absorbs risk.],
+      )
+    ]
+  ][
+    - *Cursor*: 500 requests → \$20 usage (Jun 2025); apology and refunds offered (Jul).#cite-source("https://cursor.com/blog/june-2025-pricing")[Michael Truell, Cursor. _Clarifying our pricing_. 4 July 2025. June 16 plan change, US\$20 usage pool and refunds offered for unexpected usage charges.]
+    - *Anthropic*: weekly Claude Code limits added (Aug 2025).#cite-source("https://techcrunch.com/2025/07/28/anthropic-unveils-new-rate-limits-to-curb-claude-code-power-users/")[Maxwell Zeff, TechCrunch. _Anthropic unveils new rate limits to curb Claude Code power users_. 28 July 2025; new limits effective 28 August.]
+    - *Replit*: \$0.25/checkpoint → compute billing (Jun--Jul 2025).#cite-source("https://replit.com/blog/effort-based-pricing-recap")[Replit. _Effort-Based Pricing Recap_. July 2025. US\$0.25 checkpoints replaced by charges based on compute resources; rollout began June 18 for new users and July 2 for existing users.]
+    - *GitHub Copilot*: premium requests → token-priced credits (Jun 2026).#cite-source("https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/")[Mario Rodriguez, GitHub. _GitHub Copilot is moving to usage-based billing_. 27 April 2026. Monthly plans transition from June 1; existing annual plans retain request pricing until expiry. Completions remain included.]
   ]
-]
-
-// Sources (checked 18 Oct 2026): microsoft.com/copilot/pricing/individuals;
-// claude.com/pricing; openai.com/index/testing-ads-in-chatgpt (Free and Go
-// tiers); cursor.com/blog/june-2025-pricing; zendesk.com/pricing ($1.50
-// committed, $2.00 pay-as-you-go).
-// Claude Team Premium ~$3,700/month API-equivalent: wokey.ai/claude-usage-limits
-// (measured on real accounts, 12 Oct 2026; Pro ~$736/month). Premium seats get
-// 6.25x Pro's per-session usage (support.claude.com, Team plan article).
+])
 
 #speaker-note[
-  Keep this menu in mind for the exercise in two slides. The question is always: who carries the cost when a user uses a lot?
+  Return to the homework-bot exercise. The question is always: who carries the cost when a user uses a lot?
 
   Microsoft folded Copilot Pro into Microsoft 365 Premium. It doesn't promise unlimited, it promises "extensive usage": a flat fee with a fuzzy cap.
 
@@ -126,49 +144,14 @@
 
   First show the table and ask: which of these protect the company from heavy users? Then reveal.
 
-  The orange dots mark models where price tracks usage. The rest are flat, so someone is subsidising heavy users: other customers, another product, or the company's own cost of compute. Claude Team Premium at \$125 is worth about \$3,700 a month at API prices if you use it fully. Anthropic can do that because it pays cost, not list price, for its own models. Microsoft can bundle Copilot because it is selling Office and runs Azure. ChatGPT free is paid for by ads.
+  The orange dots mark token or credit billing, where price follows metered usage. They do not mark outcome pricing: the vendor still carries retry and failure costs. Per-token: the user pays for extra tokens. Flat fee: the vendor carries extra use within its limits. Ads: the vendor carries compute cost unless ad revenue covers it. Credits: exposure is capped only if credits reflect resource use. Outcomes: the vendor carries every failed attempt unless its scope or contract limits that exposure.
+
+  API-equivalent retail value is not the provider's serving cost. A heavily used subscription cannot be called a loss leader from API list prices alone. Microsoft can bundle Copilot with Office, and ChatGPT has introduced ads on eligible free tiers; neither establishes that ads or bundles cover all serving costs.
 
   Outcome pricing ties price to the value the customer gets, not to your cost. Zendesk charges \$1.50 per resolution, but still pays the model bill on tickets the bot fails to resolve. The customer pays for success, you pay for failure.
 ]
 
 
-== Pick a pricing model that fixes this
-
-#let dot = text(fill: accent)[●]
-
-#table(
-  columns: (auto, auto, 1fr, auto),
-  align: (center, left, left, left),
-  stroke: none,
-  fill: (_, y) => if y > 0 and calc.even(y) { luma(240) },
-  inset: (x: 0.5em, y: 0.4em),
-  table.header([], [*Model*], [*How it works*], [*Example*]),
-  table.hline(stroke: 0.5pt + luma(180)),
-  dot, [Per-token API], [Pay for exactly what you use], [OpenAI / Anthropic APIs],
-  [], [Flat / per-seat], [Fixed fee, "unlimited" use],
-  [Microsoft 365 Premium, \$20 \ Claude Team, \$25 / \$125 per seat],
-  [], [Freemium + ads], [Free tier paid for by advertising], [ChatGPT free tier],
-  dot, [Usage credits], [Fee buys a usage budget], [Cursor, \$20 of credits],
-  dot, [Outcome-based], [Pay per job done], [Zendesk, \$1.50 per resolution],
-)
-
-AI companies have been learning this:
-
-- *Cursor* swapped 500 requests to \$20 credit. Backlash; the CEO apologised and refunded.
-- *Anthropic* capped Claude Code's flat plans with weekly limits, on top of its 5-hour limits.
-- *Replit* moved to "effort-based" pricing; users paid even when the agent failed.
-- *GitHub Copilot* replaced per-message with per-token pricing.
-
-// Sources: cursor.com/blog/june-2025-pricing (switch 16 Jun, apology and
-// refunds 4 Jul 2025); Anthropic on X, 28 Jul 2025 (weekly limits from
-// 28 Aug 2025); replit.com/blog/effort-based-pricing (18 Jun 2025) and
-// replit.com/blog/effort-based-pricing-recap (12 Jul 2025).
-// github.blog/changelog/2026/04/27/github-copilot-is-moving-to-usage-based-billing
-// (from 1 Jun 2026: AI Credits at API token rates; Pro \$10 incl. \$10 credits,
-// Pro+ \$39 incl. \$39; completions stay free).
-// VERIFY: Cursor apology signed by the CEO; Replit charging for failed runs;
-// Replit's old pricing was a flat \$0.25 per checkpoint.
-
 #speaker-note[
-  Context accumulates and agent loops multiply cost. Every one of these companies hit the heavy-user problem from the exercise, and every fix made their most loyal users angry. That's lesson 1.
+  Context accumulates and agent loops multiply cost. These companies changed the relationship between a flat fee and the resources consumed. Replit's source establishes compute billing rather than successful-outcome billing; it does not establish a universal policy of charging every failed run. Cursor offered refunds; that is not evidence every eligible user received one.
 ]
