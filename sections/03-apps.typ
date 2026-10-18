@@ -5,6 +5,9 @@
 
 #section-subtitle[The application layer]
 
+// GLM-5.3-REVIEW: add a third column, "who eats the heavy user?", so the
+// speaker-note question is answered per row: per-token -> user, flat -> you,
+// credits -> capped you, outcome -> you unless scoped.
 == The pricing menu
 
 #{
@@ -39,6 +42,11 @@
 ]
 
 
+// GLM-5.3-REVIEW: a cited paired bar chart (SaaS 80-90% vs AI 50-60% gross
+// margin; Bessemer/a16z/ICONIQ) instead of two big numbers - it would also
+// close the VERIFY note below. Optional garnish: Replit's gross margin
+// swinging between +36% and -14% month to month (single source) as a
+// dumbbell.
 == SaaS vs AI unit economics
 
 #grid(
@@ -70,6 +78,12 @@
   Gross margin = (revenue - cost of serving it) / revenue. For SaaS that cost is hosting and support. For AI it includes every token you buy from a lab.
 ]
 
+// GLM-5.3-REVIEW: reveal-slide idea: a cost-per-user bar chart (light $3 ->
+// heavy $90 -> agent $150) against the $10 revenue line, with the break-even
+// point (~330 questions/month) called out.
+// GLM-5.3-REVIEW: introduce the cross-subsidy histogram here (users by
+// monthly cost, flat-fee line across, loss tail in red) and reuse it in
+// lesson 1 (04-every-message).
 == Exercise: price my homework bot
 
 #grid(
@@ -119,6 +133,9 @@
   Agent: 100 tasks × 50 calls × \$0.03 = \$150.
 ]
 
+// GLM-5.3-REVIEW: the reveal could be a mini-timeline of pricing pivots -
+// Cursor credits -> 4 Jul apology, Claude Code weekly limits, Replit
+// effort-based: three companies flailing in sequence.
 == Pick a pricing model that fixes this
 
 #grid(

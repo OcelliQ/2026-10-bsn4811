@@ -3,6 +3,12 @@
 
 = Moats: which evaporate, which hold
 
+// GLM-5.3-REVIEW: the signature number deserves its own chart - GPT-3-level
+// capability $60 -> $0.06 per million tokens (a16z), log scale, over three
+// years. Needs a small custom chart; the ai-models-chart figures are
+// cross-sections, not a time series.
+// GLM-5.3-REVIEW: Jevons counterpoint beside it - price down 10x, enterprise
+// spend $11.5B -> $37B: the argument's tension in one visual.
 == LLMflation: today's premium is next year's commodity
 
 #grid(
@@ -62,6 +68,8 @@
   ],
 )
 
+// GLM-5.3-REVIEW (single source): revenue-per-employee bar - Midjourney at
+// ~$18M per staff against the labs - quantifies "the profitable one".
 == Midjourney: the profitable one
 
 #grid(

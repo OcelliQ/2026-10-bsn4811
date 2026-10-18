@@ -6,6 +6,9 @@
 #section-quote[It's like a gym subscription: the flat fee only works because most members rarely show up.][the business model of every flat-rate AI plan]
 
 
+// GLM-5.3-REVIEW: draw the gym-membership epigraph as a chart - users by
+// monthly cost, the flat-fee line across, loss tail in red. Introduce it in
+// the 03-apps exercise and reuse it here.
 == Your best customers are your worst customers
 
 #grid(
@@ -60,6 +63,8 @@
 // VERIFY: founding year 2021; >$1B valuation Mar 2023 (a16z-led round);
 // Google's ~$2.7B (Aug 2024; WSJ reported the figure).
 
+// GLM-5.3-REVIEW (low priority): "what the founders got vs the husk" split
+// bars for the $650M / $2.7B / $2.4B licence deals.
 == Aside: the talent is the asset
 
 #grid(
@@ -89,6 +94,9 @@
 // "skips merger review" line needs a cite (FTC 6(b) inquiry into these deals,
 // or reporting that Covariant's deal was sized to stay under HSR).
 
+// GLM-5.3-REVIEW: the numbers here are a two-line chart waiting to happen -
+// revenue $2.8M -> $5.3M/month against $8-9M/month losses; the widening gap
+// is the lesson.
 == Character.AI: then the bills come
 
 #grid(
@@ -120,6 +128,8 @@
   The product worked. People loved it. Every hour of that love was a compute bill, and the users who loved it most were the most expensive and the most legally exposed.
 ]
 
+// GLM-5.3-REVIEW: valuation collapse as three falling bars: $1B+ (Mar 2023)
+// -> $2.7B licence (Aug 2024) -> $20M stalking-horse (Oct 2026).
 == Character.AI: Chapter 11
 
 #grid(

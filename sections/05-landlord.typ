@@ -3,6 +3,9 @@
 
 = Your supplier is your competitor and your landlord
 
+// GLM-5.3-REVIEW: the thesis is spatial - draw it: your app box resting on
+// the lab's model, the lab's own app (Claude Code) on the same layer, arrows
+// for "absorb as feature" and "raise rent / evict".
 == Two risks one layer down
 
 #grid(
@@ -30,6 +33,9 @@
   "Sherlocking" comes from Apple's Sherlock search tool, which absorbed a popular third-party app's features in 2002. Now it's labs absorbing the apps built on them.
 ]
 
+// GLM-5.3-REVIEW: a five-dot horizontal timeline (talks -> eviction with
+// <5 days' notice -> stall -> $2.4B Google -> Cognition days later) reads
+// faster than bullets.
 == Windsurf: evicted, then split up
 
 #grid(
@@ -61,6 +67,9 @@
   This is landlord risk and the reverse acqui-hire on one slide. Your supplier was a rival's potential acquirer, so it turned off your supply.
 ]
 
+// GLM-5.3-REVIEW: before/after gross-margin bars - negative with "huge
+// Anthropic bills", slightly positive after Composer 2 on open-weight Kimi.
+// One image bridging lesson 2 to lesson 5 (swappable models).
 == Cursor: paying the landlord who competes with you
 
 #grid(
@@ -96,6 +105,11 @@
   Cursor's answer to landlord risk: build your own model on open weights, so the landlord can't evict you. This is the "keep your models swappable" point from lesson 5.
 ]
 
+// GLM-5.3-REVIEW: one-day SaaSpocalypse bars - Thomson Reuters -18%, RELX
+// and Wolters Kluwer >-10%: the market pricing landlord risk in a session.
+// GLM-5.3-REVIEW (optional case): Scale AI - Meta's $14.3B for 49%, then
+// Google and OpenAI walked; "neutrality was the product". The best L1/L2
+// case not in the deck.
 == When the lab ships your feature
 
 #grid(

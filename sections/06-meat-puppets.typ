@@ -3,6 +3,9 @@
 
 = Meat puppets and crumple zones
 
+// GLM-5.3-REVIEW: two-panel concept diagram - meat puppet (human behind an
+// "AI" curtain) vs crumple zone (AI does the work, human absorbs the blame),
+// with the Elish cite.
 == Two ways to hide a human
 
 #grid(
@@ -37,6 +40,8 @@
 // Interaction", Engaging Science, Technology, and Society 5 (2019). Add a
 // cite-source with the DOI.
 
+// GLM-5.3-REVIEW: forecast vs actual as two bars - $220M told to lenders vs
+// ~$50M actual; the ~4x inflation is more visceral as a gap than a bullet.
 == Builder.ai: "like ordering pizza"
 
 #grid(
@@ -69,6 +74,9 @@
   Present this carefully. The viral version is "700 Indian engineers pretending to be AI". The fuller story is partly disputed: some AI components were real. What's not disputed is that the revenue was inflated and the automation was overstated. The lesson is about the unit economics: if humans do the work, your costs look like a call centre's, not a software company's.
 ]
 
+// GLM-5.3-REVIEW: claimed-vs-actual automation dumbbells - Presto 95% vs
+// ~70% human, Nate ~0%, Just Walk Out ~700 of 1,000 reviewed: one glance
+// equals the fraud.
 == The roll-call
 
 #grid(
@@ -104,6 +112,8 @@
 // 95% / ~70% figures); Amazon JWO ~700/1,000 (The Information, 2024) and
 // Amazon's denial; 1X NEO "Expert Mode" teleoperation.
 
+// GLM-5.3-REVIEW (once verified, single source): Klarna's IPO $40 (Sep 2025)
+// -> ~$19 (Jul 2026) as one bullet.
 == Klarna: the crumple zone in reverse
 
 #grid(

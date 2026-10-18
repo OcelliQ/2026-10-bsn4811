@@ -5,6 +5,11 @@
 
 = Who makes the money?
 
+// GLM-5.3-REVIEW: the brief's optional light-user Sankey ($10 in, ~$3 out,
+// no investor inflow) beside the heavy user - the contrast at a glance.
+// GLM-5.3-REVIEW: recolor the Nvidia equity/guarantee backflow so "some of
+// that investor money is Nvidia's" is visible - ties the close back to the
+// infra slide's punchline.
 == Follow the homework bot's money
 
 // VERIFY: the Sankey's split below the lab is illustrative: lab gross margin
@@ -17,6 +22,9 @@
   Use the numbers the class just worked out. The user pays \$10. The app pays the lab \$90. The \$80 gap is venture money. The lab is also burning investor money, so the infra layer and Nvidia receive more than the user ever paid. The flows are illustrative, not measured.
 ]
 
+// GLM-5.3-REVIEW: the top triage item from the review - real cited TTM
+// figures here (see the VERIFY note below), since the class just did real
+// math in the exercise.
 == Profit per \$1 of revenue, layer by layer
 
 // D09 (logo strips) chosen over D08 (profit pool map, figures/profit-pool.typ)
@@ -27,6 +35,8 @@
 // chart says "Illustrative placeholder figures" until then.
 #align(center, margin-strips())
 
+// GLM-5.3-REVIEW: fold the verdict colors into the margin strips (logos
+// tinted by verdict) and drop this table - one artifact, no redundancy.
 == Who makes the money
 
 #{

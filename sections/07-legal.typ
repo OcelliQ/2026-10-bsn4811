@@ -4,10 +4,13 @@
 
 = Liability and extraction: the legal line item
 
+// GLM-5.3-REVIEW: annotate the extraction side item with the $1.5B magnitude.
 == Back to the value chain
 
 #align(center, value-chain(mode: "legal"))
 
+// GLM-5.3-REVIEW (case): the South African government AI policy with
+// fabricated citations - an L6 case outside the corporate world.
 == Liability: the bot is you
 
 #grid(
@@ -76,6 +79,9 @@
 // VERIFY: DPD (Jan 2024); Replit / SaaStr database deletion (Jul 2025, A*
 // slide 45) and the agent's misreporting of what it did.
 
+// GLM-5.3-REVIEW: "COGS-scale, not a rounding error" seen rather than said -
+// proportional squares for the $1.5B settlement, the EUR 15M Garante fine
+// and the 3%-of-turnover ceiling on one sized scale.
 == Extraction: copyright and regulation
 
 #grid(
@@ -124,6 +130,9 @@
   Extraction happens at the models layer, where the training data went in. At \$1.5B, a settlement is the size of a training run: this is COGS-scale, not a rounding error.
 ]
 
+// GLM-5.3-REVIEW: "who can afford it" as a three-rung ladder - $1.5B
+// settlement budget / compliance department / three-person startup (crossed
+// out).
 == Compliance is a moat
 
 #grid(
