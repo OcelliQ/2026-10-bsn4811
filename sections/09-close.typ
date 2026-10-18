@@ -153,13 +153,6 @@
   Measured AI's line: "Converted bitcoin miners own the buildings; NVIDIA and Google guarantee the rent --- Microsoft simply buys the compute."
 ]
 
-== Before you build on AI, ask
-
-
-
-#speaker-note[
-  One question per section, in lecture order: every message costs money (heavy users), the landlord (sherlocking, then eviction and swappable models), the moat (LLMflation), and who makes the money (prices today are paid for by investors, Nvidia among them). The last two pull against each other: models keep getting cheaper, but today's prices are subsidised.
-]
 
 
 #focus-slide[
@@ -170,7 +163,7 @@
     [
       #{
         set text(size: 1em)
-        set list(spacing: 1em)
+        set list(spacing: 1.2em)
         set align(left)
         [
           + Does a *heavy user* make you money, or lose it?
@@ -183,15 +176,16 @@
 
     ],
     [
-      #box(fill: white, inset: 1em)[
+      // Scan target, then the verb, then the typed-in fallback
+      #set align(center)
+      #set par(leading: 0.4em)
+      #box(fill: white, inset: 0.5em, radius: 6pt)[
         #qrcode("https://manek.sg/26F-bsn4811", width: 6cm)
       ]
-      #v(0em)
-      #text(font: "DejaVu Sans Mono", size: 1em)[
-        manek.sg/\
-        26F-bsn4811
-      ]
-
+      #v(0.3em)
+      #text(weight: "bold")[Connect on LinkedIn]\
+      #text(size: 0.75em)[Tell me what you build]\
     ],
   )
 ]
+
