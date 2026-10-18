@@ -79,10 +79,14 @@
     #gblock[
       #set par(spacing: 0.4em)
       "Nvidia would invest \$10bn for every \$35bn of GPUs OpenAI buys from it."
-      #align(right, text(fill: luma(100))[--- _The Economist_ on New Street Research's estimate, Sep 2025])
+      #align(right, text(
+        fill: luma(100),
+      )[--- _The Economist_ on New Street Research's estimate, Sep 2025])
     ]
     #v(-0.3em)
-    #align(center, text(fill: luma(100))[The \$100B plan never completed: Nvidia took a \$30B stake instead.])
+    #align(center, text(
+      fill: luma(100),
+    )[The \$100B plan never completed: Nvidia took a \$30B stake instead.])
   ]
   #cite-source(
     "https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems",

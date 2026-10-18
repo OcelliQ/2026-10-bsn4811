@@ -162,19 +162,27 @@
         let side = note.at("side", default: right)
         let face = if side == right { left } else { right }
         let x = if "at" in note { sx(note.at) } else if side == right {
-          calc.max(
-            sx(0) + 0.15cm,
-            ..reported.map(c => sx(c.margin) + radius(c.revenue)),
-          ) + 0.25cm
+          (
+            calc.max(
+              sx(0) + 0.15cm,
+              ..reported.map(c => sx(c.margin) + radius(c.revenue)),
+            )
+              + 0.25cm
+          )
         } else {
-          calc.min(
-            sx(0) - 0.15cm,
-            ..reported.map(c => sx(c.margin) - radius(c.revenue)),
-          ) - 0.25cm
+          (
+            calc.min(
+              sx(0) - 0.15cm,
+              ..reported.map(c => sx(c.margin) - radius(c.revenue)),
+            )
+              - 0.25cm
+          )
         }
         place(top + left, dx: x, dy: mid, place(face + horizon, box(
           fill: col.lighten(88%),
-          stroke: if side == right { (left: 3pt + col) } else { (right: 3pt + col) },
+          stroke: if side == right { (left: 3pt + col) } else {
+            (right: 3pt + col)
+          },
           inset: (x: 0.45em, y: 0.35em),
           radius: if side == right { (right: 3pt) } else { (left: 3pt) },
           align(face, stack(

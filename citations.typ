@@ -27,7 +27,9 @@
       let index = sources.position(source => source.key == key)
       // A standalone layout measurement may precede metadata placement.
       if index != none {
-        link(url, if brackets { "[" + str(index + 1) + "]" } else { super(str(index + 1)) })
+        link(url, if brackets { "[" + str(index + 1) + "]" } else {
+          super(str(index + 1))
+        })
       }
     }
   }

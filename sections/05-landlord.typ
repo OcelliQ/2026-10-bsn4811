@@ -180,10 +180,13 @@
     ),
 
     grid.cell(colspan: 3, layout(size => {
-      let panel-height = calc.max(..bottom-panels.map(panel => measure(panel, width: size.width).height))
-      block(width: size.width, height: panel-height,
-        align(center + horizon, utils.alternatives(self: self, ..bottom-panels))
-      )
+      let panel-height = calc.max(..bottom-panels.map(panel => {
+        measure(panel, width: size.width).height
+      }))
+      block(width: size.width, height: panel-height, align(
+        center + horizon,
+        utils.alternatives(self: self, ..bottom-panels),
+      ))
     })),
   ))
 ])

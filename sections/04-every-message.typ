@@ -33,7 +33,11 @@
   column-gutter: 1em,
   row-gutter: 1.2em,
   align: horizon,
-  [], ..margins.map(m => align(center, text(weight: "bold", fill: margin-fill(m), m.name))),
+  [], ..margins.map(m => align(center, text(
+    weight: "bold",
+    fill: margin-fill(m),
+    m.name,
+  ))),
   ..(
     (
       field: "gross",
@@ -64,7 +68,11 @@
     - AI: every message is a paid model call
     - Heavy users *drag you down*.
   ],
-  grid.cell(align: horizon, text(size: 1em, fill: luma(50), sym.arrow.l.r.long)),
+  grid.cell(align: horizon, text(
+    size: 1em,
+    fill: luma(50),
+    sym.arrow.l.r.long,
+  )),
   [
     #text(weight: "bold")[Inputs are almost free]
     - Code written once, copied for free
@@ -127,7 +135,9 @@
         )),
       ))
     }),
-    attribution-style(link("https://www.wsj.com/tech/ai/noam-shazeer-google-ai-deal-d3605697")),
+    attribution-style(
+      link("https://www.wsj.com/tech/ai/noam-shazeer-google-ai-deal-d3605697"),
+    ),
   ))
 ]
 
@@ -168,7 +178,9 @@
       )),
     )),
     attribution-style(
-      link("https://variety.com/2026/biz/news/disney-bids-on-character-ai-assets-chapter-11-bankruptcy-1236909984/"),
+      link(
+        "https://variety.com/2026/biz/news/disney-bids-on-character-ai-assets-chapter-11-bankruptcy-1236909984/",
+      ),
     ),
   ))
 ]

@@ -43,7 +43,7 @@
     row-gutter: 0.5em,
     align: (right + horizon, left + horizon, right + horizon),
     ..row(
-      [2½ days],
+      [2\u{bd} days],
       [Changi Terminal 5#cite-source("https://www.airport-technology.com/projects/terminal-5-changi-international-airport/")[Airport Technology. _Terminal 5, Changi International Airport, Singapore_. About S\$12.96 billion (US\$10 billion), including Changi East works; trade-press estimate.]],
       [10B],
     ),
@@ -68,7 +68,7 @@
       [56B],
     ),
     ..row(
-      [2½ months],
+      [2\u{bd} months],
       [Apollo missions#cite-source("https://www.planetary.org/space-policy/cost-of-apollo")[The Planetary Society. _The Cost of Apollo_. US\$25.8 billion, 1960--1973; about US\$309 billion in 2025 dollars.]],
       [309B],
     ),
@@ -92,7 +92,10 @@
   Gartner's figure is all AI infrastructure (servers, devices, datacentres), not datacentre construction alone. Each comparison is a whole-programme total; the AI figure is one year. Scale, not precision.
 
   These are spending-equivalent comparisons, not like-for-like investments. The chip fund is subscribed capital, Singapore GDP is one year's output, and Changi T5 is a trade-press estimate that includes Changi East works. The interstate conversion uses a representative 1975 CPI year for multi-decade spending; it is a rough scale comparison rather than a year-by-year inflation reconstruction.
-  #cite-source("https://www.minneapolisfed.org/about-us/monetary-policy/inflation-calculator/consumer-price-index-1913-", display: false)[Federal Reserve Bank of Minneapolis. _Consumer Price Index, 1913--_. Annual US CPI-U values used for approximate 2025-dollar conversions.]
+  #cite-source(
+    "https://www.minneapolisfed.org/about-us/monetary-policy/inflation-calculator/consumer-price-index-1913-",
+    display: false,
+  )[Federal Reserve Bank of Minneapolis. _Consumer Price Index, 1913--_. Annual US CPI-U values used for approximate 2025-dollar conversions.]
 ]
 
 
@@ -217,5 +220,8 @@
 
 #speaker-note[
   The braces show participation across layers, including in-house hardware and leased capacity, not ownership of every input or a public cloud business. OpenAI's announced Broadcom programme includes accelerator design, with deployment targeted from the second half of 2026 through 2029; this is not proof its own chips are already operating at scale.
-  #cite-source("https://openai.com/index/openai-and-broadcom-announce-strategic-collaboration/", display: false)[OpenAI and Broadcom. _Strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators_. 13 October 2025. Announced programme; deployment targeted from H2 2026 through 2029.]
+  #cite-source(
+    "https://openai.com/index/openai-and-broadcom-announce-strategic-collaboration/",
+    display: false,
+  )[OpenAI and Broadcom. _Strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators_. 13 October 2025. Announced programme; deployment targeted from H2 2026 through 2029.]
 ]

@@ -170,7 +170,10 @@
   [
     // Cover copied from ../ai-for-clm/references/imda-agentic-ai/pages/page-1.png.
     #align(center, [
-      #box(stroke: 3pt + black, image("/figures/reports/imda-agentic-ai-framework.png", height: 8.4cm))
+      #box(stroke: 3pt + black, image(
+        "/figures/reports/imda-agentic-ai-framework.png",
+        height: 8.4cm,
+      ))
       #v(0.5em)
       Singapore takes the voluntary route.\
       IMDA's agentic AI framework#cite-source("https://www.imda.gov.sg/-/media/imda/files/about/emerging-tech-and-research/artificial-intelligence/mgf-for-agentic-ai.pdf")[IMDA. _Model AI Governance Framework for Agentic AI_. Version 1.5, published 20 May 2026; updated 5 June 2026. Cover copied from the ai-for-clm reference materials.]

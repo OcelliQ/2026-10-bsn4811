@@ -113,15 +113,22 @@
     let x-edge = x + side * w / 2
     let x-out = if side < 0 { 0cm } else { width }
     arrow-line((x-out, y), (x-edge + side * 0.12cm, y), outside)
-    let body = align(if side < 0 { left } else { right } + if above { bottom } else { top }, text(16pt, fill: luma(90), {
-      set par(leading: 0.3em)
-      show strong: it => text(weight: "bold", fill: luma(60), it.body)
-      label
-    }))
+    let body = align(
+      if side < 0 { left } else { right } + if above { bottom } else { top },
+      text(16pt, fill: luma(90), {
+        set par(leading: 0.3em)
+        show strong: it => text(weight: "bold", fill: luma(60), it.body)
+        label
+      }),
+    )
     let w-label = calc.abs(x-edge - x-out) - 0.1cm
     let dx = if side < 0 { 0cm } else { width - w-label }
     if above {
-      place(top + left, dx: dx, dy: y - 2cm, box(width: w-label, height: 1.85cm, body))
+      place(top + left, dx: dx, dy: y - 2cm, box(
+        width: w-label,
+        height: 1.85cm,
+        body,
+      ))
     } else {
       place(top + left, dx: dx, dy: y + 0.15cm, box(width: w-label, body))
     }
@@ -144,7 +151,14 @@
       spoke("ohio", [OpenAI Ohio], "guarantee", [\$250B?], dash: "dashed")
       inflow("ohio", [lenders,\ *\$500B+* build], above: true)
     }
-    node("nvidia", [Nvidia], fill: rgb("#76b900").darken(20%), ink: white, sub: [sells GPUs], sub-ink: white)
+    node(
+      "nvidia",
+      [Nvidia],
+      fill: rgb("#76b900").darken(20%),
+      ink: white,
+      sub: [sells GPUs],
+      sub-ink: white,
+    )
     // legend along the bottom
     place(bottom + center, {
       let shown = (
@@ -164,7 +178,10 @@
         ..if step >= 2 {
           (
             {
-              box(baseline: -0.2em, line(length: 0.7cm, stroke: 2.2pt + outside))
+              box(baseline: -0.2em, line(
+                length: 0.7cm,
+                stroke: 2.2pt + outside,
+              ))
               h(0.3em)
               text(16pt, fill: luma(60))[outside money]
             },

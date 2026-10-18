@@ -37,7 +37,10 @@
       [Light user], [100 qn / month],
       [Heavy user], [3,000 qn / month],
     )
-    #text(size: 0.8em, fill: luma(90))[Mid-tier pricing: Claude Sonnet 5.5, GPT-6.1 Sol, Gemini 4 Argon]
+    #text(
+      size: 0.8em,
+      fill: luma(90),
+    )[Mid-tier pricing: Claude Sonnet 5.5, GPT-6.1 Sol, Gemini 4 Argon]
   ],
   [
     *Your job (2 minutes, with a neighbour)*
@@ -88,7 +91,7 @@
 
 #slide(align: top, config: config-common(breakable: false), repeat: 3, self => [
   #let (uncover, only, alternatives) = utils.methods(self)
-  #let tied = uncover("2-", text(fill: accent)[●])
+  #let tied = uncover("2-", text(fill: accent)[#sym.circle.filled])
 
   #cite-source(
     "https://www.microsoft.com/en-us/copilot/solutions/individuals",
@@ -108,12 +111,18 @@
     inset: (x: 0.5em, y: 0.4em),
     table.header([], [*Model*], [*How it works*], [*Example*]),
     table.hline(stroke: 0.5pt + luma(180)),
-    tied, [Per-token API], [Pay for exactly what you use], [OpenAI / Anthropic APIs],
+    tied,
+    [Per-token API],
+    [Pay for exactly what you use],
+    [OpenAI / Anthropic APIs],
     [], [Flat / per-seat], [Fixed fee, subject to usage limits],
     [Microsoft 365 Premium, \$20/month \ Claude Team, \$25 / \$125 per seat/month],
     [], [Freemium + ads], [Ads help fund a free tier], [ChatGPT free tier],
     tied, [Usage credits], [Fee buys a usage budget], [Cursor, \$20 of credits],
-    [], [Outcome-based], [Pay per job done], [Zendesk, \$1.50 per committed resolution],
+    [],
+    [Outcome-based],
+    [Pay per job done],
+    [Zendesk, \$1.50 per committed resolution],
   )
 
   #v(0.3em)
@@ -122,9 +131,14 @@
       #grid(
         columns: (1em, 1fr),
         row-gutter: 0.5em,
-        text(fill: accent)[●], [*Tie price to usage:* heavy users pay for what they use.],
-        [], [*Pooled usage:* heavy users cost more than their fee. Lighter users make the plan viable.],
-        [], [*Price to value:* outcome pricing charges for results, so the vendor absorbs risk.],
+        text(fill: accent)[#sym.circle.filled],
+        [*Tie price to usage:* heavy users pay for what they use.],
+
+        [],
+        [*Pooled usage:* heavy users cost more than their fee. Lighter users make the plan viable.],
+
+        [],
+        [*Price to value:* outcome pricing charges for results, so the vendor absorbs risk.],
       )
     ]
   ][

@@ -38,7 +38,8 @@
       place(top + left, dx: xm - 1cm, dy: ym - 0.3cm, box(
         width: 2cm,
         height: 0.6cm,
-        align(center + horizon, text(size: fsz, weight: "bold", fill: if f == 1 { white } else { black })[\$#d]),
+        align(center + horizon, text(size: fsz, weight: "bold", fill: if f
+          == 1 { white } else { black })[\$#d]),
       ))
     }
   }

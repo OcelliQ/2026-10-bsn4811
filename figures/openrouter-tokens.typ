@@ -20,7 +20,12 @@
     ..if i == 0 or i == n - 1 {
       // the last label hangs right, clear of the taller bar before it
       let side = if i == 0 { center } else { left }
-      (overhang(text(size: 0.6em, weight: "bold")[#calc.round(v)T], side: side),)
+      (
+        overhang(
+          text(size: 0.6em, weight: "bold")[#calc.round(v)T],
+          side: side,
+        ),
+      )
     },
     box(width: 100%, height: v * k, fill: bar-fill),
   )

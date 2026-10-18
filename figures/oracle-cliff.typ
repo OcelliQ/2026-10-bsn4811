@@ -151,7 +151,10 @@
       ) #text(fill: luma(60), body)]
     let total-owed = years.map(at).sum()
     place(dx: 0cm, dy: 0cm, text(size: 0.65em)[
-      #text(fill: earn, weight: "bold")[Oracle's current revenue backlog: \$664B]
+      #text(
+        fill: earn,
+        weight: "bold",
+      )[Oracle's current revenue backlog: \$664B]
       #key(earn)[contracted]
       #key(earn.transparentize(65%))[timing not given]
     ])

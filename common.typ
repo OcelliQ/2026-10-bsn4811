@@ -452,7 +452,15 @@
 // News screenshot at the capture standard (1600 x 1000 px, so 16:10), with
 // a linked citation over its bottom-right corner. Without `path` it draws a grey
 // placeholder; the comment above each call says what the capture must show.
-#let shot(id, caption, path: none, url: none, width: 12cm, height: auto, image-align: center) = {
+#let shot(
+  id,
+  caption,
+  path: none,
+  url: none,
+  width: 12cm,
+  height: auto,
+  image-align: center,
+) = {
   // An explicit height keeps the whole image vertically and clips its sides
   // around image-align (the horizontal centre by default).
   // Otherwise use the standard 16:10 thumbnail at the given width.
@@ -485,7 +493,11 @@
         height: size.height,
         clip: true,
         stroke: 0.5pt + luma(210),
-        place(image-align + top, image(path, width: full-width, height: size.height)),
+        place(image-align + top, image(
+          path,
+          width: full-width,
+          height: size.height,
+        )),
       )
     })
   } else {
@@ -498,10 +510,16 @@
       #image(path, width: width, height: 100%, fit: "cover")
     ]
   }
-  block(width: width, height: if height == auto { img-height } else { height }, spacing: 0pt)[
+  block(
+    width: width,
+    height: if height == auto { img-height } else { height },
+    spacing: 0pt,
+  )[
     #img
     #if url != none {
-      let index = news-sources.position(source => source.id == id and source.url == url)
+      let index = news-sources.position(source => (
+        source.id == id and source.url == url
+      ))
       let reference = if index != none {
         let source = news-sources.at(index)
         [#(source.outlet). #emph(source.headline). #(source.date).]

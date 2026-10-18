@@ -38,7 +38,10 @@
   - The HGX B200 dense FP4 figure is 72 PFLOPS for eight GPUs: 9 PFLOPS per GPU, about 1.1 million Earth populations at one operation/s each. FP8 dense is half that. These are theoretical arithmetic rates at specific precision.
   - Colossus 1: the Memphis site Anthropic now rents from SpaceX.
   - Grok 3 is a historical example, not a universal frontier training recipe.
-  #cite-source("https://epoch.ai/gradient-updates/compute-scaling-will-slow-down-due-to-increasing-lead-times", display: false)[Epoch AI. _Compute scaling will slow down due to increasing lead times_. Grok 3 required building Colossus with over 100,000 H100 GPUs.]
+  #cite-source(
+    "https://epoch.ai/gradient-updates/compute-scaling-will-slow-down-due-to-increasing-lead-times",
+    display: false,
+  )[Epoch AI. _Compute scaling will slow down due to increasing lead times_. Grok 3 required building Colossus with over 100,000 H100 GPUs.]
 ]
 
 == A rack of 72 costs \~\$3M (estimate)
@@ -406,8 +409,14 @@
   The four calendar-2026 plans sum to US\$732.5B at midpoints: 220 + 200 + 175 + 137.5. Oracle's up-to-US\$95B plan is for FY2027 and is additional. Capex includes data centres and other investments; it is not all AI construction.
 
   Ratios use the latest reported quarter except Amazon, which uses trailing twelve months: about US\$169B net PP&E purchases / US\$161.4B operating cash flow = 105%. Alphabet: 44.924 / 39.1 ≈ 115%; Microsoft including finance-lease additions: 41.4 / 55.4 ≈ 75%; Meta including finance-lease principal: 31.08 / 31.86 ≈ 98%; Oracle: 28.5 / 23.1 ≈ 123%. Definitions differ, so this is a financing-pressure comparison, not a standardized accounting ratio.
-  #cite-source("https://www.investing.com/news/stock-market-news/amazon-beats-estimates-for-quarterly-cloud-revenue-growth-4826048", display: false)[Reuters. _Amazon lifts investment plans after strong cloud sales; shares jump_. 30 July 2026. CEO raises calendar-2026 capital spending plan to US\$220B.]
-  #cite-source("https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/07/alphabet-postq-ai-growth-accelerates-as-spending-weighs-on-cash-flow", display: false)[S&P Global Market Intelligence. _Alphabet postQ: AI growth accelerates as spending weighs on cash flow_. July 2026. FY2026 capex guidance raised to US\$195--205B.]
+  #cite-source(
+    "https://www.investing.com/news/stock-market-news/amazon-beats-estimates-for-quarterly-cloud-revenue-growth-4826048",
+    display: false,
+  )[Reuters. _Amazon lifts investment plans after strong cloud sales; shares jump_. 30 July 2026. CEO raises calendar-2026 capital spending plan to US\$220B.]
+  #cite-source(
+    "https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/07/alphabet-postq-ai-growth-accelerates-as-spending-weighs-on-cash-flow",
+    display: false,
+  )[S&P Global Market Intelligence. _Alphabet postQ: AI growth accelerates as spending weighs on cash flow_. July 2026. FY2026 capex guidance raised to US\$195--205B.]
   Oracle's figure is for its fiscal year to May 2027. Microsoft's is lower partly because of an accounting change, not less spending.
   - Every one of them says demand still exceeds capacity: Microsoft "customer demand continues to exceed available capacity"; Amazon says it will still be short in 2027.
   - Most of this money buys GPUs that are written off over five or six years.

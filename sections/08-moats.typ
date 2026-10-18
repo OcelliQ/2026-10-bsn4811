@@ -77,7 +77,9 @@
     column-gutter: 0.6em,
     row-gutter: 0.3em,
     ..steps.map(((v, _)) => strong(v)).intersperse(sym.arrow.r),
-    ..steps.map(((_, d)) => box(text(size: 0.75em, fill: luma(120), d))).intersperse([]),
+    ..steps
+      .map(((_, d)) => box(text(size: 0.75em, fill: luma(120), d)))
+      .intersperse([]),
   ))
 }
 
@@ -119,10 +121,16 @@ What keeps your product alive when the next model does the same thing *10× chea
   principle(1)[Network effects][A better model doesn't bring the users with it],
   principle(2)[Proprietary data][Labs can't train on what they can't get],
 
-  principle(3)[Regulatory barriers][Licences and audits are slow and expensive to copy],
-  principle(4)[Niche dominance][Too small a market for the enormous labs to chase],
+  principle(
+    3,
+  )[Regulatory barriers][Licences and audits are slow and expensive to copy],
+  principle(
+    4,
+  )[Niche dominance][Too small a market for the enormous labs to chase],
 
-  principle(5)[Switching costs][Know-how lives in your and your customers' processes and people],
+  principle(
+    5,
+  )[Switching costs][Know-how lives in your and your customers' processes and people],
   principle(6)[Brand and trust][Worth more when output is hard to check],
 )
 
