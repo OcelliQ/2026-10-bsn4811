@@ -158,7 +158,7 @@
 
 
 #speaker-note[
-  One question per section, in lecture order: every message costs money (heavy users), the landlord (sherlocking, then eviction and swappable models), liability, the moat (LLMflation), and who makes the money (prices today are paid for by investors, Nvidia among them). The last two pull against each other: models keep getting cheaper, but today's prices are subsidised.
+  One question per section, in lecture order: every message costs money (heavy users), the landlord (sherlocking, then eviction and swappable models), the moat (LLMflation), and who makes the money (prices today are paid for by investors, Nvidia among them). The last two pull against each other: models keep getting cheaper, but today's prices are subsidised.
 ]
 
 
@@ -169,14 +169,13 @@
     gutter: 1em,
     [
       #{
-        set text(size: 0.8em)
-        set enum(spacing: 0.7em)
+        set text(size: 1em)
+        set list(spacing: 1em)
         set align(left)
         [
           + Does a *heavy user* make you money, or lose it?
           + What's left of you the day the lab *ships your feature*?
           + Can you *swap models* when the landlord raises the rent?
-          + Can you afford to *answer for* what the model says?
           + Does your edge survive a model *10× cheaper*?
           + Who pays the bill when the *investor money* runs out?
         ]
@@ -185,7 +184,7 @@
     ],
     [
       #box(fill: white, inset: 1em)[
-        #qrcode("https://manek.sg/26F-bsn4811", width: 5cm)
+        #qrcode("https://manek.sg/26F-bsn4811", width: 6cm)
       ]
       #v(0em)
       #text(font: "DejaVu Sans Mono", size: 1em)[
