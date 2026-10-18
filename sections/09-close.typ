@@ -158,7 +158,7 @@
 
 
 #speaker-note[
-  One question per lesson: landlord (2), moats (4), every message costs money (1), liability (3), LLMflation (4).
+  One question per section, in lecture order: every message costs money (heavy users), the landlord (sherlocking, then eviction and swappable models), liability, the moat (LLMflation), and who makes the money (prices today are paid for by investors, Nvidia among them). The last two pull against each other: models keep getting cheaper, but today's prices are subsidised.
 ]
 
 
@@ -166,28 +166,29 @@
   #grid(
     columns: (1fr, auto),
     align: horizon,
-    gutter: 2em,
+    gutter: 1em,
     [
       #{
-        set text(size: 1em)
-        set list(spacing: 1em)
+        set text(size: 0.8em)
+        set enum(spacing: 0.7em)
         set align(left)
         [
-          + Do you *own the customer*?
-          + Can you *swap models*?
           + Does a *heavy user* make you money, or lose it?
-          + *Who is liable* when the model is wrong?
-          + What happens when the model is *10× cheaper*?
+          + What's left of you the day the lab *ships your feature*?
+          + Can you *swap models* when the landlord raises the rent?
+          + Can you afford to *answer for* what the model says?
+          + Does your edge survive a model *10× cheaper*?
+          + Who pays the bill when the *investor money* runs out?
         ]
       }
 
     ],
     [
       #box(fill: white, inset: 1em)[
-        #qrcode("https://manek.sg/26F-bsn4811", width: 6cm)
+        #qrcode("https://manek.sg/26F-bsn4811", width: 5cm)
       ]
       #v(0em)
-      #text(font: "DejaVu Sans Mono", size: 1.2em)[
+      #text(font: "DejaVu Sans Mono", size: 1em)[
         manek.sg/\
         26F-bsn4811
       ]
