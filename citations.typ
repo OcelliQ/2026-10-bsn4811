@@ -17,7 +17,8 @@
 // key can identify the same work when different section URLs are needed.
 // Keep the output to ordinary metadata/content: Touying's speaker-note
 // markers are not supported in headings or context-generated content.
-#let cite-source(url, body, key: none, display: true) = {
+// brackets: true uses a baseline [n] marker for image overlays.
+#let cite-source(url, body, key: none, display: true, brackets: false) = {
   let key = if key == none { url } else { key }
   [#metadata((key: key, url: url, body: body))<clm-source>]
   if display {
@@ -26,7 +27,7 @@
       let index = sources.position(source => source.key == key)
       // A standalone layout measurement may precede metadata placement.
       if index != none {
-        link(url, super(str(index + 1)))
+        link(url, if brackets { "[" + str(index + 1) + "]" } else { super(str(index + 1)) })
       }
     }
   }

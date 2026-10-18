@@ -1,7 +1,9 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
 
-= Moats: which evaporate, which hold
+= The Moat
+
+#section-subtitle[What survives when AI gets cheaper?]
 
 // GLM-5.3-REVIEW: the signature number deserves its own chart - GPT-3-level
 // capability $60 -> $0.06 per million tokens (a16z), log scale, over three
@@ -104,7 +106,9 @@
 
 == Discuss
 
-#discuss[
-  What happens to your product \
-  when the model it runs on is *10× cheaper*?
+#align(center + horizon)[
+  #text(size: 1.5em)[
+    What happens to your product \
+    when the model it runs on is *10× cheaper*?
+  ]
 ]

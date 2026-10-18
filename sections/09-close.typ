@@ -140,7 +140,7 @@
 }
 
 #speaker-note[
-  One question per lesson: landlord (2), moats (5), every message costs money (1), liability (4), LLMflation (5). Meat puppets (3) is the honesty check on question 3: if humans do the work, count them as cost.
+  One question per lesson: landlord (2), moats (4), every message costs money (1), liability (3), LLMflation (4).
 ]
 
 == Questions?

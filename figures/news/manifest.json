@@ -208,5 +208,15 @@
     "date": "2025-08-22",
     "quote": "Meta is partnering with Midjourney to license the startup’s AI image and video generation technology, Meta Chief AI Officer Alexandr Wang announced Friday in a post on Threads.",
     "notes": ""
+  },
+  {
+    "id": "N22",
+    "file": "figures/news/N22-disney-universal-midjourney.png",
+    "url": "https://www.theguardian.com/technology/2025/jun/11/disney-universal-ai-lawsuit",
+    "outlet": "The Guardian",
+    "headline": "Disney and Universal sue AI image creator Midjourney, alleging copyright infringement",
+    "date": "2025-06-11",
+    "quote": "",
+    "notes": "Masthead, full headline, byline and date visible."
   }
 ]

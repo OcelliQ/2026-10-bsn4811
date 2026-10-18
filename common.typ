@@ -2,6 +2,9 @@
 // Import what you need, e.g.:  #import "/common.typ": gblock, lblock, big-section-slide
 #import "@preview/touying:0.7.4": *
 #import themes.metropolis: *
+#import "/citations.typ": cite-source
+
+#let news-sources = json("/figures/news/manifest.json")
 
 // Custom section divider: mirrors metropolis' new-section-slide but with a
 // larger title and the section number styled like the principle index
@@ -447,11 +450,11 @@
 ]
 
 // News screenshot at the capture standard (1600 x 1000 px, so 16:10), with
-// its URL in light grey underneath. Without `path` it draws a grey
+// a linked citation over its bottom-right corner. Without `path` it draws a grey
 // placeholder; the comment above each call says what the capture must show.
-#let shot(id, caption, path: none, url: none, width: 12cm, height: auto) = {
+#let shot(id, caption, path: none, url: none, width: 12cm, height: auto, image-align: center) = {
   // An explicit height keeps the whole image vertically and clips its sides
-  // around the horizontal centre. The source line stays inside that height.
+  // around image-align (the horizontal centre by default).
   // Otherwise use the standard 16:10 thumbnail at the given width.
   let img-height = if height == auto { width * 10 / 16 } else { 100% }
   let img = if path == none {
@@ -475,13 +478,16 @@
       ]
     ]
   } else if height != auto {
-    layout(size => block(
-      width: size.width,
-      height: size.height,
-      clip: true,
-      stroke: 0.5pt + luma(210),
-      place(center + top, image(path, height: size.height)),
-    ))
+    layout(size => {
+      let full-width = measure(image(path, height: size.height)).width
+      block(
+        width: size.width,
+        height: size.height,
+        clip: true,
+        stroke: 0.5pt + luma(210),
+        place(image-align + top, image(path, width: full-width, height: size.height)),
+      )
+    })
   } else {
     block(
       spacing: 0pt,
@@ -492,27 +498,32 @@
       #image(path, width: width, height: 100%, fit: "cover")
     ]
   }
-  let source = if url != none {
-    block(width: width, above: 0.2em, attribution-style(link(url, url)))
-  }
-  if height == auto {
-    img
-    source
-  } else {
-    block(width: width, height: height, spacing: 0pt, grid(
-      rows: (1fr, auto),
-      img,
-      source,
-    ))
-  }
+  block(width: width, height: if height == auto { img-height } else { height }, spacing: 0pt)[
+    #img
+    #if url != none {
+      let index = news-sources.position(source => source.id == id and source.url == url)
+      let reference = if index != none {
+        let source = news-sources.at(index)
+        [#(source.outlet). #emph(source.headline). #(source.date).]
+      } else { caption }
+      place(bottom + right, dx: -0.2em, dy: -0.2em, block(
+        fill: white.transparentize(8%),
+        inset: (x: 0.25em, y: 0.15em),
+        radius: 0.1em,
+        {
+          set par(leading: 0pt, spacing: 0pt)
+          text(
+            size: 0.8em,
+            fill: luma(60),
+            top-edge: "bounds",
+            bottom-edge: "bounds",
+            cite-source(url, reference, brackets: true),
+          )
+        },
+      ))
+    }
+  ]
 }
-
-// Discussion prompt that closes each lesson.
-#let discuss(question) = align(center + horizon)[
-  #text(size: 0.8em, weight: "bold", fill: accent, tracking: 0.1em)[DISCUSS]
-  #v(0.3em)
-  #block(width: 85%)[#text(size: 1.3em)[#question]]
-]
 
 // Fill-in-the-blank: shows "???" before subslide n, then the answer from n on.
 #let blank(n, answer) = [#only("-" + str(n - 1))[*???*]#only(

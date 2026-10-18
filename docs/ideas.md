@@ -283,7 +283,7 @@ End on the L13 checklist, applied to the app layer: Do you own the customer? Can
   - The context window, and why cost grows during a conversation. This is needed for the exercise.
   - Batch and cached pricing discounts, as one bullet only.
 - **Model names and prices.** The research agent's aggregator prices (Opus 4.8, GPT-5.5) are out of date. Don't quote the aggregator tables.
-- **Model price charts come from [OcelliQ/ai-models-chart](https://github.com/OcelliQ/ai-models-chart)** (note the plural "models"). They replace the A\* slide 14 cost scatter and serve as the single price source.
+- **Current model price charts come from [OcelliQ/ai-models-chart](https://github.com/OcelliQ/ai-models-chart)** (note the plural "models"). They replace the A\* slide 14 cost scatter; the historical frontier chart comes directly from Artificial Analysis.
   - The charts plot API price per task against the Artificial Analysis Intelligence Index, without annotations, sized for the content box under a 16:9 slide title. Annotate them in this deck.
   - There are five colourings: `cost-vs-aaii` (open vs closed), `-by-lab`, `-by-lab-open`, `-by-age` and `-by-hardware`.
   - That repo's CI renders `dist/` from its committed tables on every push and uploads it as the `charts` artifact.
@@ -291,7 +291,7 @@ End on the L13 checklist, applied to the app layer: Do you own the customer? Can
     - Why: a submodule would only bring in the source tables, so we'd also need its Python environment to render. The release is already built.
     - Every push to that repo's `master` refreshes the release, so re-run the script close to the lecture.
   - Use `dist/svg-paths/`. The plain SVGs rely on DejaVu Sans, which isn't embedded.
-  - Keep A\* slide 16 for the "frontier reaches budget tier in ~4 months" claim unless the `-by-age` chart shows it better.
+  - The launch-date slide now uses Artificial Analysis's [2025 year-end report](https://artificialanalysis.ai/downloads/state-of-ai/2025/2025-Year-End-Artificial-Analysis-State-of-AI-Highlights-Report.pdf), printed p. 16 (PDF p. 15): AAII v4.0 versus the USD cost to run the index, with end-2024, mid-2025 and report-snapshot Pareto frontiers. The original embedded chart is saved as `figures/reports/aa-intelligence-cost-frontiers-2025.png`. "Current" refers to the report snapshot. This supports a moving frontier, but does not establish a universal four-month frontier-to-budget interval; that claim remains unverified elsewhere in the deck.
 - **BSE3713 deck, slides to lift:**
   - 37–39: inference and training cost, model as a depreciating asset.
   - 45–52: the *aaS stack and open-source business models.

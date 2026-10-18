@@ -80,6 +80,14 @@
       "viewBox": "77 77 591 81",
       "original_viewBox": "0 0 746 236",
       "note": "Trimmed empty canvas around the original paths, retaining approximately one SVG unit of clear space. Logo artwork is unchanged."
+    },
+    {
+      "file": "replit-wordmark.svg",
+      "source_page": "https://replit.com/",
+      "download_url": "https://replit.com/",
+      "retrieved": "2026-10-18",
+      "viewBox": "0 0 71 21",
+      "note": "Official inline header SVG, extracted from the homepage. currentColor wordmark fills resolved to black for a light slide background; original orange symbol and all paths unchanged. Canvas already closely fits artwork."
     }
   ]
 }

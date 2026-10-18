@@ -122,7 +122,32 @@
 // case not in the deck.
 == When the lab ships your feature
 
-#slide[
+#slide(config: config-common(breakable: false), repeat: 2, self => [
+  #let bottom-panels = (
+    [
+      #grid(
+        columns: (1fr, 1fr, 1fr),
+        column-gutter: 0.8em,
+        align: top,
+        [*Chat-with-PDF apps*: one ChatGPT update (late 2023)],
+        [*Jasper*: \$1.5B valuation a month before ChatGPT launched],
+
+        [
+          *Feb 2026*: Claude Cowork's legal plugin; Thomson Reuters #sym.minus;18% in a day
+
+          *Apr 2026*: Claude Design launches; Figma shares fall \~7%.#cite-source("https://www.anthropic.com/news/claude-design-anthropic-labs")[Anthropic. _Introducing Claude Design by Anthropic Labs_. 17 April 2026. Research preview for designs, prototypes, slides and other visual work.]#cite-source("https://www.techcentral.ie/figma-and-adobe-shares-fall-after-athropic-releases-design-tool/")[TechCentral.ie. _Figma and Adobe shares fall after Anthropic releases design tool_. 20 April 2026. Reports Figma down 6.9% on Friday, 17 April, alongside the Claude Design launch; a stock-market reaction.]
+        ],
+      )
+    ],
+    [
+      #align(center)[
+        #text(size: 1.5em)[
+          What makes you hard to replace \
+          the day the lab ships your feature?
+        ]
+      ]
+    ],
+  )
   #block(width: 100%, height: 100%, spacing: 0pt, grid(
     columns: (1fr, 1fr, 1fr),
     rows: (1fr, auto),
@@ -154,16 +179,14 @@
       height: 100%,
     ),
 
-    [*Chat-with-PDF apps*: one ChatGPT update (late 2023)],
-    [*Jasper*: \$1.5B valuation a month before ChatGPT launched],
-
-    [
-      *Feb 2026*: Claude Cowork's legal plugin; Thomson Reuters #sym.minus;18% in a day
-
-      *Apr 2026*: Claude Design launches; Figma shares fall \~7%.#cite-source("https://www.anthropic.com/news/claude-design-anthropic-labs")[Anthropic. _Introducing Claude Design by Anthropic Labs_. 17 April 2026. Research preview for designs, prototypes, slides and other visual work.]#cite-source("https://www.techcentral.ie/figma-and-adobe-shares-fall-after-athropic-releases-design-tool/")[TechCentral.ie. _Figma and Adobe shares fall after Anthropic releases design tool_. 20 April 2026. Reports Figma down 6.9% on Friday, 17 April, alongside the Claude Design launch; a stock-market reaction.]
-    ],
+    grid.cell(colspan: 3, layout(size => {
+      let panel-height = calc.max(..bottom-panels.map(panel => measure(panel, width: size.width).height))
+      block(width: size.width, height: panel-height,
+        align(center + horizon, utils.alternatives(self: self, ..bottom-panels))
+      )
+    })),
   ))
-]
+])
 
 // VERIFY: ChatGPT file-upload date; Jasper's $125M Series A at $1.5B (Oct
 // 2022) and the 2023 cuts; Thomson Reuters -18% on 3 Feb 2026 and RELX /
@@ -174,13 +197,4 @@
   Claude Design launched on April 17, 2026. TechCentral reports a 6.9% decline in Figma shares that Friday. Reuters' corrected April 17 market update, republished April 21, captured a 6.4% intraday fall; these snapshots should not be mixed into a single exact closing-price claim.
 
   This is evidence of investors repricing competitive risk. It does not establish that Claude Design took Figma's customers or revenue. Figma subsequently reported Q2 2026 revenue of \$370.1M, up 48% year-over-year, and raised its full-year revenue outlook.#cite-source("https://investor.figma.com/news-events/news/news-details/2026/Figma-Announces-Second-Quarter-2026-Financial-Results/default.aspx")[Figma. _Figma Announces Second Quarter 2026 Financial Results_. 5 August 2026. Revenue of US\$370.1M, up 48% year-over-year; full-year revenue guidance raised.]
-]
-
-
-== Discuss
-
-#discuss[
-  You're building on a frontier model's API. \
-  What would make you hard to replace \
-  the day the lab ships your feature?
 ]

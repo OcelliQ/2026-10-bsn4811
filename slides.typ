@@ -35,7 +35,6 @@
 #include "sections/03-apps.typ"
 #include "sections/04-every-message.typ"
 #include "sections/05-landlord.typ"
-#include "sections/06-meat-puppets.typ"
 #include "sections/07-legal.typ"
 #include "sections/08-moats.typ"
 #include "sections/09-close.typ"

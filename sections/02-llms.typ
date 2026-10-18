@@ -115,10 +115,13 @@
     height: 100%,
   ))
   #pause
-  #place(top + left, dx: 48pt, dy: 8pt, lblock(width: 420pt)[
-    Tremendous variety available! \
+  #place(top + left, dx: 54pt, dy: 0pt, lblock(width: 500pt)[
     Prices span *three orders of magnitude*.
   ])
+  #cite-source(
+    "https://github.com/OcelliQ/ai-models-chart",
+    display: false,
+  )[OcelliQ. _AI model price charts_. Local charts generated 17 October 2026, comparing API cost for 100K input and 8K output tokens with the Artificial Analysis Intelligence Index. Hosting-hardware tiers are indicative capital budgets in SGD, not complete operating costs.]
 ]
 
 == Cost of AI by lab
@@ -131,32 +134,36 @@
     height: 100%,
   ))
 
-  #place(top + left, dx: 48pt, dy: 8pt, lblock(width: 420pt)[
+  #place(top + left, dx: 54pt, dy: 0pt, lblock(width: 500pt)[
     OpenAI and Anthropic compete at the frontier.
   ])
 ]
 
-== Cost of AI by launch date
+== The intelligence--cost frontier keeps moving
 
-// D03: `cost-vs-aaii-by-age` chart from OcelliQ/ai-models-chart.
-// The June 9 reference line is a historical benchmark, not an estimate of a
-// universal number of months needed for frontier capability to become cheap.
+// Artificial Analysis, 2025 Year-End State of AI, printed p. 16 (PDF p. 15).
+// Original embedded chart; all three frontiers use AAII v4.0.
 #slide(config: config-page(margin: (x: 0em)))[
   #align(center, image(
-    "/figures/ai-models-chart/svg-paths/cost-vs-aaii-by-age.svg",
-    height: 100%,
+    "/figures/reports/aa-intelligence-cost-frontiers-2025.png",
+    width: 100%,
+    height: 90%,
+    fit: "contain",
   ))
-
-  #place(top + left, dx: 48pt, dy: 8pt, lblock(width: 420pt)[
-    The AI revolution is ongoing, not complete. \
-    Newer models keep moving the *price--capability frontier*.
+  #align(center, text(size: 12pt, fill: luma(100))[
+    AAII v4.0 · 2025 year-end report; "Current" means the report snapshot.
   ])
+  #cite-source(
+    "https://artificialanalysis.ai/downloads/state-of-ai/2025/2025-Year-End-Artificial-Analysis-State-of-AI-Highlights-Report.pdf",
+    display: false,
+  )[Artificial Analysis. _State of AI: 2025 Year-End Edition_, Highlights, p. 16 (PDF p. 15). Intelligence vs. Cost to Run Intelligence Index (Pareto Frontiers). AAII v4.0; frontier snapshots labelled End of 2024, Mid 2025 and Current (the report snapshot). Cost is USD to run the index, on a logarithmic scale. Original embedded chart extracted without modification.]
 ]
 
-#cite-source(
-  "https://github.com/OcelliQ/ai-models-chart",
-  display: false,
-)[OcelliQ. _AI model price charts_. Local charts generated 17 October 2026, comparing API cost for 100K input and 8K output tokens with the Artificial Analysis Intelligence Index. The launch-date chart marks the highest intelligence before 9 June 2026; it does not establish a universal frontier-to-budget interval. Hosting-hardware tiers are indicative capital budgets in SGD, not complete operating costs.]
+#speaker-note[
+  Compare the orange end-2024 frontier, blue mid-2025 frontier and solid report-snapshot frontier. Moving up means more intelligence at the same cost; moving left means the same intelligence at lower cost. Each frontier considers the models available by that date, rather than only models released that year.
+
+  All three curves use AAII v4.0. The x-axis is the cost to run the benchmark suite, not a fixed token workload or the cost of our homework bot. "Current" belongs to the report snapshot, not October 2026. This chart does not establish a universal four-month frontier-to-budget interval.
+]
 
 == What it costs to run your own
 
