@@ -3,7 +3,7 @@
 #import "/annotation-brace.typ": annotation-brace
 #import "/figures/oracle-cliff.typ": oracle-cliff
 
-= Chips
+= Value Chain: Chips
 
 #section-subtitle[AI Value Chain]
 
@@ -255,7 +255,7 @@
   )[Silicon Analysts. _NVIDIA AI Accelerator Market Share 2024--2026_. Estimates NVIDIA at 75--81% of AI accelerator revenue in 2026.]
 ]
 
-= Infrastructure
+= Value Chain: Infrastructure
 
 #section-subtitle[AI Value Chain]
 

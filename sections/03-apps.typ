@@ -132,77 +132,42 @@
 ]
 
 
-
-// GLM-5.3-REVIEW: a cited paired bar chart (SaaS 75-85% vs AI 50-60% gross
-// margin) instead of two big numbers. Optional garnish: Replit's gross margin
-// swinging between +36% and -14% month to month (single source) as a
-// dumbbell.
-== SaaS vs AI unit economics
-
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1.5em,
-  align: top,
-  gblock[
-    #align(center)[*Classic SaaS*]
-    #align(center, text(size: 2.4em, weight: "bold")[75--85%])
-    #align(center)[gross margin]
-    - Code written once, copied for free
-    - Serving one more user costs \~nothing
-    - Heavy users are *pure profit*
-  ],
-  gblock[
-    #align(center)[*AI app*]
-    #align(center, text(size: 2.4em, weight: "bold", fill: accent)[50--60%])
-    #align(center)[gross margin]
-    - Every message is a paid model call
-    - Cost scales with *use*, not users
-    - Heavy users can be *pure loss*
-  ],
-)
-
-// Sources: Lazard, "Deep Diving on AI Commercialization" (2024): AI software
-// ~50-60% vs SaaS ~75-85%; ICONIQ State of AI 2026: AI-native ~52%; a16z,
-// "The New Business of AI" (2020): AI 50-60% vs SaaS 60-80%+.
-
-#speaker-note[
-  Gross margin = (revenue - cost of serving it) / revenue. For SaaS that cost is hosting and support. For AI it includes every token you buy from a lab.
-]
-
-// GLM-5.3-REVIEW: the reveal could be a mini-timeline of pricing pivots -
-// Cursor credits -> 4 Jul apology, Claude Code weekly limits, Replit
-// effort-based: three companies flailing in sequence.
 == Pick a pricing model that fixes this
 
-#grid(
-  columns: (1fr, 1.2fr),
-  column-gutter: 1.5em,
-  align: top,
-  [
-    Back to the menu:
-    - Per-token
-    - Flat / per-seat
-    - Freemium + ads
-    - Usage credits
-    - Outcome-based
+#let dot = text(fill: accent)[●]
 
-    #v(0.4em)
-    What does your choice do to your *heaviest* users?
-  ],
-  [
-    #pause
-    *What they actually did*
-    - *Cursor* swapped 500 requests for \$20 of credits. Backlash; the CEO apologised and refunded.
-    - *Anthropic* added weekly limits to Claude Code on top of its 5-hour limits.
-    - *Replit* moved to "effort-based" pricing, and users paid even when the agent failed.
-  ],
+#table(
+  columns: (auto, auto, 1fr, auto),
+  align: (center, left, left, left),
+  stroke: none,
+  fill: (_, y) => if y > 0 and calc.even(y) { luma(240) },
+  inset: (x: 0.5em, y: 0.4em),
+  table.header([], [*Model*], [*How it works*], [*Example*]),
+  table.hline(stroke: 0.5pt + luma(180)),
+  dot, [Per-token API], [Pay for exactly what you use], [OpenAI / Anthropic APIs],
+  [], [Flat / per-seat], [Fixed fee, "unlimited" use],
+  [Microsoft 365 Premium, \$20 \ Claude Team, \$25 / \$125 per seat],
+  [], [Freemium + ads], [Free tier paid for by advertising], [ChatGPT free tier],
+  dot, [Usage credits], [Fee buys a usage budget], [Cursor, \$20 of credits],
+  dot, [Outcome-based], [Pay per job done], [Zendesk, \$1.50 per resolution],
 )
+
+AI companies have been learning this:
+
+- *Cursor* swapped 500 requests to \$20 credit. Backlash; the CEO apologised and refunded.
+- *Anthropic* capped Claude Code's flat plans with weekly limits, on top of its 5-hour limits.
+- *Replit* moved to "effort-based" pricing; users paid even when the agent failed.
+- *GitHub Copilot* replaced per-message with per-token pricing.
 
 // Sources: cursor.com/blog/june-2025-pricing (switch 16 Jun, apology and
 // refunds 4 Jul 2025); Anthropic on X, 28 Jul 2025 (weekly limits from
 // 28 Aug 2025); replit.com/blog/effort-based-pricing (18 Jun 2025) and
 // replit.com/blog/effort-based-pricing-recap (12 Jul 2025).
-// VERIFY: Cursor apology signed by the CEO; Replit charging for failed runs.
+// github.blog/changelog/2026/04/27/github-copilot-is-moving-to-usage-based-billing
+// (from 1 Jun 2026: AI Credits at API token rates; Pro \$10 incl. \$10 credits,
+// Pro+ \$39 incl. \$39; completions stay free).
+// VERIFY: Cursor apology signed by the CEO; Replit charging for failed runs;
+// Replit's old pricing was a flat \$0.25 per checkpoint.
 
 #speaker-note[
   Context accumulates and agent loops multiply cost. Every one of these companies hit the heavy-user problem from the exercise, and every fix made their most loyal users angry. That's lesson 1.

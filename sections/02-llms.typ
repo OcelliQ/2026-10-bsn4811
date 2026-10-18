@@ -1,7 +1,7 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
 
-= Large Language Models
+= Value Chain: Models
 
 #section-subtitle[AI Value Chain]
 

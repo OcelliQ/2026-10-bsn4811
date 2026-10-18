@@ -1,122 +1,173 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
 
-= Every message costs money
+= Unit Economics: \ Every message costs money
 
 #section-quote[It's like a gym subscription: the flat fee only works because most members rarely show up.][the business model of every flat-rate AI plan]
 
 
-// GLM-5.3-REVIEW: draw the gym-membership epigraph as a chart - users by
-// monthly cost, the flat-fee line across, loss tail in red. Introduce it in
-// the 03-apps exercise and reuse it here.
-== Your best customers are your worst customers
 
+
+== SaaS vs AI unit economics
+
+#let margins = (
+  (name: [Car maker], gross: [\~10%], net: [\~1%]),
+  (name: [Airline], gross: [\~25%], net: [\~2.5%]),
+  (name: [Fast food], gross: [\~32%], net: [\~9%]),
+  (name: [AI app], gross: [\~50%], net: [???], hl: true),
+  (name: [SaaS], gross: [\~75%], net: [\~25%]),
+)
+#let margin-fill(m) = if m.at("hl", default: false) { accent } else { black }
+
+#v(1cm)
 #grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1.5em,
+  columns: (5cm,) + (1fr,) * margins.len(),
+  column-gutter: 1em,
+  row-gutter: 1.2em,
+  align: horizon,
+  [], ..margins.map(m => align(center, text(weight: "bold", fill: margin-fill(m), m.name))),
+  ..(
+    (field: "gross", label: [Gross margin], q: [Does the _product_ pay for itself?]),
+    (field: "net", label: [Net margin], q: [Does the _company_?]),
+  )
+    .map(r => (
+      [#text(weight: "bold", r.label) \ #r.q],
+      ..margins.map(m => gblock(center: true, outset: (x: 0em, y: 1em), text(
+        size: 1.6em,
+        weight: "bold",
+        fill: margin-fill(m),
+        m.at(r.field),
+      ))),
+    ))
+    .flatten(),
+)
+#v(1fr)
+#grid(
+  columns: (1fr, auto, 1fr),
+  column-gutter: 1em,
   align: top,
   [
-    *SaaS*
-    - Marginal cost \~0
-    - Heavy users: *pure profit*
-    - Chase engagement: more use, more value, more renewals
+    #text(weight: "bold")[Inputs are most of the price]
+    - Steel in every car, food in every meal
+    - AI: every message is a paid model call
+    - Heavy users *drag you down*.
   ],
+  grid.cell(align: horizon, text(size: 1em, fill: luma(50), sym.arrow.l.r.long)),
   [
-    #pause
-    *AI*
-    - Every message has a token bill
-    - Heavy users on a flat plan: *pure loss*
-    - Engagement becomes a *cost*
-    - Highly engaged users also bring *safety and legal exposure*
+    #text(weight: "bold")[Inputs are almost free]
+    - Code written once, copied for free
+    - Serving one more user costs nothing
+    - Heavy users are *pure profit*
   ],
 )
+#v(1cm)
 
-#pause
-#v(0.6em)
-#lblock[
-  #align(
-    center,
-  )[The metric consumer apps chase is the one that bankrupts an AI app.]
+// Sources: Damodaran margin dataset, Jan 2026 (aggregates: Auto & Truck
+// 10.4% / 1.3%; Air Transport 24.8% / 2.5%; Restaurant/Dining 32.2% / 9.4%;
+// Software (System & Application) net 25.5%). SaaS gross 75-85%
+// and AI 50-60%: Lazard, "Deep Diving on AI Commercialization" (2024); a16z,
+// "The New Business of AI" (2020); ICONIQ State of AI 2026 (AI ~52%). AI net
+// below zero: Apollo (Slok, Aug 2026), AI models & apps operating margin ~-59%.
+// AI-app net margin is shown as ??? on purpose; the distribution is revealed
+// at the end of the deck.
+// VERIFY: a sourced range for SaaS net margin, to replace ~25%.
+// "Fast food" is Damodaran's Restaurant/Dining (64 US firms, indname.xls Jan
+// 2026): mostly quick-service chains (Starbucks, McDonald's, Chipotle, Yum,
+// RBI), but also casual dining (Darden, Texas Roadhouse), Aramark and DoorDash.
+
+#speaker-note[
+  Gross margin = (revenue - cost of serving each unit) / revenue. For a car maker that cost is steel and labour; for an airline, fuel and planes; for fast food, ingredients and staff; for SaaS, hosting and support. For AI it includes every token you buy from a lab.
+
+  Net margin takes out everything else too: R&D, salaries, marketing, interest, tax. A car maker keeps a tenth of revenue after paying for parts, and about one cent per dollar once everything is paid.
+
+  Left to right, both margins improve, except the AI app. In an AI app cost scales with use, not users, and heavy users can be pure loss. Software-like gross margins, but most AI companies lose money overall.
+
+  Tokens are ingredients. A flat plan is an all-you-can-eat buffet: it works only because most diners eat a normal amount.
 ]
+
 
 == Character.AI: a beloved product
 
-#grid(
+#slide(composer: grid.with(
   columns: (1fr, 12cm),
   column-gutter: 1.2em,
   align: top,
-  [
-    - *2021*: founded by ex-Google researchers Noam Shazeer and Daniel de Freitas
-    - *Mar 2023*: valued at over \$1B
-    - Millions of devoted users chatting with characters for hours a day
-    - *Aug 2024*: Google pays \~\$2.7B to license the tech and rehire the founders. The company stays "independent".
-  ],
-  shot(
-    "N02",
-    [Google's \$2.7B Character.AI deal, Aug 2024],
-    path: "/figures/news/N02-character-ai-google-deal.png",
-    url: "https://www.wsj.com/tech/ai/noam-shazeer-google-ai-deal-d3605697",
-    width: 12cm,
-  ),
-)
+))[
+  - *2021*: founded by ex-Google researchers Noam Shazeer and Daniel de Freitas
+  - *Mar 2023*: valued at over \$1B. Millions of devoted users chatting for hours a day.
+  - *Aug 2024*: Google rehires both founders and licenses the tech for a reported \$2.7B. Character.AI stays independent.
+  - *Oct 2026*: files for *Chapter 11 bankruptcy* and seeks a buyer.#cite-source("https://blog.character.ai/an-update-on-character-ai/")[Character.AI. _An Update on Character.ai_. 12 October 2026.]
 
-// VERIFY: founding year 2021; >$1B valuation Mar 2023 (a16z-led round);
-// Google's ~$2.7B (Aug 2024; WSJ reported the figure).
+  #pause
+  *The unit economics (2026)*
+  - Revenue: \$2.8M/month → \$5.3M/month
+  - Operating losses: *\$8--9M every month*
+  - Compute, Jan--Aug: *\$56M*
 
-// GLM-5.3-REVIEW (low priority): "what the founders got vs the husk" split
-// bars for the $650M / $2.7B / $2.4B licence deals.
-== Aside: the talent is the asset
+][
+  #meanwhile
+  #block(height: 100%, width: 100%, spacing: 0pt, grid(
+    rows: (1fr, auto),
+    row-gutter: 0.2em,
+    layout(size => {
+      // Source: 728 × 829. Keep its full height and middle 60% of the width.
+      let full-width = size.height * 728 / 829
+      align(center, block(
+        width: full-width,
+        height: size.height,
+        clip: true,
+        place(center + top, image(
+          "/figures/news/N02-character-ai-google-deal.png",
+          width: full-width,
+          height: size.height,
+        )),
+      ))
+    }),
+    attribution-style(link("https://www.wsj.com/tech/ai/noam-shazeer-google-ai-deal-d3605697")),
+  ))
+]
 
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1.5em,
-  align: top,
-  [
-    The *reverse acqui-hire*: Big Tech buys the people plus a licence, not the company.
-
-    - *Inflection* → Microsoft (\~\$650M licence)
-    - *Character.AI* → Google (\~\$2.7B)
-    - *Adept, Covariant* → Amazon
-    - *Windsurf* → Google (\$2.4B), then Cognition buys the rest
-  ],
-  [
-    #pause
-    #gblock[
-      The founders get rich. \
-      The remaining staff and the cap table get *the husk*.
-    ]
-    #v(0.5em)
-    It also skips merger review.
-  ],
-)
-
-// VERIFY: Inflection ~$650M (Mar 2024); Windsurf $2.4B (Jul 2025). The
-// "skips merger review" line needs a cite (FTC 6(b) inquiry into these deals,
-// or reporting that Covariant's deal was sized to stay under HSR).
-
-// GLM-5.3-REVIEW: the numbers here are a two-line chart waiting to happen -
-// revenue $2.8M -> $5.3M/month against $8-9M/month losses; the widening gap
-// is the lesson.
 == Character.AI: then the bills come
 
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1.5em,
+#slide(composer: grid.with(
+  columns: (1fr, 12cm),
+  column-gutter: 1.2em,
   align: top,
-  [
-    *Costs and risks pile up*
-    - *Oct 2024*: Garcia sues over the suicide of 14-year-old Sewell Setzer. State suits follow.
-    - *Nov 2025*: open-ended chat banned for under-18s; "companion" becomes "role-play platform"
-    - Ads added mid-2025, in-app purchases early 2026
-  ],
-  [
-    #pause
-    *The unit economics (2026)*
-    - Revenue: \$2.8M/month → \$5.3M/month
-    - Operating losses: *\$8--9M every month*
-    - Compute, Jan--Aug: *\$56M*
-  ],
-)
+))[
+  - *Oct 2024*: Sued over the suicide of 14-year-old Sewell Setzer. State suits follow.
+  - *May 2025*: begins testing in-app ads.#cite-source("https://www.reddit.com/r/CharacterAI/comments/1kkz2qm/announcement_updates_to_keep_cai_running_smoothly/")[Character.AI. _Updates to keep C.AI running smoothly_. Official community announcement, 12 May 2025.]
+  - *Nov 2025*: open-ended chat banned for under-18s;
+  - *Jan 2026*: In-app purchases.#cite-source("https://www.reddit.com/r/CharacterAI/comments/1qklo2i/called_it_you_can_now_buy_charms_on_cai_mobile/")[r/CharacterAI. _Called it. You can now buy charms on C.AI mobile._ User reports and bundle prices, 23 January 2026. Establishes availability by January, rather than an official launch date.]
+
+  - *Oct 2026*: Chapter 11 bankruptcy
+    - Stalking-horse bid: *Disney, \$20M* for a non-exclusive licence to the IP
+
+  #pause
+  #lblock(center: true)[
+    From \$1B+ to \$20M in three years\
+    *while users loved it*
+  ]
+][
+  #meanwhile
+  #block(height: 100%, width: 100%, spacing: 0pt, grid(
+    rows: (1fr, auto),
+    row-gutter: 0.2em,
+    layout(size => block(
+      width: size.width,
+      height: size.height,
+      clip: true,
+      // Keep the article headline inside the crop; its column is left of centre.
+      place(center + top, dx: size.height * 0.19, image(
+        "/figures/news/N03-character-ai-chapter-11.png",
+        width: size.height * 1600 / 1000,
+        height: size.height,
+      )),
+    )),
+    attribution-style(
+      link("https://variety.com/2026/biz/news/disney-bids-on-character-ai-assets-chapter-11-bankruptcy-1236909984/"),
+    ),
+  ))
+]
 
 // VERIFY: Garcia v. Character Technologies filed Oct 2024; Kentucky and
 // Pennsylvania state suits; settlement with Google in early 2026.
@@ -130,27 +181,6 @@
 
 // GLM-5.3-REVIEW: valuation collapse as three falling bars: $1B+ (Mar 2023)
 // -> $2.7B licence (Aug 2024) -> $20M stalking-horse (Oct 2026).
-== Character.AI: Chapter 11
-
-#grid(
-  columns: (12cm, 1fr),
-  column-gutter: 1.2em,
-  align: top,
-  shot(
-    "N03",
-    [Character.AI files for Chapter 11, Oct 2026],
-    path: "/figures/news/N03-character-ai-chapter-11.png",
-    url: "https://variety.com/2026/biz/news/disney-bids-on-character-ai-assets-chapter-11-bankruptcy-1236909984/",
-    width: 12cm,
-  ),
-  [
-    - *Oct 2026*: Chapter 11, Delaware
-    - Stalking-horse bid: *Disney, \$20M* for a non-exclusive licence to the IP
-    #pause
-    - From \$1B+ to \$20M in three years, *while users loved it*
-  ],
-)
-
 // VERIFY: filing date (12 or 13 Oct 2026), court (D. Del.), Disney's $20M
 // stalking-horse bid and its terms. Get the docket. (The Variety piece shown
 // confirms the filing and Disney's $20M bid but doesn't name Delaware.)
@@ -186,8 +216,7 @@
     width: 7.8cm,
   ),
 
-  [*ChatGPT Pro*: "losing money" at \$200/month],
-  [*GitHub Copilot*: \~\$20/user/month lost on a \$10 plan (2023)],
+  [*ChatGPT Pro*: "losing money" at \$200/month], [*GitHub Copilot*: \~\$20/user/month lost on a \$10 plan (2023)],
 
   [*Claude Code*: weekly limits for the heaviest users],
 )

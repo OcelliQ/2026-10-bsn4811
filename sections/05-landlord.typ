@@ -31,7 +31,12 @@
 
 #speaker-note[
   "Sherlocking" comes from Apple's Sherlock search tool, which absorbed a popular third-party app's features in 2002. Now it's labs absorbing the apps built on them.
+
+  The landlord is the better business. 62% of McDonald's revenue is franchisees' rent and royalties, not burgers. Its own restaurants make about 15% at restaurant level; the company as a whole nets 32%. The labs are the landlord: every app built on them pays rent per token.
 ]
+
+// McDonald's FY2025 10-K: franchised revenue $16.5B of $26.9B; net income
+// $8.6B; company-operated restaurant margin ~14.7%.
 
 // GLM-5.3-REVIEW: a five-dot horizontal timeline (talks -> eviction with
 // <5 days' notice -> stall -> $2.4B Google -> Cognition days later) reads
