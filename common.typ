@@ -90,7 +90,13 @@
 
 // Grey filled block --- used for callouts / definition boxes.
 #let gblock-center = center
-#let gblock(body, inset: (x: 0em, y: 0.4em), outset: (x: 0.4em, y: 0.4em), width: 100%, center: false) = block(
+#let gblock(
+  body,
+  inset: (x: 0em, y: 0.4em),
+  outset: (x: 0.4em, y: 0.4em),
+  width: 100%,
+  center: false,
+) = block(
   fill: luma(235),
   inset: inset,
   outset: outset,
@@ -450,7 +456,12 @@
       ]
     ]
   } else {
-    block(spacing: 0pt, width: width, height: img-height, stroke: 0.5pt + luma(210))[
+    block(
+      spacing: 0pt,
+      width: width,
+      height: img-height,
+      stroke: 0.5pt + luma(210),
+    )[
       #image(path, width: width, height: 100%, fit: "cover")
     ]
   }
@@ -463,7 +474,8 @@
   } else {
     block(width: width, height: height, spacing: 0pt, grid(
       rows: (1fr, auto),
-      img, source,
+      img,
+      source,
     ))
   }
 }
@@ -476,4 +488,19 @@
 ]
 
 // Fill-in-the-blank: shows "???" before subslide n, then the answer from n on.
-#let blank(n, answer) = [#only("-" + str(n - 1))[*???*]#only(str(n) + "-")[#answer]]
+#let blank(n, answer) = [#only("-" + str(n - 1))[*???*]#only(
+    str(n) + "-",
+  )[#answer]]
+
+// Token pill for tokenizer demos; the fill colour cycles by token index.
+#let tok-colors = (
+  rgb("#FFD966"),
+  rgb("#B6D7A8"),
+  rgb("#9FC5E8"),
+  rgb("#EA9999"),
+)
+#let tok(n, content, inset: (x: 0.2em, y: 0.15em)) = box(
+  fill: tok-colors.at(calc.rem(n, tok-colors.len())),
+  inset: inset,
+  radius: 0.1em,
+)[#content]

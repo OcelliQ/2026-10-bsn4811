@@ -30,7 +30,8 @@
 #title-slide()
 
 #include "sections/00-hook.typ"
-#include "sections/01-crash-course.typ"
+#include "sections/01-chips-infra.typ"
+#include "sections/02-llms.typ"
 #include "sections/03-apps.typ"
 #include "sections/04-every-message.typ"
 #include "sections/05-landlord.typ"
