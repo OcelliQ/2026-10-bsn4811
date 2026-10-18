@@ -6,20 +6,20 @@ These screenshots were filled on 2026-10-17. Each item below needs a look before
 
 N02 (WSJ), N05 (WSJ), N10 (The Information), N11 (Reuters), N12 (Bloomberg) and N19 (AP) were recaptured by hand from the outlets the brief asked for. One item is still open:
 
-- [ ] **N11: Reuters URL** (`sections/04-landlord.typ`)
+- [ ] **N11: Reuters URL** (`sections/05-landlord.typ`)
   - The screenshot is Reuters, but the `url:` is [Yahoo Finance's syndicated copy](https://finance.yahoo.com/news/anthropics-ai-tools-deepen-selloff-054551832.html). The reuters.com address couldn't be confirmed, since Reuters blocks automated lookups.
   - Paste the reuters.com URL into the slide and `figures/news/manifest.json`.
 
 ## The capture doesn't fully back the slide
 
-- [ ] **N08: Cursor and Anthropic** (`sections/04-landlord.typ`)
+- [ ] **N08: Cursor and Anthropic** (`sections/05-landlord.typ`)
   - No source was found for the \~\$650M Cursor reportedly paid Anthropic. [Newcomer](https://www.newcomer.co/p/cursors-popularity-has-come-at-a) supports \~\$500M ARR, negative gross margins and "huge Anthropic bills".
   - The slide is already softened: the bullet now says "Negative gross margins, with *huge Anthropic bills*", and the caption now quotes Newcomer.
   - Restore the stronger "paid Anthropic more than it earned" only if you find a source.
-- [ ] **N03: Character.AI Chapter 11** (`sections/03-every-message.typ`)
+- [ ] **N03: Character.AI Chapter 11** (`sections/04-every-message.typ`)
   - [Variety](https://variety.com/2026/biz/news/disney-bids-on-character-ai-assets-chapter-11-bankruptcy-1236909984/) confirms the filing and Disney's \$20M bid, but doesn't name Delaware, which the slide says.
   - Check the docket.
-- [ ] **N20: DeepSeek day** (`sections/07-moats.typ`)
+- [ ] **N20: DeepSeek day** (`sections/08-moats.typ`)
   - [CNBC](https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html) says "almost \$600 billion", while the `// VERIFY` note says \$589B.
   - The slide only says −17%, so it's fine as it stands. Pick one figure if you say it aloud.
 - [ ] **N01: Nvidia product photo** (`sections/00-hook.typ`)

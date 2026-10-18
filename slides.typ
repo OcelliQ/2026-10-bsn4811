@@ -31,12 +31,12 @@
 
 #include "sections/00-hook.typ"
 #include "sections/01-crash-course.typ"
-#include "sections/02-primer.typ"
-#include "sections/03-every-message.typ"
-#include "sections/04-landlord.typ"
-#include "sections/05-meat-puppets.typ"
-#include "sections/06-legal.typ"
-#include "sections/07-moats.typ"
-#include "sections/08-close.typ"
+#include "sections/03-apps.typ"
+#include "sections/04-every-message.typ"
+#include "sections/05-landlord.typ"
+#include "sections/06-meat-puppets.typ"
+#include "sections/07-legal.typ"
+#include "sections/08-moats.typ"
+#include "sections/09-close.typ"
 
 #reference-slides()
