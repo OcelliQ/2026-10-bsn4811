@@ -425,6 +425,7 @@
   - The 2027--31 bars look comfortable, but that is revenue, not profit: it also has to pay for the chips, staff and power to deliver it.
   - FY2027 capex guidance is \$90--95B, not exclusively chips or cash already spent. Oracle has \$125.3B of borrowings. Servers and networking equipment are depreciated over six years; the chart's three-year replacement marker is a scenario, not a verified obsolescence date. On its earnings call Oracle said renewed GPU capacity attracted a 20% premium; that does not establish every old GPU remains economically competitive.
   - About half the backlog is one customer, OpenAI, which is still losing money. Oracle names Meta, NVIDIA, AMD, xAI and TikTok as the others but not how much each owes.
+  - It's not just Oracle. Neoclouds such as CoreWeave lease their buildings for 10--15 years against GPUs that earn premium rent for 2--5 years (the author's framing; compare Oracle's six-year depreciation). And Microsoft was about two-thirds of CoreWeave's 2025 revenue.
   - Meta's Hyperion joint venture has an initial four-year lease and a residual-value guarantee covering the first sixteen years. A short lease does not mean Meta has no longer-term exposure.
   - Seen it before: WeWork signed 15-year leases and rented desks by the month. It filed for bankruptcy in 2023.
   - The bull case is that demand and future contracts continue growing. The risk illustrated here is the mismatch in timing, refinancing and renewal assumptions, not a prediction that demand must disappear.
@@ -432,6 +433,10 @@
     "https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm",
     display: false,
   )[Oracle. _Form 10-Q, quarter ended 31 August 2026_. RPO US\$664B (13% in 12 months, 37% in months 13--36, 34% in months 37--60); US\$288B of lease commitments not yet commenced, terms 15--19 years; lease and purchase-obligation maturity tables; borrowings US\$125.3B; interest expense US\$1.4B in the quarter; servers depreciated over six years.]
+  #cite-source(
+    "https://measuredai.substack.com/p/neoclouds-ai-middle-layer",
+    display: false,
+  )[Trinetti, C. (2026). _Neoclouds: AI's \$150 Billion Middle Layer That Owns Almost Nothing_. Measured AI, 28 July 2026. 10--15-year leases vs 2--5-year GPU premium life (author's framing); Microsoft \~67% of CoreWeave's FY2025 revenue (CoreWeave 10-K).]
   #cite-source(
     "https://www.spglobal.com/ratings/en/regulatory/article/-/view/sourceId/101695609",
     display: false,

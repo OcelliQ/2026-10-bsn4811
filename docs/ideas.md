@@ -185,7 +185,7 @@ End on the L13 checklist, applied to the app layer: Do you own the customer? Can
   - Video model V1 launched Jun 2025.
   - Licensing partnership with Meta, Aug 2025 (terms undisclosed).
   - Acquired Co-Star, Jul 2026 ⚠.
-  - Medical division with Harvard, Jun 2026 ⚠.
+  - Midjourney Medical: full-body ultrasound scanner prototype, unveiled 18 Jun 2026 (Butterfly Network IR). Harvard link ⚠.
 - Sued by Disney and Universal (Jun 2025) and WBD (Sep 2025). The cases are consolidated and in discovery, with no ruling yet.
 - The "hardware pivot" story is unverified, so drop it unless you have a source.
 

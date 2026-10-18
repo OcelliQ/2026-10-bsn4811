@@ -2,6 +2,9 @@
 #import "/citations.typ": cite-source
 #import "/figures/sankey.typ": sankey
 #import "/figures/margin-strips.typ": margin-strips
+#import "/figures/layer-stack.typ": layer-grid, n-layers
+#import "/figures/money-hub.typ": money-hub
+#import "@preview/tiaoma:0.3.0": qrcode
 
 = Who makes the money?
 
@@ -33,118 +36,162 @@
 // VERIFY: every figure in figures/profit-pool-data.typ is a dummy placeholder.
 // Replace with cited TTM revenue and operating margin; the footnote on the
 // chart says "Illustrative placeholder figures" until then.
-#align(center, margin-strips())
-
-// GLM-5.3-REVIEW: fold the verdict colors into the margin strips (logos
-// tinted by verdict) and drop this table - one artifact, no redundancy.
-== Who makes the money
-
-#{
-  set text(size: 0.8em)
-  table(
-    columns: (auto, auto, 1fr),
-    align: (left, left, left),
-    stroke: none,
-    inset: (x: 0.6em, y: 0.5em),
-    table.header([*Layer*], [*Verdict*], [*Evidence*]),
-    table.hline(stroke: 0.5pt + luma(180)),
-    [*Chips*],
-    text(fill: rgb("#2e7d32"), weight: "bold")[Clearly winning],
-    [Nvidia FY27 Q2: \$96.2B revenue, 75% gross margin],
-    [*Infra*],
-    [*Unclear*],
-    [Record capex on GPUs that earn premium rent for 2--5 years; neoclouds like CoreWeave borrowing heavily against 10--15-year leases],
-    [*Models*],
-    text(fill: rgb("#c62828"), weight: "bold")[Standalone labs lose money],
-    [OpenAI reportedly loses \~\$1.22 per \$1 of revenue. Labs inside profitable parents (Google, Meta) can afford to give models away: open weights.],
-    [*Apps*],
-    [*Varies wildly*],
-    [Midjourney profitable · Cursor \~break-even · Character.AI bankrupt],
+// Same stack position and scale as the hook's value-chain slides.
+// Step 2 adds the row notes.
+#slide(align: top, config: config-common(breakable: false), repeat: 2, self => [
+  #layer-grid(
+    (1fr,),
+    grid.cell(x: 1, y: 0, rowspan: n-layers + 1, layout(size => margin-strips(
+      width: size.width,
+      height: size.height,
+      beside-stack: true,
+      notes: if self.subslide > 1 {
+        (
+          Models: (verdict: [Loses money], detail: [on training]),
+          // Infra and Chips line up left of the cluster, clear of CoreWeave's
+          // label; there's no room right of AWS and Azure
+          Infra: (
+            verdict: [Tremendous risk],
+            detail: [10--15-yr leases, 2--5-yr GPUs],
+            side: left,
+            at: -42,
+          ),
+          Chips: (
+            verdict: [Value flows here],
+            detail: [to the scarce layer],
+            side: left,
+            at: -42,
+          ),
+        )
+      } else { (:) },
+    ))),
   )
-}
+])
 
-#pause
-#v(0.4em)
-#lblock[
-  #align(center)[Value flows to the *scarce* layer. Today, that's chips.]
-]
 
-// VERIFY: Nvidia FY27 Q2 $96.2B revenue and 75% gross margin (10-Q).
-// VERIFY: OpenAI ~$1.22 lost per $1 of revenue (aggregator figure; check
-// against the S-1). Use operating margin, not gross margin: labs run ~40--60%
-// gross margin.
-// VERIFY: hyperscaler capex and GPU depreciation schedules still to source.
-// The 2--5 vs 10--15 years comes from Measured AI (next slide).
-// VERIFY: Cursor ~break-even (single source).
+== Nvidia is funding its own demand
 
-#speaker-note[
-  Operating margin, not gross margin: the labs have healthy-looking gross margins of 40--60%, but training and staff costs put them deep in the red.
-
-  Open weights are the commoditize-your-complement play from BSE3713's Vercel / Next.js example: Meta gives models away because a cheap model layer helps its own business.
-]
-
-== Infra: the middle layer that owns almost nothing
-
-#cite-source(
-  "https://measuredai.substack.com/p/neoclouds-ai-middle-layer",
-  display: false,
-)[Trinetti, C. (2026). _Neoclouds: AI's \$150 Billion Middle Layer That Owns Almost Nothing_. Measured AI.]
-
-#grid(
-  columns: (1.15fr, 1fr),
-  column-gutter: 1.5em,
-  align: top,
-  [
-    *Neoclouds* (CoreWeave, Nebius, Lambda, Fluidstack) rent out GPUs:
-    - *CoreWeave*: \$99B backlog; Microsoft was \~2/3 of 2025 revenue
-    - Lease the buildings for *10--15 years*
-    - A GPU earns premium rent for *2--5 years*
-    #pause
-    - So who carries the risk? *Nvidia* and *Google* guarantee the rent and take equity stakes
-  ],
-  [
-    #pause
+// Step 1 Nvidia alone; 2 equity stakes; 3 buy-backs and guarantees; 4 Ohio
+// and the New Street quote.
+#slide(align: top, config: config-common(breakable: false), repeat: 4, self => [
+  #align(center, money-hub(step: self.subslide))
+  #uncover(4)[
     #gblock[
-      "Converted bitcoin miners own the buildings; NVIDIA and Google guarantee the rent --- Microsoft simply buys the compute."
-      #align(right, text(
-        size: 0.7em,
-        fill: luma(110),
-      )[--- Corey Trinetti, Measured AI, Jul 2026])
+      #set par(spacing: 0.4em)
+      "Nvidia would invest \$10bn for every \$35bn of GPUs OpenAI buys from it."
+      #align(right, text(fill: luma(100))[--- _The Economist_ on New Street Research's estimate, Sep 2025])
     ]
-  ],
-)
+    #v(-0.3em)
+    #align(center, text(fill: luma(100))[The \$100B plan never completed: Nvidia took a \$30B stake instead.])
+  ]
+  #cite-source(
+    "https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems",
+    display: false,
+  )[Nvidia. _OpenAI and NVIDIA Announce Strategic Partnership to Deploy 10 Gigawatts of NVIDIA Systems_. 22 September 2025. Letter of intent: up to US\$100B as each gigawatt is deployed.]
+  #cite-source(
+    "https://www.techtimes.com/articles/317839/20260605/nvidia-openai-investment-shrinks-100b-30b-compute-lock-war-continues.htm",
+    display: false,
+  )[TechTimes. _NVIDIA OpenAI Investment Shrinks From \$100B to \$30B_. 5 June 2026. US\$30B equity in OpenAI's round, closed 31 March 2026 at US\$122B.]
+  #cite-source(
+    "https://www.bloomberg.com/news/articles/2025-09-15/coreweave-says-nvidia-cloud-contract-valued-at-6-3-billion",
+    display: false,
+  )[Bloomberg. _CoreWeave Says Nvidia Cloud Contract Valued at \$6.3 Billion_. 15 September 2025. Nvidia buys unused capacity through 13 April 2032.]
+  #cite-source(
+    "https://www.tomshardware.com/tech-industry/data-centers/nvidia-weighs-250-billion-guarantee-so-openai-can-lease-softbanks-10-gigawatt-ohio-campus",
+    display: false,
+  )[Tom's Hardware, citing the Wall Street Journal (27 July 2026). Nvidia weighs a US\$250B guarantee of lease and debt for OpenAI's Ohio campus, and up to US\$350B of chip financing. In talks.]
+  #cite-source(
+    "https://www.datacenterdynamics.com/en/news/oracle-to-spend-40bn-on-nvidia-chips-for-openai-texas-data-center/",
+    display: false,
+  )[DatacenterDynamics, citing the Financial Times. _Oracle to spend \$40bn on Nvidia chips for OpenAI Texas data center_. May 2025.]
+  #cite-source(
+    "https://thenightly.com.au/business/the-economist-openai-could-receive-us100b-from-nvidia-to-fund-gpu-purchases-amid-ai-infrastructure-race-c-20118772",
+    display: false,
+  )[_The Economist_, syndicated by The Nightly. 24 September 2025. Paraphrasing Pierre Ferragu (New Street Research): Nvidia would invest US\$10B for every US\$35B of GPUs OpenAI buys, so OpenAI pays 71% in cash and 29% in shares.]
+  #cite-source(
+    "https://measuredai.substack.com/p/neoclouds-ai-middle-layer",
+    display: false,
+  )[Trinetti, C. (2026). _Neoclouds: AI's \$150 Billion Middle Layer That Owns Almost Nothing_. Measured AI.]
 
-// VERIFY: all figures are from the Measured AI piece (28 Jul 2026), citing
-// filings: CoreWeave $99.4B backlog (31 Mar 2026) and Microsoft ~67% of FY2025
-// revenue (10-K); 10--15-year leases vs 2--5-year GPU premium life (author's
-// framing); Nvidia rent-backs/guarantees/equity (CoreWeave $6.3B rent-back,
-// Lambda $1.3B, Nscale $860M guarantee) and Google lease guarantees with
-// warrants in TeraWulf and Cipher.
+  #cite-source(
+    "https://thenextweb.com/news/nvidia-invests-2-billion-in-nebius",
+    display: false,
+  )[The Next Web. _Nvidia invests \$2 billion in Nebius_. 12 March 2026. Pre-funded warrants, about 7.7% stake; Nebius to deploy 5 GW of Nvidia systems by 2030.]
+  #cite-source(
+    "https://www.thestar.com.my/tech/tech-news/2026/07/28/nvidia-to-invest-5-billion-in-ilya-sutskever039s-ai-startup-source-says",
+    display: false,
+  )[Reuters via The Star. _Nvidia to invest \$5 billion in Ilya Sutskever's AI startup_. 28 July 2026.]
+  #cite-source(
+    "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000362/coreweave2q26earningspress.htm",
+    display: false,
+  )[CoreWeave. _Second Quarter 2026 Results_ (8-K). Debt US\$35.1B (recourse and non-recourse, current and non-current) at 30 June 2026; backlog about US\$104B.]
+])
+
+// Spokes: OpenAI $30B equity in the $122B round closed 31 Mar 2026, with
+// Amazon $50B and SoftBank $30B (TechTimes, 5 Jun 2026); the Sep 2025 "up to
+// $100B" LOI never became definitive (Nvidia newsroom 22 Sep 2025; 10-Q Nov
+// 2025). SSI $5B (Reuters, 28 Jul 2026). Nebius $2B warrants (12 Mar 2026).
+// CoreWeave $6.3B capacity backstop to 13 Apr 2032 (CoreWeave 8-K, 15 Sep
+// 2025; Bloomberg). Lambda $1.3B rent-back and Nscale $860M guarantee
+// (Measured AI, 28 Jul 2026, citing filings). CoreWeave debt $35.1B at
+// 30 Jun 2026 (Q2 8-K). Ohio $250B lease/debt guarantee plus up to $350B chip
+// financing: talks, not a deal (WSJ, 27 Jul 2026, via Tom's Hardware); project
+// $500B+ with SoftBank's SB Energy.
+// VERIFY: Lambda $1.3B and Nscale $860M are single-source (Measured AI).
+// VERIFY: Oracle's ~$40B Nvidia order (speaker note) is FT-sourced, never
+// confirmed by Oracle.
+// The lease-vs-GPU mismatch and CoreWeave's Microsoft concentration are in
+// the primer's Oracle slide notes.
 
 #speaker-note[
-  This is why the Infra verdict is "unclear". The neoclouds sit between long leases and short-lived GPUs, and most of their revenue comes from a handful of customers. The interesting part is who backs them: the chip layer. Nvidia guarantees rent and buys equity in its own customers, so the scarce layer is underwriting the demand for its own product. Remember the Sankey: the money reaching Nvidia was mostly investor money. Some of that investor money is Nvidia's.
+  This is why the Infra verdict is "unclear": who backs the neoclouds and the labs? The chip layer. Nvidia buys equity in its customers, buys back the capacity they can't sell, and guarantees their rent, so the scarce layer is underwriting the demand for its own product. The grey arrows are where outside money enters: equity rounds and debt. That is what ultimately pays for the GPUs.
+
+  The meme version is the "infinite money glitch" (Sep 2025): Nvidia invests in OpenAI, OpenAI signs \$300B with Oracle, Oracle buys \~\$40B of Nvidia chips. The quote on the slide is New Street's estimate for the original \$100B plan, which shrank to a \$30B stake. The bull case: this is ordinary vendor financing, and Nvidia can afford it.
+
+  Remember the Sankey: the money reaching Nvidia was mostly investor money. Some of that investor money is Nvidia's.
+
+  Measured AI's line: "Converted bitcoin miners own the buildings; NVIDIA and Google guarantee the rent --- Microsoft simply buys the compute."
 ]
 
 == Before you build on AI, ask
 
-#{
-  set text(size: 1.15em)
-  set list(spacing: 1em)
-  [
-    + Do you *own the customer*?
-    + Can you *swap models*?
-    + Does a *heavy user* make you money, or lose it?
-    + *Who is liable* when the model is wrong?
-    + What happens when the model is *10× cheaper*?
-  ]
-}
+
 
 #speaker-note[
   One question per lesson: landlord (2), moats (4), every message costs money (1), liability (3), LLMflation (4).
 ]
 
-== Questions?
 
 #focus-slide[
-  Questions?
+  #grid(
+    columns: (1fr, auto),
+    align: horizon,
+    gutter: 2em,
+    [
+      #{
+        set text(size: 1em)
+        set list(spacing: 1em)
+        set align(left)
+        [
+          + Do you *own the customer*?
+          + Can you *swap models*?
+          + Does a *heavy user* make you money, or lose it?
+          + *Who is liable* when the model is wrong?
+          + What happens when the model is *10× cheaper*?
+        ]
+      }
+
+    ],
+    [
+      #box(fill: white, inset: 1em)[
+        #qrcode("https://manek.sg/26F-bsn4811", width: 6cm)
+      ]
+      #v(0em)
+      #text(font: "DejaVu Sans Mono", size: 1.2em)[
+        manek.sg/\
+        26F-bsn4811
+      ]
+
+    ],
+  )
 ]

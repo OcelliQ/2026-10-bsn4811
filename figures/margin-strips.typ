@@ -6,10 +6,19 @@
 
 // Logo strips: one operating-margin number line per layer, shared axis, beside
 // the hook's layer stack (Apps at the top, bedrock at the bottom). Companies
-// with no reported margin are left out.
-#let margin-strips(width: 25cm, height: 13cm) = {
+// with no reported margin are left out. With `beside-stack`, draw the plot only,
+// for a layer-grid cell beside the hook's full-size stack: rows fill `height`,
+// tick labels hang below it and the axis title moves to the top right.
+// `notes`: layer name -> (verdict:, detail:, side: right, at: none), a pill
+// beside that row's markers.
+#let margin-strips(
+  width: 25cm,
+  height: 13cm,
+  beside-stack: false,
+  notes: (:),
+) = {
   let stack-w = 6.2cm
-  let lab-w = stack-w + 0.5cm // plot starts here
+  let lab-w = if beside-stack { 0.2cm } else { stack-w + 0.5cm } // plot starts here
   let lo = -160
   let hi = 85
   let plot-w = width - lab-w - 0.2cm
@@ -17,8 +26,8 @@
   // Rows match the stack's grid: n-layers rows of 1fr, then bedrock at 0.5fr.
   let rows = layers.rev() + (bedrock-layer,)
   let gutter = 4pt
-  let top-pad = 0.1cm
-  let grid-h = height - 1.4cm
+  let top-pad = if beside-stack { 0cm } else { 0.1cm }
+  let grid-h = if beside-stack { height } else { height - 1.4cm }
   let unit = (grid-h - n-layers * gutter) / (n-layers + 0.5)
   let row-top(i) = top-pad + i * (unit + gutter)
   let row-h(i) = if i < n-layers { unit } else { unit / 2 }
@@ -40,13 +49,15 @@
   let radius(rev) = calc.max(0.17cm, 0.036cm * calc.sqrt(rev)) // area ~ revenue
 
   box(width: width, height: height, {
-    place(top + left, dy: top-pad, block(width: stack-w, height: grid-h, grid(
-      columns: (1fr,),
-      rows: (1fr,) * n-layers + (0.5fr,),
-      row-gutter: gutter,
-      make-stack-cell(scale: 0.75),
-      make-bedrock-cell(scale: 0.75),
-    )))
+    if not beside-stack {
+      place(top + left, dy: top-pad, block(width: stack-w, height: grid-h, grid(
+        columns: (1fr,),
+        rows: (1fr,) * n-layers + (0.5fr,),
+        row-gutter: gutter,
+        make-stack-cell(scale: 0.75),
+        make-bedrock-cell(scale: 0.75),
+      )))
+    }
     // tints
     place(top + left, dx: sx(lo), dy: top-pad, rect(
       width: sx(0) - sx(lo),
@@ -67,6 +78,8 @@
         angle: 90deg,
         stroke: 0.4pt + luma(210),
       ))
+      // +80% keeps its gridline but no label: it would hit the page number
+      if t == 80 { continue }
       place(top + left, dx: sx(t) - 1cm, dy: axis-y + 0.08cm, box(
         width: 2cm,
         align(center, text(
@@ -75,18 +88,22 @@
         )[#if t > 0 [+]#if t < 0 [#sym.minus]#calc.abs(t)%]),
       ))
     }
-    place(top + left, dx: sx(lo), dy: axis-y + 0.6cm, box(
-      width: sx(hi) - sx(lo),
-      align(center, text(
-        0.65em,
-        fill: luma(90),
-      )[Operating margin #sym.dot.c marker area #sym.tilde revenue]),
-    ))
     // zero line
     place(top + left, dx: sx(0) - 1.2pt, dy: top-pad, line(
       length: grid-h,
       angle: 90deg,
       stroke: 2.4pt + luma(40),
+    ))
+    // axis title: below the axis, or above the plot beside the stack
+    let (title-dy, title-align) = if beside-stack {
+      (top-pad - 0.5cm, right)
+    } else { (axis-y + 0.6cm, center) }
+    place(top + left, dx: sx(lo), dy: title-dy, box(
+      width: sx(hi) - sx(lo),
+      align(title-align, text(
+        0.65em,
+        fill: luma(90),
+      )[Operating margin #sym.dot.c marker area #sym.tilde revenue]),
     ))
 
     for (i, layer) in rows.enumerate() {
@@ -120,16 +137,14 @@
         let left-edge = reported
           .map(c => sx(c.margin) - radius(c.revenue))
           .fold(width, calc.min)
+        // just above the row line, ending at the cluster
         place(
           top + right,
           dx: left-edge - 0.15cm - width,
-          dy: mid - 0.25cm,
+          dy: mid - 0.55cm,
           box(
             height: 0.5cm,
-            inset: (x: 3pt),
-            fill: white.transparentize(15%),
-            radius: 2pt,
-            align(horizon, text(
+            align(bottom, text(
               0.7em,
               weight: "bold",
               fill: luma(30),
@@ -138,6 +153,36 @@
           ),
         )
         continue
+      }
+      let note = notes.at(layer.name, default: none)
+      if note != none {
+        // A tinted pill beside the markers, clear of the zero line, with its
+        // bar and text facing them. `at` pins the near edge to a margin value
+        // so several pills can line up.
+        let side = note.at("side", default: right)
+        let face = if side == right { left } else { right }
+        let x = if "at" in note { sx(note.at) } else if side == right {
+          calc.max(
+            sx(0) + 0.15cm,
+            ..reported.map(c => sx(c.margin) + radius(c.revenue)),
+          ) + 0.25cm
+        } else {
+          calc.min(
+            sx(0) - 0.15cm,
+            ..reported.map(c => sx(c.margin) - radius(c.revenue)),
+          ) - 0.25cm
+        }
+        place(top + left, dx: x, dy: mid, place(face + horizon, box(
+          fill: col.lighten(88%),
+          stroke: if side == right { (left: 3pt + col) } else { (right: 3pt + col) },
+          inset: (x: 0.45em, y: 0.35em),
+          radius: if side == right { (right: 3pt) } else { (left: 3pt) },
+          align(face, stack(
+            spacing: 0.3em,
+            text(0.8em, weight: "bold", fill: col.darken(15%), note.verdict),
+            text(0.6em, fill: luma(80), note.detail),
+          )),
+        )))
       }
       for (j, c) in reported.enumerate() {
         let r = radius(c.revenue)

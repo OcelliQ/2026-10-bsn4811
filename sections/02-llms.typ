@@ -139,30 +139,15 @@
   ])
 ]
 
-== The intelligence--cost frontier keeps moving
+== Cost of AI by model age
 
-// Artificial Analysis, 2025 Year-End State of AI, printed p. 16 (PDF p. 15).
-// Original embedded chart; all three frontiers use AAII v4.0.
+// `cost-vs-aaii-by-age` chart from OcelliQ/ai-models-chart: same axes as
+// the cost charts above, coloured by model release date.
 #slide(config: config-page(margin: (x: 0em)))[
   #align(center, image(
-    "/figures/reports/aa-intelligence-cost-frontiers-2025.png",
-    width: 100%,
-    height: 90%,
-    fit: "contain",
+    "/figures/ai-models-chart/svg-paths/cost-vs-aaii-by-age.svg",
+    height: 100%,
   ))
-  #align(center, text(size: 12pt, fill: luma(100))[
-    AAII v4.0 · 2025 year-end report; "Current" means the report snapshot.
-  ])
-  #cite-source(
-    "https://artificialanalysis.ai/downloads/state-of-ai/2025/2025-Year-End-Artificial-Analysis-State-of-AI-Highlights-Report.pdf",
-    display: false,
-  )[Artificial Analysis. _State of AI: 2025 Year-End Edition_, Highlights, p. 16 (PDF p. 15). Intelligence vs. Cost to Run Intelligence Index (Pareto Frontiers). AAII v4.0; frontier snapshots labelled End of 2024, Mid 2025 and Current (the report snapshot). Cost is USD to run the index, on a logarithmic scale. Original embedded chart extracted without modification.]
-]
-
-#speaker-note[
-  Compare the orange end-2024 frontier, blue mid-2025 frontier and solid report-snapshot frontier. Moving up means more intelligence at the same cost; moving left means the same intelligence at lower cost. Each frontier considers the models available by that date, rather than only models released that year.
-
-  All three curves use AAII v4.0. The x-axis is the cost to run the benchmark suite, not a fixed token workload or the cost of our homework bot. "Current" belongs to the report snapshot, not October 2026. This chart does not establish a universal four-month frontier-to-budget interval.
 ]
 
 == What it costs to run your own

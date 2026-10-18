@@ -542,3 +542,19 @@
   inset: inset,
   radius: 0.1em,
 )[#content]
+
+// Numbered principle: big grey index number + bold title, one-line body, optional example.
+#let principle(num, title, body, example: none) = grid(
+  columns: (1.5em, 1fr),
+  column-gutter: 0.7em,
+  row-gutter: 0.1em,
+  align: (right + top, left + top),
+  text(weight: "bold", size: 3em, fill: luma(140))[#num.],
+  [
+    *#title* \
+    #body
+    #if example != none [
+      \ #text(size: 0.85em, fill: luma(100))[_e.g._ #example]
+    ]
+  ],
+)

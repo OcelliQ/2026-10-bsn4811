@@ -19,9 +19,7 @@ N02 (WSJ), N05 (WSJ), N10 (The Information), N11 (Reuters), N12 (Bloomberg) and 
 - [ ] **N03: Character.AI Chapter 11** (`sections/04-every-message.typ`)
   - [Variety](https://variety.com/2026/biz/news/disney-bids-on-character-ai-assets-chapter-11-bankruptcy-1236909984/) confirms the filing and Disney's \$20M bid, but doesn't name Delaware, which the slide says.
   - Check the docket.
-- [ ] **N20: DeepSeek day** (`sections/08-moats.typ`)
-  - [CNBC](https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html) says "almost \$600 billion", while the `// VERIFY` note says \$589B.
-  - The slide only says −17%, so it's fine as it stands. Pick one figure if you say it aloud.
+- [x] **N20: DeepSeek day**: removed from `sections/08-moats.typ` (replaced by OpenRouter token volumes).
 - [ ] **N01: Nvidia product photo** (`sections/00-hook.typ`)
   - The image is NVIDIA's official Blackwell GPU render from the [March 2024 press kit](https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing), not an HGX board.
   - It's fine unless the slide text names a specific product.

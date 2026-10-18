@@ -114,3 +114,20 @@
   ]
 ]
 #let bedrock-cell = make-bedrock-cell()
+
+// Slide layout with the stack in column 0 at full height. `columns`: the
+// widths after the stack, which takes 30% of the slide.
+#let layer-grid(columns, ..cells) = {
+  set text(size: 18pt)
+  v(10pt)
+  grid(
+    columns: (30%,) + columns,
+    rows: (1fr,) * n-layers + (0.5fr,),
+    column-gutter: 12pt,
+    row-gutter: 4pt,
+    align: top,
+    stack-cell,
+    bedrock-cell,
+    ..cells,
+  )
+}
