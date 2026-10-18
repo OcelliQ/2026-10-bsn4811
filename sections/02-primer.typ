@@ -1,8 +1,9 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
 
-= How AI businesses make money
+= How to make money with AI
 
+#section-subtitle[The application layer]
 
 == The pricing menu
 
@@ -24,13 +25,14 @@
     [Usage credits],
     [Subscription buys a budget of usage],
     [Cursor, \$20 of credits],
-    [Outcome-based], [Pay per job done], [Intercom Fin, \$0.99 per resolution],
+    [Outcome-based], [Pay per job done], [Zendesk, \$1.50 per resolution],
   )
 }
 
 // VERIFY: ChatGPT Plus still $20/month; ads in the ChatGPT free tier (2026);
 // Copilot Business per-seat price; Cursor Pro = $20 of credits (Jun 2025
-// switch); Intercom Fin $0.99 per resolution.
+// switch); Zendesk $1.50 per automated resolution (annual commitment;
+// $2.00 pay-as-you-go).
 
 #speaker-note[
   Keep this menu in mind for the exercise in two slides. The question is always: who carries the cost when a user uses a lot?

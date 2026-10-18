@@ -422,12 +422,8 @@
       table.hline(stroke: 0.6pt + luma(160)),
     ),
     [
-      Up *75%* on 2025's \$416B.
-
-      #pause
       Four of the five spent *all their operating cash flow or more* on capex last quarter.
 
-      #pause
       So they borrow and sell shares: Alphabet sold *\$80B of new stock*, the largest US share sale ever#cite-source("https://www.sec.gov/Archives/edgar/data/0001652044/000119312526257724/d83560dex991.htm")[Alphabet. _Form 8-K, Exhibit 99.1_. US\$80 billion equity offering, including a US\$10 billion private placement to Berkshire Hathaway, June 2026.].
     ],
   )
@@ -474,49 +470,6 @@
     "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm",
     display: false,
   )[Meta. _Form 10-Q_, quarter ended 30 September 2025. Hyperion joint venture: 4-year initial lease term; residual value guarantee for the first 16 years.]
-]
-
-== Who's left holding the lease?
-
-// Google backstops: TeraWulf US$3.2B and Cipher US$1.4B of Fluidstack lease
-// obligations (DCD; TeraWulf 8-K). IREN: 20% prepayment on Microsoft's
-// US$9.7B 5-year contract (IREN 8-K, 3 Nov 2025). Cost of capital: CoreWeave
-// notes 9.00--9.75% (10-Q); IREN's 6.0% GPU financing is from secondary
-// coverage of its FY26 results.
-// VERIFY: IREN's 6.0% financing rate (primary release returned 403).
-#slide(config: config-common(breakable: false))[
-  #grid(
-    columns: (1fr, 1fr),
-    column-gutter: 1.6em,
-    align: top,
-    [
-      *Everyone tries to pass the risk on*
-      - *Meta* leases its campus for 4 years, but promises the bondholders it will be worth \$28B if it leaves
-      - *Google* guarantees \$4.6B of rent owed to two ex-bitcoin miners#cite-source("https://www.datacenterdynamics.com/en/news/terawulf-and-fluidstack-to-develop-texas-data-center-in-google-backed-deal/")[DatacenterDynamics. _TeraWulf and Fluidstack to develop Texas data center in Google-backed deal_. Google backstops US\$3.2B (TeraWulf) and US\$1.4B (Cipher) of Fluidstack lease obligations.]
-      - *Microsoft* prepays 20% of a \$9.7B contract to IREN#cite-source("https://www.sec.gov/Archives/edgar/data/1878848/000114036125040072/ef20058139_ex99-1.htm")[IREN. _Form 8-K, Exhibit 99.1_. US\$9.7 billion, five-year GPU cloud contract with Microsoft, including a 20% prepayment. 3 November 2025.]
-    ],
-    [
-      #pause
-      *A big customer is worth a lower interest rate*
-      #v(0.3em)
-      #table(
-        columns: (1fr, auto),
-        stroke: none,
-        inset: (x: 0pt, y: 0.35em),
-        table.hline(stroke: 0.6pt + luma(160)),
-        [IREN, backed by a Microsoft contract], [*\~6%*],
-        [CoreWeave's bonds], [*9--10%*],
-        table.hline(stroke: 0.6pt + luma(160)),
-      )
-      #pause
-      Each guarantee is a sign the risk is real: someone just agreed to carry it.
-    ],
-  )
-]
-
-#speaker-note[
-  The risk doesn't disappear; it gets passed to whoever is most willing to hold it. Bondholders hold Meta's. Google holds the miners'. The miners hold Fluidstack's.
-  - Hold this thought for the close: NVIDIA also guarantees rent for neoclouds and takes equity in them, so the chip layer is underwriting demand for its own chips.
 ]
 
 = Large Language Models
@@ -680,7 +633,7 @@
 #speaker-note[
   Open-weight models can run on hardware you buy. That is what keeps model prices honest, and what Cursor later uses (lesson 2).
 ]
-== Black boxes, and stochastic
+== AI is Agentic, not just a chatbot
 
 #align(center + horizon, grid(
   columns: (40%, 40%),
@@ -708,24 +661,25 @@
 
     Every loop is another paid call, sending the whole conversation as input.
 
-    #v(0.4em)
     #table(
       columns: (auto, auto, auto, auto),
       align: (left, right, right, right),
       stroke: none,
-      inset: (x: 0.6em, y: 0.35em),
+      inset: (x: 0.6em, y: 0.2em),
       // Tokens in = previous tokens (last turn's input and reply) + new tokens.
       table.header([Turn], [Previous tokens], [New tokens], [Tokens out]),
       table.hline(stroke: 0.5pt + luma(180)),
-      [1], [0], [1,000], [500],
-      [2], [1,500], [1,000], [500],
-      [3], [3,000], [1,000], [500],
-      [4], [4,500], [1,000], [500],
-      [5], [6,000], [1,000], [500],
-      [6], [7,500], [1,000], [500],
+      [1], [0], [1,000], [1,000],
+      [2], [2,000], [1,000], [1,000],
+      [3], [4,000], [1,000], [1,000],
+      [4], [6,000], [1,000], [1,000],
+      [5], [8,000], [1,000], [1,000],
+      [...], [...], [...], [...],
+      [10], [18,000], [1,000], [1,000],
       table.hline(stroke: 0.5pt + luma(180)),
-      [Total], [*22,500*], [6,000], [3,000],
+      [Total], [*90,000*], [10,000], [10,000],
     )
+    *100,000 tokens in*, 90% of it repeated.
   ],
   include "/figures/agentic-loop.typ",
   lblock(center: true)[_"Given this goal, what do I do next?"_],
