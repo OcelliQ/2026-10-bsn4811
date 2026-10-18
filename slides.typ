@@ -25,7 +25,7 @@
 
 #set heading(numbering: numbly("{1}.", default: "1.1"))
 #set par(leading: 0.5em)
-#set list(marker: text(fill: accent)[•], spacing: 0.8em)
+#set list(spacing: 0.8em)
 
 #title-slide()
 

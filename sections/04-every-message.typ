@@ -197,7 +197,9 @@ Also *Cursor* (credits, then an apology) and *Replika* (a companion app fined #s
 
 // VERIFY: Altman's "losing money on Pro" post (5 Jan 2025); WSJ Copilot figure
 // (Oct 2023, "more than $20 a month per user on average, some up to $80");
-// Claude Code weekly limits; Replika EUR 5M Garante fine (2025).
+// Replika EUR 5M Garante fine (2025).
+// Claude Code weekly limits: announced 28 Jul 2025, from 28 Aug 2025 (Anthropic
+// on X). Cursor: cursor.com/blog/june-2025-pricing (apology 4 Jul 2025).
 
 == Discuss
 

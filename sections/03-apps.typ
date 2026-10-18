@@ -5,46 +5,136 @@
 
 #section-subtitle[The application layer]
 
+
+#focus-slide[
+  Exercise
+
+  #text(size: 72pt, weight: "bold")[
+    *Set prices for your homework bot.*
+  ]
+]
+
+
+== Exercise: price my homework bot
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1.5em,
+  align: top,
+  [
+    *The product*: an AI homework tutor that answers questions and draws graphs and diagrams.
+    Competitors charge *\$10 / month*.
+
+    #v(0.6em)
+    #table(
+      columns: (1fr, auto),
+      align: (left, right),
+      stroke: none,
+      inset: (x: 0.5em, y: 0.35em),
+      [Input price], [\$2 / M tokens],
+      [Output price], [\$10 / M tokens],
+      [One question], [10k in, 1k out],
+      [Light user], [100 qn / month],
+      [Heavy user], [3,000 qn / month],
+    )
+    #text(size: 0.8em, fill: luma(90))[Mid-tier pricing: Claude Sonnet 5.5, GPT-6.1 Sol, Gemini 4 Argon]
+  ],
+  [
+    *Your job (2 minutes, with a neighbour)*
+    - What does one question cost?
+    - What does a light user cost per month?
+    - What about a heavy user?
+    - At \$10 / month, how many questions before you lose money?
+    - What margin do you make on each user?
+    #pause
+    #v(0.5em)
+    *Heavy users*
+    - How many light users do you need to subsidize one heavy user?
+    - How do you stop them sinking you?
+  ],
+)
+
+// Prices: Anthropic, OpenAI and Google API pricing pages, 18 Oct 2026.
+
+#speaker-note[
+  The three labs price their mid-tier models identically. Which one students pick doesn't change the answer.
+
+  One question: 10,000 × \$2/M = \$0.02 in, 1,000 × \$10/M = \$0.01 out. \$0.03.
+
+  Light user: 100 × \$0.03 = \$3 against \$10 of revenue. 70% margin, looks like SaaS.
+
+  Heavy user: 3,000 × \$0.03 = \$90 against \$10. You lose \$80 on them, every month: a #sym.minus;800% margin.
+
+  Break-even: \$10 / \$0.03 ≈ 330 questions a month.
+
+  Agent: 100 tasks × 50 calls × \$0.03 = \$150.
+]
+
+
 // GLM-5.3-REVIEW: add a third column, "who eats the heavy user?", so the
 // speaker-note question is answered per row: per-token -> user, flat -> you,
 // credits -> capped you, outcome -> you unless scoped.
 == The pricing menu
 
-#{
-  set text(size: 0.85em)
-  table(
-    columns: (auto, 1fr, auto),
-    align: (left, left, left),
-    stroke: none,
-    inset: (x: 0.6em, y: 0.45em),
-    table.header([*Model*], [*How it works*], [*Example*]),
-    table.hline(stroke: 0.5pt + luma(180)),
-    [Per-token API], [Pay for exactly what you use], [OpenAI / Anthropic APIs],
-    [Flat subscription],
-    [Fixed monthly fee, "unlimited" use],
-    [ChatGPT Plus, \$20],
-    [Freemium + ads], [Free tier paid for by advertising], [ChatGPT free tier],
-    [Per-seat], [Fee per user per month], [GitHub Copilot Business],
-    [Usage credits],
-    [Subscription buys a budget of usage],
-    [Cursor, \$20 of credits],
-    [Outcome-based], [Pay per job done], [Zendesk, \$1.50 per resolution],
-  )
-}
+#let tied = uncover("2-", text(fill: accent)[●])
 
-// VERIFY: ChatGPT Plus still $20/month; ads in the ChatGPT free tier (2026);
-// Copilot Business per-seat price; Cursor Pro = $20 of credits (Jun 2025
-// switch); Zendesk $1.50 per automated resolution (annual commitment;
-// $2.00 pay-as-you-go).
+#table(
+  columns: (auto, auto, 1fr, auto),
+  align: (center, left, left, left),
+  stroke: none,
+  fill: (_, y) => if y > 0 and calc.even(y) { luma(240) },
+  inset: (x: 0.5em, y: 0.4em),
+  table.header([], [*Model*], [*How it works*], [*Example*]),
+  table.hline(stroke: 0.5pt + luma(180)),
+  tied, [Per-token API], [Pay for exactly what you use], [OpenAI / Anthropic APIs],
+  [], [Flat / per-seat], [Fixed fee, "unlimited" use],
+  [Microsoft 365 Premium, \$20 \ Claude Team, \$25 / \$125 per seat],
+  [], [Freemium + ads], [Free tier paid for by advertising], [ChatGPT free tier],
+  tied, [Usage credits], [Fee buys a usage budget], [Cursor, \$20 of credits],
+  tied, [Outcome-based], [Pay per job done], [Zendesk, \$1.50 per resolution],
+)
+
+#v(0.3em)
+#uncover("2-")[
+  #lblock[
+    #grid(
+      columns: (1em, 1fr),
+      row-gutter: 0.5em,
+      text(fill: accent)[●], [*Tie price to usage:* heavy users pay for what they use.],
+      [],
+      [*Flat rates are subsidies:* a \$125 Claude seat burns up to \~\$3,700 of API a month. That only works as a loss leader.],
+
+      [], [*Price to value:* outcome pricing charges for results, so the vendor pays for every failed attempt.],
+    )
+  ]
+]
+
+// Sources (checked 18 Oct 2026): microsoft.com/copilot/pricing/individuals;
+// claude.com/pricing; openai.com/index/testing-ads-in-chatgpt (Free and Go
+// tiers); cursor.com/blog/june-2025-pricing; zendesk.com/pricing ($1.50
+// committed, $2.00 pay-as-you-go).
+// Claude Team Premium ~$3,700/month API-equivalent: wokey.ai/claude-usage-limits
+// (measured on real accounts, 12 Oct 2026; Pro ~$736/month). Premium seats get
+// 6.25x Pro's per-session usage (support.claude.com, Team plan article).
 
 #speaker-note[
   Keep this menu in mind for the exercise in two slides. The question is always: who carries the cost when a user uses a lot?
+
+  Microsoft folded Copilot Pro into Microsoft 365 Premium. It doesn't promise unlimited, it promises "extensive usage": a flat fee with a fuzzy cap.
+
+  Claude Team sells two seat tiers, \$25 and \$125. Even per-seat pricing ends up charging heavy users more.
+
+  First show the table and ask: which of these protect the company from heavy users? Then reveal.
+
+  The orange dots mark models where price tracks usage. The rest are flat, so someone is subsidising heavy users: other customers, another product, or the company's own cost of compute. Claude Team Premium at \$125 is worth about \$3,700 a month at API prices if you use it fully. Anthropic can do that because it pays cost, not list price, for its own models. Microsoft can bundle Copilot because it is selling Office and runs Azure. ChatGPT free is paid for by ads.
+
+  Outcome pricing ties price to the value the customer gets, not to your cost. Zendesk charges \$1.50 per resolution, but still pays the model bill on tickets the bot fails to resolve. The customer pays for success, you pay for failure.
 ]
 
 
-// GLM-5.3-REVIEW: a cited paired bar chart (SaaS 80-90% vs AI 50-60% gross
-// margin; Bessemer/a16z/ICONIQ) instead of two big numbers - it would also
-// close the VERIFY note below. Optional garnish: Replit's gross margin
+
+// GLM-5.3-REVIEW: a cited paired bar chart (SaaS 75-85% vs AI 50-60% gross
+// margin) instead of two big numbers. Optional garnish: Replit's gross margin
 // swinging between +36% and -14% month to month (single source) as a
 // dumbbell.
 == SaaS vs AI unit economics
@@ -55,7 +145,7 @@
   align: top,
   gblock[
     #align(center)[*Classic SaaS*]
-    #align(center, text(size: 2.4em, weight: "bold")[80--90%])
+    #align(center, text(size: 2.4em, weight: "bold")[75--85%])
     #align(center)[gross margin]
     - Code written once, copied for free
     - Serving one more user costs \~nothing
@@ -71,66 +161,12 @@
   ],
 )
 
-// VERIFY: SaaS 80--90% vs AI 50--60% gross margin. Find a citable source
-// (e.g. Bessemer State of the Cloud / a16z / ICONIQ AI reports) and cite it.
+// Sources: Lazard, "Deep Diving on AI Commercialization" (2024): AI software
+// ~50-60% vs SaaS ~75-85%; ICONIQ State of AI 2026: AI-native ~52%; a16z,
+// "The New Business of AI" (2020): AI 50-60% vs SaaS 60-80%+.
 
 #speaker-note[
   Gross margin = (revenue - cost of serving it) / revenue. For SaaS that cost is hosting and support. For AI it includes every token you buy from a lab.
-]
-
-// GLM-5.3-REVIEW: reveal-slide idea: a cost-per-user bar chart (light $3 ->
-// heavy $90 -> agent $150) against the $10 revenue line, with the break-even
-// point (~330 questions/month) called out.
-// GLM-5.3-REVIEW: introduce the cross-subsidy histogram here (users by
-// monthly cost, flat-fee line across, loss tail in red) and reuse it in
-// lesson 1 (04-every-message).
-== Exercise: price my homework bot
-
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1.5em,
-  align: top,
-  [
-    *The product*
-    - AI tutor, *\$10 / month*
-    - Mid-tier model: *\$3* per million tokens in, *\$15* per million out
-    - One question (with the chat so far): \~5,000 tokens in, \~1,000 out
-
-    #v(0.5em)
-    *Your job (2 minutes, with a neighbour)* \
-    What does one question cost? \
-    A month for a light user? A heavy one?
-  ],
-  [
-    #pause
-    #table(
-      columns: (auto, auto, auto),
-      align: (left, right, right),
-      stroke: none,
-      inset: (x: 0.6em, y: 0.45em),
-      table.header([], [*Cost*], [*Margin*]),
-      table.hline(stroke: 0.5pt + luma(180)),
-      [One question], [\$0.03], [],
-      [Light user (100/month)], [\$3], [70%],
-      [Heavy user (3,000/month)],
-      [\$90],
-      text(fill: rgb("#c62828"))[*#sym.minus;800%*],
-    )
-    #pause
-    #lblock[
-      Make it an *agent*, \~50 model calls per task, and even the light user costs *\$150*.
-    ]
-  ],
-)
-
-#speaker-note[
-  One question: 5,000 × \$3/M = \$0.015 in, 1,000 × \$15/M = \$0.015 out. \$0.03.
-
-  Light user: 100 × \$0.03 = \$3 against \$10 of revenue. 70% margin, looks like SaaS.
-
-  Heavy user: 3,000 × \$0.03 = \$90 against \$10. You lose \$80 on them, every month.
-
-  Agent: 100 tasks × 50 calls × \$0.03 = \$150.
 ]
 
 // GLM-5.3-REVIEW: the reveal could be a mini-timeline of pricing pivots -
@@ -145,9 +181,8 @@
   [
     Back to the menu:
     - Per-token
-    - Flat subscription
+    - Flat / per-seat
     - Freemium + ads
-    - Per-seat
     - Usage credits
     - Outcome-based
 
@@ -163,9 +198,11 @@
   ],
 )
 
-// VERIFY: Cursor switch Jun 2025, apology and refunds 4 Jul 2025; Claude Code
-// weekly limits announced Jul 2025, effective 28 Aug 2025; Replit
-// effort-based pricing (Jun 2025) and the backlash. Cite each.
+// Sources: cursor.com/blog/june-2025-pricing (switch 16 Jun, apology and
+// refunds 4 Jul 2025); Anthropic on X, 28 Jul 2025 (weekly limits from
+// 28 Aug 2025); replit.com/blog/effort-based-pricing (18 Jun 2025) and
+// replit.com/blog/effort-based-pricing-recap (12 Jul 2025).
+// VERIFY: Cursor apology signed by the CEO; Replit charging for failed runs.
 
 #speaker-note[
   Context accumulates and agent loops multiply cost. Every one of these companies hit the heavy-user problem from the exercise, and every fix made their most loyal users angry. That's lesson 1.
