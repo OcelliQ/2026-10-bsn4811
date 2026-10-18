@@ -77,7 +77,7 @@ Each lesson gets one headline case told as a story, 1–2 rapid-fire supporting 
 
 - **Thesis:** whatever sits one layer below you can absorb your product as a feature, and it sees your usage data first. If your product is someone else's model, they can also raise the rent, change the terms or evict you.
 - **Headline case:** Cursor and Windsurf. Anthropic cut Windsurf's access with <5 days' notice, then Google took its people. Cursor reportedly paid Anthropic more than it earned ⚠ while competing with Claude Code, and then built its own model on open-weight Kimi.
-- **Rapid-fire:** chat-with-PDF apps killed by ChatGPT file upload. Jasper. The Feb 2026 SaaSpocalypse (Thomson Reuters −18% in a day).
+- **Rapid-fire:** chat-with-PDF apps killed by ChatGPT file upload. Jasper. The Feb 2026 SaaSpocalypse (Thomson Reuters −18% in a day). Claude Design launched 17 Apr 2026 ([Anthropic](https://www.anthropic.com/news/claude-design-anthropic-labs)); Figma shares fell about 7% that day ([TechCentral](https://www.techcentral.ie/figma-and-adobe-shares-fall-after-athropic-releases-design-tool/)). This is a market reaction, not established customer or revenue loss: Figma subsequently reported Q2 revenue up 48% year-over-year ([Figma](https://investor.figma.com/news-events/news/news-details/2026/Figma-Announces-Second-Quarter-2026-Financial-Results/default.aspx)).
 - **Discussion:** you're building on a frontier model's API. What would make you hard to replace the day the lab ships your feature?
 
 #### Lesson 3. Meat puppets and crumple zones (L5 + L5b)
@@ -195,7 +195,7 @@ End on the L13 checklist, applied to the app layer: Do you own the customer? Can
 - Jun 2025: switched from 500 requests to $20 of credits. The CEO apologised on 4 Jul and refunded charges.
 - Newcomer ⚠ reported an estimated ~$650M/year paid to Anthropic against ~$500M revenue.
 - Built its own Composer model (Nov 2025). Composer 2 at $0.50/$1.50 is reportedly built on Kimi K2.5. Margins reportedly turned slightly positive afterwards.
-- **SpaceX $60B all-stock acquisition** announced 16 Jun 2026 ⚠. Closing is not confirmed.
+- **SpaceX $60B all-stock acquisition** announced 16 Jun 2026 ([Reuters](https://www.investing.com/news/stock-market-news/spacex-to-buy-cursor-ai-coding-agent-operator-anysphere-for-60-billion-4744289)); completed 14 Aug 2026 ([Cursor announcement](https://cursor.com/blog/joining-spacex)).
 
 **Windsurf** (L2, L9)
 
@@ -301,7 +301,7 @@ End on the L13 checklist, applied to the app layer: Do you own the customer? Can
 ## 5. To verify before the slides are final
 
 1. Character.AI: filing date, CEO name, the $20M Disney bid, revenue and compute figures (get the bankruptcy docket).
-2. Whether the Cursor/SpaceX deal has closed, and Cursor's true ARR.
+2. Cursor's true ARR. Its acquisition by SpaceX closed on 14 Aug 2026, confirmed by Cursor.
 3. OpenAI's S-1 figures (revenue, loss, users, ads), Anthropic's run-rate and Midjourney's revenue.
 4. The size of the SaaSpocalypse loss: pick one sourced figure.
 5. Builder.ai's revenue numbers (Bloomberg, 30 Jul 2025).

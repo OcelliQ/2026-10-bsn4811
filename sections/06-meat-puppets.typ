@@ -1,7 +1,7 @@
 #import "/common.typ": *
 #import "/citations.typ": cite-source
 
-= Meat puppets and crumple zones
+= Meat puppets and\ crumple zones
 
 Subtitle: TODO: Propose a better name for this.
 

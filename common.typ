@@ -408,6 +408,22 @@
 // Light grey source line under a screenshot or figure.
 #let attribution-style(body) = text(size: 0.5em, fill: luma(150), body)
 
+// Align a company logo with list body text, after the bullet and its gap.
+#let company-logo(path, height: 1cm) = context {
+  let marker = list.marker
+  if type(marker) == array { marker = marker.first() }
+  if type(marker) == function { marker = marker(0) }
+  block(
+    spacing: 0pt,
+    inset: (
+      left: list.indent + measure(marker).width + list.body-indent,
+      top: 0.4em,
+      bottom: 0.8em,
+    ),
+    image(path, height: height),
+  )
+}
+
 // Grey stand-in for a diagram that has not been drawn yet. The comment above
 // each call says what the finished diagram must show; `id` names it in briefs.
 #let diagram-placeholder(id, caption, width: 100%, height: 100%) = block(
@@ -434,8 +450,9 @@
 // its URL in light grey underneath. Without `path` it draws a grey
 // placeholder; the comment above each call says what the capture must show.
 #let shot(id, caption, path: none, url: none, width: 12cm, height: auto) = {
-  // With an explicit height (e.g. 100%), the image fills it and the source
-  // link sits inside; otherwise the image is 16:10 at the given width.
+  // An explicit height keeps the whole image vertically and clips its sides
+  // around the horizontal centre. The source line stays inside that height.
+  // Otherwise use the standard 16:10 thumbnail at the given width.
   let img-height = if height == auto { width * 10 / 16 } else { 100% }
   let img = if path == none {
     block(
@@ -457,6 +474,14 @@
         #text(size: 0.5em, fill: luma(90))[#caption]
       ]
     ]
+  } else if height != auto {
+    layout(size => block(
+      width: size.width,
+      height: size.height,
+      clip: true,
+      stroke: 0.5pt + luma(210),
+      place(center + top, image(path, height: size.height)),
+    ))
   } else {
     block(
       spacing: 0pt,

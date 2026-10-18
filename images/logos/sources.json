@@ -1,0 +1,85 @@
+{
+  "note": "Official company assets. Presentation adjustments are recorded per asset. Trademark ownership remains with each company.",
+  "assets": [
+    {
+      "file": "anthropic-wordmark.svg",
+      "source_page": "https://www.anthropic.com/news",
+      "download_url": "https://anthropic.com/press-kit",
+      "retrieved": "2026-10-18",
+      "viewBox": "0 0 590 68"
+    },
+    {
+      "file": "claude-code-wordmark.svg",
+      "source_page": "https://www.anthropic.com/news",
+      "download_url": "https://anthropic.com/press-kit",
+      "retrieved": "2026-10-18",
+      "viewBox": "0 0 14552 2000"
+    },
+    {
+      "file": "claude-wordmark.svg",
+      "source_page": "https://www.anthropic.com/news",
+      "download_url": "https://anthropic.com/press-kit",
+      "retrieved": "2026-10-18",
+      "viewBox": "0 0 9156 2000"
+    },
+    {
+      "file": "cognition-icon.svg",
+      "source_page": "https://cognition.com",
+      "download_url": "https://cognition.com/icon.svg",
+      "retrieved": "2026-10-18",
+      "viewBox": "-0.747952 -0.722232 21.495942 21.477469"
+    },
+    {
+      "file": "cursor-wordmark-dark.svg",
+      "source_page": "https://cursor.com/brand",
+      "download_url": "https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/brand/cursor-brand-assets.zip",
+      "retrieved": "2026-10-18",
+      "viewBox": "0 0 2238.7 532.09",
+      "note": "Original official horizontal 2D lockup. Light is dark ink on a light background; dark is light ink on a dark background."
+    },
+    {
+      "file": "cursor-wordmark-light.svg",
+      "source_page": "https://cursor.com/brand",
+      "download_url": "https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/brand/cursor-brand-assets.zip",
+      "retrieved": "2026-10-18",
+      "viewBox": "0 0 2238.7 532.09",
+      "note": "Original official horizontal 2D lockup. Light is dark ink on a light background; dark is light ink on a dark background."
+    },
+    {
+      "file": "google-wordmark.png",
+      "source_page": "https://www.google.com",
+      "download_url": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+      "retrieved": "2026-10-18",
+      "pixels": [
+        544,
+        184
+      ]
+    },
+    {
+      "file": "jasper-wordmark.png",
+      "source_page": "https://www.jasper.ai",
+      "download_url": "https://cdn.prod.website-files.com/6807ee8d73c233fb82842313/69b01c3c86cb380964db0daa_Jasper%20Logo%20(2025).png",
+      "retrieved": "2026-10-18",
+      "pixels": [
+        1440,
+        542
+      ]
+    },
+    {
+      "file": "windsurf-symbol.svg",
+      "source_page": "https://windsurf.com/brand",
+      "download_url": "https://exafunction.github.io/public/brand/windsurf-black-symbol.svg",
+      "retrieved": "2026-10-18",
+      "viewBox": "0 0 1024 1024"
+    },
+    {
+      "file": "windsurf-wordmark.svg",
+      "source_page": "https://windsurf.com/brand",
+      "download_url": "https://exafunction.github.io/public/brand/windsurf-black-wordmark.svg",
+      "retrieved": "2026-10-18",
+      "viewBox": "77 77 591 81",
+      "original_viewBox": "0 0 746 236",
+      "note": "Trimmed empty canvas around the original paths, retaining approximately one SVG unit of clear space. Logo artwork is unchanged."
+    }
+  ]
+}
