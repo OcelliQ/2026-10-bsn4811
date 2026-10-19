@@ -3,7 +3,7 @@
 // is operating margin in percent. `margin: none` means no reported margin (a
 // lab inside a profitable parent): draw it hatched, never estimated.
 //
-// VERIFY: every number below is a DUMMY placeholder of roughly the right
+// VERIFY: every number below without a source comment is a DUMMY placeholder of roughly the right
 // size, not a sourced figure. Replace each with a cited TTM figure before the
 // talk, and add the source to the slide footnote. Revenue double-counts down
 // the stack (an app's spend is a lab's revenue, and so on).
@@ -35,6 +35,17 @@
       (name: "Anthropic", revenue: 12, margin: -70),
       (name: "xAI", revenue: 2, margin: -140),
       (name: "Mistral", revenue: 0.5, margin: -60),
+      // Zhipu (Z.ai) and MiniMax: H1 2026 interim results (HKEX, Aug 2026).
+      // Revenue is H1 x 2; margin is adjusted net loss / revenue, as neither
+      // headline reports operating loss.
+      (name: "Zhipu", revenue: 0.28, margin: -206),
+      (name: "MiniMax", revenue: 0.23, margin: -251),
+      // Cohere: US$240M ARR end 2025, ~70% gross margin (The Logic, Feb 2026).
+      (name: "Cohere", revenue: 0.24, margin: none),
+      // DeepSeek, Thinking Machines, SSI: private, nothing disclosed.
+      (name: "DeepSeek", revenue: 0, margin: none),
+      (name: "Thinking Machines", revenue: 0, margin: none),
+      (name: "SSI", revenue: 0, margin: none),
       (name: "Google DeepMind", revenue: 8, margin: none),
       (name: "Meta (Llama)", revenue: 0, margin: none),
     ),
@@ -46,6 +57,23 @@
       (name: "Midjourney", revenue: 0.4, margin: 30),
       (name: "Perplexity", revenue: 0.3, margin: -90),
       (name: "Character.AI", revenue: 0.05, margin: -150),
+      // Palantir: Q2 2026 8-K, revenue US$1.935B x 4, GAAP op. margin 47%.
+      (name: "Palantir", revenue: 7.7, margin: 47),
+      // C3.ai: FY2026 (to 30 Apr 2026) 10-K, revenue US$250.3M, GAAP
+      // operating loss US$498.5M.
+      (name: "C3.ai", revenue: 0.25, margin: -199),
+      // Duolingo: Q2 2026 8-K, revenue US$298.5M x 4, op. profit US$33.9M.
+      (name: "Duolingo", revenue: 1.2, margin: 11),
+      // Cognition: ~US$900M ARR Aug 2026, plans ~US$800M cash burn in 2026
+      // (press reports); margin is -burn / ARR, a rough proxy.
+      (name: "Cognition", revenue: 0.9, margin: -89),
+      // Run-rate revenue only, no margin: Lovable ~US$600M (Aug 2026),
+      // Replit US$525M (Apr 2026), Harvey US$300M (May 2026), ElevenLabs
+      // US$500M+ (Q1 2026).
+      (name: "Lovable", revenue: 0.6, margin: none),
+      (name: "Replit", revenue: 0.53, margin: none),
+      (name: "Harvey", revenue: 0.3, margin: none),
+      (name: "ElevenLabs", revenue: 0.5, margin: none),
     ),
   ),
 )

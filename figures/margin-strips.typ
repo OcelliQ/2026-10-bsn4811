@@ -19,7 +19,9 @@
 ) = {
   let stack-w = 6.2cm
   let lab-w = if beside-stack { 0.2cm } else { stack-w + 0.5cm } // plot starts here
-  let lo = -160
+  let lo = -212
+  // Margins below `cut` are drawn as left carets at the plot's edge.
+  let cut = -200
   let hi = 85
   let plot-w = width - lab-w - 0.2cm
   let sx(m) = lab-w + (m - lo) / (hi - lo) * plot-w
@@ -35,18 +37,26 @@
   // label overrides: (above?, shift) where shift -1 right-aligns, +1 left-aligns
   let place-ov = (
     CoreWeave: (false, -1, -0.5),
-    Oracle: (false, 0),
+    Oracle: (false, 1),
     "Google Cloud": (true, -1),
-    AWS: (true, 0),
-    Azure: (false, 0),
+    AWS: (true, 1),
+    Azure: (false, 1),
     AMD: (true, 0),
     Broadcom: (false, -1),
     TSMC: (true, 0),
     Nvidia: (false, 0),
-    "Character.AI": (true, 1),
+    "Character.AI": (true, 0),
+    MiniMax: (true, 1),
+    Zhipu: (false, 1),
+    Perplexity: (true, 0),
+    Cognition: (false, 0),
+    Cursor: (true, -1),
+    Duolingo: (false, 1),
+    Midjourney: (true, 1),
+    Palantir: (false, 1, 0.25),
   )
-  let ticks = (-150, -100, -50, 0, 50, 80)
-  let radius(rev) = calc.max(0.17cm, 0.036cm * calc.sqrt(rev)) // area ~ revenue
+  let ticks = (-200, -150, -100, -50, 0, 50, 80)
+  let radius(rev) = calc.max(0.17cm, 0.12cm * calc.pow(rev, 0.25)) // area ~ sqrt(revenue)
 
   box(width: width, height: height, {
     if not beside-stack {
@@ -103,7 +113,7 @@
       align(title-align, text(
         0.65em,
         fill: luma(90),
-      )[Operating margin #sym.dot.c marker area #sym.tilde revenue]),
+      )[Operating margin #sym.dot.c marker area #sym.tilde \u{221A}revenue]),
     ))
 
     for (i, layer) in rows.enumerate() {
@@ -198,15 +208,29 @@
         let above = ov.at(0)
         let lw = 4cm
         let lh = 0.5cm
-        place(top + left, dx: sx(c.margin) - r, dy: mid - r, circle(
-          radius: r,
-          fill: col,
-          stroke: 0.8pt + white,
-        ))
+        // Off-scale margins sort first: carets line up from the left edge.
+        let off = c.margin < cut
+        let x = if off { sx(lo) + 0.15cm + j * 0.45cm } else { sx(c.margin) }
+        if off {
+          place(top + left, dx: x - 0.15cm, dy: mid - 0.18cm, polygon(
+            fill: col,
+            stroke: 0.8pt + white,
+            (0cm, 0.18cm),
+            (0.3cm, 0cm),
+            (0.3cm, 0.36cm),
+          ))
+        } else {
+          place(top + left, dx: x - r, dy: mid - r, circle(
+            radius: r,
+            fill: col,
+            stroke: 0.8pt + white,
+          ))
+        }
+        let r = if off { 0.18cm } else { r }
         let y = if above { mid - r - lh - 0.02cm } else { mid + r + 0.02cm }
         place(
           top + left,
-          dx: sx(c.margin)
+          dx: x
             - lw / 2
             + ov.at(1) * (lw / 2 - 0.3cm)
             + ov.at(2, default: 0) * 1cm,
@@ -223,7 +247,9 @@
                 0.7em,
                 weight: "bold",
                 fill: luma(30),
-                c.name,
+                if off [#c.name #text(
+                    weight: "regular",
+                  )[#sym.minus#calc.abs(c.margin)%]] else { c.name },
               ),
             ),
           ),

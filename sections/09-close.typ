@@ -54,19 +54,23 @@
             verdict: [Tremendous risk],
             detail: [10--15-yr leases, 2--5-yr GPUs],
             side: left,
-            at: -42,
+            at: -75,
           ),
           Chips: (
             verdict: [Value flows here],
             detail: [to the scarce layer],
             side: left,
-            at: -42,
+            at: -75,
           ),
         )
       } else { (:) },
     ))),
   )
 ])
+
+#speaker-note[
+  Not on the chart because they report no margin: Google DeepMind, Meta, Cohere, DeepSeek, Thinking Machines and SSI among the labs; Lovable, Replit, Harvey and ElevenLabs among the apps.
+]
 
 
 == Nvidia is funding its own demand
