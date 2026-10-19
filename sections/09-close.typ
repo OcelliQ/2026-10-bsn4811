@@ -187,7 +187,7 @@
         #qrcode("https://manek.sg/26F-bsn4811", width: 6cm)
       ]
       #v(0.3em)
-      #text(weight: "bold")[Connect on LinkedIn]\
+      #text(weight: "bold")[Slides, reading list\ & LinkedIn]\
       #text(size: 0.75em)[Tell me what you build]\
     ],
   )
