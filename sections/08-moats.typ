@@ -77,9 +77,7 @@
     column-gutter: 0.6em,
     row-gutter: 0.3em,
     ..steps.map(((v, _)) => strong(v)).intersperse(sym.arrow.r),
-    ..steps
-      .map(((_, d)) => box(text(size: 0.75em, fill: luma(120), d)))
-      .intersperse([]),
+    ..steps.map(((_, d)) => box(text(size: 0.75em, fill: luma(120), d))).intersperse([]),
   ))
 }
 
@@ -111,6 +109,7 @@
 What keeps your product alive when the next model does the same thing *10× cheaper*?
 #v(1em)
 
+#pause
 
 // Helmer, _7 Powers_ (2016), plus Porter-style barriers to entry. The test
 // for each row: does a 10x cheaper or better model erode it?

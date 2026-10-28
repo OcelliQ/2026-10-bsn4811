@@ -163,6 +163,45 @@
 
 
 
+== Expected market shifts
+
+#grid(
+  columns: (1.5em, 1fr),
+  column-gutter: 0.5em,
+  row-gutter: 1.4em,
+  align: top,
+  ..(
+    (
+      [Frontier progress becomes more selective],
+      [Money, power, and diminishing returns determine which advances are worth pursuing.],
+    ),
+    (
+      [Tighter credit and rising demand drive consolidation],
+      [Who survives?],
+    ),
+    (
+      [AI pricing moves toward sustainable economics],
+      [How much will customers pay?],
+    ),
+    (
+      [Financial stress spreads across the value chain],
+      [If one lab misses its targets, who else misses theirs?],
+    ),
+    (
+      [US IPOs intensify competition with Chinese models],
+      [Will Chinese models stay open---or become more expensive?],
+    ),
+  ).enumerate().map(((i, item)) => (
+    text(size: 1.1em, fill: accent, weight: "bold")[#(i + 1)],
+    stack(
+      dir: ttb,
+      spacing: 0.25em,
+      text(size: 1.3em, weight: "bold", item.at(0)),
+      text(size: 0.9em, fill: luma(90), item.at(1)),
+    ),
+  )).flatten(),
+)
+
 #focus-slide[
   #grid(
     columns: (1fr, auto),
