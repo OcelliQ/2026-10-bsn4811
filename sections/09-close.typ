@@ -191,15 +191,18 @@
       [US IPOs intensify competition with Chinese models],
       [Will Chinese models stay open---or become more expensive?],
     ),
-  ).enumerate().map(((i, item)) => (
-    text(size: 1.1em, fill: accent, weight: "bold")[#(i + 1)],
-    stack(
-      dir: ttb,
-      spacing: 0.25em,
-      text(size: 1.3em, weight: "bold", item.at(0)),
-      text(size: 0.9em, fill: luma(90), item.at(1)),
-    ),
-  )).flatten(),
+  )
+    .enumerate()
+    .map(((i, item)) => (
+      text(size: 1.1em, fill: accent, weight: "bold")[#(i + 1)],
+      stack(
+        dir: ttb,
+        spacing: 0.25em,
+        text(size: 1.3em, weight: "bold", item.at(0)),
+        text(size: 0.9em, fill: luma(90), item.at(1)),
+      ),
+    ))
+    .flatten(),
 )
 
 #focus-slide[
@@ -209,15 +212,14 @@
     gutter: 1em,
     [
       #{
-        set text(size: 1em)
-        set list(spacing: 1.2em)
+        set text(size: 0.95em)
+        set enum(tight: false, spacing: 1.2em)
         set align(left)
         [
-          + Does a *heavy user* make you money, or lose it?
-          + What's left of you the day the lab *ships your feature*?
-          + Can you *swap models* when the landlord raises the rent?
-          + Does your edge survive a model *10× cheaper*?
-          + Who pays the bill when the *investor money* runs out?
+          + What remains valuable when the lab *ships your feature*?
+          + Can you *switch models* when prices, terms, or access change?
+          + Does *cheaper intelligence* strengthen your business---or erase your advantage?
+          + Can your business survive *without fresh investor money*?
         ]
       }
 
