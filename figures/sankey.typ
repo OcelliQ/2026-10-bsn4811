@@ -125,11 +125,11 @@
       [Cloud / infra *\$105*],
     )
     node(3, y-staff, 45, [Staff and other *\$45*])
-    node(4, y-nv, 50, [Nvidia (chips) *\$50*], fill: dark)
+    node(4, y-nv, 50, [NVIDIA (chips) *\$50*], fill: dark)
     node(4, y-en, 30, [Datacentre *\$30*])
     node(4, y-mg, 25, [Cloud margin *\$25*])
 
-    // ---- user's slice marker on the right: dark outline on Nvidia ----
+    // ---- user's slice marker on the right: dark outline on NVIDIA ----
     place(top + left, dx: col(4), dy: y-nv, rect(
       width: nw,
       height: 50 * k,
@@ -143,7 +143,7 @@
       align(right, text(
         size: 0.65em,
         weight: "bold",
-      )[Nvidia gets #text(fill: accent.darken(10%))[5#sym.times;] what the user paid.]),
+      )[NVIDIA gets #text(fill: accent.darken(10%))[5#sym.times;] what the user paid.]),
     ))
 
     // ---- tag, legend ----

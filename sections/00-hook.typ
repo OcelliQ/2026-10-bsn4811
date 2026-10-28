@@ -126,7 +126,7 @@
 // Participation includes in-house chip design and owned or contracted
 // compute capacity; it does not mean each company sells a public cloud.
 #let integrated = (
-  // Chips to Apps: own accelerators, cloud, models and consumer apps.
+  // Companies participating across the value chain.
   (
     0,
     3,
@@ -140,10 +140,9 @@
       "Huawei",
       "Baidu",
       "OpenAI",
+      "SpaceXSI",
     ),
   ),
-  // Infra to Apps: owns or contracts data-centre capacity.
-  (0, 2, ("xAI",)),
 )
 
 // Companies beside each layer in column 1, then one brace and name list per
@@ -213,8 +212,19 @@
 
 #slide(align: top, config: config-common(breakable: false))[
   #layer-grid(
-    (33%,) + (16pt, auto) * integrated.len(),
+    (33%,) + (16pt, auto) * integrated.len() + (1fr,),
     ..company-cells,
+    grid.cell(
+      x: 2 + 2 * integrated.len(),
+      y: 0,
+      rowspan: n-layers,
+      align: left + horizon,
+    )[
+      #pause
+      #pad(left: 16pt)[
+        #text(size: 22pt, weight: "bold", fill: accent)[Why do so many companies compete across multiple layers?]
+      ]
+    ],
   )
 ]
 

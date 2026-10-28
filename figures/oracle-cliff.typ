@@ -122,7 +122,7 @@
         lab,
       ))
     }
-    vline(3, luma(150))[3-year \ scenario]
+    vline(3, luma(60))[3-year \ depreciation]
     vline(6, luma(60))[6-year \ depreciation]
     let note(dx, dy, fill, body) = place(dx: dx, dy: dy, text(
       size: 0.65em,
@@ -138,8 +138,8 @@
     let tail-promised = promised.slice(5).sum()
     note(x(6) + 0.25cm, axis + 1.9cm, luma(40))[
       #box(width: 12cm)[
-        Modelled outflows after 2031: #text(weight: "bold")[\~\$#calc.round(tail)B], including assumed power and interest, plus \$125B debt to repay or refinance. \
-        Current revenue backlog allocated then: \~\$#tail-promised;B \
+        After 2031: #text(weight: "bold")[\~\$#calc.round(tail)B] outflow, plus \$125B debt. \
+        Current revenue backlog: \~\$#tail-promised;B \
         Future contracts and replacement capex are not modelled.
       ]
     ]
@@ -165,7 +165,6 @@
       #key(owe)[new leases]
       #key(owe.darken(20%))[old leases]
       #key(owe.darken(45%))[supply + power]
-      #key(owe.transparentize(65%))[more power (est.)]
       #key(risk)[interest]
       #key(chip)[chips]
     ])

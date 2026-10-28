@@ -12,7 +12,7 @@
   (
     name: "Chips",
     companies: (
-      (name: "Nvidia", revenue: 330, margin: 62),
+      (name: "NVIDIA", revenue: 330, margin: 62),
       (name: "TSMC", revenue: 120, margin: 47),
       (name: "Broadcom", revenue: 35, margin: 40),
       (name: "AMD", revenue: 18, margin: 12),
@@ -21,8 +21,8 @@
   (
     name: "Infra",
     companies: (
-      (name: "AWS", revenue: 125, margin: 36),
-      (name: "Azure", revenue: 95, margin: 40),
+      (name: "Amazon AWS", revenue: 125, margin: 36),
+      (name: "Microsoft Azure", revenue: 95, margin: 40),
       (name: "Google Cloud", revenue: 60, margin: 22),
       (name: "Oracle", revenue: 25, margin: 8),
       (name: "CoreWeave", revenue: 6, margin: -5),
@@ -33,7 +33,7 @@
     companies: (
       (name: "OpenAI", revenue: 20, margin: -122),
       (name: "Anthropic", revenue: 12, margin: -70),
-      (name: "xAI", revenue: 2, margin: -140),
+      (name: "SpaceXSI", revenue: 2, margin: -140),
       (name: "Mistral", revenue: 0.5, margin: -60),
       // Zhipu (Z.ai) and MiniMax: H1 2026 interim results (HKEX, Aug 2026).
       // Revenue is H1 x 2; margin is adjusted net loss / revenue, as neither

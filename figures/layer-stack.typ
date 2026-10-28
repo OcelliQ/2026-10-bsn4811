@@ -39,14 +39,14 @@
     rgb("#dce8e2"),
     stack-ink,
     [data centres · cooling],
-    ("AWS", "Azure", "CoreWeave"),
+    ("Amazon AWS", "Microsoft Azure", "CoreWeave"),
   ),
   (
     [Chips],
     rgb("#e7edef"),
     stack-ink,
     [fabs · lithography · HBM],
-    ("Nvidia", "AMD", "TSMC", "Samsung", "SK Hynix", "Micron"),
+    ("NVIDIA", "AMD", "TSMC", "Samsung", "SK Hynix", "Micron"),
   ),
 )
 // Physical inputs under the whole stack, drawn as a row of tiles.

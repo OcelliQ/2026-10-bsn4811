@@ -50,7 +50,6 @@
 // independently identified. GB200 prices are external estimates, not NVIDIA
 // list prices. Wing's newer ~US$5M GB300 estimate must not be applied to GB200.
 #slide(config: config-common(breakable: false))[
-  #let money(body) = text(weight: "bold")[#body]
   #grid(
     columns: (16cm, 1fr),
     rows: (1fr,),
@@ -67,27 +66,19 @@
       *GB200 NVL72*: 72 Blackwell GPUs and 36 Grace CPUs in one liquid-cooled rack
 
       #v(0.4em)
-      #table(
-        columns: (1fr, auto),
-        stroke: none,
-        inset: (x: 0pt, y: 0.35em),
-        align: (left, right),
-        table.hline(stroke: 0.6pt + luma(160)),
-        [Compute#cite-source("https://www.nvidia.com/en-us/data-center/gb200-nvl72/")[NVIDIA. _GB200 NVL72_. 36 Grace CPUs and 72 Blackwell GPUs; 36 superchips with two GPUs and one CPU each.]],
-        [36 GB200 superchips],
-        [Cooling, power, interconnect],
-        [Integrated rack hardware],
-        table.hline(stroke: 0.6pt + luma(160)),
-        money[Rack total#cite-source("https://www.wing.vc/content/how-much-does-an-nvidia-nvl72-cost")[Wing VC. _How Much Does an NVIDIA NVL72 Cost?_]],
-        money[\~\$2.8--3.4M],
-      )
+      *Illustrative cost breakdown*
+      - *Compute: \~\$2.2--2.5M* for 36 GB200 superchips#cite-source("https://www.nvidia.com/en-us/data-center/gb200-nvl72/")[NVIDIA. _GB200 NVL72_. 36 Grace CPUs and 72 Blackwell GPUs; 36 superchips with two GPUs and one CPU each.]
+      - *Rack hardware: \~\$0.4--0.8M* for backplane, cooling, power and interconnect
+
+      #v(0.4em)
+      *Rack total: \~\$2.8--3.4M*#cite-source("https://www.wing.vc/content/how-much-does-an-nvidia-nvl72-cost")[Wing VC. _How Much Does an NVIDIA NVL72 Cost?_]
     ],
   )
 ]
 
 #speaker-note[
   NVIDIA doesn't publish list prices; these are analyst estimates.
-  - Each GB200 superchip contains two Blackwell GPUs and one Grace CPU. The slide uses an estimated whole-rack price, not an unverified component-price breakdown.
+  - Each GB200 superchip contains two Blackwell GPUs and one Grace CPU. The component ranges are illustrative estimates restored from the earlier slide draft, not verified vendor quotes. That draft attributed US\$60--70K per superchip to DeployBase and the rack-hardware estimate to SemiAnalysis; those component estimates still need verification. The whole-rack estimate is independently sourced, so the ranges need not sum exactly.
   - Facility construction, external networking, storage, power and operating costs are additional. The photograph is illustrative; it does not establish a particular rack model or operator.
   - Renting: GMI Cloud lists GB200 from \$8 per GPU-hour, about \$420K a month for a full rack running continuously.
   #cite-source(
@@ -220,15 +211,16 @@
       chart,
     )),
     [
-      *Big tech's own chips*
-      - Google TPU, AWS Trainium, Microsoft Maia, Meta MTIA
-      - Mostly used in-house; their makers are still NVIDIA's biggest customers
-
       *New Entrants*
       - Cerebras, Taalas
       - Huawei Ascend
 
-      NVIDIA's biggest competitors are their own customers making custom chips.
+      #pause
+      *Big tech's own chips*
+      - Google TPU, Amazon AWS Trainium, Microsoft Maia, Meta MTIA
+      - Mostly used in-house; their makers are still NVIDIA's biggest customers
+
+        NVIDIA's biggest competitors are their own customers making custom chips.
 
     ],
   )
@@ -289,7 +281,7 @@
     site(
       "/figures/photos/amazon-project-rainier-new-carlisle.jpg",
       [Project Rainier, Indiana],
-      [Amazon for Anthropic; illustrative AWS exterior#cite-source("https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster")[Amazon. _AWS Project Rainier_. AWS datacentre exterior published with the Rainier article; caption alone does not identify a specific building.]],
+      [Amazon for Anthropic; illustrative Amazon AWS exterior#cite-source("https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster")[Amazon. _AWS Project Rainier_. AWS datacentre exterior published with the Rainier article; caption alone does not identify a specific building.]],
     ),
     site(
       "/figures/photos/microsoft-fairwater-mount-pleasant-aerial.jpg",
@@ -302,11 +294,11 @@
 #speaker-note[
   A gigawatt is roughly the output of one large power station. Each of these campuses needs its own.
   - The projects require substantial power-generation and grid investment. The quoted capacities are plans or design capacities, not measurements of present electricity use.
-  - Several separate the model provider from the infrastructure owner or financing partner: Oracle capacity for OpenAI, Blue Owl's joint venture with Meta, and AWS capacity for Anthropic. Microsoft's own campus is a different case.
+  - Several separate the model provider from the infrastructure owner or financing partner: Oracle capacity for OpenAI, Blue Owl's joint venture with Meta, and Amazon AWS capacity for Anthropic. Microsoft's own campus is a different case.
 ]
 
 
-== Here's xAI's Colossus
+== Here's SpaceXSI's Colossus
 
 // Photo: Steve Jones for SELC; copyrighted, no reuse licence stated (see
 // figures/photos/SOURCES.md). The generators along the right are on-site power.
@@ -321,7 +313,7 @@
     align: horizon,
     shot(
       "P02",
-      [xAI Colossus, Memphis],
+      [SpaceXSI Colossus, Memphis],
       path: "/figures/photos/xai-colossus-memphis-aerial.jpg",
       url: "https://www.selc.org/news/inside-memphis-fight-against-xai/",
       width: 14cm,

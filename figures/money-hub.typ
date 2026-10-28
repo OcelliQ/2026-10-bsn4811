@@ -1,5 +1,5 @@
-// Nvidia as the hub of its own customers' funding: coloured spokes carry
-// Nvidia's money out (equity, capacity buy-backs, rent guarantees); grey
+// NVIDIA as the hub of its own customers' funding: coloured spokes carry
+// NVIDIA's money out (equity, capacity buy-backs, rent guarantees); grey
 // arrows from the edges carry outside money in (equity rounds, debt).
 // `step` reveals the layers: 1 hub, 2 equity, 3 buy-backs and guarantees,
 // 4 the Ohio talks. Figures are cited on the slide (sections/09-close.typ).
@@ -12,7 +12,7 @@
   )
   let outside = luma(150)
   let (nw, nh) = (4.6cm, 1.5cm)
-  // name: (x, y, w, h) centres; Lambda sits straight above Nvidia
+  // name: (x, y, w, h) centres; Lambda sits straight above NVIDIA
   let (xl, xr) = (5.6cm, width - 5.6cm)
   let nodes = (
     nvidia: (width / 2, height * 0.45, 4.6cm, 1.8cm),
@@ -87,11 +87,11 @@
     let sy = if calc.abs(ty - y) < h / 2 { 0 } else if ty > y { 1 } else { -1 }
     (x + sx * (w / 2 + gap), y + sy * (h / 2 + gap))
   }
-  // Nvidia's money out to a customer, to its nearest corner: the spoke, then the
+  // NVIDIA's money out to a customer, to its nearest corner: the spoke, then the
   // customer's node with the amount under its name
   let spoke(to, name, kind, amount, dash: none) = {
     let paint = kinds.at(kind).at(0)
-    // aimed from Nvidia's centre, starting just outside its box
+    // aimed from NVIDIA's centre, starting just outside its box
     let (x0, y0) = centre("nvidia")
     let (x1, y1) = anchor(to, centre("nvidia"))
     let (dx, dy) = ((x1 - x0) / 1cm, (y1 - y0) / 1cm)
@@ -153,7 +153,7 @@
     }
     node(
       "nvidia",
-      [Nvidia],
+      [NVIDIA],
       fill: rgb("#76b900").darken(20%),
       ink: white,
       sub: [sells GPUs],
