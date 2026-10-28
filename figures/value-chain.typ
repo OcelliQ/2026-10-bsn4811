@@ -35,7 +35,11 @@
       ("NVIDIA", "AMD", "TSMC"),
       "fabs, lithography, critical minerals, HBM memory",
     ),
-    ("Infra", ("Amazon AWS", "Microsoft Azure", "CoreWeave"), "energy, land, cooling, water"),
+    (
+      "Infra",
+      ("Amazon AWS", "Microsoft Azure", "CoreWeave"),
+      "energy, land, cooling, water",
+    ),
     (
       "Models",
       ("OpenAI", "Anthropic", "Google DeepMind", "Mistral", "DeepSeek"),

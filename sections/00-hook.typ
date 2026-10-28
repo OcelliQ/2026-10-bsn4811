@@ -222,7 +222,11 @@
     )[
       #pause
       #pad(left: 16pt)[
-        #text(size: 22pt, weight: "bold", fill: accent)[Why do so many companies compete across multiple layers?]
+        #text(
+          size: 22pt,
+          weight: "bold",
+          fill: accent,
+        )[Why do so many companies compete across multiple layers?]
       ]
     ],
   )

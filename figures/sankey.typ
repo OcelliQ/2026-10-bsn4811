@@ -9,7 +9,7 @@
   let col(i) = i * (nw + gx)
   let dark = luma(70)
   let usr = luma(35)
-  let fsz = 0.6em
+  let fsz = 0.8em
   let uf = 10 / 150 // user's share of every dollar once it enters the lab
 
   // ribbon between (x0, y0) and (x1, y1), top edges, thickness t
@@ -111,23 +111,23 @@
       fill: accent,
       tc: black,
     )
-    node(1, y-app, 90, [Homework bot app\ *\$90*])
+    node(1, y-app, 90, [Homework bot app])
     node(
       2,
       y-lab,
       150,
-      [Model lab *\$150*],
+      [Model lab],
     )
     node(
       3,
       y-cloud,
       105,
-      [Cloud / infra *\$105*],
+      [Cloud / infra],
     )
-    node(3, y-staff, 45, [Staff and other *\$45*])
-    node(4, y-nv, 50, [NVIDIA (chips) *\$50*], fill: dark)
-    node(4, y-en, 30, [Datacentre *\$30*])
-    node(4, y-mg, 25, [Cloud margin *\$25*])
+    node(3, y-staff, 45, [Staff and other])
+    node(4, y-nv, 50, [NVIDIA (chips)], fill: dark)
+    node(4, y-en, 30, [Datacentre])
+    node(4, y-mg, 25, [Cloud margin])
 
     // ---- user's slice marker on the right: dark outline on NVIDIA ----
     place(top + left, dx: col(4), dy: y-nv, rect(
@@ -138,10 +138,10 @@
     ))
 
     // ---- punchline callout ----
-    place(top + left, dx: col(4) - 0.4cm, dy: y-mg + 25 * k + 0.25cm, box(
-      width: nw + 0.4cm,
+    place(top + left, dx: col(4) - 3.4cm, dy: y-mg + 25 * k + 0.25cm, box(
+      width: nw + 3.4cm,
       align(right, text(
-        size: 0.65em,
+        size: 0.8em,
         weight: "bold",
       )[NVIDIA gets #text(fill: accent.darken(10%))[5#sym.times;] what the user paid.]),
     ))
@@ -151,7 +151,7 @@
       stroke: 0.8pt + luma(120),
       radius: 3pt,
       inset: (x: 6pt, y: 3pt),
-      text(size: 0.6em, fill: luma(80), style: "italic")[Illustrative],
+      text(size: 0.75em, fill: luma(80), style: "italic")[Illustrative],
     ))
     place(top + left, dx: 0cm, dy: 0cm, stack(
       dir: ltr,
@@ -206,7 +206,7 @@
 
     // ---- footnote ----
     place(bottom + right, text(
-      size: 0.55em,
+      size: 0.65em,
       fill: luma(90),
     )[Assumes training is funded by investors.])
   })
