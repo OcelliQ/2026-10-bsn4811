@@ -77,7 +77,9 @@
     column-gutter: 0.6em,
     row-gutter: 0.3em,
     ..steps.map(((v, _)) => strong(v)).intersperse(sym.arrow.r),
-    ..steps.map(((_, d)) => box(text(size: 0.75em, fill: luma(120), d))).intersperse([]),
+    ..steps
+      .map(((_, d)) => box(text(size: 0.75em, fill: luma(120), d)))
+      .intersperse([]),
   ))
 }
 
