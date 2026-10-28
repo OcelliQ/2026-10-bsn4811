@@ -102,7 +102,7 @@
       fill: accent,
       tc: black,
     )
-    node(0, y-user, 10, [User *\$10*], fill: usr)
+    node(0, y-user, 10, [User], fill: usr)
     node(
       0,
       y-invl,

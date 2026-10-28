@@ -92,8 +92,9 @@
   {
     set text(size: 0.82em)
     table(
-      columns: (auto, 1fr),
+      columns: (8cm, 1fr),
       align: (left, left),
+      fill: (x, y) => if calc.even(x) { luma(240) } else { white },
       stroke: none,
       inset: (x: 0.6em, y: 0.42em),
       table.header([*Case*], [*What it costs*]),

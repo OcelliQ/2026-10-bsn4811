@@ -121,7 +121,7 @@
   #cite-source(
     "https://github.com/OcelliQ/ai-models-chart",
     display: false,
-  )[OcelliQ. _AI model price charts_. Local charts generated 17 October 2026, comparing API cost for 100K input and 8K output tokens with the Artificial Analysis Intelligence Index. Hosting-hardware tiers are indicative capital budgets in SGD, not complete operating costs.]
+  )[OcelliQ. _AI model price charts_. Local charts generated 28 October 2026; prices and usage refreshed, with usage through 27 October 2026 and curated intelligence scores preserved, comparing API cost for 100K input and 8K output tokens with the Artificial Analysis Intelligence Index. Hosting-hardware tiers are indicative capital budgets in SGD, not complete operating costs.]
 ]
 
 == Cost of AI by lab

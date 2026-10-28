@@ -13,9 +13,9 @@
 == Traditional vs AI unit economics
 
 #let margins = (
-  (name: [Car maker], gross: [\~10%], net: [\~1%]),
-  (name: [Airline], gross: [\~25%], net: [\~2.5%]),
-  (name: [Restaurants], gross: [\~32%], net: [\~9%]),
+  (name: [Car maker], gross: [10%], net: [1%]),
+  (name: [Airline], gross: [25%], net: [2.5%]),
+  (name: [Restaurants], gross: [32%], net: [9%]),
   (
     name: [AI app#cite-source("https://a16z.com/the-new-business-of-ai-and-how-its-different-from-traditional-software/")[Martin Casado and Matt Bornstein, a16z. _The New Business of AI_. 16 February 2020. Observed AI-company gross margins of 50--60%; an illustrative historical benchmark, not a 2026 industry average.]
     ],
@@ -23,7 +23,7 @@
     net: [???],
     hl: true,
   ),
-  (name: [Software], gross: [\~72%], net: [\~25%]),
+  (name: [Software], gross: [72%], net: [25%]),
 )
 #let margin-fill(m) = if m.at("hl", default: false) { accent } else { black }
 
@@ -57,6 +57,9 @@
     ))
     .flatten(),
 )
+#align(right)[
+  #text(size: 0.7em)[\*Very rough numbers.]
+]
 #v(1fr)
 #grid(
   columns: (1fr, auto, 1fr),

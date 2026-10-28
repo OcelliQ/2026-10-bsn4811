@@ -91,7 +91,7 @@
     ([\$37B], [2025]),
     ([\$??B], [2026]),
   )
-- Tokens per week on OpenRouter: *\~32×* in a year
+- Tokens per week on OpenRouter: *\~33×* in about a year
 #openrouter-tokens(height: 5.5cm)
 
 // VERIFY: a16z "LLMflation" (Nov 2024): ~10x/year and $60 -> $0.06. Frontier
@@ -99,7 +99,8 @@
 // Enterprise GenAI spend $1.7B/$11.5B/$37B (2023-25): Menlo Ventures,
 // "State of Generative AI in the Enterprise", Dec 2025 (verified; no 2026
 // figure). OpenRouter weekly tokens: openrouter.ai/rankings open-closed
-// series, fetched 18 Oct 2026 (4.9T -> 155T, 20 Oct 2025 -> 12 Oct 2026).
+// series, fetched 28 Oct 2026 (5.7T -> 188T, 3 Nov 2025 -> 19 Oct 2026).
+// Complete weeks only; the current partial week is excluded.
 
 #speaker-note[
   A\* slide 70's line: "expensive value-added services may be much cheaper or obsolete in months". If your premium is "we have access to a better model", it expires.

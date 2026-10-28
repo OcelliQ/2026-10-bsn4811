@@ -1,7 +1,8 @@
 // Total tokens per week on OpenRouter (open + closed models), one bar per
 // week. Data: openrouter.ai/api/frontend/v1/rankings/open-closed, the series
 // behind the "open vs closed" chart on openrouter.ai/rankings, fetched
-// 18 Oct 2026 (weeks starting 20 Oct 2025 to 12 Oct 2026).
+// 28 Oct 2026 (complete weeks starting 3 Nov 2025 to 19 Oct 2026).
+// The current partial week is excluded.
 #let openrouter-tokens(height: 6cm) = {
   let weeks = json("/figures/openrouter-weekly-tokens.json")
   let totals = weeks.map(w => (w.open + w.closed) / 1e12)

@@ -80,7 +80,7 @@
 == Cursor: paying the landlord who competes with you
 
 #slide(composer: grid.with(
-  columns: (12cm, 1fr),
+  columns: (10cm, 1fr),
   column-gutter: 1.2em,
   align: top,
 ))[
@@ -101,7 +101,7 @@
   #pause
   - *Nov 2025*: builds its own *Composer 2* model at a fraction of the price
   - Margins reportedly turn slightly positive
-  - *Aug 2026*: acquired by *SpaceX* in a *\$60B all-stock deal*.#cite-source("https://cursor.com/blog/joining-spacex")[Cursor Team. _Cursor is now a part of SpaceX_. 14 August 2026. Confirms the acquisition has completed; the company cites access to SpaceX's compute for model training.]#cite-source("https://www.investing.com/news/stock-market-news/spacex-to-buy-cursor-ai-coding-agent-operator-anysphere-for-60-billion-4744289")[Aditya Soni and Deborah Mary Sophia, Reuters. _SpaceX locks in \$60 billion Cursor deal to close gap with rivals in AI coding race_. 16 June 2026. US\$60B all-stock acquisition announced; xAI had joined SpaceX in February.]
+  - *Aug 2026*: acquired by *SpaceX* for *\$60B stock*.#cite-source("https://cursor.com/blog/joining-spacex")[Cursor Team. _Cursor is now a part of SpaceX_. 14 August 2026. Confirms the acquisition has completed; the company cites access to SpaceX's compute for model training.]#cite-source("https://www.investing.com/news/stock-market-news/spacex-to-buy-cursor-ai-coding-agent-operator-anysphere-for-60-billion-4744289")[Aditya Soni and Deborah Mary Sophia, Reuters. _SpaceX locks in \$60 billion Cursor deal to close gap with rivals in AI coding race_. 16 June 2026. US\$60B stock acquisition announced; xAI had joined SpaceX in February.]
 ]
 
 // VERIFY: "fastest to $100M ARR"; Newcomer's ~$650M to Anthropic vs ~$500M
